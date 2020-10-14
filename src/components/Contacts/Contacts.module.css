@@ -1,0 +1,38 @@
+.Contacts__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 18vw;
+}
+
+.Contacts__feedback-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.Contacts__dots {
+    display: flex;
+}
+
+.Contacts__get-feedback {
+    font-weight: 700;
+    color: #9a4d00;
+}
+
+.Contacts__get-feedback:hover {
+    text-decoration: underline;
+}
+
+.Contacts__phone-number {
+    text-align: center;
+    font-size: 1.7vw;
+    color: #ffc400;
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    margin: 3px;
+    background-color: #eb5f0a;
+    border-radius: 50%;
+    display: block;
+  }

@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import {loginTest} from './store/actions/login';
+import Header from './components/Header/Header';
+//COMPONENT
 function App(props) {
-  console.log(props.login)
   return (
-    <div className="App">
-      <button style={{width: "50px", height: "50px"}} onClick={() => props.onLogin()}></button>
-      {'' + props.login}
-    </div>
+    <Header/>
   );
 }
 
+//REDUX 
 const mapStateToProps = (state) => {
   return {
     login: state.login.login

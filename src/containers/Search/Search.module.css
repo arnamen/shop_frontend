@@ -1,0 +1,29 @@
+.search_wrapper {
+    width: 40vw;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    margin: 0 1vw;
+}
+
+.search_field {
+    height: 70%;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 0 1vw;
+    transition: 0.5s all;
+}
+
+.search_field:focus {
+    outline: none;
+    box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.33)
+}
+
+
+.search {
+    transform: translateX(-60px);
+    width: 7vh;
+    height: 7vh;
+    cursor: pointer;
+}

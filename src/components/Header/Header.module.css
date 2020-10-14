@@ -1,0 +1,16 @@
+.header {
+    width: 100%;
+    height: 25vh;
+}
+
+.header__wrapper-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+}
+
+.header_UserIconLinks-wrapper {
+    display: flex;
+    align-items: center;
+}
