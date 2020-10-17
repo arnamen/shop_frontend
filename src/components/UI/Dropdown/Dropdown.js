@@ -1,33 +1,54 @@
 import React from 'react'
 import { v4 } from 'uuid';
 
-import './Dropdown.css'
+import './Dropdown.css';
+import './Chevron.css'
 
 export default (props) => {
-  const items = [];
+  const itemsData = props.items || [];
+
+  //превратить вложенный список в ul>li>ul...
+  const getListItems = (itemsData = [], level = 0) => {
+    
+    const listItems = itemsData.map((itemData) => {
+
+      if (itemData.children) {
+        /* выровнять все дропдауны по одному уровню */
+        let verticalAlignment = 100;
+
+        if (level !== 0) 
+          verticalAlignment = -100 * (level);
+        //
+        
+        return <li key={v4()} className='nav-item'>
+          {level === 0 && <span className='dots'></span>}
+          <a href={itemData.to || '#'}><span>{itemData.text}</span></a>
+          {level !== 0 && <span class="chevron right"></span>}
+          <ul className='nested-navigation'
+            style={{ 
+              height: 5*(itemData.children.length) + 'vh',
+              top: verticalAlignment + '%'
+               }}>
+              {/* создать дочерние элементы */}
+            {getListItems(itemData.children, level + 1)}
+          </ul>
+
+        </li>
+      }
+
+      return <li key={v4()} className='nav-item'>
+        <a href={itemData.to}><span>{itemData.text}</span></a>
+      </li>
+
+    })
+    return listItems;
+  }
+
+  const listItems = getListItems(itemsData);
 
   return (
     <ul className="main-navigation">
-      <li className='nav-item'><a href="/">WordPress Development</a>
-        <ul className='nested-navigation'>
-          <li className='nav-item'><a href="/">Themes</a></li>
-          <li className='nav-item'><a href="/">Plugins</a>
-          </li>
-          <li className='nav-item'><a href="/">Custom Post Types</a>
-            <ul className='nested-navigation'>
-              <li className='nav-item'><a href="/">Portfolios</a>
-                <ul className='nested-navigation'>
-                  <li className='nav-item'><a href="/">Ajax</a></li>
-                  <li className='nav-item'><a href="/">jQuery</a></li>
-                </ul>
-              </li>
-              <li><a href="/">Testimonials</a></li>
-            </ul>
-          </li>
-          <li className='nav-item'><a href="/">Options</a></li>
-        </ul>
-      </li>
-
+      {listItems}
     </ul>
   )
 }

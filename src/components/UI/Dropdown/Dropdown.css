@@ -1,49 +1,175 @@
- /* https://stackoverflow.com/questions/37744379/create-nested-drop-down-list-in-html-css-form */
- 
- ul.nested-navigation, ul.main-navigation {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background: #1bc2a2;
+/* https://stackoverflow.com/questions/37744379/create-nested-drop-down-list-in-html-css-form */
+.dots, .dots_black {
+  background: transparent;
+}
+.dots:after, .dots_black:after {
+  content: '\2807';
+  font-size: 2vw;
+  color: white;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  padding-top: 1%;
   }
-  
-  ul.nested-navigation li.nav-item, ul.main-navigation li.nav-item {
-    display: block;
-    position: relative;
-    float: left;
-    background: #1bc2a2;
-  }
-  li.nav-item ul.nested-navigation { display: none; }
-  
-  ul.nested-navigation li.nav-item a, ul.main-navigation li.nav-item a {
-    display: block;
-    padding: 1em;
-    text-decoration: none;
-    white-space: nowrap;
-    color: #fff;
-  }
-  
-  ul.nested-navigation li.nav-item a:hover, ul.main-navigation li.nav-item a:hover { background: #2c3e50; }
-  li.nav-item:hover > ul.nested-navigation {
-    display: block;
-    position: absolute;
-  }
-  
-  li.nav-item:hover li.nav-item { float: none; }
-  
-  li.nav-item:hover a { background: #1bc2a2; }
-  
-  li.nav-item:hover li.nav-item a:hover { background: #2c3e50; }
-  
-  ul.main-navigation li.nav-item ul.nested-navigation li.nav-item,   ul.nested-navigation li.nav-item ul.nested-navigation li.nav-item { border-top: 0; }
-  ul.main-navigation ul.nested-navigation ul.nested-navigation, ul.nested-navigation ul.nested-navigation ul.nested-navigation {
-    left: 100%;
-    top: 0;
-  }
-  ul.main-navigation::before, ul.nested-navigation:before,
-  ul.main-navigation::after, ul.nested-navigation:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-  }
-  
-  ul.main-navigation::after, ul.nested-navigation:after { clear: both; }
+
+.dots_black:after {
+  content: '\25BA';
+  font-size: 1vw;
+  color: black;
+}
+
+/* стили для всех ul */
+ul.nested-navigation,
+ul.main-navigation {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: white;
+  height: 100%;
+}
+
+ul.main-navigation {
+  background: black;
+  height: 100%;
+  padding: 0.5vh 0;
+}
+
+ul.main-navigation > li.nav-item > ul.nested-navigation {
+  margin-top: 2.5%;
+}
+
+ul.nested-navigation {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* стили для всех li */
+ul.nested-navigation li.nav-item,
+ul.main-navigation li.nav-item {
+  display: block;
+  position: relative;
+  float: left;
+  background: white;
+  color: black;
+  height: 5vh;
+}
+
+/* первый ряд элементов (горизонтальный) - черного цвета */
+ul.main-navigation > li.nav-item {
+  background: black;
+  display: flex;
+  color: white;
+  height: 100%;
+}
+
+ul.main-navigation > li.nav-item:hover {
+  border-top: 3px solid #ffdd00;
+  border-bottom: 3px solid #ffdd00;
+}
+
+/* убрать отображение по умолчанию */
+li.nav-item ul.nested-navigation {
+  display: none;
+}
+/* стили для всех <a> */
+ul.nested-navigation li.nav-item a,
+ul.main-navigation li.nav-item a {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  white-space: nowrap;
+  color: black;
+  font-size: 1vw;
+
+}
+/* стили для <a> от main-navigation */
+ul.main-navigation > li.nav-item > a {
+  font-size: 1.5vw;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* стили для всех <a>  при наведении*/
+ul.nested-navigation li.nav-item a:hover,
+ul.main-navigation li.nav-item a:hover {
+  background: transparent;
+  color: greenyellow;
+}
+
+/* первый ряд элементов (горизонтальный) - черного цвета */
+ul.main-navigation > li.nav-item:hover > a {
+  background: black;
+  color: white;
+}
+
+ul.nested-navigation li.nav-item:hover > a {
+  color: greenyellow;
+}
+
+/* стили для дочерних ul  при наведении на родительский li */
+li.nav-item:hover>ul.nested-navigation, ul.main-navigation:hover > li.nav-item>ul.nested-navigation {
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 100%;
+  left: 0;
+}
+
+li.nav-item:hover>ul.nested-navigation:nth-child(n+1) {
+}
+
+li.nav-item:hover li.nav-item {
+  float: none;
+  display: flex;
+  align-items: center;
+}
+li.nav-item:hover a {
+  background: transparent;
+  color: black;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+li.nav-item:hover li.nav-item a:hover {
+  /* background: #bdbdbd; */
+}
+
+ul.main-navigation li.nav-item ul.nested-navigation li.nav-item,
+ul.nested-navigation li.nav-item ul.nested-navigation li.nav-item {
+  border-top: 0;
+}
+
+ul.main-navigation li.nav-item ul.nested-navigation li.nav-item:hover,
+ul.nested-navigation li.nav-item ul.nested-navigation li.nav-item:hover {
+  /* background: #bdbdbd; */
+}
+
+ul.main-navigation ul.nested-navigation ul.nested-navigation,
+ul.nested-navigation ul.nested-navigation ul.nested-navigation {
+  left: 100%;
+  top: 0;
+}
+
+ul.main-navigation::before,
+ul.nested-navigation:before,
+ul.main-navigation::after,
+ul.nested-navigation:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+ul.main-navigation::after,
+ul.nested-navigation:after {
+  clear: both;
+}
+

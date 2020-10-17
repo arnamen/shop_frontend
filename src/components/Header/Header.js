@@ -30,29 +30,67 @@ const UserIconLinksData = [
 
 const dropdownsData = [
     {
-        text: 'compare',
-        to: '/'
-    },
-    {
-        text: 'heart',
-        to: '/',
+        text: 'Каталог товаров',
+        to: '#',
         children: [{
             text: 'cart',
             to: '/'
         },
         {
             text: 'heart',
-            to: '/'
+            to: '/',
+            children: [{
+                text: 'test1',
+                to: '/'
+            },
+            {
+                text: 'test2',
+                to: '/',
+                
+            },{
+                text: 'test1',
+                to: '/',
+                children: [{
+                    text: 'test1',
+                    to: '/'
+                },
+                {
+                    text: 'test2',
+                    to: '/',
+                    
+                },{
+                    text: 'test1',
+                    to: '/'
+                },
+                {
+                    text: 'test2',
+                    to: '/',
+                    
+                },{
+                    text: 'test1',
+                    to: '/'
+                },
+                {
+                    text: 'test2',
+                    to: '/',
+                    
+                }]
+            },
+            {
+                text: 'test2',
+                to: '/',
+                
+            },{
+                text: 'test1',
+                to: '/'
+            },
+            {
+                text: 'test2',
+                to: '/',
+                
+            }]
         }]
     },
-    {
-        text: 'cart',
-        to: '/'
-    },
-    {
-        text: 'account',
-        to: '/'
-    }
 ]
 
 export default function Header() {
@@ -68,7 +106,7 @@ export default function Header() {
                 </div>
             </div>
             <div className={classes['header__wrapper-bottom']}>
-                <Dropdown data={dropdownsData}/>
+                <Dropdown items={dropdownsData}/>
                 <LinkButton to='/'>О компании</LinkButton>
                 <LinkButton to='/'>Контакты</LinkButton>
                 <LinkButton to='/'>Доставка</LinkButton>
