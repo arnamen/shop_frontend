@@ -1,8 +1,8 @@
 /* https://stackoverflow.com/questions/37744379/create-nested-drop-down-list-in-html-css-form */
-.dots, .dots_black {
+.dots{
   background: transparent;
 }
-.dots:after, .dots_black:after {
+.dots:after{
   content: '\2807';
   font-size: 2vw;
   color: white;
@@ -13,11 +13,25 @@
   padding-top: 1%;
   }
 
-.dots_black:after {
-  content: '\25BA';
-  font-size: 1vw;
-  color: black;
-}
+  .chevron::before {
+    border-style: solid;
+    border-width: 0.1em 0.1em 0 0;
+    content: '';
+    display: inline-block;
+    height: 0.45em;
+    left: 0.15em;
+    position: relative;
+    top: 0.15em;
+    transform: rotate(-45deg);
+    vertical-align: top;
+      width: 0.45em;
+      font-size: 3vh;
+  }
+  
+  .chevron.right:before {
+    left: -0.8em;
+    transform: rotate(45deg);
+  }
 
 /* стили для всех ul */
 ul.nested-navigation,
@@ -35,14 +49,9 @@ ul.main-navigation {
   padding: 0.5vh 0;
 }
 
-ul.main-navigation > li.nav-item > ul.nested-navigation {
-  margin-top: 2.5%;
-}
-
 ul.nested-navigation {
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
-
 /* стили для всех li */
 ul.nested-navigation li.nav-item,
 ul.main-navigation li.nav-item {
@@ -56,7 +65,7 @@ ul.main-navigation li.nav-item {
 
 /* первый ряд элементов (горизонтальный) - черного цвета */
 ul.main-navigation > li.nav-item {
-  background: black;
+  background: transparent;
   display: flex;
   color: white;
   height: 100%;
@@ -65,6 +74,7 @@ ul.main-navigation > li.nav-item {
 ul.main-navigation > li.nav-item:hover {
   border-top: 3px solid #ffdd00;
   border-bottom: 3px solid #ffdd00;
+  
 }
 
 /* убрать отображение по умолчанию */
@@ -79,11 +89,12 @@ ul.main-navigation li.nav-item a {
   justify-content: left;
   height: 100%;
   width: 100%;
+  font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
   color: black;
   font-size: 1vw;
-
+  padding-left: 1vw;
 }
 /* стили для <a> от main-navigation */
 ul.main-navigation > li.nav-item > a {
@@ -99,7 +110,7 @@ ul.main-navigation > li.nav-item > a {
 ul.nested-navigation li.nav-item a:hover,
 ul.main-navigation li.nav-item a:hover {
   background: transparent;
-  color: greenyellow;
+  color: #eb600a;
 }
 
 /* первый ряд элементов (горизонтальный) - черного цвета */
@@ -108,8 +119,8 @@ ul.main-navigation > li.nav-item:hover > a {
   color: white;
 }
 
-ul.nested-navigation li.nav-item:hover > a {
-  color: greenyellow;
+ul.nested-navigation li.nav-item:hover > a, ul.nested-navigation li.nav-item:hover > .chevron.right:before {
+  color: #eb600a;
 }
 
 /* стили для дочерних ul  при наведении на родительский li */
@@ -122,10 +133,15 @@ li.nav-item:hover>ul.nested-navigation, ul.main-navigation:hover > li.nav-item>u
   left: 0;
 }
 
-li.nav-item:hover>ul.nested-navigation:nth-child(n+1) {
+ul.main-navigation > li.nav-item:hover > ul.nested-navigation, ul.main-navigation:hover > li.nav-item > ul.nested-navigation {
+  margin: 2.5% 0;
 }
 
-li.nav-item:hover li.nav-item {
+ul.main-navigation > li.nav-item > a {
+  font-weight: 400;
+}
+
+ul.main-navigation:hover li.nav-item {
   float: none;
   display: flex;
   align-items: center;
@@ -138,8 +154,9 @@ li.nav-item:hover a {
   vertical-align: middle;
 }
 
-li.nav-item:hover li.nav-item a:hover {
-  /* background: #bdbdbd; */
+ul.main-navigation:hover > li.nav-item {
+  border-top: 3px solid #ffdd00;
+  border-bottom: 3px solid #ffdd00;
 }
 
 ul.main-navigation li.nav-item ul.nested-navigation li.nav-item,
@@ -149,7 +166,7 @@ ul.nested-navigation li.nav-item ul.nested-navigation li.nav-item {
 
 ul.main-navigation li.nav-item ul.nested-navigation li.nav-item:hover,
 ul.nested-navigation li.nav-item ul.nested-navigation li.nav-item:hover {
-  /* background: #bdbdbd; */
+  border-bottom: 3px solid #eb600a;
 }
 
 ul.main-navigation ul.nested-navigation ul.nested-navigation,
