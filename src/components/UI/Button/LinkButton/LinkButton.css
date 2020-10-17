@@ -1,0 +1,9 @@
+.LinkButton {
+    font-size: 1.5vw;
+    text-transform: uppercase;
+}
+
+.LinkButton:hover {
+    border-top: 3px solid #ffdd00;
+    border-bottom: 3px solid #ffdd00;
+}

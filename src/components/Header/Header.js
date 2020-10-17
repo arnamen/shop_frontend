@@ -4,6 +4,8 @@ import Logo from '../Logo/Logo';
 import Search from '../../containers/Search/Search';
 import UserIconLinks from '../UserIconLinks/UserIconLinks';
 import Contacts from '../Contacts/Contacts';
+import LinkButton from '../UI/Button/LinkButton/LinkButton';
+import Dropdown from '../UI/Dropdown/Dropdown';
 
 import classes from './Header.module.css';
 
@@ -26,6 +28,33 @@ const UserIconLinksData = [
     }
 ]
 
+const dropdownsData = [
+    {
+        text: 'compare',
+        to: '/'
+    },
+    {
+        text: 'heart',
+        to: '/',
+        children: [{
+            text: 'cart',
+            to: '/'
+        },
+        {
+            text: 'heart',
+            to: '/'
+        }]
+    },
+    {
+        text: 'cart',
+        to: '/'
+    },
+    {
+        text: 'account',
+        to: '/'
+    }
+]
+
 export default function Header() {
 
     return (
@@ -38,7 +67,15 @@ export default function Header() {
                     <UserIconLinks iconData={UserIconLinksData}/>
                 </div>
             </div>
-            
+            <div className={classes['header__wrapper-bottom']}>
+                <Dropdown data={dropdownsData}/>
+                <LinkButton to='/'>О компании</LinkButton>
+                <LinkButton to='/'>Контакты</LinkButton>
+                <LinkButton to='/'>Доставка</LinkButton>
+                <LinkButton to='/'>Оплата</LinkButton>
+                <LinkButton to='/'>Обратная связь</LinkButton>
+                <LinkButton to='/'>Оферта</LinkButton>
+            </div>
         </div>
     )
 }

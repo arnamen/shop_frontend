@@ -4,10 +4,11 @@
     display: flex;
     align-items: center;
     margin: 0 1vw;
+    padding-left: 4vw;
 }
 
 .search_field {
-    height: 70%;
+    height: 60%;
     width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 20px;
@@ -23,7 +24,7 @@
 
 .search {
     transform: translateX(-60px);
-    width: 7vh;
-    height: 7vh;
+    width: 5vh;
+    height: 5vh;
     cursor: pointer;
 }
