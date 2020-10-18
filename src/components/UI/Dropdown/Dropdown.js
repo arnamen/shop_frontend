@@ -21,7 +21,7 @@ export default (props) => {
         return <li key={v4()} className='nav-item'>
           {index === 0 && <span className='dots'></span>}
           <a href={itemData.to || '#'}><span>{itemData.text}</span></a>
-          {index !== 0 && <span class="chevron right"></span>}
+          {index !== 0 && <span className="chevron right"></span>}
           <ul className='nested-navigation'
             style={{ 
               height: 5*(itemData.children.length) + 'vh',

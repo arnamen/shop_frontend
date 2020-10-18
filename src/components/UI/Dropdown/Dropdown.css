@@ -2,6 +2,7 @@
 .dots{
   background: transparent;
 }
+
 .dots:after{
   content: '\2807';
   font-size: 2vw;
@@ -32,6 +33,29 @@
     left: -0.8em;
     transform: rotate(45deg);
   }
+
+/* анимации */
+@keyframes slidein_fromBottom {
+  from {
+    opacity: 0;
+    margin-top: 10%;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slidein_fromRight {
+  from {
+    opacity: 0;
+    margin-left: 10%;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 
 /* стили для всех ul */
 ul.nested-navigation,
@@ -133,6 +157,16 @@ li.nav-item:hover>ul.nested-navigation, ul.main-navigation:hover > li.nav-item>u
   left: 0;
 }
 
+li.nav-item>ul.nested-navigation {
+  animation-duration: 0.5s;
+  animation-name: slidein_fromRight;
+}
+
+ul.main-navigation:hover > li.nav-item>ul.nested-navigation {
+  animation-duration: 0.5s;
+  animation-name: slidein_fromBottom;
+}
+
 ul.main-navigation > li.nav-item:hover > ul.nested-navigation, ul.main-navigation:hover > li.nav-item > ul.nested-navigation {
   margin: 2.5% 0;
 }
@@ -189,4 +223,20 @@ ul.main-navigation::after,
 ul.nested-navigation:after {
   clear: both;
 }
+/* для корректного срабатывания hover */
+li.nav-item > ul.nested-navigation::before {
+  z-index: -10;
+  position: absolute;
+  left: -2vw;
+  width: 2vw;
+  height: 100%;
+}
 
+ul.main-navigation > li.nav-item > ul.nested-navigation::before {
+  position: absolute;
+  top: -3vh;
+  height: 3vh;
+  left: 0;
+  width: 100%;
+
+}
