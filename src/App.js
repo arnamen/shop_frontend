@@ -3,10 +3,14 @@ import { connect } from 'react-redux';
 
 import {loginTest} from './store/actions/login';
 import Header from './components/Header/Header';
+import MainPage from './containers/MainPage/MainPage';
 //COMPONENT
 function App(props) {
   return (
-    <Header/>
+    <React.Fragment>
+      <Header/>
+      <MainPage/>
+    </React.Fragment>
   );
 }
 

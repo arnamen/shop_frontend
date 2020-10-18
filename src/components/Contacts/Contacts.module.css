@@ -11,15 +11,18 @@
 
 .Contacts__dots {
     display: flex;
+    font-size: 1.1vw;
 }
 
 .Contacts__get-feedback {
     font-weight: 700;
+    font-size: 1.1vw;
     color: #9a4d00;
 }
 
 .Contacts__get-feedback:hover {
     text-decoration: underline;
+    color: #9a4d00;
 }
 
 .Contacts__phone-number {

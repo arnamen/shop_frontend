@@ -11,8 +11,8 @@ export default function UserIconLinks(  props ) {
         });
     }
     return (
-        <React.Fragment>
+        <div style={{display: 'flex'}}>
             {userIconLinks}
-        </React.Fragment>
+        </div>
     )
 }
