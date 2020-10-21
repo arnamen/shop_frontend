@@ -1,0 +1,18 @@
+.CategoriesCards-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.CategoriesCards-category {
+    
+}
+
+
+
+.CategoriesCards_categoriesRowWrapper {
+    display: flex;
+    height: 25vw;
+    width: 100%;
+    justify-content: space-evenly;
+    margin: 2vh 0;
+}

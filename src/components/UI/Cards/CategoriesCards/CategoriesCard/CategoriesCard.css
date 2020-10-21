@@ -1,0 +1,54 @@
+.CategoriesCard {
+    height: 100%;
+    text-align: center;
+    position: relative;
+    background-color: #eef1f5;
+    padding: 2vw;
+    cursor: pointer;
+    transition: 0.5s all;
+    margin: 0 1vw;
+}
+
+/* .CategoriesCard:hover {
+} */
+
+.CategoriesCard_image {
+    transition: 0.5s all;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.CategoriesCard:hover .CategoriesCard_title {
+    padding: 3vh;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.CategoriesCard:hover .CategoriesCard_image {
+    opacity: 0.5;
+}
+
+.CategoriesCard_title-wrapper {
+    display: block;
+    width: calc(100% - 2vw*2);
+    text-align: center;
+    font-weight: 700;
+    position: absolute;
+    top: calc(50% - 2vh);
+    text-transform: uppercase;
+    z-index: 99;
+
+}
+
+.CategoriesCard_title {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2vh;
+    transition: 0.5s padding;
+}
+
+.CategoriesCard_image-wrapper {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
