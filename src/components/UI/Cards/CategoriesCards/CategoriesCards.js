@@ -7,11 +7,9 @@ import './CategoriesCards.css';
 export default function CategoriesCards( props ) {
     let categories;
     if(props.categoriesData && props.categoriesData.length) {
-        categories = props.categoriesData.map((categoryDataRow = []) => {
-            const categories_row = categoryDataRow.map((categoryData) => {
-                return <CategoriesCard cardsInRow={categoryDataRow.length} to={categoryData.to} name={categoryData.name} img={categoryData.image}/>
-            });
-        return  <div key={v4()} className='CategoriesCards_categoriesRowWrapper'>{categories_row}</div>;
+        categories = props.categoriesData.map((CategoryCardData) => {
+        
+        return  <CategoriesCard to={CategoryCardData.to} img={CategoryCardData.image} name={CategoryCardData.name}/>;
         })
     }
 

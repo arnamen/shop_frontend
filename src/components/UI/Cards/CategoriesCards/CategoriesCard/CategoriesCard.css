@@ -1,16 +1,19 @@
 .CategoriesCard {
-    height: 100%;
+    display: inline-block;
     text-align: center;
     position: relative;
     background-color: #eef1f5;
-    padding: 2vw;
+    padding: 1%;
     cursor: pointer;
     transition: 0.5s all;
-    margin: 0 1vw;
+    margin: 1%;
+    width: 31.1%;
+    height: 25vw;
 }
 
-/* .CategoriesCard:hover {
-} */
+.CategoriesCard:hover {
+    transform: scale(1.05);
+}
 
 .CategoriesCard_image {
     transition: 0.5s all;

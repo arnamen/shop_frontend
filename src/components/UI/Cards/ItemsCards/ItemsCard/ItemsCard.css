@@ -1,0 +1,8 @@
+.ItemsCard {
+    width: 20%;
+    margin: 2.5%;
+    height: 25vw;
+    border: 1px solid black;
+    display: inline-block;
+}
+
