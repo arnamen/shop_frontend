@@ -9,7 +9,7 @@ export default function CategoriesCards( props ) {
     if(props.categoriesData && props.categoriesData.length) {
         categories = props.categoriesData.map((CategoryCardData) => {
         
-        return  <CategoriesCard to={CategoryCardData.to} img={CategoryCardData.image} name={CategoryCardData.name}/>;
+        return  <CategoriesCard key={v4()} to={CategoryCardData.to} img={CategoryCardData.image} name={CategoryCardData.name}/>;
         })
     }
 

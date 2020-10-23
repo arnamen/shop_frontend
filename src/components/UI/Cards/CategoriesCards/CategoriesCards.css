@@ -1,4 +1,5 @@
 .CategoriesCards-wrapper {
+    box-sizing: border-box;
 }
 
 .CategoriesCards-category {

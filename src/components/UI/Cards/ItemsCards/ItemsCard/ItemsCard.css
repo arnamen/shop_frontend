@@ -1,8 +1,97 @@
 .ItemsCard {
+    position: relative;
     width: 20%;
-    margin: 2.5%;
+    margin: 2.4%;
     height: 25vw;
     border: 1px solid black;
     display: inline-block;
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
+.ItemsCard_image-main {
+    transition: 0.5s all;
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: block;
+}
+
+.ItemsCard_image-secondary {
+    transition: 0.5s all;
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    transform: translate(-50%,-50%);
+    display: block;
+}
+
+.ItemsCard:hover .ItemsCard_image-main {
+    left: calc(150% + 10px);
+}
+
+.ItemsCard:hover .ItemsCard_image-secondary {
+    left: 50%;
+}
+
+.ItemsCard_image-wrapper {
+    height: 60%;
+    width: 100%;
+    position: relative;
+    display: block;
+}
+
+.ItemsCard_descr {
+    display: block;
+    color: black;
+    font-weight: 300;
+    padding-right: 5%;
+    height: 34px;
+    line-height: 17px;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.ItemsCard_descr:hover {
+    color: black;
+}
+
+.ItemsCard_stars {
+    margin-top: 5px;
+}
+
+.ItemsCard_star {
+    width: 15px;
+    height: 15px;
+}
+
+.ItemsCard_price-wrapper {
+    margin-top: 5px;
+}
+
+.ItemsCard_price {
+    display: inline-block;
+    width: 90%;
+    font-weight: 700;
+}
+
+.ItemsCard_price_discount {
+    display: inline-block;
+    width: 30%;
+    color: red;
+    font-weight: 700;
+}
+
+.ItemsCard_price_before {
+    display: inline-block;
+    width: 30%;
+    color: black;
+    font-weight: 700;
+    text-decoration: line-through;
+}

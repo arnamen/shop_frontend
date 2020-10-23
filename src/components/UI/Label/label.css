@@ -1,0 +1,23 @@
+.Label {
+    position: absolute;
+    display: inline-block;
+    padding: 2px 18px;
+    top: 3%;
+    left: 2%;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+}
+
+.Label_blue {
+    background-color: blue;
+}
+
+.Label_red {
+    background-color: red;
+}
+
+.Label_green {
+    background-color: green;
+}
