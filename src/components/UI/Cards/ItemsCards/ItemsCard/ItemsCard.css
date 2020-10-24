@@ -105,6 +105,48 @@
 }
 
 .ItemsCard_actions {
-    display: flex;
     justify-content: center;
+    position: absolute;
+    width: 90%;/* пересчитать с учетом паддингов */
+    bottom: 5%;
+}
+
+.ItemsCard_action-wrapper {
+    color: green;
+    height: 15px;
+    min-width: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.5s all;
+}
+
+.ItemsCard_action-wrapper:nth-child(n+2) {
+    float: right;
+}
+
+.ItemsCard_action-icon {
+    fill: black;
+    height: 20px;
+    width: 20px;
+    transition: 0.5s all;
+    margin: 0 5px;
+}
+
+.ItemsCard_action-icon_cart {
+    fill: green;
+}
+
+.ItemsCard_action-wrapper:hover > .ItemsCard_action-icon_cart, .ItemsCard_action-wrapper:hover {
+    fill: black;
+    color: black;
+}
+
+.ItemsCard_action-wrapper:hover > .ItemsCard_action-icon_compare {
+    fill: green;
+
+}
+
+.ItemsCard_action-wrapper:hover > .ItemsCard_action-icon_heart {
+    fill: red;
 }

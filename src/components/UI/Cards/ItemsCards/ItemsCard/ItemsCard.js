@@ -1,7 +1,13 @@
 import React from 'react'
 import {v4} from 'uuid';
 
+
+
 import Label from '../../../Label/label';
+
+import {ReactComponent as ReactCart} from '../../../../../assets/itemsCards/cart-for-card-item.svg';
+import {ReactComponent as ReactCompare} from '../../../../../assets/account/compare.svg';
+import {ReactComponent as ReactHeart} from '../../../../../assets/account/heart.svg';
 
 import star from '../../../../../assets/rating/stars/star.svg';
 import star_empty from '../../../../../assets/rating/stars/star_empty.svg';
@@ -13,6 +19,7 @@ export default function ItemsCard( props ) {
     let price;
     let label;
     let second_label;
+
 
     for (let i = 0; i < props.itemData.stars; i++) {
         stars.push(<img key={v4()} className='ItemsCard_star' src={star} alt='star'></img>)
@@ -61,9 +68,15 @@ export default function ItemsCard( props ) {
                 {second_label}
             </div>
             <div className='ItemsCard_actions'>
-                <div>
-                    <span></span>
-                    <span>Добавить в корзину</span>
+                <div className='ItemsCard_action-wrapper' onClick={() => alert('clicked!')}>
+                    <ReactCart className='ItemsCard_action-icon ItemsCard_action-icon_cart'/>
+                    <span>В корзину</span>
+                </div>
+                <div className='ItemsCard_action-wrapper' onClick={() => alert('clicked!')}>
+                    <ReactHeart className='ItemsCard_action-icon ItemsCard_action-icon_heart' viewBox="0 0 512 512"/>
+                </div>
+                <div className='ItemsCard_action-wrapper' onClick={() => alert('clicked!')}>
+                    <ReactCompare className='ItemsCard_action-icon ItemsCard_action-icon_compare'/>
                 </div>
             </div>
         </div>
