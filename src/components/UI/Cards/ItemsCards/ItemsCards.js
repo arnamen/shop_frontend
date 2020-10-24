@@ -14,8 +14,7 @@ export default function ItemsCards( props ) {
     }
 
     return (
-        <div>
-            <div className='title'>some title</div>
+        <div className={`ItemsCards ${props.className ? props.className : ""}`}>
             {cards}
         </div>
     )

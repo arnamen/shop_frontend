@@ -1,13 +1,12 @@
 .Label {
-    position: absolute;
+    margin-top: 2%;
     display: inline-block;
     padding: 2px 18px;
-    top: 3%;
-    left: 2%;
     border-radius: 20px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
     color: white;
+    text-align: center;
 }
 
 .Label_blue {

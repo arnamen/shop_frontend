@@ -4,6 +4,7 @@ import Carousel from '../../components/Carousel/Carousel';
 import Benefits from '../../components/Benefits/Benefits';
 import CategoriesCards from '../../components/UI/Cards/CategoriesCards/CategoriesCards';
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
+import Tabs from '../Tabs/Tabs';
 
 import smartphone from '../../assets/categories/smartphone.png';
 import sveter from '../../assets/categories/sveter.png';
@@ -58,7 +59,7 @@ const itemsData = [
         image_main: smartphone1_front,
         image_secondary: smartphone1_back,
         price: 1000,
-        discount: 15,
+        old_price: 1500,
         stars: 3,
         to: '/'
     },
@@ -75,7 +76,7 @@ const itemsData = [
         image_main: tv_1,
         image_secondary: tv_2,
         price: 1030,
-        discount: 5,
+        old_price: 1400,
         stars: 4,
         to: '/'
     },
@@ -84,7 +85,7 @@ const itemsData = [
         image_main: smartphone1_front,
         image_secondary: smartphone1_back,
         price: 1000,
-        discount: 15,
+        old_price: 1500,
         stars: 3,
         to: '/'
     },
@@ -101,7 +102,7 @@ const itemsData = [
         image_main: tv_1,
         image_secondary: tv_2,
         price: 1030,
-        discount: 5,
+        old_price: 1400,
         stars: 4,
         to: '/'
     },    {
@@ -109,7 +110,7 @@ const itemsData = [
         image_main: smartphone1_front,
         image_secondary: smartphone1_back,
         price: 1000,
-        discount: 15,
+        old_price: 1500,
         stars: 3,
         to: '/'
     },
@@ -126,16 +127,15 @@ const itemsData = [
         image_main: tv_1,
         image_secondary: tv_2,
         price: 1030,
-        discount: 5,
+        old_price: 1400,
         stars: 4,
         to: '/'
-    },    
-    {
+    },    {
         name: 'Мобильный телефон Samsung Galaxy M31s 6/128GB Blue',
         image_main: smartphone1_front,
         image_secondary: smartphone1_back,
         price: 1000,
-        discount: 15,
+        old_price: 1500,
         stars: 3,
         to: '/'
     },
@@ -152,8 +152,63 @@ const itemsData = [
         image_main: tv_1,
         image_secondary: tv_2,
         price: 1030,
-        discount: 5,
+        old_price: 1400,
         stars: 4,
+        to: '/'
+    },
+]
+
+const itemsData_second = [
+    {
+        name: 'Телевизор Xiaomi Mi LED TV 4A 32"',
+        image_main: tv_1,
+        image_secondary: tv_2,
+        price: 2030,
+        old_price: 4400,
+        stars: 4,
+        to: '/'
+    },
+    {
+        name: 'Мобильный телефон Samsung Galaxy M31s 6/128GB Blue',
+        image_main: smartphone1_front,
+        image_secondary: smartphone1_back,
+        price: 1500,
+        old_price: 1900,
+        stars: 3,
+        to: '/'
+    },
+    {
+        name: 'Мобильный телефон Nokia 5.3 4/64GB DualSim Charcoal',
+        image_main: smartphone2_front,
+        image_secondary: smartphone2_back,
+        price: 1550,
+        stars: 5,
+        to: '/'
+    },
+    {
+        name: 'Телевизор Xiaomi Mi LED TV 4A 32"',
+        image_main: tv_1,
+        image_secondary: tv_2,
+        price: 2030,
+        old_price: 4400,
+        stars: 4,
+        to: '/'
+    },
+    {
+        name: 'Мобильный телефон Samsung Galaxy M31s 6/128GB Blue',
+        image_main: smartphone1_front,
+        image_secondary: smartphone1_back,
+        price: 1500,
+        old_price: 1900,
+        stars: 3,
+        to: '/'
+    },
+    {
+        name: 'Мобильный телефон Nokia 5.3 4/64GB DualSim Charcoal',
+        image_main: smartphone2_front,
+        image_secondary: smartphone2_back,
+        price: 1550,
+        stars: 5,
         to: '/'
     },
 ]
@@ -164,7 +219,10 @@ export default function MainPage() {
             <Carousel/>
             <Benefits/>
             <CategoriesCards categoriesData={categoriesData}/>
-            <ItemsCards itemsData={itemsData}/>
+            <Tabs tabsNames={['Товар дня', 'Товары на главной']}>
+                <ItemsCards itemsData={itemsData_second}/>
+                <ItemsCards itemsData={itemsData}/>
+            </Tabs>
         </div>
     )
 }

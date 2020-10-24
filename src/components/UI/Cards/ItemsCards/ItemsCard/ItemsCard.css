@@ -1,9 +1,9 @@
 .ItemsCard {
     position: relative;
     width: 20%;
-    margin: 2.4%;
+    margin: 1% 2.4%;
     height: 25vw;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     display: inline-block;
     overflow: hidden;
     padding: 10px;
@@ -94,4 +94,17 @@
     color: black;
     font-weight: 700;
     text-decoration: line-through;
+}
+
+.ItemsCard_labels {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 2%;
+    left: 3%;
+}
+
+.ItemsCard_actions {
+    display: flex;
+    justify-content: center;
 }
