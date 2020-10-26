@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 import Carousel from '../../components/Carousel/Carousel';
 import Benefits from '../../components/Benefits/Benefits';
@@ -19,7 +20,10 @@ import smartphone2_front from '../../assets/itemsCards/smartphone_2/front/smartp
 import smartphone2_back from '../../assets/itemsCards/smartphone_2/back/smartphone2_back.png'
 import tv_1 from '../../assets/itemsCards/tv/1/tv_1.jpg';
 import tv_2 from '../../assets/itemsCards/tv/2/tv_2.jpg';
-//двухмерный массив категорий (для распределения по строкам)
+
+import './MainPage.css';
+
+//двухмерный массив категорий (для распределения по блокам)
 const categoriesData = [
         {
             name: 'Свитеры',
@@ -224,6 +228,9 @@ export default function MainPage() {
                 <ItemsCards itemsData={itemsData_second}/>
                 <ItemsCards itemsData={itemsData}/>
             </Tabs>
+            <div className='MainPage__viewAllGoods-wrapper'>
+                <NavLink className='MainPage__viewAllGoods' to='/'>Посмотреть все товары</NavLink>
+            </div>
         </div>
     )
 }

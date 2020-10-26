@@ -1,0 +1,13 @@
+.MainPage__viewAllGoods-wrapper {
+    width: 25%;
+    margin: 15px auto;
+    text-align: center;
+}
+
+.MainPage__viewAllGoods {
+    color: white;
+    background-color: #eb600a;
+    font-size: 18px;
+    padding: 5px;
+    text-transform: uppercase;
+}

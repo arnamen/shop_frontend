@@ -124,10 +124,7 @@ export default function Header() {
     //добавить sticky header с z-index 999
     return (
         <React.Fragment>
-            <VisibilitySensor partialVisibility onChange={(isVisible) => {
-                setVisible(isVisible)
-                console.log(isVisible)
-            }}>
+            <VisibilitySensor partialVisibility onChange={(isVisible) => setVisible(isVisible)}>
                 <div className={'header'}>
                     <div className={`header__wrapper-top`}>
                         <Logo />
