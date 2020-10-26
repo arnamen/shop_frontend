@@ -29,7 +29,7 @@ export default function Tabs(props) {
             className: `${child.props.className ? child.props.className : ''} ${index === selectedTab ? 'active' :'inactive'}`
         })
     })
-    console.log(children)
+
     return (
         <div className='Tabs'>
             <div className='Tabs__radio-wrapper'>

@@ -30,7 +30,7 @@ export default function ItemsCard( props ) {
     //если есть старая цена - создать лейбл о скидке + сгенерировать случайный
     //и застилизировать цены
     if(props.itemData.old_price) {
-        label = <Label type='red'>{"СКИДКА " + (props.itemData.price/props.itemData.old_price*100).toFixed() + '%'}</Label>
+        label = <Label type='red'>{"СКИДКА " + ((1-props.itemData.price/props.itemData.old_price)*100).toFixed() + '%'}</Label>
         const generateLabel = Math.random();
         if(generateLabel >= 0.8) second_label = <Label type='blue'>НОВИНКА</Label>
         else if(generateLabel >= 0.5) second_label = <Label type='green'>ХИТ ПРОДАЖ</Label>

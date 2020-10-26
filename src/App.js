@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import MainPage from './containers/MainPage/MainPage';
 //COMPONENT
 function App(props) {
+  
   return (
     <React.Fragment>
       <Header/>
