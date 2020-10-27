@@ -6,6 +6,7 @@ import Benefits from '../../components/Benefits/Benefits';
 import CategoriesCards from '../../components/UI/Cards/CategoriesCards/CategoriesCards';
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
 import Tabs from '../Tabs/Tabs';
+import GoodsList from '../../components/GoodsList/GoodsList';
 
 import smartphone from '../../assets/categories/smartphone.png';
 import sveter from '../../assets/categories/sveter.png';
@@ -134,7 +135,8 @@ const itemsData = [
         old_price: 1400,
         stars: 4,
         to: '/'
-    },    {
+    },    
+    {
         name: 'Мобильный телефон Samsung Galaxy M31s 6/128GB Blue',
         image_main: smartphone1_front,
         image_secondary: smartphone1_back,
@@ -217,6 +219,118 @@ const itemsData_second = [
     },
 ]
 
+const phonesList = [
+    {
+        name: 'Мобильный телефон Samsung Galaxy M31s 6/128GB Blue',
+        image_main: smartphone1_front,
+        image_secondary: smartphone1_back,
+        price: 1000,
+        old_price: 1500,
+        stars: 3,
+        to: '/'
+    },
+    {
+        name: 'Мобильный телефон Nokia 5.3 4/64GB DualSim Charcoal',
+        image_main: smartphone2_front,
+        image_secondary: smartphone2_back,
+        price: 1500,
+        stars: 5,
+        to: '/'
+    },
+    {
+        name: 'Мобильный телефон Samsung Galaxy M31s 6/128GB Blue',
+        image_main: smartphone1_front,
+        image_secondary: smartphone1_back,
+        price: 1000,
+        old_price: 1500,
+        stars: 3,
+        to: '/'
+    },
+    {
+        name: 'Мобильный телефон Nokia 5.3 4/64GB DualSim Charcoal',
+        image_main: smartphone2_front,
+        image_secondary: smartphone2_back,
+        price: 1500,
+        stars: 5,
+        to: '/'
+    },
+]
+
+const tvList = [
+    {
+        name: 'Телевизор Xiaomi Mi LED TV 4A 32"',
+        image_main: tv_1,
+        image_secondary: tv_2,
+        price: 1030,
+        old_price: 1400,
+        stars: 4,
+        to: '/'
+    },
+    {
+        name: 'Телевизор Xiaomi Mi LED TV 4A 32"',
+        image_main: tv_1,
+        image_secondary: tv_2,
+        price: 1030,
+        old_price: 1400,
+        stars: 4,
+        to: '/'
+    },
+    {
+        name: 'Телевизор Xiaomi Mi LED TV 4A 32"',
+        image_main: tv_1,
+        image_secondary: tv_2,
+        price: 1030,
+        old_price: 1400,
+        stars: 4,
+        to: '/'
+    },
+    {
+        name: 'Телевизор Xiaomi Mi LED TV 4A 32"',
+        image_main: tv_1,
+        image_secondary: tv_2,
+        price: 1030,
+        old_price: 1400,
+        stars: 4,
+        to: '/'
+    },
+]
+
+const moreGoodsList = [
+    {
+        name: 'Телевизор Xiaomi Mi LED TV 4A 32"',
+        image_main: tv_1,
+        image_secondary: tv_2,
+        price: 1030,
+        old_price: 1400,
+        stars: 4,
+        to: '/'
+    },    {
+        name: 'Мобильный телефон Samsung Galaxy M31s 6/128GB Blue',
+        image_main: smartphone1_front,
+        image_secondary: smartphone1_back,
+        price: 1000,
+        old_price: 1500,
+        stars: 3,
+        to: '/'
+    },
+    {
+        name: 'Мобильный телефон Nokia 5.3 4/64GB DualSim Charcoal',
+        image_main: smartphone2_front,
+        image_secondary: smartphone2_back,
+        price: 1500,
+        stars: 5,
+        to: '/'
+    },
+    {
+        name: 'Телевизор Xiaomi Mi LED TV 4A 32"',
+        image_main: tv_1,
+        image_secondary: tv_2,
+        price: 1930,
+        stars: 4,
+        to: '/'
+    },   
+]
+
 export default function MainPage() {
 
     return (
@@ -231,6 +345,9 @@ export default function MainPage() {
             <div className='MainPage__viewAllGoods-wrapper'>
                 <NavLink className='MainPage__viewAllGoods' to='/'>Посмотреть все товары</NavLink>
             </div>
+            <GoodsList title='Только у нас' img='Star' data={phonesList}/>
+            <GoodsList title='Популярно в категории "Телевизоры"' img='Chat' data={tvList}/>
+            <GoodsList title='Больше товаров для выбора' img='General' data={moreGoodsList}/>
         </div>
     )
 }
