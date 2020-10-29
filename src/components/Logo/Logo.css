@@ -19,22 +19,29 @@
     margin-bottom: -2vh;
 }
 
+.logo__image-wrapper-simple {
+    height: 10vh;
+}
+
 .logo__title-wrapper-simple {
     flex-direction: row;
     margin: 0;
     align-items: center;
 }
 
-.logo__title_1 {
+.logo__title_1, .logo__title_2 {
     font-weight: 700;
     font-size: 2vw;
     color: #ffdd00;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
 }
 
 .logo__title_2 {
-    font-weight: 700;
-    font-size: 2vw;
     color: #eb5f0a;
+}
+
+.logo__title_1-simple , .logo__title_2-simple {
+    font-size: 1.8vw;
 }
 
 .logo__subtitle {

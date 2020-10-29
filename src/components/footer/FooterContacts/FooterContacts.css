@@ -1,24 +1,15 @@
 .FooterContacts__wrapper {
-    width: 35%;
+    width: 25%;
+    display: inline-block;
 }
 .FooterContacts__wrapper > ul {
     list-style-type: none;
 }
 
-.FooterContacts__wrapper > ul > li {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-}
-
-.FooterContacts__wrapper > ul > li > a {
-    color: black;
-}
-
 .FooterContacts__icon {
-    width: 2.5vh;
-    height: 2.5vh;
-    fill: #eb600a;
+    width: 22px;
+    height: 22px;
+    fill: #eb5f0a;
     margin-right: 15px;
 }
 

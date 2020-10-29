@@ -44,8 +44,12 @@ export default function FooterContacts() {
                     <span>ИП Иванов Иван Иванович <br/> ИНН: 123658954756 <br/>  ОГРН: 562145896523154</span>
                 </li>
                 <li className='FooterContacts__social-wrapper'>
+                    <a href='/'>
                     <ReactGooglePlus className='FooterContacts__icon'/>
-                    <ReactVK className='FooterContacts__icon'/>
+                    </a>
+                    <a href='/'>
+                        <ReactVK className='FooterContacts__icon'/>
+                    </a>
                     <ReactMessenger className='FooterContacts__icon'/>
                     <ReactTwitter className='FooterContacts__icon'/>
                     <ReactWhatsApp className='FooterContacts__icon'/>

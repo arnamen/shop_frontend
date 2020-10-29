@@ -1,0 +1,8 @@
+.FooterGoodsList__wrapper {
+    width: 25%;
+    display: inline-block;
+}
+
+.FooterGoodsList__wrapper > ul {
+    list-style-type: none;
+}
