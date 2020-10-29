@@ -1,23 +1,23 @@
 import React from 'react'
 
-import classes from './Contacts.module.css';
+import './Contacts.css';
 
-export default function Contacts() {
+export default function Contacts(props) {
     return (
-        <div className={classes.Contacts__wrapper}>
-            <div className={classes['Contacts__phone-number']}>
+        <div className={'Contacts__wrapper'}>
+            <div className={'Contacts__phone-number ' + (props.simple && 'Contacts__phone-number-simple')}>
                 +38 (093) 055-91-47
             </div>
-            <div className={classes['Contacts__feedback-wrapper']}>
-                <a className={classes['Contacts__get-feedback']} href='/'>
+            <div className={'Contacts__feedback-wrapper ' + (props.simple && 'Contacts__feedback-wrapper-simple')}>
+                <a className={'Contacts__get-feedback'} href='/'>
                     Заказать звонок
                 </a>
                 {/* не получает данные вместе с class из css модуля */}
-                <div style={{display: 'flex'}}>
-                    <div className={classes.circle}></div>
-                    <div className={classes.circle}></div>
-                    <div className={classes.circle}></div>
-                </div>
+                {!props.simple && <div style={{display: 'flex'}}>
+                    <div className={'circle'}></div>
+                    <div className={'circle'}></div>
+                    <div className={'circle'}></div>
+                </div>}
             </div>
         </div>
     )

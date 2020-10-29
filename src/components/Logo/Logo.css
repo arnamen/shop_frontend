@@ -19,6 +19,12 @@
     margin-bottom: -2vh;
 }
 
+.logo__title-wrapper-simple {
+    flex-direction: row;
+    margin: 0;
+    align-items: center;
+}
+
 .logo__title_1 {
     font-weight: 700;
     font-size: 2vw;
