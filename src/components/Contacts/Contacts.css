@@ -21,19 +21,19 @@
 .Contacts__get-feedback {
     font-weight: 700;
     font-size: 1.1vw;
-    color: #9a4d00;
+    color: #ed8d12;
 }
 
 .Contacts__get-feedback:hover {
     text-decoration: underline;
-    color: #9a4d00;
+    color: #ed8d12;
 }
 
 .Contacts__phone-number {
     text-align: center;
     font-size: 1.7vw;
-    color: #ffc400;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+    color: #ffc804;
+    /* text-shadow: 1px 1px rgba(0, 0, 0, 0.6); */
 }
 
 .Contacts__phone-number-simple {

@@ -25,8 +25,8 @@
     top: 0.15em;
     transform: rotate(-45deg);
     vertical-align: top;
-      width: 0.45em;
-      font-size: 3vh;
+    width: 0.45em;
+    font-size: 3vh;
   }
   
   .chevron.right:before {
@@ -202,6 +202,8 @@ ul.nested-navigation li.nav-item ul.nested-navigation li.nav-item {
 ul.main-navigation li.nav-item ul.nested-navigation li.nav-item:hover,
 ul.nested-navigation li.nav-item ul.nested-navigation li.nav-item:hover {
   border-bottom: 3px solid #eb600a;
+  box-sizing: border-box;
+  /* height: calc(5vh); */
 }
 
 ul.main-navigation ul.nested-navigation ul.nested-navigation,

@@ -6,8 +6,14 @@
 
 .MainPage__viewAllGoods {
     color: white;
-    background-color: #eb600a;
+    background-color: #e78905cc;
     font-size: 18px;
     padding: 5px;
     text-transform: uppercase;
+    transition: 0.5s background-color;
 }
+
+.MainPage__viewAllGoods:hover {
+    background-color: #e78905;
+}
+

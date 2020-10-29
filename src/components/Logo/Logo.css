@@ -33,19 +33,23 @@
     font-weight: 700;
     font-size: 2vw;
     color: #ffdd00;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
-}
-
-.logo__title_2 {
-    color: #eb5f0a;
+    
+    /* text-shadow: 1px 1px rgba(0, 0, 0, 0.6); */
 }
 
 .logo__title_1-simple , .logo__title_2-simple {
     font-size: 1.8vw;
+    color: #edc225;
 }
+
+.logo__title_2 {
+    color: #e78905;
+}
+
+
 
 .logo__subtitle {
     font-weight: 700;
     font-size: 1.5vw;
-    color: #9a4d00;
+    color: #e78905;
 }
