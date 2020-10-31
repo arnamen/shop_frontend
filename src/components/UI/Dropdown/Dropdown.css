@@ -129,12 +129,13 @@ ul.main-navigation li.nav-item a {
   justify-content: left;
   height: 100%;
   width: 100%;
-  font-weight: 700;
+  font-weight: 400;
   text-decoration: none;
   white-space: nowrap;
   color: black;
   font-size: 1vw;
   padding-left: 1vw;
+  text-transform: none;
 }
 /* стили для <a> от main-navigation */
 ul.main-navigation > li.nav-item > a {
@@ -242,8 +243,8 @@ li.nav-item > ul.nested-navigation::before {
 
 ul.main-navigation > li.nav-item > ul.nested-navigation::before {
   position: absolute;
-  top: -3vh;
-  height: 3vh;
+  top: -5vh;
+  height: 5vh;
   left: 0;
   width: 100%;
 
