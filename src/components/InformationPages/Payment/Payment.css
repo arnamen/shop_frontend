@@ -1,0 +1,30 @@
+.Payment {
+    padding: 0px 10vw 5vh 10vw;
+    animation: 0.35s linear 0s stretch;
+}
+
+@keyframes stretch { from { margin-top: -1%; opacity: 0; } to { margin-top: 0; opacity: 1; }  }
+
+.Payment > h1 {
+    text-align: center;
+    font-weight: 400;
+    padding: 5vh 0;
+    margin-bottom: 5vh;
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.Payment > span {
+    font-weight: 300;
+    margin-top: 3vh;
+    display: block;
+}
+
+.Payment > ul {
+    list-style-type: decimal;
+}
+
+.Payment li {
+    margin-top: 0.5vh;
+    font-weight: 300;
+}
