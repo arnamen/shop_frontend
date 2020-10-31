@@ -1,0 +1,46 @@
+.Contacts {
+    padding: 0 5vw;
+}
+
+.Contacts > h1 {
+    text-align: center;
+    padding: 5vh 0;
+    margin-bottom: 5vh;
+    margin-top: 0;
+    border-bottom: 1px solid #999;
+
+}
+
+.Contacts > span {
+    font-weight: 300;
+    margin-top: 2vh;
+    display: block;
+}
+
+.Contacts > span > a {
+    color: black;
+    text-decoration: underline;
+}
+
+.Contacts > table {
+    margin-top: 2vh;
+}
+
+.Contacts table {
+    border-collapse: collapse;
+}
+
+.Contacts table td {
+    padding: 1.5vh 0;
+    font-weight: 300;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.Contacts table td:first-child {
+    padding-right: 1vw;
+}
+
+.Contacts > span:last-child {
+    margin-bottom: 5vh;
+}

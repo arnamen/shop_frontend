@@ -1,6 +1,6 @@
 .header {
     width: 100%;
-    height: 22vh;
+    height: 30%;
 }
 
 
@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75%;
+    height: 16.5vh;
     padding: 0 2vw;
 }
 
@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 25%;
+    height: 5.5vh;
     background-color: black;
     color: white;
     padding: 0 5vw;

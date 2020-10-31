@@ -8,13 +8,6 @@
     position: relative;
 }
 
-.LinkButton__NavLink {
-    display: block;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
 .LinkButton::before, .LinkButton::after {
     content: '';
     top: 0;
@@ -26,6 +19,10 @@
     background-color: #ffdd00;
 }
 
+.LinkButton__active::before, .LinkButton__active::after {
+    content: '';
+    opacity: 1;
+}
 .LinkButton::after {
     top: auto;
     bottom: 0;
