@@ -1,21 +1,23 @@
 .header {
     width: 100%;
-    height: 100%;
+    height: 22vh;
 }
+
+
 
 .header__wrapper-top {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 15vh;
+    height: 75%;
     padding: 0 2vw;
 }
 
-.header__wrapper-bottom {
+.header__wrapper-bottom, .header__sticky {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 30%;
+    height: 25%;
     background-color: black;
     color: white;
     padding: 0 5vw;
@@ -27,16 +29,11 @@
     position: sticky;
     top: 0;
     z-index: 999;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 30%;
     background-color: black;
     color: white;
-    padding: 0 5vw;
 }
 
-.header__hide {
+.header-bottom__hide {
     overflow: hidden;
     opacity: 0;
     height: 0;

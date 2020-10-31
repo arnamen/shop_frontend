@@ -135,8 +135,10 @@ export default function Header() {
                             <UserIconLinks iconData={UserIconLinksData} />
                         </div>
                     </div>
-                    <div className={`header__wrapper-bottom ${!visible && `header__hide`}`}>
-                        <Dropdown items={dropdownsData} />
+                    <div className={`header__wrapper-bottom ${!visible && `header-bottom__hide`}`}>
+                        <LinkButton>
+                            <Dropdown items={dropdownsData} />
+                        </LinkButton>
                         <LinkButton to='/page/about-us'>О компании</LinkButton>
                         <LinkButton to='/page/contacts'>Контакты</LinkButton>
                         <LinkButton to='/page/delivery'>Доставка</LinkButton>
@@ -147,7 +149,7 @@ export default function Header() {
                 </div>
             </VisibilitySensor>
             {/* этот заголовок видим когда пользователь скролит вниз */}
-            <div className={`header__sticky ${visible && `header__hide`}`}>
+            <div className={`header__sticky ${visible && `header-bottom__hide`}`}>
                 <Dropdown items={dropdownsData} />
                 <LinkButton to='/page/about-us'>О компании</LinkButton>
                 <LinkButton to='/page/contacts'>Контакты</LinkButton>

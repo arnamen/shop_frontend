@@ -1,17 +1,37 @@
 .LinkButton {
     font-size: 1.5vw;
     text-transform: uppercase;
-    height: 85%;
+    height: 4.5vh;
     display: flex;
     align-items: center;
+    flex-direction: column;
     color: inherit;
-}
-
-.LinkButton:hover {
-    border-top: 3px solid #ffdd00;
-    border-bottom: 3px solid #ffdd00;
+    position: relative;
 }
 
 .LinkButton__NavLink {
-    color: inherit;
+    display: block;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.LinkButton::before, .LinkButton::after {
+    content: '';
+    top: 0;
+    position: absolute;
+    display: inline-block;
+    opacity: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #ffdd00;
+}
+
+.LinkButton::after {
+    top: auto;
+    bottom: 0;
+}
+
+.LinkButton:hover::before, .LinkButton:hover::after {
+    opacity: 1;
 }

@@ -7,7 +7,9 @@ export default function LinkButton( props ) {
     const addedClasses = ['LinkButton'];
     return (
         <span className={addedClasses.join(' ')}>
-            <NavLink className='LinkButton__NavLink' to={props.to}>{props.children}</NavLink>
+            {props.to 
+            ? <NavLink className='LinkButton__NavLink' to={props.to}>{props.children}</NavLink> 
+            : <span className='LinkButton__NavLink'>{props.children}</span>}
         </span>
     )
 }
