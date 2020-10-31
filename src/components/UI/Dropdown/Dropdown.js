@@ -15,25 +15,30 @@ export default (props) => {
         /* выровнять все дропдауны по одному уровню */
         let verticalAlignment = 110;
 
-        if (index !== 0) 
-          verticalAlignment = -index*100;
+        if (index !== 0)
+        //пересчитать вертикальную позицию нового списка относительно родитльского элемента 
+        //чтобы прижать его к верху
+          verticalAlignment = -index * 100;
         //
-        
+
         return <li key={v4()} className='nav-item'>
 
           {index === 0 && <span className='dots'></span>}
 
-          <a href={itemData.to || '#'}><span>{itemData.text}</span></a>
+          <a href={itemData.to || '#'}>
+            <span>{itemData.text}</span>
+          </a>
 
           {index !== 0 && <span className="chevron right"></span>}
+
           {/* при создании нового списка учитывать границу при наведении 3 пикселя */}
+
           <ul className='nested-navigation'
-            style={{ 
-              height:5*(itemData.children.length) + 'vh',
-              top: `calc(${verticalAlignment}% - ${3*index}px)`,
-              zIndex: index
-               }}>
-              {/* создать дочерние элементы */}
+            style={{
+              height: 5 * (itemData.children.length) + 'vh',
+              top: `calc(${verticalAlignment}% - ${3 * index}px)`,
+              zIndex: index}}>
+            {/* создать дочерние элементы */}
             {getListItems(itemData.children)}
           </ul>
 

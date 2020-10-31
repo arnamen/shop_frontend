@@ -124,6 +124,7 @@ export default function Header() {
     //добавить sticky header с z-index 999
     return (
         <React.Fragment>
+            {/* этот заголовок виден когда пользователь наверху старницы */}
             <VisibilitySensor partialVisibility onChange={(isVisible) => setVisible(isVisible)}>
                 <div className={'header'}>
                     <div className={`header__wrapper-top`}>
@@ -136,23 +137,24 @@ export default function Header() {
                     </div>
                     <div className={`header__wrapper-bottom ${!visible && `header__hide`}`}>
                         <Dropdown items={dropdownsData} />
-                        <LinkButton to='/'>О компании</LinkButton>
-                        <LinkButton to='/'>Контакты</LinkButton>
-                        <LinkButton to='/'>Доставка</LinkButton>
-                        <LinkButton to='/'>Оплата</LinkButton>
-                        <LinkButton to='/'>Обратная связь</LinkButton>
-                        <LinkButton to='/'>Оферта</LinkButton>
+                        <LinkButton to='/page/about-us'>О компании</LinkButton>
+                        <LinkButton to='/page/contacts'>Контакты</LinkButton>
+                        <LinkButton to='/page/delivery'>Доставка</LinkButton>
+                        <LinkButton to='/page/payment'>Оплата</LinkButton>
+                        <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
+                        <LinkButton to='/page/offer'>Оферта</LinkButton>
                     </div>
                 </div>
             </VisibilitySensor>
+            {/* этот заголовок видим когда пользователь скролит вниз */}
             <div className={`header__sticky ${visible && `header__hide`}`}>
                 <Dropdown items={dropdownsData} />
-                <LinkButton to='/'>О компании</LinkButton>
-                <LinkButton to='/'>Контакты</LinkButton>
-                <LinkButton to='/'>Доставка</LinkButton>
-                <LinkButton to='/'>Оплата</LinkButton>
-                <LinkButton to='/'>Обратная связь</LinkButton>
-                <LinkButton to='/'>Оферта</LinkButton>
+                <LinkButton to='/page/about-us'>О компании</LinkButton>
+                <LinkButton to='/page/contacts'>Контакты</LinkButton>
+                <LinkButton to='/page/delivery'>Доставка</LinkButton>
+                <LinkButton to='/page/payment'>Оплата</LinkButton>
+                <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
+                <LinkButton to='/page/offer'>Оферта</LinkButton>
             </div>
         </React.Fragment>
     )

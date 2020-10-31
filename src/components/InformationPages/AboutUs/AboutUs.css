@@ -1,0 +1,18 @@
+.about-us {
+    padding: 0px 10vw 5vh 10vw;
+}
+
+.about-us__main-header {
+    text-align: center;
+}
+
+.about-us__list {
+    list-style-type: decimal;
+}
+
+.about-us__image {
+    display: block;
+    margin: 0 auto;
+    margin-top: 4vh;
+    width: 80%;
+}

@@ -7,7 +7,6 @@ import CategoriesCards from '../../components/UI/Cards/CategoriesCards/Categorie
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
 import Tabs from '../Tabs/Tabs';
 import GoodsList from '../../components/GoodsList/GoodsList';
-import Footer from './../../components/Footer/Footer';
 
 import smartphone from '../../assets/categories/smartphone.png';
 import sveter from '../../assets/categories/sveter.png';
@@ -349,7 +348,6 @@ export default function MainPage() {
             <GoodsList title='Только у нас' img='Star' data={phonesList}/>
             <GoodsList title='Популярно в категории "Телевизоры"' img='Chat' data={tvList}/>
             <GoodsList title='Больше товаров для выбора' img='General' data={moreGoodsList}/>
-            <Footer/>
         </div>
     )
 }
