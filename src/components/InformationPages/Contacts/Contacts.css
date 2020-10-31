@@ -1,13 +1,13 @@
 .Contacts {
-    padding: 0 5vw;
+    padding: 0px 10vw 5vh 10vw;
+    animation: 0.35s linear 0s stretch;
 }
+
+@keyframes stretch { from { margin-top: -1%; opacity: 0; } to { margin-top: 0; opacity: 1; }  }
 
 .Contacts > h1 {
     text-align: center;
-    padding: 5vh 0;
-    margin-bottom: 5vh;
-    margin-top: 0;
-    border-bottom: 1px solid #999;
+    font-weight: 400;
 
 }
 
@@ -39,8 +39,4 @@
 
 .Contacts table td:first-child {
     padding-right: 1vw;
-}
-
-.Contacts > span:last-child {
-    margin-bottom: 5vh;
 }
