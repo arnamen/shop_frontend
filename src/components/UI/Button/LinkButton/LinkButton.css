@@ -10,7 +10,8 @@
 
 .LinkButton::before, .LinkButton::after {
     content: '';
-    top: 0;
+    transition: 0.3s all;
+    top: -0.5vh;
     position: absolute;
     display: inline-block;
     opacity: 0;
@@ -21,13 +22,25 @@
 
 .LinkButton__active::before, .LinkButton__active::after {
     content: '';
+    top: 0;
     opacity: 1;
 }
 .LinkButton::after {
+    top: auto;
+    bottom: -0.5vh;
+}
+
+.LinkButton__active::after {
     top: auto;
     bottom: 0;
 }
 
 .LinkButton:hover::before, .LinkButton:hover::after {
     opacity: 1;
+    top: 0;
+}
+
+.LinkButton:hover::after {
+    top: auto;
+    bottom: 0;
 }

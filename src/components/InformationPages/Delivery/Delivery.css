@@ -3,9 +3,15 @@
     animation: 0.35s linear 0s stretch;
 }
 
+@keyframes stretch { from { margin-top: -1%; opacity: 0; } to { margin-top: 0; opacity: 1; }  }
+
 .Delivery > h1 {
     text-align: center;
     font-weight: 400;
+    padding: 5vh 0;
+    margin-bottom: 5vh;
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
 }
 
 .Delivery > span {
@@ -23,4 +29,3 @@
     font-weight: 300;
 }
 
-@keyframes stretch { from { margin-top: -1%; opacity: 0; } to { margin-top: 0; opacity: 1; }  }
