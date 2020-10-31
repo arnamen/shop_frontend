@@ -54,7 +54,7 @@
     text-transform: uppercase;
     background-color: #3095dd;
     border: none;
-    transition: 0.4s background-color;
+    transition: 0.5s background-color;
 }
 
 .FeedbackForm > button:focus {
