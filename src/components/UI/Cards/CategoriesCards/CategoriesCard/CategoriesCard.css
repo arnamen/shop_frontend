@@ -3,11 +3,10 @@
     text-align: center;
     position: relative;
     background-color: #eef1f5;
-    padding: 1%;
     cursor: pointer;
     transition: 0.5s all;
-    margin: 1%;
-    width: 29%;
+    margin: 1vw;
+    padding: 1vw;
     height: 25vw;
 }
 
@@ -23,7 +22,7 @@
 }
 
 .CategoriesCard:hover .CategoriesCard_title {
-    padding: 3vh;
+    padding: 2vh 2.5vh;
     background-color: rgba(255, 255, 255, 0.85);
 }
 
@@ -33,10 +32,10 @@
 
 .CategoriesCard_title-wrapper {
     display: block;
-    width: calc(100% - 2vw*2);
     text-align: center;
     font-weight: 700;
     position: absolute;
+    width: 100%;
     top: calc(50% - 2vh);
     text-transform: uppercase;
     z-index: 99;
@@ -45,8 +44,10 @@
 
 .CategoriesCard_title {
     background-color: rgba(255, 255, 255, 0.7);
-    padding: 2vh;
+    padding: 1.5vh 2vh;
     transition: 0.5s padding;
+    display: inline-block;
+    min-width: 10vw;
 }
 
 .CategoriesCard_image-wrapper {
