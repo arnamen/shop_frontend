@@ -10,12 +10,13 @@ import './index.css';
 
 import loginReducer from './store/reducers/loginReducer';
 import contentReducer from './store/reducers/contentReducer';
-
+import filtersReducer from './store/reducers/filtersReducer';
 
 
 const rootReducer = combineReducers({
   login: loginReducer,
-  content: contentReducer
+  content: contentReducer,
+  filters: filtersReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
