@@ -14,10 +14,15 @@
     display: none;
 }
 
+.SidebarNavItem .SidebarNavItem__title-wrapper {
+    position: relative;
+}
+
 .SidebarNavItem .chevron {
-    width: 15px;
-    height: 15px;
-    fill: black;
+    width: 12px;
+    height: 12px;
     position: absolute;
     right: 1vw;
+    top: 50%;
+    transform: translate(0px, -50%);
 }

@@ -11,10 +11,12 @@ export default function ( props ) {
 
     return (
         <li className='SidebarNavItem'>
-            <span>{props.title}</span>
-            {showList 
-            ? <ReactChevronDown className='chevron' onClick={() => setShowList(!showList)}/> 
-            : <ReactChevronRight className='chevron' onClick={() => setShowList(!showList)}/>}
+            <div className='SidebarNavItem__title-wrapper'>
+                <span>{props.title}</span>
+                {showList 
+                ? <ReactChevronDown className='chevron' onClick={() => setShowList(!showList)}/> 
+                : <ReactChevronRight className='chevron' onClick={() => setShowList(!showList)}/>}
+            </div>
             <ul className={showList ? 'SidebarNavItem__inner' : 'SidebarNavItem__inner-hide'}>
             {props.children}
             </ul>

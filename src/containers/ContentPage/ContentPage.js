@@ -7,7 +7,7 @@ import './ContentPage.css';
 
 export default function ContentPage() {
     return (
-        <div>
+        <div className='ContentPage'>
             <Sidebar>
                 <Sidebar.Item>
                     <a href='/'>TESTITEM</a>

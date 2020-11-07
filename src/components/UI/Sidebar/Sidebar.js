@@ -7,9 +7,12 @@ import './Sidebar.css';
 
 export default function Sidebar( props ) {
     return (
-        <ul className='Sidebar'>
+        <div className='Sidebar__wrapper'>
+            <div className='Sidebar__title'>Каталог товаров</div>
+            <ul className='Sidebar'>
             {props.children}
-        </ul>
+            </ul>
+        </div>
     )
 }
 
