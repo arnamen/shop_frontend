@@ -13,7 +13,8 @@ import DeliveryPage from './components/InformationPages/Delivery/Delivery';
 import FeedbackPage from './components/InformationPages/Feedback/Feedback';
 import OfferPage from './components/InformationPages/Offer/Offer';
 import PaymentPage from './components/InformationPages/Payment/Payment';
-//COMPONENT
+import ContentPage from './containers/ContentPage/ContentPage';
+
 function App(props) {
   
   return (
@@ -26,6 +27,7 @@ function App(props) {
       <Route exact path='/page/feedback' component={FeedbackPage}/>
       <Route exact path='/page/offer' component={OfferPage}/>
       <Route exact path='/page/payment' component={PaymentPage}/>
+      <Route path='/collection' component={ContentPage}/>
       <Footer/>
     </React.Fragment>
   );

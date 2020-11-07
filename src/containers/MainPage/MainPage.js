@@ -14,7 +14,6 @@ import laptop from '../../assets/categories/laptop.png';
 import hat from '../../assets/categories/hat.png';
 import headphones from '../../assets/categories/headphones.png';
 import shoes from '../../assets/categories/shoes.png';
-//
 
 import './MainPage.css';
 import { connect } from 'react-redux';
@@ -54,7 +53,6 @@ const categoriesData = [
 ]
 
 function randomInteger(min, max) {
-    // получить случайное число от (min-0.5) до (max+0.5)
     let rand = min - 0.5 + Math.random() * (max - min + 1);
     return Math.round(rand);
   }
@@ -81,7 +79,7 @@ function MainPage( props ) {
                 <ItemsCards itemsData={content_tab2}/>
             </Tabs>
             <div className='MainPage__viewAllGoods-wrapper'>
-                <NavLink className='MainPage__viewAllGoods' to='/'>Посмотреть все товары</NavLink>
+                <NavLink className='MainPage__viewAllGoods' to='/collection'>Посмотреть все товары</NavLink>
             </div>
             <GoodsList title='Только у нас' img='Star' data={phones}/>
             <GoodsList title='Популярно в категории "Телевизоры"' img='Chat' data={tv}/>

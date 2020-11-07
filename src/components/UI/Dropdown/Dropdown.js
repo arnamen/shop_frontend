@@ -3,6 +3,8 @@ import { v4 } from 'uuid';
 
 import './Dropdown.css';
 
+import {ReactComponent as ReactChevronRight} from '../../../assets/misc/right-chevron.svg';
+
 export default (props) => {
   const itemsData = props.items || [];
 
@@ -29,7 +31,7 @@ export default (props) => {
             <span>{itemData.text}</span>
           </a>
 
-          {index !== 0 && <span className="chevron right"></span>}
+          {index !== 0 && <ReactChevronRight className='chevron'/>}
 
           {/* при создании нового списка учитывать границу при наведении 3 пикселя */}
 

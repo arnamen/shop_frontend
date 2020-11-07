@@ -1,0 +1,23 @@
+
+
+.SidebarNavItem {
+    width: 100%;
+    position: relative;
+}
+
+.SidebarNavItem__inner {
+    margin: 0;
+    list-style-type: none;
+}
+
+.SidebarNavItem__inner-hide {
+    display: none;
+}
+
+.SidebarNavItem .chevron {
+    width: 15px;
+    height: 15px;
+    fill: black;
+    position: absolute;
+    right: 1vw;
+}

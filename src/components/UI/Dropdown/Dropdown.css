@@ -1,9 +1,9 @@
 /* https://stackoverflow.com/questions/37744379/create-nested-drop-down-list-in-html-css-form */
-.dots{
+.dots {
   background: transparent;
 }
 
-.dots:after{
+.dots:after {
   content: '\2807';
   font-size: 2vw;
   color: white;
@@ -12,27 +12,7 @@
   align-items: center;
   height: 100%;
   padding-top: 1%;
-  }
-
-  .chevron::before {
-    border-style: solid;
-    border-width: 0.1em 0.1em 0 0;
-    content: '';
-    display: inline-block;
-    height: 0.45em;
-    left: 0.15em;
-    position: relative;
-    top: 0.15em;
-    transform: rotate(-45deg);
-    vertical-align: top;
-    width: 0.45em;
-    font-size: 3vh;
-  }
-  
-  .chevron.right:before {
-    left: -0.8em;
-    transform: rotate(45deg);
-  }
+}
 
 /* анимации */
 @keyframes slidein_fromBottom {
@@ -55,6 +35,13 @@
   to {
     opacity: 1;
   }
+}
+
+ul.main-navigation .chevron {
+  width: 8px;
+  height: 8px;
+  fill: black;
+  margin-right: 10px;
 }
 
 /* стили для всех ul */
@@ -90,6 +77,7 @@ ul.main-navigation {
 ul.nested-navigation {
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
+
 /* стили для всех li */
 ul.nested-navigation li.nav-item,
 ul.main-navigation li.nav-item {
@@ -99,10 +87,11 @@ ul.main-navigation li.nav-item {
   background: white;
   color: black;
   height: 5vh;
+  font-size: 1vw;
 }
 
 /* первый ряд элементов (горизонтальный) - черного цвета */
-ul.main-navigation > li.nav-item {
+ul.main-navigation>li.nav-item {
   background-color: transparent;
   display: flex;
   align-items: center;
@@ -121,6 +110,7 @@ ul.main-navigation > li.nav-item {
 li.nav-item ul.nested-navigation {
   display: none;
 }
+
 /* стили для всех <a> */
 ul.nested-navigation li.nav-item a,
 ul.main-navigation li.nav-item a {
@@ -133,12 +123,12 @@ ul.main-navigation li.nav-item a {
   text-decoration: none;
   white-space: nowrap;
   color: black;
-  font-size: 1vw;
   padding-left: 1vw;
   text-transform: none;
 }
+
 /* стили для <a> от main-navigation */
-ul.main-navigation > li.nav-item > a {
+ul.main-navigation>li.nav-item>a {
   font-size: 1.5vw;
   text-transform: uppercase;
   display: flex;
@@ -154,16 +144,18 @@ ul.main-navigation li.nav-item a:hover {
   color: #eb600a;
 }
 
-ul.main-navigation > li.nav-item:hover > a {
+ul.main-navigation>li.nav-item:hover>a {
   color: white;
 }
 
-ul.nested-navigation li.nav-item:hover > a, ul.nested-navigation li.nav-item:hover > .chevron.right:before {
-  color: #eb600a;
+ul.nested-navigation li.nav-item:hover>a,
+ul.nested-navigation li.nav-item:hover>.chevron {
+  fill: #eb600a;
 }
 
 /* стили для дочерних ul  при наведении на родительский li */
-li.nav-item:hover>ul.nested-navigation, ul.main-navigation:hover > li.nav-item>ul.nested-navigation {
+li.nav-item:hover>ul.nested-navigation,
+ul.main-navigation:hover>li.nav-item>ul.nested-navigation {
   display: block;
   position: absolute;
   height: 100%;
@@ -177,16 +169,12 @@ li.nav-item>ul.nested-navigation {
   animation-name: slidein_fromRight;
 }
 
-ul.main-navigation:hover > li.nav-item>ul.nested-navigation {
+ul.main-navigation:hover>li.nav-item>ul.nested-navigation {
   animation-duration: 0.5s;
   animation-name: slidein_fromBottom;
 }
 
-/* ul.main-navigation > li.nav-item:hover > ul.nested-navigation, ul.main-navigation:hover > li.nav-item > ul.nested-navigation {
-  margin: 2.5% 0;
-} */
-
-ul.main-navigation > li.nav-item > a {
+ul.main-navigation>li.nav-item>a {
   font-weight: 400;
 }
 
@@ -195,6 +183,7 @@ ul.main-navigation:hover li.nav-item {
   display: flex;
   align-items: center;
 }
+
 li.nav-item:hover a {
   background: transparent;
   color: black;
@@ -232,8 +221,9 @@ ul.nested-navigation:after {
 ul.nested-navigation::after {
   clear: both;
 }
+
 /* для корректного срабатывания hover */
-li.nav-item > ul.nested-navigation::before {
+li.nav-item>ul.nested-navigation::before {
   z-index: -10;
   position: absolute;
   left: -2vw;
@@ -241,7 +231,7 @@ li.nav-item > ul.nested-navigation::before {
   height: 100%;
 }
 
-ul.main-navigation > li.nav-item > ul.nested-navigation::before {
+ul.main-navigation>li.nav-item>ul.nested-navigation::before {
   position: absolute;
   top: -5vh;
   height: 5vh;
