@@ -23,6 +23,10 @@ export default function ContentPage() {
                     <a href='/'>TESTITEM2</a>
                     </Sidebar.Item>
 
+                    <Sidebar.Item>
+                    <a href='/'>TESTITEM2</a>
+                    </Sidebar.Item>
+
                 </Sidebar.NavItem>
 
                 <Sidebar.Item>

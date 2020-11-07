@@ -27,14 +27,23 @@
 }
 
 .Sidebar li {
-    margin: 10px 0 0;
+    padding: 10px 0 0;
     line-height: 18px;
     cursor: pointer;
 }
 
-.Sidebar span, .Sidebar a,.Sidebar .chevron {
+.Sidebar li:hover > span, .Sidebar li:hover > a, .Sidebar li:hover > div > span, .Sidebar li:hover > div > a {
+    color: #ed8d12;
+}
+
+.Sidebar li:hover > div > .chevron {
+     fill: #ed8d12;
+}
+
+.Sidebar li span, .Sidebar a, .Sidebar .chevron {
     font-weight: 300;
-    color: #999;
-    fill: #999;
+    color: #888;
+    fill: #888;
     font-size: 14px;
+    transition: 0.3s all;
 }
