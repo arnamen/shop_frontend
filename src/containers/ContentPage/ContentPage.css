@@ -8,12 +8,12 @@
 }
 
 .ContentPage__sidebar-wrapper {
-    width: 20%;
+    width: 15%;
     display: inline-block;
 }
 
 .ContentPage__content {
-    width: 80%;
+    width: 85%;
     display: inline-block;
 }
 

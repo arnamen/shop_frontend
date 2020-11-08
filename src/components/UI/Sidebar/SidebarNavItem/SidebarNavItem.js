@@ -7,7 +7,7 @@ import {ReactComponent as ReactChevronDown} from '../../../../assets/misc/down-c
 
 export default function ( props ) {
 
-    const [showList, setShowList] = useState(false);
+    const [showList, setShowList] = useState(true);
 
     return (
         <li className='SidebarNavItem' onClick={() => setShowList(!showList)}>
