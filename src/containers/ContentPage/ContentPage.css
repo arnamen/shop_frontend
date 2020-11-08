@@ -1,3 +1,18 @@
 .ContentPage {
     padding: 25px 3vw;
 }
+
+.ContentPage__sidebar-wrapper {
+    width: 20%;
+    display: inline-block;
+}
+
+.ContentPage__content {
+    width: 75%;
+    padding: 0 2.5%;
+    display: inline-block;
+}
+
+.ContentPage__filters {
+    background-color: #666;
+}

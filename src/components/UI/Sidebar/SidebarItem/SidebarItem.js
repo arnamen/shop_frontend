@@ -4,7 +4,7 @@ import './SidebarItem.css';
 
 export default function ( props ) {
     return (
-        <li className='SidebarItem'>
+        <li className='SidebarItem' onClick={e => e.stopPropagation()}>
             {props.children}
         </li>
     )

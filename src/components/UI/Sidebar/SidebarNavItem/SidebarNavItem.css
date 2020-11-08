@@ -8,6 +8,7 @@
 .SidebarNavItem__inner {
     margin: 0;
     list-style-type: none;
+    width: 100%;
 }
 
 .SidebarNavItem__inner-hide {

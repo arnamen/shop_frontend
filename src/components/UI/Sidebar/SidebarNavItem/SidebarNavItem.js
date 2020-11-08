@@ -10,12 +10,12 @@ export default function ( props ) {
     const [showList, setShowList] = useState(false);
 
     return (
-        <li className='SidebarNavItem'>
+        <li className='SidebarNavItem' onClick={() => setShowList(!showList)}>
             <div className='SidebarNavItem__title-wrapper'>
                 <span>{props.title}</span>
                 {showList 
-                ? <ReactChevronDown className='chevron' onClick={() => setShowList(!showList)}/> 
-                : <ReactChevronRight className='chevron' onClick={() => setShowList(!showList)}/>}
+                ? <ReactChevronDown className='chevron'/> 
+                : <ReactChevronRight className='chevron'/>}
             </div>
             <ul className={showList ? 'SidebarNavItem__inner' : 'SidebarNavItem__inner-hide'}>
             {props.children}

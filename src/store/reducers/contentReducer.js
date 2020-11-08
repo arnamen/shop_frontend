@@ -11,8 +11,12 @@ const iniialState = {
     content: [
         {
             name: 'Мобильный телефон Samsung Galaxy M31s 6/128GB Blue',
-            categories: ['phones', 'smartphones'],
-            tags: ['6.5"', '6000mah', 'exynous9611'],
+            categories: ['Телефоны', 'Смартфоны'],
+            tags: {
+                diagonal: '6.5"',
+                battery: '6000mah',
+                processor: 'exynous9611'
+            },
             image_main: smartphone1_front,
             image_secondary: smartphone1_back,
             price: 1000,
@@ -22,18 +26,26 @@ const iniialState = {
         },
         {
             name: 'Мобильный телефон Nokia 5.3 4/64GB DualSim Charcoal',
-            categories: ['phones', 'smartphones'],
-            tags: ['6.55"', '4000mah', 'snapdragon655'],
+            categories: ['Телефоны', 'Смартфоны'],
+            tags: {
+                diagonal: '6.55"',
+                battery: '4000mah',
+                processor: 'snapdragon655'
+            },
             image_main: smartphone2_front,
             image_secondary: smartphone2_back,
             price: 1500,
             stars: 5,
             to: '/'
-        },    
+        },
         {
             name: 'Телевизор Xiaomi Mi LED TV 4A 32"',
-            categories: ['tv'],
-            tags: ['32"', '1366x768', '60ghz'],
+            categories: ['Телевизоры'],
+            tags: {
+                diagonal: '32"',
+                resolution: '1366x768',
+                frequency: '60ghz'
+            },
             image_main: tv_1,
             image_secondary: tv_2,
             price: 1030,

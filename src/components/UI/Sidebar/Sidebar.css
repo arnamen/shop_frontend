@@ -1,5 +1,5 @@
 .Sidebar__wrapper {
-    width: 20%;
+    width: 100%;
     height: 100%;
     display: inline-flex;
     flex-direction: column;
@@ -26,13 +26,29 @@
     padding: 0;
 }
 
+.Sidebar ul {
+    padding: 0;
+}
+
 .Sidebar li {
-    padding: 10px 0 0;
-    line-height: 18px;
+    line-height: 33px;
     cursor: pointer;
 }
 
-.Sidebar li:hover > span, .Sidebar li:hover > a, .Sidebar li:hover > div > span, .Sidebar li:hover > div > a {
+.Sidebar input {
+    padding-left: 10px;
+}
+
+.Sidebar label {
+    display: block;
+    height: 100%;
+}
+
+.Sidebar li:hover > span,
+.Sidebar li:hover > label,
+.Sidebar li:hover > a,
+.Sidebar li:hover > div > span,
+.Sidebar li:hover > div > a {
     color: #ed8d12;
 }
 
@@ -40,10 +56,11 @@
      fill: #ed8d12;
 }
 
-.Sidebar li span, .Sidebar a, .Sidebar .chevron {
+.Sidebar li span, .Sidebar a, .Sidebar .chevron, .Sidebar label {
     font-weight: 300;
     color: #888;
     fill: #888;
     font-size: 14px;
     transition: 0.3s all;
+    cursor: pointer;
 }

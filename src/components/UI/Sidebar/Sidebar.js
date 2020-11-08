@@ -8,7 +8,7 @@ import './Sidebar.css';
 export default function Sidebar( props ) {
     return (
         <div className='Sidebar__wrapper'>
-            <div className='Sidebar__title'>Каталог товаров</div>
+            <div className='Sidebar__title'>{props.title}</div>
             <ul className='Sidebar'>
             {props.children}
             </ul>
