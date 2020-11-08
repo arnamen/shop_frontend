@@ -1,5 +1,10 @@
 .ContentPage {
-    padding: 25px 3vw;
+    padding: 25px 2vw 25px 3vw;
+    display: flex;
+}
+
+.ContentPage .ItemsCards {
+    padding: 0;
 }
 
 .ContentPage__sidebar-wrapper {
@@ -8,8 +13,7 @@
 }
 
 .ContentPage__content {
-    width: 75%;
-    padding: 0 2.5%;
+    width: 80%;
     display: inline-block;
 }
 

@@ -5,7 +5,7 @@ import Logo from '../Logo/Logo';
 import Search from '../../containers/Search/Search';
 import UserIconLinks from '../UserIconLinks/UserIconLinks';
 import Contacts from '../Contacts/Contacts';
-import LinkButton from '../UI/Button/LinkButton/LinkButton';
+import LinkButton from '../UI/LinkButton/LinkButton';
 import Dropdown from '../UI/Dropdown/Dropdown';
 
 import './Header.css';

@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux';
 import {v4} from 'uuid';
 
-import Button from '../../components/UI/Button/Button';
 import Sidebar from '../../components/UI/Sidebar/Sidebar';
+import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
 
 import './ContentPage.css';
 
@@ -81,11 +81,7 @@ function ContentPage( props ) {
             </Sidebar>
             </div>
             <div className='ContentPage__content'>
-
-                <div className='ContentPage__filters'>
-                    {/* {availableFilters.map(filter => <Button>{filter}</Button>)} */}
-                </div>
-
+                <ItemsCards itemsData={[...props.content,...props.content,...props.content]}/>
             </div>
         </div>
     )

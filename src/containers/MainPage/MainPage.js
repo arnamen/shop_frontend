@@ -64,9 +64,11 @@ function MainPage( props ) {
     const content_tab2 = []
     const itemsAmount_tab2 = randomInteger(3,10);
 
-    const phones = props.content.filter(item => item.categories.includes('phones'));
-    const tv = props.content.filter(item => item.categories.includes('tv'));
-
+    const phones = props.content.filter(item => item.categories.includes('Телефоны'));
+    while(phones.length < 4) phones.push(...phones); //заполнить строку для красоты
+    const tv = props.content.filter(item => item.categories.includes('Телевизоры'));
+    while(tv.length < 4) tv.push(...tv); //заполнить строку для красоты
+    //добавить карточкуи с товарами в табы
     for (let i = 0; i < itemsAmount_tab1; i++) content_tab1.push(props.content[i % (props.content.length)]);
     for (let i = 0; i < itemsAmount_tab2; i++) content_tab2.push(props.content[i % (props.content.length)]);
     return (
