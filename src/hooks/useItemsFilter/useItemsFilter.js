@@ -7,12 +7,28 @@ const { store } = useContext(ReactReduxContext);
   const [ storeState, setStoreState ] = useState(getState());
   const tagsFilters = storeState.filters.tagsFilters;
   const categoriesFilters = storeState.filters.categories;
-  console.log('-------------------')
-  console.log(tagsFilters)
+
   // subscribe only once
   useEffect(() => subscribe(
     () => setStoreState(getState())
   , []))
+
+    //получить все возможные теги из товаров
+    //для фильтрации
+    let exttractedFilters = {
+      categories: []
+    };
+    storeState.content.content.forEach(item => {
+
+        Object.keys(item.tags)
+            .forEach(key => {
+                if (!exttractedFilters[key]) exttractedFilters[key] = [];
+                //добавить теги в фильтры
+                exttractedFilters[key].push(item.tags[key]);
+            });
+        //добавить категории в фильтры
+        exttractedFilters.categories = [...new Set([...(exttractedFilters.categories || []), ...item.categories])]
+    });
 
   const filterItems = ( items ) => {
 
@@ -47,5 +63,5 @@ const { store } = useContext(ReactReduxContext);
   
   const filteredItems = Array.isArray(items) ? filterItems(items) : null;
 
-  return [filteredItems, filterItems];
+  return [filteredItems, filterItems, exttractedFilters];
 }

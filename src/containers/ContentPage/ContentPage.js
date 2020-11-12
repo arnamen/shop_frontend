@@ -23,26 +23,13 @@ const translate = {
 /* TODO: Вынести фильтрацию в хуки */
 function ContentPage(props) {
 
-    const [filteredItems, filterItems] = useItemsFilter();
-    let availableFilters = {};
-
-    //объединить теги для фильтров
-    props.content.forEach(item => {
-
-        Object.keys(item.tags)
-            .forEach(key => {
-                if (!availableFilters[key]) availableFilters[key] = [];
-                //добавить теги в фильтры
-                availableFilters[key].push(item.tags[key]);
-            });
-        //добавить категории в фильтры
-        availableFilters.categories = [...new Set([...(availableFilters.categories || []), ...item.categories])]
-    });
+    const [filteredItems, filterItems, availableFilters] = useItemsFilter();
 
     //содержимое сайдбара
     const sidebarItems = [];
     //созданиче чекбоксов для фильтров
     //категории фильтровать отдельно
+    console.log(availableFilters)
     sidebarItems.push(<Sidebar.NavItem key={v4()} title='Категории'>
         {availableFilters.categories.map(
             category => {
