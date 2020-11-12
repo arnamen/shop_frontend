@@ -24,11 +24,7 @@ const translate = {
 function ContentPage(props) {
 
     const [filteredItems, filterItems] = useItemsFilter();
-    let availableFilters = {
-        categories: []
-    };
-
-    console.log(props.filters)
+    let availableFilters = {};
 
     //объединить теги для фильтров
     props.content.forEach(item => {
@@ -40,8 +36,9 @@ function ContentPage(props) {
                 availableFilters[key].push(item.tags[key]);
             });
         //добавить категории в фильтры
-        availableFilters.categories = [...new Set([...availableFilters.categories, ...item.categories])]
+        availableFilters.categories = [...new Set([...(availableFilters.categories || []), ...item.categories])]
     });
+
     //содержимое сайдбара
     const sidebarItems = [];
     //созданиче чекбоксов для фильтров
@@ -69,13 +66,16 @@ function ContentPage(props) {
     //категории уже добавлены в сайдбар, так что удалить их
     delete availableFilters.categories;
     //создать чекбоксы для фильтрации по тегам
-    sidebarItems.push(...Object.keys(availableFilters).map(key => {
-        return <Sidebar.NavItem key={v4()} title={translate[key] || key}>
-            {availableFilters[key].map(
-                filter => {
+    sidebarItems.push(...Object.keys(availableFilters).map(filterName => {
+        return <Sidebar.NavItem key={v4()} title={translate[filterName] || filterName}>
+            {availableFilters[filterName].map(filter => {
 
                     const id = v4();
-                    const alreadyFiltered = !!props.filters.tagsFilters.find(usedFilters => usedFilters === filter);
+                    let alreadyFiltered = null;
+                    //проверка отмечен ли чекбокс
+                    if(!props.filters.tagsFilters[filterName]) alreadyFiltered = false;
+                    else if(!!props.filters.tagsFilters[filterName].find(filterString => filterString === filter)) alreadyFiltered = true;
+                    else alreadyFiltered = false;
 
                     return <Sidebar.Item key={v4()} >
 
@@ -83,8 +83,8 @@ function ContentPage(props) {
                             checked={alreadyFiltered}
                             onChange={(e) => {
                                 alreadyFiltered
-                                    ? props.onRemoveFilter(filter)
-                                    : props.onAddFilter(filter);
+                                    ? props.onRemoveFilter({[filterName]: filter})
+                                    : props.onAddFilter({[filterName]: filter});
                             }}>
                             {filter}
                         </Checkbox>
@@ -128,13 +128,13 @@ const mapDispatchToProps = (dispatch) => {
             type: actionTypes.ADD_CATEGORY,
             category,
         }),
-        onAddFilter: (filter) => dispatch({
-            type: actionTypes.ADD_FILTER,
-            filter,
+        onAddFilter: (filters) => dispatch({
+            type: actionTypes.ADD_FILTERS,
+            filters,
         }),
-        onRemoveFilter: (filter) => dispatch({
-            type: actionTypes.REMOVE_FILTER,
-            filter,
+        onRemoveFilter: (filters) => dispatch({
+            type: actionTypes.REMOVE_FILTERS,
+            filters,
         })
     }
 }
