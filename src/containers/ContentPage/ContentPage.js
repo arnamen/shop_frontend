@@ -5,6 +5,7 @@ import { v4 } from 'uuid';
 import Sidebar from '../../components/UI/Sidebar/Sidebar';
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
 import '../../components/UI/Checkbox/Checkbox';
+import useItemsFilter from  '../../hooks/useItemsFilter/useItemsFilter';
 
 import * as actionTypes from '../../store/actions/actionTypes';
 
@@ -19,9 +20,10 @@ const translate = {
     resolution: 'Разрешение экрана',
     frequency: 'Частота обновлений'
 }
-
+/* TODO: Вынести фильтрацию в хуки */
 function ContentPage(props) {
 
+    const [filteredItems, filterItems] = useItemsFilter();
     let availableFilters = {
         categories: []
     };
@@ -42,7 +44,8 @@ function ContentPage(props) {
     });
     //содержимое сайдбара
     const sidebarItems = [];
-    //добавить категории в начало списка фильтров
+    //созданиче чекбоксов для фильтров
+    //категории фильтровать отдельно
     sidebarItems.push(<Sidebar.NavItem key={v4()} title='Категории'>
         {availableFilters.categories.map(
             category => {
@@ -63,7 +66,7 @@ function ContentPage(props) {
             }
         )}
     </Sidebar.NavItem>);
-    //категории уже добавлены в сайлбар, так что удалить их
+    //категории уже добавлены в сайдбар, так что удалить их
     delete availableFilters.categories;
     //создать чекбоксы для фильтрации по тегам
     sidebarItems.push(...Object.keys(availableFilters).map(key => {
@@ -92,27 +95,7 @@ function ContentPage(props) {
         </Sidebar.NavItem>
     }))
 
-    const content = props.content.filter(item => {
-        let addItem = true;
-
-        if (props.filters.categories.length)
-            addItem = !!item.categories.find(category =>
-
-                props.filters.categories.find(
-                    categoriesInFilter => categoriesInFilter === category
-                )
-            ) && addItem;
-
-        if (props.filters.tagsFilters.length)
-            addItem = Object.keys(item.tags).find(tag =>
-
-                props.filters.tagsFilters.find(
-                    tagFilter => item.tags[tag] === tagFilter
-                )
-            ) && addItem;
-        return addItem;
-
-    })
+    const content = filterItems(props.content);
     
     return (
         <div className='ContentPage'>
