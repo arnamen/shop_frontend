@@ -135,7 +135,7 @@ function Header( props ) {
                         <Contacts />
                         <div className={`header_UserIconLinks-wrapper`}>
                             <UserIconLinks>
-                                <UserIconLink type='compare' to='/' active={compareActive} key={v4()}></UserIconLink>
+                                <UserIconLink type='compare' to='/' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
                                 <UserIconLink type='heart' to='/' key={v4()}></UserIconLink>
                                 <UserIconLink type='cart' to='/' key={v4()}></UserIconLink>
                                 <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
