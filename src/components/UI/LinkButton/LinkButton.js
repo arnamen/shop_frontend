@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import './LinkButton.css';
 
 export default function LinkButton( props ) {
-    const addedClasses = ['LinkButton'];
+
     return (
             <React.Fragment>
                 {props.to 

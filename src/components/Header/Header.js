@@ -7,8 +7,10 @@ import UserIconLinks from '../UserIconLinks/UserIconLinks';
 import Contacts from '../Contacts/Contacts';
 import LinkButton from '../UI/LinkButton/LinkButton';
 import Dropdown from '../UI/Dropdown/Dropdown';
+import useItemsFilter from '../../hooks/useItemsFilter/useItemsFilter';
 
 import './Header.css';
+
 
 const UserIconLinksData = [
     {
@@ -32,7 +34,7 @@ const UserIconLinksData = [
 const dropdownsData = [
     {
         text: 'Каталог товаров',
-        to: '#',
+        to: '/collection?all=true',
         children: [{
             text: 'cart',
             to: '/'
@@ -118,10 +120,27 @@ const dropdownsData = [
     },
 ]
 
-export default function Header() {
+const translate = {
+    diagonal: 'Диагональ',
+    battery: 'Батарея',
+    processor: 'Процессор',
+    resolution: 'Разрешение экрана',
+    frequency: 'Частота обновлений',
+    tv: 'Телевизоры',
+    phones: 'Телефоны',
+    smartphones: 'Смартфоны',
+    categories: 'Категории'
+}
 
+export default function Header( props ) {
+    // eslint-disable-next-line no-unused-vars
+    const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
     const [visible, setVisible] = useState(true)
-    //добавить sticky header с z-index 999
+    console.log(availableFilters)
+
+    
+
+
     return (
         <React.Fragment>
             {/* этот заголовок виден когда пользователь наверху старницы */}
@@ -148,7 +167,7 @@ export default function Header() {
                     </div>
                 </div>
             </VisibilitySensor>
-            {/* этот заголовок видим когда пользователь скролит вниз */}
+            {/* этот заголовок виден когда пользователь скролит вниз */}
             <div className={`header__sticky ${visible && `header-bottom__hide`}`}>
                 <Dropdown items={dropdownsData} />
                 <LinkButton to='/page/about-us'>О компании</LinkButton>

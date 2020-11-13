@@ -27,7 +27,7 @@ export default (props) => {
 
           {index === 0 && <span className='dots'></span>}
 
-          <a href={itemData.to || '#'}>
+          <a href={itemData.to || '/'}>
             <span>{itemData.text}</span>
           </a>
 

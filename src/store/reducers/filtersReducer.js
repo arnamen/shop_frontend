@@ -63,6 +63,7 @@ const removeFilters = (state, action) => {
 
 
 const reducer = (state = initialState, action) => {
+
     switch (action.type) {
 
         case actionTypes.ADD_CATEGORY: return addCategory(state, action);

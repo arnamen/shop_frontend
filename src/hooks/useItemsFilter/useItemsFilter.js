@@ -5,6 +5,7 @@ export default function useItemsFilter( items = [] ) {
 const { store } = useContext(ReactReduxContext);
   const { getState, subscribe } = store;
   const [ storeState, setStoreState ] = useState(getState());
+  const [availableFilters, setAvailableFilters] = useState(null);
   const tagsFilters = storeState.filters.tagsFilters;
   const categoriesFilters = storeState.filters.categories;
 
@@ -15,19 +16,19 @@ const { store } = useContext(ReactReduxContext);
 
     //получить все возможные теги из товаров
     //для фильтрации
-    let exttractedFilters = {
+    const extractedFilters = {
       categories: []
     };
     storeState.content.content.forEach(item => {
 
         Object.keys(item.tags)
             .forEach(key => {
-                if (!exttractedFilters[key]) exttractedFilters[key] = [];
+                if (!extractedFilters[key]) extractedFilters[key] = [];
                 //добавить теги в фильтры
-                exttractedFilters[key].push(item.tags[key]);
+                extractedFilters[key].push(item.tags[key]);
             });
         //добавить категории в фильтры
-        exttractedFilters.categories = [...new Set([...(exttractedFilters.categories || []), ...item.categories])]
+        extractedFilters.categories = [...new Set([...(extractedFilters.categories || []), ...item.categories])]
     });
 
   const filterItems = ( items ) => {
@@ -62,6 +63,6 @@ const { store } = useContext(ReactReduxContext);
   }
   
   const filteredItems = Array.isArray(items) ? filterItems(items) : null;
-
-  return [filteredItems, filterItems, exttractedFilters];
+  if(!availableFilters) setAvailableFilters(extractedFilters);
+  return [filteredItems, filterItems, availableFilters || extractedFilters];
 }

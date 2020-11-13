@@ -1,5 +1,3 @@
-import * as actionTypes from '../actions/actionTypes';
-
 import smartphone1_front from '../../assets/itemsCards/smartphone_1/front/smartphone1_front.jpg';
 import smartphone1_back from '../../assets/itemsCards/smartphone_1/back/smartphone1_back.jpg';
 import smartphone2_front from '../../assets/itemsCards/smartphone_2/front/smartphone2_front.png'

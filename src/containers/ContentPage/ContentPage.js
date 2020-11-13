@@ -1,89 +1,64 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { v4 } from 'uuid';
+import queryString from 'query-string';
 
 import Sidebar from '../../components/UI/Sidebar/Sidebar';
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
 import '../../components/UI/Checkbox/Checkbox';
+
 import useItemsFilter from  '../../hooks/useItemsFilter/useItemsFilter';
+import useCreateSidebarItems from '../../hooks/useCreateSidebarItems/useCreateSidebarItems';
 
 import * as actionTypes from '../../store/actions/actionTypes';
 
 import './ContentPage.css';
-import Checkbox from '../../components/UI/Checkbox/Checkbox';
 
-//для перевода
 const translate = {
     diagonal: 'Диагональ',
     battery: 'Батарея',
     processor: 'Процессор',
     resolution: 'Разрешение экрана',
-    frequency: 'Частота обновлений'
+    frequency: 'Частота обновлений',
+    tv: 'Телевизоры',
+    phones: 'Телефоны',
+    smartphones: 'Смартфоны',
+    categories: 'Категории'
 }
+
 /* TODO: Вынести фильтрацию в хуки */
 function ContentPage(props) {
+    // eslint-disable-next-line no-unused-vars
+    const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
+    const sidebarItems = useCreateSidebarItems(availableFilters);
+    //при первом рендере получить параметры запроса для фильтров если есть
+    useEffect(() => {
 
-    const [filteredItems, filterItems, availableFilters] = useItemsFilter();
+        const filterParams = queryString.parse(props.location.search, { arrayFormat: 'comma' });
 
-    //содержимое сайдбара
-    const sidebarItems = [];
-    //созданиче чекбоксов для фильтров
-    //категории фильтровать отдельно
-    console.log(availableFilters)
-    sidebarItems.push(<Sidebar.NavItem key={v4()} title='Категории'>
-        {availableFilters.categories.map(
-            category => {
-                const id = v4();
-                const categoryAlreadyInFilter = !!props.filters.categories.find(categoryInFilter => categoryInFilter === category);
-                return <Sidebar.Item key={v4()}>
-                    <Checkbox
-                        id={id}
-                        checked={categoryAlreadyInFilter}
-                        onChange={(e) => {
-                            categoryAlreadyInFilter
-                                ? props.onRemoveCategory(category)
-                                : props.onAddCategory(category);
-                        }}>
-                        {category}
-                    </Checkbox>
-                </Sidebar.Item>
-            }
-        )}
-    </Sidebar.NavItem>);
-    //категории уже добавлены в сайдбар, так что удалить их
-    delete availableFilters.categories;
-    //создать чекбоксы для фильтрации по тегам
-    sidebarItems.push(...Object.keys(availableFilters).map(filterName => {
-        return <Sidebar.NavItem key={v4()} title={translate[filterName] || filterName}>
-            {availableFilters[filterName].map(filter => {
+        if (filterParams.categories && Array.isArray(filterParams.categories)) {
+            filterParams.categories.forEach(category => {
 
-                    const id = v4();
-                    let alreadyFiltered = null;
-                    //проверка отмечен ли чекбокс
-                    if(!props.filters.tagsFilters[filterName]) alreadyFiltered = false;
-                    else if(!!props.filters.tagsFilters[filterName].find(filterString => filterString === filter)) alreadyFiltered = true;
-                    else alreadyFiltered = false;
+                if(availableFilters.categories.find(availableCategory => availableCategory === translate[category]))
+                props.onAddCategory(translate[category]);
 
-                    return <Sidebar.Item key={v4()} >
+            })
+        }
 
-                        <Checkbox id={id}
-                            checked={alreadyFiltered}
-                            onChange={(e) => {
-                                alreadyFiltered
-                                    ? props.onRemoveFilter({[filterName]: filter})
-                                    : props.onAddFilter({[filterName]: filter});
-                            }}>
-                            {filter}
-                        </Checkbox>
+        else if(typeof filterParams.categories === 'string') {
 
-                    </Sidebar.Item>
-                }
-            )}
-        </Sidebar.NavItem>
-    }))
+            if(availableFilters.categories.find(availableCategory => availableCategory === translate[filterParams.categories]))
+                props.onAddCategory(translate[filterParams.categories]);
+
+        }
+        
+    // необходимо выполнить это только при первом рендере и данные для url там будут всегда
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    
+
 
     const content = filterItems(props.content);
-    
+
     return (
         <div className='ContentPage'>
             <div className='ContentPage__sidebar-wrapper'>
