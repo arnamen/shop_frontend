@@ -133,19 +133,15 @@ function Header( props ) {
                         <Logo />
                         <Search />
                         <Contacts />
-                        <div className={`header_UserIconLinks-wrapper`}>
-                            <UserIconLinks>
-                                <UserIconLink type='compare' to='/' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
-                                <UserIconLink type='heart' to='/' key={v4()}></UserIconLink>
-                                <UserIconLink type='cart' to='/' key={v4()}></UserIconLink>
-                                <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
-                            </UserIconLinks>
-                        </div>
+                        <UserIconLinks>
+                            <UserIconLink type='compare' to='/' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
+                            <UserIconLink type='heart' to='/' key={v4()}></UserIconLink>
+                            <UserIconLink type='cart' to='/' key={v4()}></UserIconLink>
+                            <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
+                        </UserIconLinks>
                     </div>
                     <div className={`header__wrapper-bottom ${!visible && `header-bottom__hide`}`}>
-                        <LinkButton>
-                            <Dropdown items={dropdownsData} />
-                        </LinkButton>
+                        <Dropdown items={dropdownsData} />
                         <LinkButton to='/page/about-us'>О компании</LinkButton>
                         <LinkButton to='/page/contacts'>Контакты</LinkButton>
                         <LinkButton to='/page/delivery'>Доставка</LinkButton>
@@ -163,7 +159,12 @@ function Header( props ) {
                 <LinkButton to='/page/delivery'>Доставка</LinkButton>
                 <LinkButton to='/page/payment'>Оплата</LinkButton>
                 <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
-                <LinkButton to='/page/offer'>Оферта</LinkButton>
+                <UserIconLinks>
+                    <UserIconLink type='compare' to='/' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
+                    <UserIconLink type='heart' to='/' key={v4()}></UserIconLink>
+                    <UserIconLink type='cart' to='/' key={v4()}></UserIconLink>
+                    <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
+                </UserIconLinks>
             </div>
         </React.Fragment>
     )

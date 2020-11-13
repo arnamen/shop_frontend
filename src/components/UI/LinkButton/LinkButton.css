@@ -1,5 +1,5 @@
 .LinkButton {
-    font-size: 1.5vw;
+    font-size: inherit;
     text-transform: uppercase;
     height: 4.5vh;
     display: flex;

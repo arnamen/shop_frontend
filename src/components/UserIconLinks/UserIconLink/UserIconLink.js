@@ -16,12 +16,16 @@ const iconTypes = {
 export default function UserIconLink(props) {
     const SVGimage = iconTypes[props.type];
     let ContentMarker = null;
-
+    let className = `UserIconLink__icon 
+    ${
+    (props.white && 'UserIconLink__icon-white') || 
+    (props.active && 'UserIconLink__icon-active')
+    }`;
     if (props.markContent && props.active) ContentMarker = <div className='UserIconLink__ContentMarker'>{props.markContent}</div>
 
     return (
         <div className='UserIconLink__wrapper'>
-            <SVGimage className={`UserIconLink__icon ${props.active && 'UserIconLink__icon-active'}`} 
+            <SVGimage className={className} 
             viewBox="0 0 512 512" />
             {ContentMarker}
         </div>

@@ -11,6 +11,10 @@
     fill: black;
 }
 
+.UserIconLink__icon-white {
+    fill: white;
+}
+
 .UserIconLink__icon-active {
     fill: green;
 }

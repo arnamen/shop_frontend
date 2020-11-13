@@ -21,6 +21,7 @@
     background-color: black;
     color: white;
     padding: 0 5vw;
+    font-size: 1.5vw;
 }
 
 .header__sticky {
@@ -29,8 +30,9 @@
     position: sticky;
     top: 0;
     z-index: 999;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
+    padding-right: 0;
 }
 
 .header-bottom__hide {
