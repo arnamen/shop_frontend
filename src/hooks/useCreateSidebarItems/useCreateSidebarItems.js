@@ -8,17 +8,7 @@ import * as actionTypes from '../../store/actions/actionTypes';
 import Checkbox from '../../components/UI/Checkbox/Checkbox';
 import Sidebar from '../../components/UI/Sidebar/Sidebar';
 
-const translate = {
-    diagonal: 'Диагональ',
-    battery: 'Батарея',
-    processor: 'Процессор',
-    resolution: 'Разрешение экрана',
-    frequency: 'Частота обновлений',
-    tv: 'Телевизоры',
-    phones: 'Телефоны',
-    smartphones: 'Смартфоны',
-    categories: 'Категории'
-}
+import {translate} from '../../utils/translate';
 
 export default function useCreateSidebarItems(sidebarItemsDataOriginal) {
     let sidebarItemsData = cloneDeep(sidebarItemsDataOriginal);

@@ -14,6 +14,7 @@ import FeedbackPage from './components/InformationPages/Feedback/Feedback';
 import OfferPage from './components/InformationPages/Offer/Offer';
 import PaymentPage from './components/InformationPages/Payment/Payment';
 import ContentPage from './containers/ContentPage/ContentPage';
+import ComparePage from './components/Compare/Compare';
 
 function App(props) {
   
@@ -27,7 +28,8 @@ function App(props) {
       <Route exact path='/page/feedback' component={FeedbackPage}/>
       <Route exact path='/page/offer' component={OfferPage}/>
       <Route exact path='/page/payment' component={PaymentPage}/>
-      <Route path='/collection' component={ContentPage}/>
+      <Route exact path='/collection' component={ContentPage}/>
+      <Route exact path='/compares' component={ComparePage}/>
       <Footer/>
     </React.Fragment>
   );

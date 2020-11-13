@@ -1,0 +1,42 @@
+.Compare {
+    padding: 50px 10vw 5vh 10vw;
+}
+
+.Compare__img {
+    margin: 0 auto;
+    height: 100px;
+    display: block;
+}
+
+.Compare table {
+    max-width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.Compare th, .Compare td {
+    padding: 10px;
+    text-align: center;
+}
+
+.Compare tr {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.Compare th > span {
+    display: block;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.Compare__title {
+    border-bottom: 1px solid #eee;
+    font-size: 34px;
+    line-height: 38px;
+    padding: 0px 0px 50px;
+    margin: 0px 0px 40px;
+    text-align: center;
+    color: #000;
+    font-weight: 600;
+}

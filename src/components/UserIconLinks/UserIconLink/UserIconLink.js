@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 import './UserIconLink.css';
 
@@ -24,11 +25,11 @@ export default function UserIconLink(props) {
     if (props.markContent && props.active) ContentMarker = <div className='UserIconLink__ContentMarker'>{props.markContent}</div>
 
     return (
-        <div className='UserIconLink__wrapper'>
+        <Link to={props.to} className='UserIconLink__wrapper'>
             <SVGimage className={className} 
             viewBox="0 0 512 512" />
             {ContentMarker}
-        </div>
+        </Link>
 
     )
 }

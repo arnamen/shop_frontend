@@ -104,18 +104,6 @@ const dropdownsData = [
     },
 ]
 
-const translate = {
-    diagonal: 'Диагональ',
-    battery: 'Батарея',
-    processor: 'Процессор',
-    resolution: 'Разрешение экрана',
-    frequency: 'Частота обновлений',
-    tv: 'Телевизоры',
-    phones: 'Телефоны',
-    smartphones: 'Смартфоны',
-    categories: 'Категории'
-}
-
 function Header( props ) {
     // eslint-disable-next-line no-unused-vars
     const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
@@ -134,7 +122,7 @@ function Header( props ) {
                         <Search />
                         <Contacts />
                         <UserIconLinks>
-                            <UserIconLink type='compare' to='/' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
+                            <UserIconLink type='compare' to='/compares' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
                             <UserIconLink type='heart' to='/' key={v4()}></UserIconLink>
                             <UserIconLink type='cart' to='/' key={v4()}></UserIconLink>
                             <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
@@ -160,7 +148,7 @@ function Header( props ) {
                 <LinkButton to='/page/payment'>Оплата</LinkButton>
                 <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
                 <UserIconLinks>
-                    <UserIconLink type='compare' to='/' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
+                    <UserIconLink type='compare' to='/compares' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
                     <UserIconLink type='heart' to='/' key={v4()}></UserIconLink>
                     <UserIconLink type='cart' to='/' key={v4()}></UserIconLink>
                     <UserIconLink type='account' to='/' key={v4()}></UserIconLink>

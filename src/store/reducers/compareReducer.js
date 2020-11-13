@@ -27,6 +27,7 @@ const removeFromCompare = (state, action) => {
 
 
 const reducer = (state = iniialState, action) => {
+
     switch (action.type) {
         case actionTypes.ADD_COMPARE: return addToCompare(state, action)
         case actionTypes.REMOVE_COMPARE: return removeFromCompare(state, action);
