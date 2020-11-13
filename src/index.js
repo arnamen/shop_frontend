@@ -11,12 +11,13 @@ import './index.css';
 import loginReducer from './store/reducers/loginReducer';
 import contentReducer from './store/reducers/contentReducer';
 import filtersReducer from './store/reducers/filtersReducer';
-
+import compareReducer from './store/reducers/compareReducer';
 
 const rootReducer = combineReducers({
   login: loginReducer,
   content: contentReducer,
-  filters: filtersReducer
+  filters: filtersReducer,
+  compare: compareReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -4,3 +4,6 @@ export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const ADD_FILTERS = 'ADD_FILTERS';
 export const REMOVE_FILTERS = 'REMOVE_FILTERS';
 export const REMOVE_CATEGORY = 'REMOVE_CATEGORY';
+
+export const ADD_COMPARE = 'ADD_COMPARE';
+export const REMOVE_COMPARE = 'REMOVE_COMPARE';

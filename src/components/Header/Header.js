@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import VisibilitySensor from 'react-visibility-sensor';
+import {v4} from 'uuid';
+import { connect } from 'react-redux';
 
 import Logo from '../Logo/Logo';
 import Search from '../../containers/Search/Search';
 import UserIconLinks from '../UserIconLinks/UserIconLinks';
+import UserIconLink from '../UserIconLinks/UserIconLink/UserIconLink';
 import Contacts from '../Contacts/Contacts';
 import LinkButton from '../UI/LinkButton/LinkButton';
 import Dropdown from '../UI/Dropdown/Dropdown';
@@ -11,25 +14,6 @@ import useItemsFilter from '../../hooks/useItemsFilter/useItemsFilter';
 
 import './Header.css';
 
-
-const UserIconLinksData = [
-    {
-        type: 'compare',
-        to: '/'
-    },
-    {
-        type: 'heart',
-        to: '/'
-    },
-    {
-        type: 'cart',
-        to: '/'
-    },
-    {
-        type: 'account',
-        to: '/'
-    }
-]
 
 const dropdownsData = [
     {
@@ -132,13 +116,12 @@ const translate = {
     categories: 'Категории'
 }
 
-export default function Header( props ) {
+function Header( props ) {
     // eslint-disable-next-line no-unused-vars
     const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
     const [visible, setVisible] = useState(true)
-    console.log(availableFilters)
 
-    
+    const compareActive = props.compare.length > 0;
 
 
     return (
@@ -151,7 +134,12 @@ export default function Header( props ) {
                         <Search />
                         <Contacts />
                         <div className={`header_UserIconLinks-wrapper`}>
-                            <UserIconLinks iconData={UserIconLinksData} />
+                            <UserIconLinks>
+                                <UserIconLink type='compare' to='/' active={compareActive} key={v4()}></UserIconLink>
+                                <UserIconLink type='heart' to='/' key={v4()}></UserIconLink>
+                                <UserIconLink type='cart' to='/' key={v4()}></UserIconLink>
+                                <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
+                            </UserIconLinks>
                         </div>
                     </div>
                     <div className={`header__wrapper-bottom ${!visible && `header-bottom__hide`}`}>
@@ -180,3 +168,11 @@ export default function Header( props ) {
         </React.Fragment>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        compare: state.compare.compare,
+    };
+}
+
+export default connect(mapStateToProps)(Header)

@@ -1,9 +1,9 @@
 import React from 'react'
 import {v4} from 'uuid';
-
-
+import { connect } from 'react-redux';
 
 import Label from '../../../Label/label';
+import * as actionTypes from '../../../../../store/actions/actionTypes';
 
 import {ReactComponent as ReactCart} from '../../../../../assets/itemsCards/cart-for-card-item.svg';
 import {ReactComponent as ReactCompare} from '../../../../../assets/account/compare.svg';
@@ -14,12 +14,13 @@ import star_empty from '../../../../../assets/rating/stars/star_empty.svg';
 
 import './ItemsCard.css'
 
-export default function ItemsCard( props ) {
+
+function ItemsCard( props ) {
     const stars = [];
     let price;
     let label;
     let second_label;
-
+    const compared = !!props.compare.find(item => item.name === props.itemData.name);
 
     for (let i = 0; i < props.itemData.stars; i++) {
         stars.push(<img key={v4()} className='ItemsCard_star' src={star} alt='star'></img>)
@@ -75,10 +76,37 @@ export default function ItemsCard( props ) {
                 <div className='ItemsCard_action-wrapper' onClick={() => alert('clicked!')}>
                     <ReactHeart className='ItemsCard_action-icon ItemsCard_action-icon_heart' viewBox="0 0 512 512"/>
                 </div>
-                <div className='ItemsCard_action-wrapper' onClick={() => alert('clicked!')}>
-                    <ReactCompare className='ItemsCard_action-icon ItemsCard_action-icon_compare'/>
+                <div className='ItemsCard_action-wrapper'>
+                    <ReactCompare className={`ItemsCard_action-icon ItemsCard_action-icon_compare ${compared && 'ItemsCard_action-icon-active'}`}
+                    onClick={e => {
+                        console.log(compared)
+                        compared 
+                        ? props.onRemoveFromCompare(props.itemData)
+                        : props.onAddToCompare(props.itemData)
+                    }}/>
                 </div>
             </div>
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        compare: state.compare.compare,
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAddToCompare: (item) => dispatch({
+            type: actionTypes.ADD_COMPARE,
+            item,
+        }),
+        onRemoveFromCompare: (item) => dispatch({
+            type: actionTypes.REMOVE_COMPARE,
+            item,
+        }),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemsCard)

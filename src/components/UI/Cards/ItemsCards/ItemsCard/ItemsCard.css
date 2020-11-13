@@ -123,6 +123,10 @@
     transition: 0.5s all;
 }
 
+.ItemsCard_action-wrapper:first-child {
+    flex-grow: 1;
+}
+
 .ItemsCard_action-wrapper:nth-child(n+2) {
     float: right;
 }
@@ -135,7 +139,7 @@
     margin: 0 5px;
 }
 
-.ItemsCard_action-icon_cart {
+.ItemsCard_action-icon_cart, .ItemsCard_action-icon-active {
     fill: green;
 }
 

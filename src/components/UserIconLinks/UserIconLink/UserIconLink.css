@@ -1,0 +1,16 @@
+.UserIconLink__icon {
+    margin-top: 3px;
+    width: 3vh;
+    height: 3vh;
+    cursor: pointer;
+    margin: 0 0.5vw;
+    fill: black;
+}
+
+.UserIconLink__icon-active {
+    fill: green;
+}
+
+.UserIconLink__icon-active-red {
+    fill: red;
+}
