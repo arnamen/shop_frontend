@@ -140,7 +140,7 @@
 }
 
 .ItemsCard_action-icon_cart, .ItemsCard_action-icon-active {
-    fill: #eb5f0a;
+    fill: green;
 }
 
 .ItemsCard_action-icon-active-red {
@@ -153,7 +153,7 @@
 }
 
 .ItemsCard_action-wrapper:hover > .ItemsCard_action-icon_compare {
-    fill: #eb5f0a;
+    fill: green;
 
 }
 

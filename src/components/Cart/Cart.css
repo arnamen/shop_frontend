@@ -1,0 +1,227 @@
+.Cart {
+    padding: 50px 10vw 5vh 10vw;
+    max-width: 1140px;
+}
+
+.Cart__empty-wrapper {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    color: #999;
+}
+
+.Cart__empty-img {
+    width: 10%;
+    height: 40%;
+    fill: #999;
+}
+
+.Cart__title {
+    font-size: 34px;
+    line-height: 38px;
+    margin: 0px 0px 40px;
+    text-align: center;
+    color: #000;
+    font-weight: 600;
+}
+.Cart__content-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.Cart__items-wrapper {
+    width: 65%;
+    display: inline-block;
+}
+
+.Cart__form-wrapper {
+    max-width: 25%;
+    display: inline-block;
+}
+
+.Cart__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    padding: 3vh 0;
+}
+
+.Cart__item-image {
+    max-height: 80px;
+}
+
+.Cart__item-descr {
+    max-width: 40%;
+    font-size: 14px;
+    font-weight: 300;
+    color: black;
+    transition: 0.3s color;
+    margin-right: 5%;
+}
+
+.Cart__item-descr:hover {
+    color: #e78905;
+}
+
+.Cart__item__unit-price {
+    color: #666;
+    text-align: right;
+}
+
+.Cart__item__total-price {
+    font-weight: 700;
+    text-align: right;
+}
+
+.Cart__amount-wrapper {
+    display: flex;
+}
+
+.Cart__amount-counter, .Cart__amount {
+    text-align: center;
+    font-weight: 600;
+    border: none;
+    background-color: #f7f8fa;
+    color: #000;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 52px;
+    height: 52px;
+    outline: none;
+}
+
+.Cart__amount-counter-image {
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    fill: #999;
+    transition: 0.2s all;
+}
+
+.Cart__amount-counter {
+    cursor: pointer;
+}
+
+.Cart__amount-counter:hover .Cart__amount-counter-image {
+    width: 16px;
+    height: 16px;
+    fill: #000;
+}
+
+.Cart__trash-image {
+    width: 20px;
+    height: 20px;
+    transition: 0.2s fill;
+    cursor: pointer;
+}
+
+.Cart__trash-image:hover {
+    fill: red;
+}
+
+.Cart__checkout {
+    display: inline-flex;
+    flex-direction: column;
+    width: 25%;
+    border: 2px solid #eee;
+    height: fit-content;
+}
+
+.Cart__checkout-total-wrapper {
+    background-color: #f7f8fa;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.Cart__checkout-total {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 10px 15px;
+}
+
+.Cart__checkout-total__price {
+    float: right;
+    color: #e78905;
+}
+
+.Cart__checkout-inner {
+    padding: 0 2.5vw;
+    text-align: center;
+}
+
+.Cart__promocode-wrapper {
+    text-align: left;
+    display: flex;
+    margin-bottom: 3vh;
+}
+
+.Cart__promocode-descr {
+    font-size: 10px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.Cart__promocode-input {
+    font-size: 12px;
+    line-height: 16px;
+    outline: none;
+    width: 85%;
+    border: 1px solid #eee;
+}
+
+.Cart__promocode-submit {
+    height: 100%;
+    margin-left: 5px;
+    display: inline-flex;
+    align-items: center;
+    height: 18px;
+    margin-left: 4%;
+    cursor: pointer;
+}
+
+.Cart__promocode-submit-image {
+    height: 15px;
+    width: 15px;
+}
+
+.Cart__checkout-button {
+    background-color: #e78905;
+    color: #fff;
+    padding: 7px 15px;
+    display: block;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s background-color;
+}
+
+.Cart__checkout-button:hover {
+   background-color: #ff9705;
+}
+
+.Cart__checkout-instant-button {
+    display: block;
+    background-color: #fff;
+    color: #000;
+    margin: 15px 0;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 500;
+    background-image: linear-gradient(to right, black 69%, rgba(255,255,255,0) 0%);
+    background-position: bottom;
+    background-size: 15px 1px;
+    background-repeat: repeat-x;
+}
+
+.Cart__checkout-instant-button:hover {
+    color: #e78905;
+    background-image: linear-gradient(to right, #e78905 69%, rgba(255,255,255,0) 0%);
+ }

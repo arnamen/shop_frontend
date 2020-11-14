@@ -16,6 +16,7 @@ import PaymentPage from './components/InformationPages/Payment/Payment';
 import ContentPage from './containers/ContentPage/ContentPage';
 import ComparePage from './components/Compare/Compare';
 import FavouritesPage from './components/Favourites/Favourites';
+import CartPage from './components/Cart/Cart';
 
 function App(props) {
   
@@ -32,6 +33,7 @@ function App(props) {
       <Route exact path='/page/collection' component={ContentPage}/>
       <Route exact path='/page/compares' component={ComparePage}/>
       <Route exact path='/page/favourites' component={FavouritesPage}/>
+      <Route exact path='/page/cart' component={CartPage}/>
       <Footer/>
     </React.Fragment>
   );

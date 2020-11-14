@@ -108,9 +108,9 @@ function Header( props ) {
     // eslint-disable-next-line no-unused-vars
     const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
     const [visible, setVisible] = useState(true)
-
     const compareActive = props.compare.length > 0;
     const favouritesActive = props.favourites.length > 0;
+    const cartActive = props.cart.length > 0;
 
     return (
         <React.Fragment>
@@ -123,8 +123,8 @@ function Header( props ) {
                         <Contacts />
                         <UserIconLinks>
                             <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
-                            <UserIconLink type='heart' to='/page/favourites' key={v4()}></UserIconLink>
-                            <UserIconLink type='cart' to='/' key={v4()}></UserIconLink>
+                            <UserIconLink type='heart' to='/page/favourites'  active={favouritesActive && 'red'} markContent={props.favourites.length} key={v4()}></UserIconLink>
+                            <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}></UserIconLink>
                             <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
                         </UserIconLinks>
                     </div>
@@ -150,7 +150,7 @@ function Header( props ) {
                 <UserIconLinks>
                     <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
                     <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} key={v4()}></UserIconLink>
-                    <UserIconLink type='cart' to='/' key={v4()}></UserIconLink>
+                    <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}></UserIconLink>
                     <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
                 </UserIconLinks>
             </div>
@@ -162,6 +162,7 @@ const mapStateToProps = state => {
     return {
         compare: state.compare.compare,
         favourites: state.favourites.favourites,
+        cart: state.cart.cart,
     };
 }
 
