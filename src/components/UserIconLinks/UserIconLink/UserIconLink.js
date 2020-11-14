@@ -20,6 +20,8 @@ export default function UserIconLink(props) {
     let className = `UserIconLink__icon 
     ${
     (props.white && 'UserIconLink__icon-white') || 
+    (props.red && 'UserIconLink__icon-red') ||
+    (props.active && props.active==='red' && 'UserIconLink__icon-active-red') ||
     (props.active && 'UserIconLink__icon-active')
     }`;
     if (props.markContent && props.active) ContentMarker = <div className='UserIconLink__ContentMarker'>{props.markContent}</div>

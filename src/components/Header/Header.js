@@ -110,7 +110,7 @@ function Header( props ) {
     const [visible, setVisible] = useState(true)
 
     const compareActive = props.compare.length > 0;
-
+    const favouritesActive = props.favourites.length > 0;
 
     return (
         <React.Fragment>
@@ -122,8 +122,8 @@ function Header( props ) {
                         <Search />
                         <Contacts />
                         <UserIconLinks>
-                            <UserIconLink type='compare' to='/compares' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
-                            <UserIconLink type='heart' to='/' key={v4()}></UserIconLink>
+                            <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
+                            <UserIconLink type='heart' to='/page/favourites' key={v4()}></UserIconLink>
                             <UserIconLink type='cart' to='/' key={v4()}></UserIconLink>
                             <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
                         </UserIconLinks>
@@ -148,8 +148,8 @@ function Header( props ) {
                 <LinkButton to='/page/payment'>Оплата</LinkButton>
                 <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
                 <UserIconLinks>
-                    <UserIconLink type='compare' to='/compares' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
-                    <UserIconLink type='heart' to='/' key={v4()}></UserIconLink>
+                    <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
+                    <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} key={v4()}></UserIconLink>
                     <UserIconLink type='cart' to='/' key={v4()}></UserIconLink>
                     <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
                 </UserIconLinks>
@@ -161,6 +161,7 @@ function Header( props ) {
 const mapStateToProps = state => {
     return {
         compare: state.compare.compare,
+        favourites: state.favourites.favourites,
     };
 }
 

@@ -143,6 +143,10 @@
     fill: #eb5f0a;
 }
 
+.ItemsCard_action-icon-active-red {
+    fill: red;
+}
+
 .ItemsCard_action-wrapper:hover > .ItemsCard_action-icon_cart, .ItemsCard_action-wrapper:hover {
     fill: black;
     color: black;

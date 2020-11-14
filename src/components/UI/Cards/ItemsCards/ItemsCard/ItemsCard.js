@@ -21,6 +21,7 @@ function ItemsCard( props ) {
     let label;
     let second_label;
     const compared = !!props.compare.find(item => item.name === props.itemData.name);
+    const favored = !!props.favourites.find(item => item.name === props.itemData.name);
 
     for (let i = 0; i < props.itemData.stars; i++) {
         stars.push(<img key={v4()} className='ItemsCard_star' src={star} alt='star'></img>)
@@ -73,8 +74,13 @@ function ItemsCard( props ) {
                     <ReactCart className='ItemsCard_action-icon ItemsCard_action-icon_cart'/>
                     <span>В корзину</span>
                 </div>
-                <div className='ItemsCard_action-wrapper' onClick={() => alert('clicked!')}>
-                    <ReactHeart className='ItemsCard_action-icon ItemsCard_action-icon_heart' viewBox="0 0 512 512"/>
+                <div className='ItemsCard_action-wrapper'>
+                    <ReactHeart className={`ItemsCard_action-icon ItemsCard_action-icon_heart ${favored && 'ItemsCard_action-icon-active-red'}`} viewBox="0 0 512 512"
+                    onClick={e => {
+                        favored 
+                        ? props.onRemoveFromFavourites(props.itemData)
+                        : props.onAddToFavorites(props.itemData)
+                    }}/>
                 </div>
                 <div className='ItemsCard_action-wrapper'>
                     <ReactCompare className={`ItemsCard_action-icon ItemsCard_action-icon_compare ${compared && 'ItemsCard_action-icon-active'}`}
@@ -92,6 +98,7 @@ function ItemsCard( props ) {
 const mapStateToProps = state => {
     return {
         compare: state.compare.compare,
+        favourites: state.favourites.favourites,
     };
 }
 
@@ -103,6 +110,14 @@ const mapDispatchToProps = (dispatch) => {
         }),
         onRemoveFromCompare: (item) => dispatch({
             type: actionTypes.REMOVE_COMPARE,
+            item,
+        }),
+        onAddToFavorites: (item) => dispatch({
+            type: actionTypes.ADD_FAVOURITES,
+            item,
+        }),
+        onRemoveFromFavourites: (item) => dispatch({
+            type: actionTypes.REMOVE_FAVOURITES,
             item,
         }),
     }

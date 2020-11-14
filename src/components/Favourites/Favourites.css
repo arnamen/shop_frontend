@@ -1,0 +1,27 @@
+.Favourites {
+    padding: 50px 10vw 5vh 10vw;
+}
+
+.Favourites__empty-wrapper {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    color: #999;
+}
+
+.Favourites__empty-img {
+    width: 15%;
+    height: 40%;
+    fill: #999;
+}
+
+.Favourites__title {
+    border-bottom: 1px solid #eee;
+    font-size: 34px;
+    line-height: 38px;
+    padding: 0px 0px 50px;
+    margin: 0px 0px 40px;
+    text-align: center;
+    color: #000;
+    font-weight: 600;
+}

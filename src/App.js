@@ -15,6 +15,7 @@ import OfferPage from './components/InformationPages/Offer/Offer';
 import PaymentPage from './components/InformationPages/Payment/Payment';
 import ContentPage from './containers/ContentPage/ContentPage';
 import ComparePage from './components/Compare/Compare';
+import FavouritesPage from './components/Favourites/Favourites';
 
 function App(props) {
   
@@ -28,8 +29,9 @@ function App(props) {
       <Route exact path='/page/feedback' component={FeedbackPage}/>
       <Route exact path='/page/offer' component={OfferPage}/>
       <Route exact path='/page/payment' component={PaymentPage}/>
-      <Route exact path='/collection' component={ContentPage}/>
-      <Route exact path='/compares' component={ComparePage}/>
+      <Route exact path='/page/collection' component={ContentPage}/>
+      <Route exact path='/page/compares' component={ComparePage}/>
+      <Route exact path='/page/favourites' component={FavouritesPage}/>
       <Footer/>
     </React.Fragment>
   );
