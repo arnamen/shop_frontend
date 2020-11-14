@@ -14,19 +14,19 @@ import './Cart.css';
 
 function Cart(props) {
 
-    console.log(props.cart)
-
     const content = props.cart.map(item => {
-        return <div className='Cart__item' key={v4()}>
-            <div>
-                <img src={item.image_main} className='Cart__item-image' alt='item_image' />
+        return <tr className='Cart__item' key={v4()}>
+            <td>
+            <div className='Cart__item__image-wrapper'>
+                <img src={item.image_main} className='Cart__item__image' alt='item_image' />
             </div>
-            <Link to='/' className='Cart__item-descr'>{item.name}</Link>
-            <div>
+            </td>
+            <td><Link to='/' className='Cart__item-descr'>{item.name}</Link></td>
+            <td>
                 <div className='Cart__item__unit-price'>{`${item.amount} × ${item.price}₴`}</div>
                 <div className='Cart__item__total-price'>{`${(item.amount * item.price).toFixed()}₴`}</div>
-            </div>
-            <div className='Cart__amount-wrapper'>
+            </td>
+            <td className='Cart__amount-wrapper'>
                 <button className='Cart__amount-counter' onClick={() => props.onDecreaseItemInCart(item)}>
                     <ReactDecrease className='Cart__amount-counter-image' />
                 </button>
@@ -34,16 +34,16 @@ function Cart(props) {
                 <button className='Cart__amount-counter' onClick={() => props.onIncreaseItemInCart(item)}>
                     <ReactIncrease className='Cart__amount-counter-image' />
                 </button>
-            </div>
-            <div onClick={() => props.onRemoveFromCart(item)}>
+            </td>
+            <td onClick={() => props.onRemoveFromCart(item)}>
                 <ReactTrash className='Cart__trash-image' />
-            </div>
-        </div>
+            </td>
+        </tr>
     })
 
     let totalPrice = 0;
     props.cart.forEach(item => {
-        totalPrice += item.price;
+        totalPrice += item.price * item.amount;
     });
 
     const proceedForm = <form className='Cart__checkout'>
@@ -70,9 +70,11 @@ function Cart(props) {
                 ? <React.Fragment>
                     <h1 className='Cart__title'>Корзина</h1>
                     <div className='Cart__content-wrapper'>
-                        <div className='Cart__items-wrapper'>
+                        <table className='Cart__items-wrapper'>
+                            <tbody>
                             {content}
-                        </div>
+                            </tbody>
+                        </table>
                         <div className='Cart__form-wrapper'></div>
                         {proceedForm}
                     </div>
