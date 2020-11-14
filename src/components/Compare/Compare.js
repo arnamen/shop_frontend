@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import {v4} from 'uuid';
+import {Link} from 'react-router-dom';
 
 import {translate} from '../../utils/translate';
 
@@ -9,11 +10,13 @@ import './Compare.css';
 function Compare( props ) {
 
     const tableHead = <tr>
-        <th>Предмет</th>
+        <th>Товар</th>
         {props.compare.map(item => {
             return <th style={{width: (100 / Math.max(props.compare.length, 1)) + '%'}} key={v4()}>
+                <Link to='/'>
                 <img src={item.image_main} className='Compare__img' alt='compare_item_img'></img>
                 <span>{item.name}</span>
+                </Link>
             </th>
         })}
     </tr>
@@ -34,7 +37,16 @@ function Compare( props ) {
         })}
         </tr>
     })
-    console.log(tableBody)
+    
+    const tableFooter = <tr>
+    <td></td>
+    {props.compare.map(item => {
+        return <td style={{width: (100 / Math.max(props.compare.length, 1)) + '%'}} key={v4()}>
+            <button><span>Удалить</span></button>
+        </td>
+    })}
+</tr>
+
     return (
         <div className='Compare'>
             <h1 className='Compare__title'>Сравнение товаров</h1>
@@ -45,6 +57,9 @@ function Compare( props ) {
                 <tbody>
                     {tableBody}
                 </tbody>
+                <tfoot>
+                    {tableFooter}
+                </tfoot>
             </table>
         </div>
     )

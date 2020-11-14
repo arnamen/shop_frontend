@@ -24,10 +24,36 @@
     border-bottom: 1px solid #eee;
 }
 
-.Compare th > span {
+.Compare th > a > span {
     display: block;
     max-width: 200px;
     margin: 0 auto;
+}
+
+.Compare button {
+    outline: none;
+    background-color: transparent;
+    color: black;
+    border: none;
+    background-image: linear-gradient(to left, black 50%, rgba(255,255,255,0) 0%);
+    background-position: bottom;
+    background-size: 6px 1px;
+    background-repeat: repeat-x;
+    cursor: pointer;
+}
+
+.Compare a {
+    color: black;
+    transition: 0.5s color;
+}
+
+.Compare a:hover {
+    color: #e78905;
+}
+
+.Compare button:hover {
+    background-image: linear-gradient(to left, #e78905 50%, rgba(255,255,255,0) 0%);
+    color: #e78905;
 }
 
 .Compare__title {
