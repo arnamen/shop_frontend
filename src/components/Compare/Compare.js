@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import {v4} from 'uuid';
 import {Link} from 'react-router-dom';
 
+import * as actionTypes from '../../store/actions/actionTypes';
+
+import {ReactComponent as ReactCompare} from '../../assets/account/compare.svg';
+
 import {translate} from '../../utils/translate';
 
 import './Compare.css';
@@ -41,8 +45,10 @@ function Compare( props ) {
     const tableFooter = <tr>
     <td></td>
     {props.compare.map(item => {
-        return <td style={{width: (100 / Math.max(props.compare.length, 1)) + '%'}} key={v4()}>
-            <button><span>Удалить</span></button>
+        return <td key={v4()}>
+            <button onClick={e => props.onRemoveFromCompare(item)}>
+                <span>Удалить</span>
+            </button>
         </td>
     })}
 </tr>
@@ -50,17 +56,22 @@ function Compare( props ) {
     return (
         <div className='Compare'>
             <h1 className='Compare__title'>Сравнение товаров</h1>
-            <table>
-                <thead>
-                    {tableHead}
-                </thead>
-                <tbody>
-                    {tableBody}
-                </tbody>
-                <tfoot>
-                    {tableFooter}
-                </tfoot>
-            </table>
+            {props.compare.length > 0 
+            ? <table>
+            <thead>
+                {tableHead}
+            </thead>
+            <tbody>
+                {tableBody}
+            </tbody>
+            <tfoot>
+                {tableFooter}
+            </tfoot>
+        </table>
+        : <div className='Compare__empty-wrapper'>
+                <ReactCompare className='Compare__empty-img' viewBox="0 0 512 512"/>
+                <p>Похоже, тут ничего нету</p>
+            </div>}
         </div>
     )
 }
@@ -71,4 +82,12 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps)(Compare)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onRemoveFromCompare: (item) => dispatch({
+            type: actionTypes.REMOVE_COMPARE,
+            item,
+        }),
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Compare)
