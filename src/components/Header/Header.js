@@ -12,6 +12,8 @@ import LinkButton from '../UI/LinkButton/LinkButton';
 import Dropdown from '../UI/Dropdown/Dropdown';
 import Popup from '../UI/Popup/Popup';
 
+import * as actionTypes from '../../store/actions/actionTypes';
+
 import useItemsFilter from '../../hooks/useItemsFilter/useItemsFilter';
 
 import './Header.css';
@@ -125,7 +127,7 @@ function Header( props ) {
                         <Contacts />
                         <UserIconLinks>
                             <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
-                                <Popup content={props.content}/>
+                                <Popup content={props.compare} type='compare' onDelete={props.onRemoveFromCart}/>
                             </UserIconLink>
                             <UserIconLink type='heart' to='/page/favourites'  active={favouritesActive && 'red'} markContent={props.favourites.length} key={v4()}></UserIconLink>
                             <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}></UserIconLink>
@@ -170,4 +172,21 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps)(Header)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onRemoveFromCompare: (item) => dispatch({
+            type: actionTypes.REMOVE_COMPARE,
+            item,
+        }),
+        onRemoveFromFavourites: (item) => dispatch({
+            type: actionTypes.REMOVE_FAVOURITES,
+            item,
+        }),
+        onRemoveFromCart: (item) => dispatch({
+            type: actionTypes.REMOVE_FROM_CART,
+            item,
+        }),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

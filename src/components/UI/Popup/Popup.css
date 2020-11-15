@@ -1,25 +1,70 @@
 .Popup {
     position: absolute;
     right: 0px;
-    height: 100px;
-    width: 100px;
+    min-width: 200px;
     background-color: white;
     z-index: 999;
     margin-top: 3px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    cursor: default;
 }
 
 .Popup::before {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: -6px;
-        width: 0;
-        height: 0;
-        background-color: transparent;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-bottom: 8px solid #fff;
-        z-index: -1;
+    content: '';
+    position: relative;
+    left: calc(100% - 34px);
+    top: -25px;
+    width: 0;
+    height: 0;
+    background-color: transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 8px solid #fff;
+    z-index: -1;
 }
 
+.Popup__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vh 1vw;
+}
+
+.Popup__item__image-wrapper {
+    text-align: center;
+    width: 75px;
+}
+
+.Popup__item__image {
+    max-height: 65px;
+    max-width: 100%;
+}
+
+.Popup__item-descr {
+    width: 205px;
+    display: block;
+    text-align: left;
+    margin: 0 15px;
+    font-size: 14px;
+    font-weight: 300;
+    color: black;
+    transition: 0.3s color;
+}
+
+.Popup__item-descr:hover {
+    color: #e78905;
+}
+
+.Popup__item__unit-price {
+    color: #000;
+    text-align: left;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.Popup__trash-image {
+    width: 20px;
+    height: 20px;
+    transition: 0.2s fill;
+    cursor: pointer;
+}
