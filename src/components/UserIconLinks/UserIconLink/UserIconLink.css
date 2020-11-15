@@ -3,8 +3,18 @@
 }
 
 .UserIconLink__wrapper .Popup {
-    display: block;
+    z-index: -999;
 }
+
+
+
+.UserIconLink__wrapper:hover .Popup {
+    /* display: block; */
+    margin-top: 8px;
+    opacity: 1;
+    z-index: 999;
+}
+
 
 .UserIconLink__icon {
     margin-top: 4px;

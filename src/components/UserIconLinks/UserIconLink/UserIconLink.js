@@ -26,14 +26,14 @@ export default function UserIconLink(props) {
     if (props.markContent && props.active) ContentMarker = <div className='UserIconLink__ContentMarker'>{props.markContent}</div>
 
     return (
-        <React.Fragment>
-            <Link to={props.to} className='UserIconLink__wrapper'>
+        <div className='UserIconLink__wrapper'>
+            <Link to={props.to}>
                 <SVGimage className={className}
                     viewBox="0 0 512 512" />
                 {ContentMarker}
 
             </Link>
             {props.children}
-        </React.Fragment>
+        </div>
     )
 }

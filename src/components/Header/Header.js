@@ -127,10 +127,14 @@ function Header( props ) {
                         <Contacts />
                         <UserIconLinks>
                             <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
-                                <Popup content={props.compare} type='compare' onDelete={props.onRemoveFromCart}/>
+                                <Popup content={props.compare} type='compare' onDelete={props.onRemoveFromCompare}/>
                             </UserIconLink>
-                            <UserIconLink type='heart' to='/page/favourites'  active={favouritesActive && 'red'} markContent={props.favourites.length} key={v4()}></UserIconLink>
-                            <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}></UserIconLink>
+                            <UserIconLink type='heart' to='/page/favourites'  active={favouritesActive && 'red'} markContent={props.favourites.length} key={v4()}>
+                            <Popup content={props.favourites} type='favourites' onDelete={props.onRemoveFromFavourites}/>
+                            </UserIconLink>
+                            <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
+                                <Popup content={props.cart} type='cart' onDelete={props.onRemoveFromCart}/>
+                            </UserIconLink>
                             <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
                         </UserIconLinks>
                     </div>
