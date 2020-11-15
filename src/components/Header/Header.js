@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import VisibilitySensor from 'react-visibility-sensor';
-import {v4} from 'uuid';
+import { v4 } from 'uuid';
 import { connect } from 'react-redux';
 
 import Logo from '../Logo/Logo';
@@ -22,7 +22,7 @@ import './Header.css';
 const dropdownsData = [
     {
         text: 'Каталог товаров',
-        to: '/collection?all=true',
+        to: '/page/collection',
         children: [{
             text: 'cart',
             to: '/'
@@ -108,7 +108,7 @@ const dropdownsData = [
     },
 ]
 
-function Header( props ) {
+function Header(props) {
     // eslint-disable-next-line no-unused-vars
     const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
     const [visible, setVisible] = useState(true)
@@ -127,13 +127,13 @@ function Header( props ) {
                         <Contacts />
                         <UserIconLinks>
                             <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
-                                <Popup content={props.compare} type='compare' onDelete={props.onRemoveFromCompare}/>
+                                <Popup content={props.compare} type='compare' onDelete={props.onRemoveFromCompare} />
                             </UserIconLink>
-                            <UserIconLink type='heart' to='/page/favourites'  active={favouritesActive && 'red'} markContent={props.favourites.length} key={v4()}>
-                            <Popup content={props.favourites} type='favourites' onDelete={props.onRemoveFromFavourites}/>
+                            <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} key={v4()}>
+                                <Popup content={props.favourites} type='favourites' onDelete={props.onRemoveFromFavourites} />
                             </UserIconLink>
                             <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
-                                <Popup content={props.cart} type='cart' onDelete={props.onRemoveFromCart}/>
+                                <Popup content={props.cart} type='cart' onDelete={props.onRemoveFromCart} />
                             </UserIconLink>
                             <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
                         </UserIconLinks>
@@ -158,9 +158,15 @@ function Header( props ) {
                 <LinkButton to='/page/payment'>Оплата</LinkButton>
                 <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
                 <UserIconLinks>
-                    <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}></UserIconLink>
-                    <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} key={v4()}></UserIconLink>
-                    <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}></UserIconLink>
+                    <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
+                        <Popup content={props.compare} type='compare' onDelete={props.onRemoveFromCompare} />
+                    </UserIconLink>
+                    <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} key={v4()}>
+                        <Popup content={props.favourites} type='favourites' onDelete={props.onRemoveFromFavourites} />
+                    </UserIconLink>
+                    <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
+                        <Popup content={props.cart} type='cart' onDelete={props.onRemoveFromCart} />
+                    </UserIconLink>
                     <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
                 </UserIconLinks>
             </div>

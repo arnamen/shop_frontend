@@ -46,7 +46,7 @@ export default function Popup(props) {
         content.push(<div key={v4()}>
             <div className='Popup__empty-wrapper'>
                 <ImageEmpty className='Popup__empty-img' viewBox="0 0 512 512" />
-                <p>{popupMessages.empty[props.type]}</p>
+                <div>{popupMessages.empty[props.type]}</div>
             </div>
         </div>)
     }
