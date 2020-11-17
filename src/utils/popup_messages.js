@@ -52,6 +52,10 @@ export const popupMessages = {
             title: 'Перейти к сравению',
             to: '/page/compares'
         },
+        account: {
+            title: 'Регистрация',
+            to: '/'
+        },
         default: {
             title: 'На главную',
             to: '/'
@@ -61,6 +65,10 @@ export const popupMessages = {
         cart: {
             title: 'Перейти к оплате',
             action: '/page/cart'
+        },
+        account: {
+            title: 'Авторизация',
+            action: '/'
         },
     }
 }

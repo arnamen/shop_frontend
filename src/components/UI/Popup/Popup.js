@@ -6,20 +6,26 @@ import { ReactComponent as ReactCart } from '../../../assets/itemsCards/cart-for
 import { ReactComponent as ReactCompare } from '../../../assets/account/compare.svg';
 import { ReactComponent as ReactHeart } from '../../../assets/account/heart.svg';
 import { ReactComponent as ReactTrash } from '../../../assets/misc/trash.svg';
+import { ReactComponent as ReactAccount } from '../../../assets/account/account.svg';
 
-import {popupMessages} from '../../../utils/popup_messages';
+import { popupMessages } from '../../../utils/popup_messages';
 
 import './Popup.css';
 
 const typeImages = {
     cart: ReactCart,
     compare: ReactCompare,
-    favourites: ReactHeart
+    favourites: ReactHeart,
+    account: ReactAccount
 }
 
 export default function Popup(props) {
 
     const content = [];
+
+    let redirectButton;
+    let actionButton;
+
     if (props.content && props.content.length > 0)
         props.content.forEach(item => {
             content.push(<tr className='Popup__item' key={v4()}>
@@ -41,8 +47,8 @@ export default function Popup(props) {
                 </td>
             </tr>)
         });
-    else {
-        const ImageEmpty = typeImages[props.type] || <React.Fragment/>
+    else if (props.content && props.content.length === 0) {
+        const ImageEmpty = typeImages[props.type] || <React.Fragment />;
         content.push(<div key={v4()}>
             <div className='Popup__empty-wrapper'>
                 <ImageEmpty className='Popup__empty-img' viewBox="0 0 512 512" />
@@ -50,12 +56,22 @@ export default function Popup(props) {
             </div>
         </div>)
     }
-
-    const redirectButton = popupMessages.redirectButton[props.type];
-    const actionButton = popupMessages.actionButton[props.type];
+    else {
+        //отобразить кнопки если контент для формирования таблицы не указан
+        redirectButton = popupMessages.redirectButton[props.type];
+        actionButton = popupMessages.actionButton[props.type];
+        //
+        const ImageEmpty = typeImages[props.type] || <React.Fragment />;
+        content.push(<div key={v4()}>
+            <div className='Popup__empty-wrapper'>
+                <ImageEmpty className='Popup__empty-img' viewBox="0 0 512 512" />
+                <div>{popupMessages.empty[props.type]}</div>
+            </div>
+        </div>)
+        }
     return (
         <div className='Popup' onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}>
-            {props.content.length > 0
+            {props.content && props.content.length > 0
                 ? <React.Fragment>
                     <p>{popupMessages.full[props.type || 'default'](props.content.length)}</p>
                     <table>
@@ -68,7 +84,13 @@ export default function Popup(props) {
                         </tbody>
                     </table>
                 </React.Fragment>
-                : content}
+                : <div>
+                    {content}
+                    <div className={actionButton && 'Popup__actions-wrapper' /* применять стиль только когда надо расположить несколько кнопок */}>
+                        <div>{redirectButton && <Link className='Popup__redirect-button' to={redirectButton.to}>{redirectButton.title}</Link>}</div>
+                        <div>{actionButton && <Link className='Popup__action-button' to={actionButton.action}>{actionButton.title}</Link>}</div>
+                    </div>
+                </div>}
         </div>
     )
 }

@@ -135,7 +135,9 @@ function Header(props) {
                             <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
                                 <Popup content={props.cart} type='cart' onDelete={props.onRemoveFromCart} />
                             </UserIconLink>
-                            <UserIconLink type='account' to='/' key={v4()}></UserIconLink>
+                            <UserIconLink type='account' to='/' key={v4()}>
+                            <Popup type='account' onDelete={props.onRemoveFromCart}/>
+                            </UserIconLink>
                         </UserIconLinks>
                     </div>
                     <div className={`header__wrapper-bottom ${!visible && `header-bottom__hide`}`}>
