@@ -13,7 +13,7 @@
 }
 
 .logo__image-wrapper {
-    height: 15vh;
+    height: 13vh;
     display: flex;
 }
 
@@ -56,6 +56,6 @@
 
 .logo__subtitle {
     font-weight: 700;
-    font-size: 3.5vh;
+    font-size: 2.5vh;
     color: #e78905;
 }

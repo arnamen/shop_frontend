@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 16.5vh;
+    height: 13.5vh;
     padding: 0 2vw;
 }
 
@@ -33,11 +33,15 @@
     background-color: white;
     color: black;
     padding-right: 0;
-    box-shadow: 0px 3px 5px -3px rgba(0, 0, 0, 0.3)
+    box-shadow: 0px 3px 5px -3px rgba(0, 0, 0, 0.3);
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
 
 .header-bottom__hide {
+    transition: 0.5s opacity, 0.5s;
     overflow: hidden;
     opacity: 0;
     height: 0;
+    padding: 0;
 }

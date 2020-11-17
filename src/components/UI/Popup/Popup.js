@@ -51,13 +51,21 @@ export default function Popup(props) {
         </div>)
     }
 
+    const redirectButton = popupMessages.redirectButton[props.type];
+    const actionButton = popupMessages.actionButton[props.type];
     return (
         <div className='Popup' onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}>
             {props.content.length > 0
                 ? <React.Fragment>
                     <p>{popupMessages.full[props.type || 'default'](props.content.length)}</p>
                     <table>
-                        <tbody>{content}</tbody>
+                        <tbody>
+                            {content}
+                            <tr className={actionButton && 'Popup__actions-wrapper' /* применять стиль только когда надо расположить несколько кнопок */}>
+                                <td>{redirectButton && <Link className='Popup__redirect-button' to={redirectButton.to}>{redirectButton.title}</Link>}</td>
+                                <td>{actionButton && <Link className='Popup__action-button' to={actionButton.action}>{actionButton.title}</Link>}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </React.Fragment>
                 : content}

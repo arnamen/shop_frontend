@@ -38,6 +38,30 @@ export const popupMessages = {
         favourites: favouritesWithItemsMessage,
         compare: compareWithItemsMessage,
         default: defaultMessage
+    },
+    redirectButton: {
+        cart: {
+            title: 'Открыть корзину',
+            to: '/page/cart'
+        },
+        favourites: {
+            title: 'Перейти к избранному',
+            to: '/page/favourites'
+        },
+        compare: {
+            title: 'Перейти к сравению',
+            to: '/page/compares'
+        },
+        default: {
+            title: 'На главную',
+            to: '/'
+        }
+    },
+    actionButton: {
+        cart: {
+            title: 'Перейти к оплате',
+            action: '/page/cart'
+        },
     }
 }
 

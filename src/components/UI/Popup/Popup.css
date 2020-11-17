@@ -53,11 +53,11 @@
 }
 
 .Popup__item-descr {
-    width: 205px;
+    width: 160px;
     display: block;
     text-align: left;
     margin: 0 15px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 300;
     color: black;
     transition: 0.3s color;
@@ -93,4 +93,32 @@
     width: 20%;
     height: 40%;
     fill: #999;
+}
+
+.Popup__actions-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Popup__actions-wrapper td {
+    margin: 0;
+}
+
+.Popup__redirect-button, .Popup__action-button {
+    font-size: 10px;
+    line-height: 17px;
+    background-color: #0bb648;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 5px 10px;
+    font-weight: 700;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.Popup__action-button {
+    background-color: #3095dd;
 }
