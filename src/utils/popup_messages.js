@@ -70,6 +70,10 @@ export const popupMessages = {
             title: 'Авторизация',
             action: '/'
         },
+        authenticated: {
+            title: 'Выйти',
+            action: '/'
+        }
     }
 }
 

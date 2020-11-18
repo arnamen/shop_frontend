@@ -1,0 +1,21 @@
+.PopupList ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.PopupList li {
+    padding-bottom: 10px;
+}
+
+.PopupList a {
+    color: black;
+    transition: 0.5s color;
+    font-weight: 300;
+    display: block;
+    font-size: 16px;
+}
+
+.PopupList a:hover {
+    color: #e78905;
+}

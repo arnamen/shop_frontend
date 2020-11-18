@@ -1,0 +1,18 @@
+.PopupEmpty__wrapper {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.PopupEmpty__img {
+    margin-top: 5%;
+    width: 20%;
+    height: 40%;
+    fill: #999;
+}
+
+.PopupEmpty__message {
+    font-size: 16px;
+}

@@ -16,7 +16,6 @@
     pointer-events: all;
 }
 
-
 .UserIconLink__icon {
     width: 24px;
     height: 24px;
@@ -36,6 +35,10 @@
 
 .UserIconLink__icon-active-red {
     fill: red;
+}
+
+.UserIconLink__icon-active-orange {
+    fill: #e78905;
 }
 
 .UserIconLink__ContentMarker {

@@ -1,0 +1,45 @@
+.PopupItemsTable__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vh 1vw;
+}
+
+.PopupItemsTable__item__image-wrapper {
+    text-align: center;
+    width: 75px;
+}
+
+.PopupItemsTable__item__image {
+    max-height: 65px;
+    max-width: 100%;
+}
+
+.PopupItemsTable__item-descr {
+    width: 160px;
+    display: block;
+    text-align: left;
+    margin: 0 15px;
+    font-size: 12px;
+    font-weight: 300;
+    color: black;
+    transition: 0.3s color;
+}
+
+.PopupItemsTable__item-descr:hover {
+    color: #e78905;
+}
+
+.PopupItemsTable__item__unit-price {
+    color: #000;
+    text-align: left;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.PopupItemsTable__trash-image {
+    width: 20px;
+    height: 20px;
+    transition: 0.2s fill;
+    cursor: pointer;
+}
