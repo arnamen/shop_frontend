@@ -1,0 +1,47 @@
+.Modal__background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Modal__wrapper {
+    width: 50%;
+    height: 30%;
+    height: fit-content;
+    background-color: white;
+}
+
+.Modal__title {
+    width: 100%;
+    padding: 1rem .5rem;
+    background: #2a006e;
+    color: #fff;
+}
+
+.Modal__content {
+    padding: 1rem .5rem;
+}
+
+.Modal__actions {
+    padding: 1rem .5rem;
+}
+
+.Modal__button {
+    font: inherit;
+    padding: .5rem 1.5rem;
+    border: 1px solid #f05;
+    border-radius: 4px;
+    background: #f05;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 1rem;
+    text-decoration: none;
+    display: inline-block;
+}

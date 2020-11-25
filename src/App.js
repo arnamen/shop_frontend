@@ -6,6 +6,7 @@ import {loginTest} from './store/actions/login';
 import Header from './components/Header/Header';
 import MainPage from './containers/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
+import Modal from './components/UI/Modal/Modal';
 
 import AboutUsPage from './components/InformationPages/AboutUs/AboutUs';
 import ContactsPage from './components/InformationPages/Contacts/Contacts';

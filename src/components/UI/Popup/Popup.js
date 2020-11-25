@@ -19,7 +19,8 @@ export default function Popup(props) {
     if (props.items && props.items.length > 0) content = <PopupItemsTable content={props.items} onDelete={props.onDelete}/>
     else if(props.listData) content = <PopupList listData={props.listData}/>
     else if ((props.content && props.content.length === 0) || !props.content) content = <PopupEmpty type={props.type}/>
-
+    //если в props указано redirectButton или redirectButtonNotEmpty (показывать кнопу только если есть товары)
+    //то показать кнопку
     if (props.redirectButton || (props.redirectButtonNotEmpty && props.items && props.items.length > 0)) {
         try {
             let redirectButtonData = popupMessages.redirectButton[props.type];
@@ -28,7 +29,8 @@ export default function Popup(props) {
             console.log('Не получилось создать кнопку редиректа в Popup')
         }
     }
-
+    //если в props указано actionButton или actionButtonNotEmpty (показывать кнопу только если есть товары)
+    //то показать кнопку
     if (props.actionButton || (props.actionButtonNotEmpty && props.items && props.items.length > 0)) {
         try {
             let actionButtonData = popupMessages.actionButton[props.type];

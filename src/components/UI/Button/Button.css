@@ -1,0 +1,13 @@
+.Button {
+    font-size: 10px;
+    line-height: 17px;
+    background-color: #3095dd;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 5px 10px;
+    font-weight: 700;
+    margin: 0 auto;
+    outline: none;
+}

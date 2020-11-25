@@ -154,7 +154,7 @@ function Header(props) {
                             <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
                                 <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart} />
                             </UserIconLink>
-                            <UserIconLink type='account' to='/' key={v4()} active activeColor='orange'>
+                            <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
                                 {props.login
                                     ? <Popup type='authenticated' actionButton listData={AccountListData} />
                                     : <Popup type='account' redirectButton actionButton />}
@@ -190,7 +190,7 @@ function Header(props) {
                     <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
                         <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart} />
                     </UserIconLink>
-                    <UserIconLink type='account' to='/' key={v4()} active activeColor='orange'>
+                    <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
                         {props.login
                             ? <Popup type='authenticated' actionButton listData={AccountListData} />
                             : <Popup type='account' redirectButton actionButton />}
