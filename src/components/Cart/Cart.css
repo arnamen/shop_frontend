@@ -29,7 +29,6 @@
 }
 .Cart__items-wrapper {
     width: 70%;
-    display: inline-block;
 }
 
 .Cart__form-wrapper {
@@ -83,37 +82,6 @@
 
 .Cart__amount-wrapper {
     display: flex;
-}
-
-.Cart__amount-counter, .Cart__amount {
-    text-align: center;
-    font-weight: 600;
-    border: none;
-    background-color: #f7f8fa;
-    color: #000;
-    padding-left: 0px;
-    padding-right: 0px;
-    width: 52px;
-    height: 52px;
-    outline: none;
-}
-
-.Cart__amount-counter-image {
-    width: 15px;
-    height: 15px;
-    text-align: center;
-    fill: #999;
-    transition: 0.2s all;
-}
-
-.Cart__amount-counter {
-    cursor: pointer;
-}
-
-.Cart__amount-counter:hover .Cart__amount-counter-image {
-    width: 16px;
-    height: 16px;
-    fill: #000;
 }
 
 .Cart__trash-image {

@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { v4 } from 'uuid';
 import { Link } from 'react-router-dom';
 
+import Counter from '../Counter/Counter';
+
 import * as actionTypes from '../../store/actions/actionTypes';
 
 import { ReactComponent as ReactCart } from '../../assets/itemsCards/cart-for-card-item.svg';
-import { ReactComponent as ReactIncrease } from '../../assets/counter/counter-increase.svg';
-import { ReactComponent as ReactDecrease } from '../../assets/counter/counter-decrease.svg';
 import { ReactComponent as ReactTrash } from '../../assets/misc/trash.svg';
 import { ReactComponent as ReactCheckmark } from '../../assets/misc/checkmark.svg';
 import './Cart.css';
@@ -27,13 +27,9 @@ function Cart(props) {
                 <div className='Cart__item__total-price'>{`${(item.amount * item.price).toFixed()}₴`}</div>
             </td>
             <td className='Cart__amount-wrapper'>
-                <button className='Cart__amount-counter' onClick={() => props.onDecreaseItemInCart(item)}>
-                    <ReactDecrease className='Cart__amount-counter-image' />
-                </button>
-                <input className='Cart__amount' type='text' defaultValue={item.amount} />
-                <button className='Cart__amount-counter' onClick={() => props.onIncreaseItemInCart(item)}>
-                    <ReactIncrease className='Cart__amount-counter-image' />
-                </button>
+                <Counter defaultValue={item.amount}
+                onClickDecrease = {() => props.onDecreaseItemInCart(item)}
+                onClickIncrease={() => props.onIncreaseItemInCart(item)}/>
             </td>
             <td onClick={() => props.onRemoveFromCart(item)}>
                 <ReactTrash className='Cart__trash-image' />
