@@ -50,9 +50,10 @@
     min-width: 10vw;
 }
 
-.CategoriesCard_image-wrapper {
+.CategoriesCard_wrapper {
     height: 100%;
     width: 100%;
     display: block;
+    position: relative;
 }
 

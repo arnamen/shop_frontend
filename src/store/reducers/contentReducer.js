@@ -20,7 +20,8 @@ const iniialState = {
             price: 1000,
             old_price: 1500,
             stars: 3,
-            to: '/'
+            to: '/',
+            id: 'Samsung-Galaxy-M31s'
         },
         {
             name: 'Мобильный телефон Nokia 5.3 4/64GB DualSim Charcoal',
@@ -34,7 +35,7 @@ const iniialState = {
             image_secondary: smartphone2_back,
             price: 1500,
             stars: 5,
-            to: '/'
+            id: 'Nokia-5.3-DualSim-Charcoal'
         },
         {
             name: 'Телевизор Xiaomi Mi LED TV 4A 32"',
@@ -49,7 +50,7 @@ const iniialState = {
             price: 1030,
             old_price: 1400,
             stars: 4,
-            to: '/'
+            id: 'Xiaomi-Mi-LED-TV-4A-32'
         },
     ]
 }

@@ -57,14 +57,14 @@ function ItemsCard( props ) {
         } else if(generateLabel >= 0.5) label = <Label type='blue'>НОВИНКА</Label>
         else label = <Label type='green'>ХИТ ПРОДАЖ</Label>
     }
-
+    const href =`/item/${props.itemData.id.toLowerCase()}`;
     return (
         <div className='ItemsCard'>
-            <a href={props.itemData.to} className='ItemsCard_image-wrapper'>
+            <a href={href} className='ItemsCard_image-wrapper'>
                 <img className='ItemsCard_image-main' src={props.itemData.image_main} alt='card-item-main' />
                 <img className='ItemsCard_image-secondary' src={props.itemData.image_secondary} alt='card-item-secondary' />
             </a>
-            <a className='ItemsCard_descr' href={props.itemData.to}>{props.itemData.name}</a>
+            <a className='ItemsCard_descr' href={href}>{props.itemData.name}</a>
             <div className='ItemsCard_stars'>
                 {stars}
             </div>
