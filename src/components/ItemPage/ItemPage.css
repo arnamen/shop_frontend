@@ -1,0 +1,29 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+.ItemPage__wrapper {
+    width: 100%;
+    padding: 5vh 10vw;
+}
+
+.ItemPage__carousel {
+    display: inline-block;
+    width: 40%;
+}
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+    max-height: 400px;
+}
+
+.image-gallery-thumbnail {
+    width: 60px;
+    margin: 0 2vw;
+}
+
+.image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg {
+    height: 120px;
+    width: 40px;
+}
+
+.image-gallery-thumbnails .image-gallery-thumbnails-container {
+    text-align: left;
+}
