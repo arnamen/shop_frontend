@@ -12,6 +12,9 @@ import star_empty from '../../assets/rating/stars/star_empty.svg';
 
 import { ReactComponent as ReactChat } from '../../assets/misc/chat.svg';
 import { ReactComponent as ReactCart } from '../../assets/itemsCards/cart-for-card-item.svg';
+import { ReactComponent as ReactCompare } from '../../assets/account/compare.svg';
+import { ReactComponent as ReactHeart } from '../../assets/account/heart.svg';
+import { ReactComponent as ReactPiggybank } from '../../assets/misc/piggy-bank.svg';
 
 import * as actionTypes from '../../store/actions/actionTypes';
 
@@ -26,7 +29,8 @@ function ItemPage(props) {
     const itemData = props.content.filter(item => item.id.toLowerCase() === itemId)[0];
     const imagesData = [];
     const stars = [];
-
+    const compared = !!props.compare.find(item => item.name === itemData.name);
+    const favored = !!props.favourites.find(item => item.name === itemData.name);
     let price = <span className='ItemPage__price'>{itemData.price + '₴'}</span>;
 
     imagesData.push({
@@ -112,6 +116,31 @@ function ItemPage(props) {
                         </Button>
                     </div>
                 </div>
+                <div className='ItemPage__actions'>
+                <div className='ItemPage__action-wrapper ItemPage__action-wrapper__piggy'>
+                        <ReactPiggybank className={`ItemPage__action-icon`}
+                            onClick={e => {}} />
+                            <span>2999 бонусов</span>
+                    </div>
+                    <div className='ItemPage__action-wrapper' 
+                    onClick={e => {
+                                favored
+                                    ? props.onRemoveFromFavourites(itemData)
+                                    : props.onAddToFavorites(itemData)
+                            }} >
+                        <ReactHeart className={`ItemPage__action-icon ItemPage__action-icon_heart ${favored && 'ItemPage__action-icon-active-red'}`} viewBox="0 0 512 512"/>
+                            <span className={favored ? 'ItemPage__action-active-red' : ''}>{favored ? 'В избранном' : 'В избранное'}</span>
+                    </div>
+                    <div className='ItemPage__action-wrapper'
+                    onClick={e => {
+                        compared
+                            ? props.onRemoveFromCompare(itemData)
+                            : props.onAddToCompare(itemData)
+                    }} >
+                        <ReactCompare className={`ItemPage__action-icon ItemPage__action-icon_compare ${compared && 'ItemPage__action-icon-active'}`}/>
+                            <span className={compared ? 'ItemPage__action-active' : ''}>{compared ? 'В стравнении' : 'Сравнить'}</span>
+                    </div>
+                </div>
             </div>
         </div>
     )
@@ -121,6 +150,8 @@ const mapStateToProps = state => {
     return {
         content: state.content.content,
         cart: state.cart.cart,
+        compare: state.compare.compare,
+        favourites: state.favourites.favourites,
     };
 }
 

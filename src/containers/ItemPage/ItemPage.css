@@ -175,3 +175,59 @@
     margin-right: 9px;
     fill: white;
 }
+
+.ItemPage__actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ItemPage__action-icon {
+    fill: black;
+    height: 20px;
+    width: 20px;
+    transition: 0.5s all;
+    margin: 0 5px;
+}
+
+.ItemPage__action-wrapper {
+    min-width: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    transition: 0.5s all;
+}
+
+.ItemPage__action-wrapper__piggy{
+    border-bottom: 1px dotted;
+    margin-right: 10vw;
+}
+
+.ItemPage__action-active {
+    color: green;
+}
+
+.ItemPage__action-active-red {
+    color: red;
+}
+
+.ItemPage__action-icon_cart, .ItemPage__action-icon-active {
+    fill: green;
+}
+
+.ItemPage__action-icon-active-red {
+    fill: red;
+}
+
+.ItemPage__action-wrapper:hover {
+    color: green;
+}
+
+.ItemPage__action-wrapper:hover > .ItemPage__action-icon_compare, .ItemPage__action-wrapper:hover > .ItemPage__action-icon {
+    fill: green;
+
+}
+
+.ItemPage__action-wrapper:hover > .ItemPage__action-icon_heart {
+    fill: red;
+}
