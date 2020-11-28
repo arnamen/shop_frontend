@@ -1,13 +1,15 @@
 import React from 'react'
+import { v4 } from 'uuid';
 
 import { ReactComponent as ReactIncrease } from '../../assets/counter/counter-increase.svg';
 import { ReactComponent as ReactDecrease } from '../../assets/counter/counter-decrease.svg';
 
 import './Counter.css';
 
+
 export default function Counter(props) {
     return (
-        <div>
+        <div key={v4()}>
             <button className='Counter' onClick={() => props.onClickDecrease()}>
                 <ReactDecrease className='Counter-image' />
             </button>

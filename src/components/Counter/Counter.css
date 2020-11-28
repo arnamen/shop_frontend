@@ -24,7 +24,6 @@
 }
 
 .Counter:hover .Counter-image {
-    width: 16px;
-    height: 16px;
+    transform: scale(1.1);
     fill: #000;
 }

@@ -18,7 +18,7 @@ import ContentPage from './containers/ContentPage/ContentPage';
 import ComparePage from './components/Compare/Compare';
 import FavouritesPage from './components/Favourites/Favourites';
 import CartPage from './components/Cart/Cart';
-import ItemPage from './components/ItemPage/ItemPage';
+import ItemPage from './containers/ItemPage/ItemPage';
 
 function App(props) {
   

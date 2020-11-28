@@ -5,7 +5,7 @@ import './Dropdown.css';
 
 import {ReactComponent as ReactChevronRight} from '../../../assets/misc/right-chevron.svg';
 
-export default (props) => {
+export default function Dropdown(props) {
   const itemsData = props.items || [];
 
   //превратить вложенный список в ul>li>ul...

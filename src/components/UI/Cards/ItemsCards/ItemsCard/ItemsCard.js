@@ -47,7 +47,7 @@ function ItemsCard(props) {
 
     if (props.itemData.labels && props.itemData.labels.length && props.itemData.labels.length > 0)
         props.itemData.labels.forEach(labelName => {
-            console.log(props.itemData.id, labelName)
+
             switch (labelName) {
                 case 'new':
                     labels.push(<Label key={v4()} type='blue'>НОВИНКА</Label>);
