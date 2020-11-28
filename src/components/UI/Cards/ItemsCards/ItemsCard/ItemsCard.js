@@ -1,14 +1,14 @@
 import React from 'react'
-import {v4} from 'uuid';
+import { v4 } from 'uuid';
 import { connect } from 'react-redux';
 
 import Label from '../../../Label/label';
 import * as actionTypes from '../../../../../store/actions/actionTypes';
 
-import {ReactComponent as ReactCart} from '../../../../../assets/itemsCards/cart-for-card-item.svg';
-import {ReactComponent as ReactCartFull} from '../../../../../assets/account/cart.svg';
-import {ReactComponent as ReactCompare} from '../../../../../assets/account/compare.svg';
-import {ReactComponent as ReactHeart} from '../../../../../assets/account/heart.svg';
+import { ReactComponent as ReactCart } from '../../../../../assets/itemsCards/cart-for-card-item.svg';
+import { ReactComponent as ReactCartFull } from '../../../../../assets/account/cart.svg';
+import { ReactComponent as ReactCompare } from '../../../../../assets/account/compare.svg';
+import { ReactComponent as ReactHeart } from '../../../../../assets/account/heart.svg';
 
 import star from '../../../../../assets/rating/stars/star.svg';
 import star_empty from '../../../../../assets/rating/stars/star_empty.svg';
@@ -16,16 +16,16 @@ import star_empty from '../../../../../assets/rating/stars/star_empty.svg';
 import './ItemsCard.css'
 
 
-function ItemsCard( props ) {
+function ItemsCard(props) {
     const stars = [];
-    let price;
+    let price = <span className='ItemsCard_price'>{props.itemData.price + '₴'}</span>;
     const compared = !!props.compare.find(item => item.name === props.itemData.name);
     const favored = !!props.favourites.find(item => item.name === props.itemData.name);
     const inCart = !!props.cart.find(item => item.name === props.itemData.name);
 
     const CartIcon = !inCart
-    ? <ReactCart className={`ItemsCard_action-icon ItemsCard_action-icon_cart`}/>
-    : <ReactCartFull className={`ItemsCard_action-icon ItemsCard_action-icon_cart`}/>
+        ? <ReactCart className={`ItemsCard_action-icon ItemsCard_action-icon_cart`} />
+        : <ReactCartFull className={`ItemsCard_action-icon ItemsCard_action-icon_cart`} />
 
     for (let i = 0; i < props.itemData.stars; i++) {
         stars.push(<img key={v4()} className='ItemsCard_star' src={star} alt='star'></img>)
@@ -36,30 +36,30 @@ function ItemsCard( props ) {
     //если есть старая цена - создать лейбл о скидке
     //и застилизировать цены
     const labels = [];
-    
-    if(props.itemData.old_price) {
-        labels.push(<Label key={v4()} type='red'>{"СКИДКА " + ((1-props.itemData.price/props.itemData.old_price)*100).toFixed() + '%'}</Label>);
+
+    if (props.itemData.old_price) {
+        labels.push(<Label key={v4()} type='red'>{"СКИДКА " + ((1 - props.itemData.price / props.itemData.old_price) * 100).toFixed() + '%'}</Label>);
         price = (<React.Fragment>
             <span className='ItemsCard_price_discount'>{props.itemData.price + '₴'}</span>
             <span className='ItemsCard_price_before'>{props.itemData.old_price + '₴'}</span>
         </React.Fragment>)
     }
 
-    if(props.itemData.labels && props.itemData.labels.length && props.itemData.labels.length > 0)
-    props.itemData.labels.forEach(labelName => {
-        console.log(props.itemData.id, labelName)
-        switch (labelName) {
-            case 'new':
-                labels.push(<Label key={v4()} type='blue'>НОВИНКА</Label>);
-                break;
-            case 'popular':
-                labels.push(<Label key={v4()} type='green'>ХИТ ПРОДАЖ</Label>);
-                break;            
-            default:
-                break;
-        }
-    }) 
-    const href =`/item/${props.itemData.id.toLowerCase()}`;
+    if (props.itemData.labels && props.itemData.labels.length && props.itemData.labels.length > 0)
+        props.itemData.labels.forEach(labelName => {
+            console.log(props.itemData.id, labelName)
+            switch (labelName) {
+                case 'new':
+                    labels.push(<Label key={v4()} type='blue'>НОВИНКА</Label>);
+                    break;
+                case 'popular':
+                    labels.push(<Label key={v4()} type='green'>ХИТ ПРОДАЖ</Label>);
+                    break;
+                default:
+                    break;
+            }
+        })
+    const href = `/item/${props.itemData.id.toLowerCase()}`;
     return (
         <div className='ItemsCard'>
             <a href={href} className='ItemsCard_image-wrapper'>
@@ -78,28 +78,28 @@ function ItemsCard( props ) {
             </div>
             <div className='ItemsCard_actions'>
                 <div className='ItemsCard_action-wrapper' onClick={() => {
-                    inCart 
-                    ? props.onRemoveFromFCart({...props.itemData, amount: 1})
-                    : props.onAddToCart({...props.itemData, amount: 1});
+                    inCart
+                        ? props.onRemoveFromFCart({ ...props.itemData, amount: 1 })
+                        : props.onAddToCart({ ...props.itemData, amount: 1 });
                 }}>
                     {CartIcon}
                     <span>{inCart ? 'Убрать' : 'В корзину'}</span>
                 </div>
                 <div className='ItemsCard_action-wrapper'>
                     <ReactHeart className={`ItemsCard_action-icon ItemsCard_action-icon_heart ${favored && 'ItemsCard_action-icon-active-red'}`} viewBox="0 0 512 512"
-                    onClick={e => {
-                        favored 
-                        ? props.onRemoveFromFavourites(props.itemData)
-                        : props.onAddToFavorites(props.itemData)
-                    }}/>
+                        onClick={e => {
+                            favored
+                                ? props.onRemoveFromFavourites(props.itemData)
+                                : props.onAddToFavorites(props.itemData)
+                        }} />
                 </div>
                 <div className='ItemsCard_action-wrapper'>
                     <ReactCompare className={`ItemsCard_action-icon ItemsCard_action-icon_compare ${compared && 'ItemsCard_action-icon-active'}`}
-                    onClick={e => {
-                        compared 
-                        ? props.onRemoveFromCompare(props.itemData)
-                        : props.onAddToCompare(props.itemData)
-                    }}/>
+                        onClick={e => {
+                            compared
+                                ? props.onRemoveFromCompare(props.itemData)
+                                : props.onAddToCompare(props.itemData)
+                        }} />
                 </div>
             </div>
         </div>

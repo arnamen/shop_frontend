@@ -1,8 +1,9 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
-.ItemPage__wrapper {
+.ItemPage {
     width: 100%;
     padding: 5vh 10vw;
+    display: flex;
 }
 
 .ItemPage__carousel {
@@ -26,4 +27,92 @@
 
 .image-gallery-thumbnails .image-gallery-thumbnails-container {
     text-align: left;
+}
+
+.ItemPage__content {
+    width: 55%;
+    margin-left: 5%;
+}
+
+.ItemPage__labels {
+    display: flex;
+    padding: 1vh 0;
+}
+
+.ItemPage__label {
+    width: 80px;
+    font-size: 9px;
+    padding: 2px 9px;
+    margin-right: 8px;
+}
+
+.ItemPage__itemName {
+    margin-top: 15px;
+}
+
+.ItemPage__itemName h2 {
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 34px;
+    margin: 0;
+}
+
+.ItemPage__price-wrapper {
+    margin-top: 15px;
+}
+
+.ItemPage__price, .ItemPage__price__before, .ItemPage__price__discount {
+    display: inline-block;
+    display: inline-block;
+    font-weight: 500;
+    margin-right: 15px;
+    font-size: 26px;
+}
+
+.ItemPage__price__before {
+    color: black;
+    text-decoration: line-through;
+}
+
+.ItemPage__price__discount {
+    color: red;
+}
+
+.ItemPage__rating {
+    margin-top: 15px;
+}
+
+.ItemPage__star {
+    width: 15px;
+    height: 15px;
+}
+
+.ItemPage__reviews-link {
+    display: inline-flex;
+    align-items: center;
+    color: #0bb648;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 15px;
+    margin-left: 20px;
+    transition: 0.5s color;
+}
+
+.ItemPage__reviews-link > span {
+    margin-left: 5px;
+}
+
+.ItemPage__reviews-link:hover {
+    color: #000;
+}
+
+.ItemPage__reviews-link__icon {
+    width: 16px;
+    height: 16px;
+    fill: #0bb648;
+    transition: 0.5s fill;
+}
+
+.ItemPage__reviews-link:hover > .ItemPage__reviews-link__icon {
+    fill: #000;
 }
