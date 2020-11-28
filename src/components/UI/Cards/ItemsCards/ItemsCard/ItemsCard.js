@@ -19,8 +19,6 @@ import './ItemsCard.css'
 function ItemsCard( props ) {
     const stars = [];
     let price;
-    let label;
-    let second_label;
     const compared = !!props.compare.find(item => item.name === props.itemData.name);
     const favored = !!props.favourites.find(item => item.name === props.itemData.name);
     const inCart = !!props.cart.find(item => item.name === props.itemData.name);
@@ -35,28 +33,32 @@ function ItemsCard( props ) {
     for (let i = stars.length; i < 5; i++) {
         stars.push(<img key={v4()} className='ItemsCard_star' src={star_empty} alt='star_empty'></img>)
     }
-    //если есть старая цена - создать лейбл о скидке + сгенерировать случайный
+    //если есть старая цена - создать лейбл о скидке
     //и застилизировать цены
+    const labels = [];
+    
     if(props.itemData.old_price) {
-        label = <Label type='red'>{"СКИДКА " + ((1-props.itemData.price/props.itemData.old_price)*100).toFixed() + '%'}</Label>
-        const generateLabel = Math.random();
-        if(generateLabel >= 0.8) second_label = <Label type='blue'>НОВИНКА</Label>
-        else if(generateLabel >= 0.5) second_label = <Label type='green'>ХИТ ПРОДАЖ</Label>
+        labels.push(<Label key={v4()} type='red'>{"СКИДКА " + ((1-props.itemData.price/props.itemData.old_price)*100).toFixed() + '%'}</Label>);
         price = (<React.Fragment>
             <span className='ItemsCard_price_discount'>{props.itemData.price + '₴'}</span>
             <span className='ItemsCard_price_before'>{props.itemData.old_price + '₴'}</span>
         </React.Fragment>)
-    } else {
-        //иначе сгенерировать 1-2 случайных лейбла
-        //и застилизировать цену
-        price = <span className='ItemsCard_price'>{props.itemData.price + '₴ - ' + (props.itemData.price + props.itemData.price * Math.random()).toFixed() + '₴'}</span>
-        const generateLabel = Math.random();
-        if(generateLabel >= 0.75) {
-            label = <Label type='blue'>НОВИНКА</Label>
-            second_label = <Label type='green'>ХИТ ПРОДАЖ</Label>
-        } else if(generateLabel >= 0.5) label = <Label type='blue'>НОВИНКА</Label>
-        else label = <Label type='green'>ХИТ ПРОДАЖ</Label>
     }
+
+    if(props.itemData.labels && props.itemData.labels.length && props.itemData.labels.length > 0)
+    props.itemData.labels.forEach(labelName => {
+        console.log(props.itemData.id, labelName)
+        switch (labelName) {
+            case 'new':
+                labels.push(<Label key={v4()} type='blue'>НОВИНКА</Label>);
+                break;
+            case 'popular':
+                labels.push(<Label key={v4()} type='green'>ХИТ ПРОДАЖ</Label>);
+                break;            
+            default:
+                break;
+        }
+    }) 
     const href =`/item/${props.itemData.id.toLowerCase()}`;
     return (
         <div className='ItemsCard'>
@@ -72,8 +74,7 @@ function ItemsCard( props ) {
                 {price}
             </div>
             <div className='ItemsCard_labels'>
-                {label}
-                {second_label}
+                {labels}
             </div>
             <div className='ItemsCard_actions'>
                 <div className='ItemsCard_action-wrapper' onClick={() => {
