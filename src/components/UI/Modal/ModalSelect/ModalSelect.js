@@ -18,7 +18,7 @@ export default function ModalSelect(props) {
     props.data.forEach((item) => {
         if (item.name.toLowerCase().includes(filterString.toLowerCase()))
             selectItems.push(<div key={v4()} 
-            onClick={() => props.onSubmit(item.name)}
+            onClick={() => props.onSubmit(item)}
             className='ModalSelect__selectItem'>
                 <span className='ModalSelect__selectItem-name' key={v4()}>{item.name}</span>
                 {item.subtitle && <span key={v4()} className='ModalSelect__selectItem__subtitle'>{item.subtitle}</span>}

@@ -142,7 +142,7 @@ function ItemPage(props) {
                             <span className={compared ? 'ItemPage__action-active' : ''}>{compared ? 'В стравнении' : 'Сравнить'}</span>
                     </div>
                 </div>
-                <DeliveryCard/>
+                <DeliveryCard itemData={itemData}/>
             </div>
         </div>
     )
