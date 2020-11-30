@@ -1,0 +1,59 @@
+.ModalSelect__input {
+    display: block;
+    width: 100%;
+    height: 35px;
+    border-radius: 30px;
+    outline: none;
+    border: 1px solid #999;
+    padding: 0 35px;
+}
+
+.ModalSelect__searchIcon {
+    width: 15px;
+    height: 20px;
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(20px + .1rem);
+}
+
+.ModalSelect__title {
+    width: 100%;
+    padding: 1rem .5rem;
+    background: #eee;
+    color: #fff;
+    position: relative;
+}
+
+.ModalSelect__header {
+    position: sticky;
+    top: 0;
+}
+
+.ModalSelect__selectItem {
+    text-decoration: none;
+    padding: 8px 16px;
+    transition: all .2s cubic-bezier(.645,.045,.355,1);
+    color: #0087c6;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.ModalSelect__selectItem:hover {
+    background-color: #eee;
+    
+}
+
+.ModalSelect__selectItem-name {
+    display: block;
+}
+
+.ModalSelect__selectItem__subtitle {
+    display: block;
+    color: black;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.ModalSelect__selectItem:hover .ModalSelect__selectItem-name {
+    text-decoration: underline;
+}

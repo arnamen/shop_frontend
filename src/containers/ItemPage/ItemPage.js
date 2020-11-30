@@ -6,6 +6,7 @@ import { v4 } from 'uuid';
 import Label from '../../components/UI/Label/label';
 import Counter from '../../components/Counter/Counter';
 import Button from '../../components/UI/Button/Button';
+import DeliveryCard from '../../components/UI/Cards/DeliveryCard/DeliveryCard';
 
 import star from '../../assets/rating/stars/star.svg';
 import star_empty from '../../assets/rating/stars/star_empty.svg';
@@ -141,6 +142,7 @@ function ItemPage(props) {
                             <span className={compared ? 'ItemPage__action-active' : ''}>{compared ? 'В стравнении' : 'Сравнить'}</span>
                     </div>
                 </div>
+                <DeliveryCard/>
             </div>
         </div>
     )

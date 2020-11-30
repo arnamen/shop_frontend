@@ -1,0 +1,22 @@
+.DeliveryCard {
+    margin: 20px 0;
+}
+
+.DeliveryCard__header {
+    padding: 10px;
+    background-color: #f7f8fa;
+    display: flex;
+    align-items: center;
+}
+
+.DeliveryCard__deliveryIcon {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+.DeliveryCard__selectedCity {
+    color: green;
+    border-bottom: 1px green dashed;
+    cursor: pointer;
+}

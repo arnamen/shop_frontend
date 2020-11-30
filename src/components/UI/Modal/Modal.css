@@ -14,19 +14,14 @@
 .Modal__wrapper {
     width: 50%;
     height: 30%;
+    min-height: 300px;
+    max-height: 50vh;
+    overflow: auto;
     height: fit-content;
     background-color: white;
 }
 
-.Modal__title {
-    width: 100%;
-    padding: 1rem .5rem;
-    background: #2a006e;
-    color: #fff;
-}
-
 .Modal__content {
-    padding: 1rem .5rem;
 }
 
 .Modal__actions {
