@@ -9,7 +9,7 @@ import sale2 from '../../assets/Carousel/sale2.jpg';
 import smartphones from '../../assets/Carousel/smartphones.jpg';
 import delivery from '../../assets/Carousel/delivery.jpg';
 
-export default function ( props ) {
+export default function Carousel ( props ) {
     return (
             <CarouselProvider
             naturalSlideWidth={100}

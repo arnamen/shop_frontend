@@ -2,31 +2,35 @@ import React from 'react'
 import { connect } from 'react-redux';
 import Tabs from '../../containers/Tabs/Tabs';
 
-import './ItemPage.css';
 import ItemPageGeneral from './ItemPageGeneral/ItemPageGeneral';
-import Button from '../../components/UI/Button/Button';
+import ItemPageCharacteristics from './ItemPageCharacteristics/ItemPageCharacteristics';
 
+import './ItemPage.css';
 import * as actionTypes from '../../store/actions/actionTypes';
 
 function ItemPage(props) {
+
+    const itemId = props.location.pathname.split('/').pop();
+    const itemData = props.content.filter(item => item.id.toLowerCase() === itemId)[0];
+    const compared = !!props.compare.find(item => item.name === itemData.name);
+    const favored = !!props.favourites.find(item => item.name === itemData.name);
 
     return (
         <div className='ItemPage'>
             <Tabs tabsNames={['Осноная информация', 'TEST']}>
                 <div>
                 <ItemPageGeneral 
-                content={props.content} 
-                cart={props.cart}
-                compare={props.compare}
-                favourites={props.favourites}
-                location={props.location}
+                itemData={itemData}
+                compared={compared}
+                favored={favored}
                 onAddToCompare={props.onAddToCompare}
                 onRemoveFromCompare={props.onRemoveFromCompare}
                 onAddToFavourites={props.onAddToFavorites}
-                onRemoveFromFavourites={props.onRemoveFromFavourites}
-                />
+                onRemoveFromFavourites={props.onRemoveFromFavourites}/>
                 </div>
-                <Button className='test'>TEST</Button>
+                <div>
+                <ItemPageCharacteristics/>
+                </div>
             </Tabs>
         </div>
     )

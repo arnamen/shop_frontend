@@ -24,12 +24,11 @@ export default function ItemPageGeneral( props ) {
 
     const [itemAmount, setItemAmount] = useState(1);
     const labels = [];
-    const itemId = props.location.pathname.split('/').pop();
-    const itemData = props.content.filter(item => item.id.toLowerCase() === itemId)[0];
+    const itemData = props.itemData;
     const imagesData = [];
     const stars = [];
-    const compared = !!props.compare.find(item => item.name === itemData.name);
-    const favored = !!props.favourites.find(item => item.name === itemData.name);
+    const compared = props.compared;
+    const favored = props.favored;
     let price = <span className='ItemPageGeneral__price'>{itemData.price + '₴'}</span>;
 
     imagesData.push({
