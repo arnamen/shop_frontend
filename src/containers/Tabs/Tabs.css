@@ -8,6 +8,7 @@
     width: 180px;
     color: rgba(0,0,0,0.5);
     cursor: pointer;
+    text-align: center;
 }
 
 .Tabs__radio-wrapper {

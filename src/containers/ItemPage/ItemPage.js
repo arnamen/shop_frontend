@@ -1,159 +1,33 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
-import ImageGallery from 'react-image-gallery';
-import { v4 } from 'uuid';
-
-import Label from '../../components/UI/Label/label';
-import Counter from '../../components/Counter/Counter';
-import Button from '../../components/UI/Button/Button';
-import DeliveryCard from '../../components/UI/Cards/DeliveryCard/DeliveryCard';
-
-import star from '../../assets/rating/stars/star.svg';
-import star_empty from '../../assets/rating/stars/star_empty.svg';
-
-import { ReactComponent as ReactChat } from '../../assets/misc/chat.svg';
-import { ReactComponent as ReactCart } from '../../assets/itemsCards/cart-for-card-item.svg';
-import { ReactComponent as ReactCompare } from '../../assets/account/compare.svg';
-import { ReactComponent as ReactHeart } from '../../assets/account/heart.svg';
-import { ReactComponent as ReactPiggybank } from '../../assets/misc/piggy-bank.svg';
-
-import {translate} from '../../utils/translate';
-import * as actionTypes from '../../store/actions/actionTypes';
+import Tabs from '../../containers/Tabs/Tabs';
 
 import './ItemPage.css';
+import ItemPageGeneral from './ItemPageGeneral/ItemPageGeneral';
+import Button from '../../components/UI/Button/Button';
 
+import * as actionTypes from '../../store/actions/actionTypes';
 
 function ItemPage(props) {
 
-    const [itemAmount, setItemAmount] = useState(1);
-    const labels = [];
-    const itemId = props.location.pathname.split('/').pop();
-    const itemData = props.content.filter(item => item.id.toLowerCase() === itemId)[0];
-    const imagesData = [];
-    const stars = [];
-    const compared = !!props.compare.find(item => item.name === itemData.name);
-    const favored = !!props.favourites.find(item => item.name === itemData.name);
-    let price = <span className='ItemPage__price'>{itemData.price + '₴'}</span>;
-
-    imagesData.push({
-        original: itemData.images[0],
-        thumbnail: itemData.images[0],
-    })
-    imagesData.push({
-        original: itemData.images[1],
-        thumbnail: itemData.images[1],
-    });
-
-    if (itemData.old_price) {
-        labels.push(<Label key={v4()} type='red' className='ItemPage__label'>{"СКИДКА " + ((1 - itemData.price / itemData.old_price) * 100).toFixed() + '%'}</Label>);
-        price = (<React.Fragment>
-            <span className='ItemPage__price__discount'>{itemData.price + '₴'}</span>
-            <span className='ItemPage__price__before'>{itemData.old_price + '₴'}</span>
-        </React.Fragment>)
-    }
-
-    if (itemData.labels && itemData.labels.length && itemData.labels.length > 0)
-        itemData.labels.forEach(labelName => {
-            switch (labelName) {
-                case 'new':
-                    labels.push(<Label key={v4()} type='blue' className='ItemPage__label'>НОВИНКА</Label>);
-                    break;
-                case 'popular':
-                    labels.push(<Label key={v4()} type='green' className='ItemPage__label'>ХИТ ПРОДАЖ</Label>);
-                    break;
-                default:
-                    break;
-            }
-        })
-
-    for (let i = 0; i < itemData.stars; i++) {
-        stars.push(<img key={v4()} className='ItemPage__star' src={star} alt='star'></img>)
-    }
-    for (let i = stars.length; i < 5; i++) {
-        stars.push(<img key={v4()} className='ItemPage__star' src={star_empty} alt='star__empty'></img>)
-    }
-
     return (
         <div className='ItemPage'>
-            <div className='ItemPage__information'>
-                <div className='ItemPage__carousel'>
-                    <ImageGallery items={imagesData}
-                        showFullscreenButton={false}
-                        showPlayButton={false} />
+            <Tabs tabsNames={['Осноная информация', 'TEST']}>
+                <div>
+                <ItemPageGeneral 
+                content={props.content} 
+                cart={props.cart}
+                compare={props.compare}
+                favourites={props.favourites}
+                location={props.location}
+                onAddToCompare={props.onAddToCompare}
+                onRemoveFromCompare={props.onRemoveFromCompare}
+                onAddToFavourites={props.onAddToFavorites}
+                onRemoveFromFavourites={props.onRemoveFromFavourites}
+                />
                 </div>
-                <div className='ItemPage__description'>
-                    {itemData.description === 'useTags'
-                        ? <ul>
-                            {Object.keys(itemData.tags).map(tag => <li key={v4()}>{`${translate[tag] || tag}: ${itemData.tags[tag]}`}</li>)}
-                        </ul>
-                        : itemData.description}
-                </div>
-            </div>
-            <div className='ItemPage__content'>
-                <div className='ItemPage__labels'>
-                    {labels}
-                </div>
-                <div className='ItemPage__itemName'>
-                    <h2>{itemData.name}</h2>
-                </div>
-                <div className='ItemPage__price-wrapper'>
-                    {price}
-                </div>
-                <div className='ItemPage__rating'>
-                    {stars}
-                    <a className='ItemPage__reviews-link' href={'/'}>
-                        <ReactChat className='ItemPage__reviews-link__icon' />
-                        <span>Рейтинг и отзывы</span>
-                    </a>
-                </div>
-                <div className='ItemPage__inStockStatus'>
-                    <span className='ItemPage__inStock'>В наличии</span>
-                </div>
-                <div className='ItemPage__order'>
-                    <div className='ItemPage__addToCart'>
-                        <div className='ItemPage__addToCart__amount'>
-                            <Counter defaultValue={itemAmount}
-                                onClickIncrease={() => setItemAmount(itemAmount + 1)}
-                                onClickDecrease={() => setItemAmount(Math.max(itemAmount - 1, 1))} />
-                        </div>
-                        <Button className='ItemPage__cartButton' onClick={() => { }}>
-                            <ReactCart className='ItemPage__cartIcon' />
-                            <span>В корину</span>
-                        </Button>
-                    </div>
-                    <div>
-                        <Button className='ItemPage__cartButton-blue' onClick={() => { }}>
-                            <span>заказ в один клик</span>
-                        </Button>
-                    </div>
-                </div>
-                <div className='ItemPage__actions'>
-                    <div className='ItemPage__action-wrapper ItemPage__action-wrapper__piggy'>
-                        <ReactPiggybank className={`ItemPage__action-icon`}
-                            onClick={e => { }} />
-                        <span>2999 бонусов</span>
-                    </div>
-                    <div className='ItemPage__action-wrapper'
-                        onClick={e => {
-                            favored
-                                ? props.onRemoveFromFavourites(itemData)
-                                : props.onAddToFavorites(itemData)
-                        }} >
-                        <ReactHeart className={`ItemPage__action-icon ItemPage__action-icon_heart ${favored && 'ItemPage__action-icon-active-red'}`} viewBox="0 0 512 512" />
-                        <span className={favored ? 'ItemPage__action-active-red' : ''}>{favored ? 'В избранном' : 'В избранное'}</span>
-                    </div>
-                    <div className='ItemPage__action-wrapper'
-                        onClick={e => {
-                            compared
-                                ? props.onRemoveFromCompare(itemData)
-                                : props.onAddToCompare(itemData)
-                        }} >
-                        <ReactCompare className={`ItemPage__action-icon ItemPage__action-icon_compare ${compared && 'ItemPage__action-icon-active'}`} />
-                        <span className={compared ? 'ItemPage__action-active' : ''}>{compared ? 'В стравнении' : 'Сравнить'}</span>
-                    </div>
-                </div>
-                <DeliveryCard itemData={itemData} />
-            </div>
+                <Button className='test'>TEST</Button>
+            </Tabs>
         </div>
     )
 }
@@ -166,6 +40,7 @@ const mapStateToProps = state => {
         favourites: state.favourites.favourites,
     };
 }
+
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -183,14 +58,6 @@ const mapDispatchToProps = (dispatch) => {
         }),
         onRemoveFromFavourites: (item) => dispatch({
             type: actionTypes.REMOVE_FAVOURITES,
-            item,
-        }),
-        onIncreaseItemInCart: (item) => dispatch({
-            type: actionTypes.INCRESE_ITEM_IN_CART,
-            item,
-        }),
-        onDecreaseItemInCart: (item) => dispatch({
-            type: actionTypes.DECREASE_ITEM_IN_CART,
             item,
         }),
     }

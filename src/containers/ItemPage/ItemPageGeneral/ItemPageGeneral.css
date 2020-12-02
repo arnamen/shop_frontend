@@ -1,40 +1,22 @@
-@import "~react-image-gallery/styles/css/image-gallery.css";
-
-.ItemPage {
-    width: 100%;
-    padding: 5vh 10vw;
+.ItemPageGeneral {
     display: flex;
 }
 
-.ItemPage .Tabs input[type="radio"]:checked + label {
-    background-image: linear-gradient(to right, black 100%, rgba(255,255,255,0) 0%);
-    background-position: bottom;
-    background-size: 100% 1px;
-    background-repeat: repeat-x;
-    color: black;
-    font-weight: 700;
-}
-
-.ItemPage .Tabs__radio-wrapper {
-    margin: auto;
-    text-align: left;
-}
-
-.ItemPage__information {
+.ItemPageGeneral__information {
     display: inline-block;
     width: 40%;
 }
 
-.ItemPage__description {
+.ItemPageGeneral__description {
     margin-top: 15px;
 }
 
-.ItemPage__description ul {
+.ItemPageGeneral__description ul {
     list-style-type: none;
     padding: 0;
 }
 
-.ItemPage__description ul li {
+.ItemPageGeneral__description ul li {
     margin-top: 10px;
 }
 
@@ -56,39 +38,39 @@
     text-align: left;
 }
 
-.ItemPage__content {
+.ItemPageGeneral__content {
     width: 55%;
     margin-left: 5%;
 }
 
-.ItemPage__labels {
+.ItemPageGeneral__labels {
     display: flex;
     padding: 1vh 0;
 }
 
-.ItemPage__label {
+.ItemPageGeneral__label {
     width: 80px;
     font-size: 9px;
     padding: 2px 9px;
     margin-right: 8px;
 }
 
-.ItemPage__itemName {
+.ItemPageGeneral__itemName {
     margin-top: 15px;
 }
 
-.ItemPage__itemName h2 {
+.ItemPageGeneral__itemName h2 {
     font-weight: 300;
     font-size: 30px;
     line-height: 34px;
     margin: 0;
 }
 
-.ItemPage__price-wrapper {
+.ItemPageGeneral__price-wrapper {
     margin-top: 15px;
 }
 
-.ItemPage__price, .ItemPage__price__before, .ItemPage__price__discount {
+.ItemPageGeneral__price, .ItemPageGeneral__price__before, .ItemPageGeneral__price__discount {
     display: inline-block;
     display: inline-block;
     font-weight: 500;
@@ -96,25 +78,25 @@
     font-size: 26px;
 }
 
-.ItemPage__price__before {
+.ItemPageGeneral__price__before {
     color: black;
     text-decoration: line-through;
 }
 
-.ItemPage__price__discount {
+.ItemPageGeneral__price__discount {
     color: red;
 }
 
-.ItemPage__rating {
+.ItemPageGeneral__rating {
     margin-top: 15px;
 }
 
-.ItemPage__star {
+.ItemPageGeneral__star {
     width: 15px;
     height: 15px;
 }
 
-.ItemPage__reviews-link {
+.ItemPageGeneral__reviews-link {
     display: inline-flex;
     align-items: center;
     color: #0bb648;
@@ -125,26 +107,26 @@
     transition: 0.5s color;
 }
 
-.ItemPage__reviews-link > span {
+.ItemPageGeneral__reviews-link > span {
     margin-left: 5px;
 }
 
-.ItemPage__reviews-link:hover {
+.ItemPageGeneral__reviews-link:hover {
     color: #000;
 }
 
-.ItemPage__reviews-link__icon {
+.ItemPageGeneral__reviews-link__icon {
     width: 16px;
     height: 16px;
     fill: #0bb648;
     transition: 0.5s fill;
 }
 
-.ItemPage__reviews-link:hover > .ItemPage__reviews-link__icon {
+.ItemPageGeneral__reviews-link:hover > .ItemPageGeneral__reviews-link__icon {
     fill: #000;
 }
 
-.ItemPage__inStock {
+.ItemPageGeneral__inStock {
     display: inline-block;
     vertical-align: middle;
     color: #000;
@@ -154,7 +136,7 @@
     margin-top: 15px;
 }
 
-.ItemPage__inStock::before {
+.ItemPageGeneral__inStock::before {
     content: '';
     border-radius: 50px;
     display: inline-block;
@@ -164,12 +146,12 @@
     margin-right: 5px;
 }
 
-.ItemPage__addToCart {
+.ItemPageGeneral__addToCart {
     display: flex;
     margin-top: 15px;
 }
 
-.ItemPage__cartButton {
+.ItemPageGeneral__cartButton {
     background-color: #0bb648;
     flex-grow: 1;
     margin-left: 20px;
@@ -181,7 +163,7 @@
     justify-content: center;
 }
 
-.ItemPage__cartButton-blue {
+.ItemPageGeneral__cartButton-blue {
     margin-top: 15px;
     background-color: #3095dd;
     display: block;
@@ -192,24 +174,24 @@
     font-size: 14px;
 }
 
-.ItemPage__cartButton:hover, .ItemPage__cartButton-blue:hover {
+.ItemPageGeneral__cartButton:hover, .ItemPageGeneral__cartButton-blue:hover {
     background-color: black;
 }
 
-.ItemPage__cartIcon {
+.ItemPageGeneral__cartIcon {
     height: 20px;
     width: 20px;
     margin-right: 9px;
     fill: white;
 }
 
-.ItemPage__actions {
+.ItemPageGeneral__actions {
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
 }
 
-.ItemPage__action-icon {
+.ItemPageGeneral__action-icon {
     fill: black;
     height: 20px;
     width: 20px;
@@ -217,7 +199,7 @@
     margin: 0 5px;
 }
 
-.ItemPage__action-wrapper {
+.ItemPageGeneral__action-wrapper {
     min-width: 30px;
     font-weight: 700;
     cursor: pointer;
@@ -225,36 +207,36 @@
     transition: 0.5s all;
 }
 
-.ItemPage__action-wrapper__piggy{
+.ItemPageGeneral__action-wrapper__piggy{
     border-bottom: 1px dotted;
     margin-right: 10vw;
 }
 
-.ItemPage__action-active {
+.ItemPageGeneral__action-active {
     color: green;
 }
 
-.ItemPage__action-active-red {
+.ItemPageGeneral__action-active-red {
     color: red;
 }
 
-.ItemPage__action-icon_cart, .ItemPage__action-icon-active {
+.ItemPageGeneral__action-icon_cart, .ItemPageGeneral__action-icon-active {
     fill: green;
 }
 
-.ItemPage__action-icon-active-red {
+.ItemPageGeneral__action-icon-active-red {
     fill: red;
 }
 
-.ItemPage__action-wrapper:hover {
+.ItemPageGeneral__action-wrapper:hover {
     color: green;
 }
 
-.ItemPage__action-wrapper:hover > .ItemPage__action-icon_compare, .ItemPage__action-wrapper:hover > .ItemPage__action-icon {
+.ItemPageGeneral__action-wrapper:hover > .ItemPageGeneral__action-icon_compare, .ItemPageGeneral__action-wrapper:hover > .ItemPageGeneral__action-icon {
     fill: green;
 
 }
 
-.ItemPage__action-wrapper:hover > .ItemPage__action-icon_heart {
+.ItemPageGeneral__action-wrapper:hover > .ItemPageGeneral__action-icon_heart {
     fill: red;
 }

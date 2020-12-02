@@ -22,16 +22,16 @@ export default function Tabs(props) {
             <label htmlFor={id}>{props.tabsNames[index]}</label>
         </React.Fragment>
     })
-
+    //каждого потомка завернуть в отдельный таб
     const children = React.Children.map(props.children, (child, index) => {
         return React.cloneElement(child, {
             key: v4(),
             className: `${child.props.className ? child.props.className : ''} ${index === selectedTab ? 'active' :'inactive'}`
         })
     })
-
+    console.log(children[0])
     return (
-        <div className='Tabs'>
+        <div className={`Tabs ${props.className ?' ' + props.className : ''}`}>
             <div className='Tabs__radio-wrapper'>
                 {tabs}
             </div>
