@@ -6,9 +6,22 @@
     display: flex;
 }
 
-.ItemPage__carousel {
+.ItemPage__information {
     display: inline-block;
     width: 40%;
+}
+
+.ItemPage__description {
+    margin-top: 15px;
+}
+
+.ItemPage__description ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.ItemPage__description ul li {
+    margin-top: 10px;
 }
 
 .image-gallery-content .image-gallery-slide .image-gallery-image {
