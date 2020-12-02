@@ -25,7 +25,7 @@ const { store } = useContext(ReactReduxContext);
             .forEach(key => {
                 if (!extractedFilters[key]) extractedFilters[key] = [];
                 //добавить теги в фильтры
-                extractedFilters[key].push(item.tags[key]);
+                if(!extractedFilters[key].includes(item.tags[key])) extractedFilters[key].push(item.tags[key]);
             });
         //добавить категории в фильтры
         extractedFilters.categories = [...new Set([...(extractedFilters.categories || []), ...item.categories])]

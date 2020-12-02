@@ -18,7 +18,7 @@ function Compare( props ) {
         {props.compare.map(item => {
             return <th style={{width: (100 / Math.max(props.compare.length, 1)) + '%'}} key={v4()}>
                 <Link to='/'>
-                <img src={item.image_main} className='Compare__img' alt='compare_item_img'></img>
+                <img src={item.images[0]} className='Compare__img' alt='compare_item_img'></img>
                 <span>{item.name}</span>
                 </Link>
             </th>

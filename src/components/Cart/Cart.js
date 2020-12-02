@@ -18,7 +18,7 @@ function Cart(props) {
         return <tr className='Cart__item' key={v4()}>
             <td>
             <div className='Cart__item__image-wrapper'>
-                <img src={item.image_main} className='Cart__item__image' alt='item_image' />
+                <img src={item.images[0]} className='Cart__item__image' alt='item_image' />
             </div>
             </td>
             <td><Link to='/' className='Cart__item-descr'>{item.name}</Link></td>

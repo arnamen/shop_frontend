@@ -33,11 +33,11 @@
     display: block;
 }
 
-.ItemsCard:hover .ItemsCard_image-main {
+.ItemsCard:not(.itemCard__image__static):hover .ItemsCard_image-main {
     left: calc(150% + 10px);
 }
 
-.ItemsCard:hover .ItemsCard_image-secondary {
+.ItemsCard:not(.itemCard__image__static):hover .ItemsCard_image-secondary {
     left: 50%;
 }
 

@@ -7,5 +7,10 @@ export const translate = {
     tv: 'Телевизоры',
     phones: 'Телефоны',
     smartphones: 'Смартфоны',
-    categories: 'Категории'
+    categories: 'Категории',
+    OS: 'Операционная система',
+    smartPlatform: 'SMART-платформа',
+    storageCapacity: 'Встроеная память',
+    camera: 'Камера',
+    frontCamera: 'Фронтальная камера'
   }

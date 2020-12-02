@@ -12,6 +12,7 @@ import { ReactComponent as ReactHeart } from '../../../../../assets/account/hear
 
 import star from '../../../../../assets/rating/stars/star.svg';
 import star_empty from '../../../../../assets/rating/stars/star_empty.svg';
+import imagePlaceholder from '../../../../../assets/misc/image_placeholder.png';
 
 import './ItemsCard.css'
 
@@ -60,11 +61,29 @@ function ItemsCard(props) {
             }
         })
     const href = `/item/${props.itemData.id.toLowerCase()}`;
+    let isNoImage = false;
+    let isStaticImage = false;
+    
+    if (!props.itemData.images || !Array.isArray(props.itemData.images)) {isNoImage = true; isStaticImage = true;}
+    else if (props.itemData.static || props.itemData.images.length < 2) isStaticImage = true;
+        console.log(isNoImage)
     return (
-        <div className='ItemsCard'>
+        <div className={`ItemsCard ${isStaticImage && ` itemCard__image__static`}`}>
             <a href={href} className='ItemsCard_image-wrapper'>
-                <img className='ItemsCard_image-main' src={props.itemData.image_main} alt='card-item-main' />
-                <img className='ItemsCard_image-secondary' src={props.itemData.image_secondary} alt='card-item-secondary' />
+                {isNoImage
+                    ? <img className='ItemsCard_image-main'
+                        src={imagePlaceholder}
+                        alt='card-item-main' />
+                    : <React.Fragment>
+                        <img className='ItemsCard_image-main'
+                            src={props.itemData.images[0]}
+                            alt='card-item-main' />
+                        {props.itemData.images[1] && <img className='ItemsCard_image-secondary'
+                            src={props.itemData.images[1]}
+                            alt='card-item-secondary' />}
+                    </React.Fragment>
+                }
+
             </a>
             <a className='ItemsCard_descr' href={href}>{props.itemData.name}</a>
             <div className='ItemsCard_stars'>

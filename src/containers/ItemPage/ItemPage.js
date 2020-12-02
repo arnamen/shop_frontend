@@ -35,12 +35,12 @@ function ItemPage(props) {
     let price = <span className='ItemPage__price'>{itemData.price + '₴'}</span>;
 
     imagesData.push({
-        original: itemData.image_main,
-        thumbnail: itemData.image_main,
+        original: itemData.images[0],
+        thumbnail: itemData.images[0],
     })
     imagesData.push({
-        original: itemData.image_secondary,
-        thumbnail: itemData.image_secondary,
+        original: itemData.images[1],
+        thumbnail: itemData.images[1],
     });
 
     if (itemData.old_price) {

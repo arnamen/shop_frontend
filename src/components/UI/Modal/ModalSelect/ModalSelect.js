@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import { Portal } from 'react-portal';
 import { v4 } from 'uuid';
 
-import Button from '../../Button/Button';
 import Modal from '../Modal';
 
 import { ReactComponent as ReactMagnifier } from '../../../../assets/search/magnifier-black.svg';

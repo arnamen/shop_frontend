@@ -11,6 +11,8 @@ export default function DeliveryCard(props) {
 
     const [selectedCity, setSelectedCity] = useState({ city: "Киев", region: "Киевская область" })
     const [showSelectModal, setShowSelectModal] = useState(false)
+    const currentDate = new Date();
+    const currentHour = currentDate.getHours();
 
     let priceMultiplyer = 1;
 
@@ -51,9 +53,9 @@ export default function DeliveryCard(props) {
             <div className='DeliveryCard__content'>
                 <span>Доставка:</span>
                 <ul>
-                    <li>Самовывоз из Укрпочты: {ukrpostDeliveryPrice}₴</li>
-                    <li>Самовывоз из Новой Почты: {newPostDeliveryPrice}₴</li>
-                    <li>Доставка курьером: {courierDeliveryPrice}₴</li>
+    <li>Самовывоз из Укрпочты: {ukrpostDeliveryPrice}₴, отправим {currentHour < 18 ? ' сегодня' : ' завтра'}</li>
+                    <li>Самовывоз из Новой Почты: {newPostDeliveryPrice}₴, отправим {currentHour < 18 ? ' сегодня' : ' завтра'}</li>
+                    <li>Доставка курьером: {courierDeliveryPrice}₴, отправим {currentHour < 18 ? ' сегодня' : ' завтра'}</li>
                 </ul>
             </div>
         </div>

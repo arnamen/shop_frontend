@@ -14,11 +14,11 @@ export default function PopupItemsTable( props ) {
                  props.content.map(item => <tr className='PopupItemsTable__item' key={v4()}>
                         <td>
                             <div className='PopupItemsTable__item__image-wrapper'>
-                                <img src={item.image_main} className='PopupItemsTable__item__image' alt='item_image' />
+                                <img src={item.images[0]} className='PopupItemsTable__item__image' alt='item_image' />
                             </div>
                         </td>
                         <td>
-                            <Link to='/' className='PopupItemsTable__item-descr'>
+                            <Link to={`/item/${item.id.toLowerCase()}`} className='PopupItemsTable__item-descr'>
                                 {item.name}
                                 <div className='PopupItemsTable__item__unit-price'>{`${item.amount ? (item.amount + ' × ') : ''}${item.price}₴`}</div>
                             </Link>
