@@ -17,7 +17,7 @@ function ItemPage(props) {
 
     return (
         <div className='ItemPage'>
-            <Tabs tabsNames={['Осноная информация', 'TEST']}>
+            <Tabs tabsNames={['Осноная информация', 'Характеристики']}>
                 <div>
                 <ItemPageGeneral 
                 itemData={itemData}
@@ -29,7 +29,14 @@ function ItemPage(props) {
                 onRemoveFromFavourites={props.onRemoveFromFavourites}/>
                 </div>
                 <div>
-                <ItemPageCharacteristics/>
+                <ItemPageCharacteristics 
+                itemData={itemData}
+                compared={compared}
+                favored={favored}
+                onAddToCompare={props.onAddToCompare}
+                onRemoveFromCompare={props.onRemoveFromCompare}
+                onAddToFavourites={props.onAddToFavorites}
+                onRemoveFromFavourites={props.onRemoveFromFavourites}/>
                 </div>
             </Tabs>
         </div>
