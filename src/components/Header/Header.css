@@ -38,6 +38,10 @@
     padding-bottom: 16px;
 }
 
+.header__sticky .main-navigation {
+    height: 5.5vh;
+}
+
 .header-bottom__hide {
     overflow: hidden;
     opacity: 0;
