@@ -14,7 +14,7 @@ function ItemPage(props) {
     const itemData = props.content.filter(item => item.id.toLowerCase() === itemId)[0];
     const compared = !!props.compare.find(item => item.name === itemData.name);
     const favored = !!props.favourites.find(item => item.name === itemData.name);
-
+    const inCart = !!props.cart.find(item => item.name === itemData.name);
     return (
         <div className='ItemPage'>
             <Tabs tabsNames={['Осноная информация', 'Характеристики']}>
@@ -33,10 +33,13 @@ function ItemPage(props) {
                 itemData={itemData}
                 compared={compared}
                 favored={favored}
+                inCart={inCart}
                 onAddToCompare={props.onAddToCompare}
                 onRemoveFromCompare={props.onRemoveFromCompare}
-                onAddToFavourites={props.onAddToFavorites}
-                onRemoveFromFavourites={props.onRemoveFromFavourites}/>
+                onAddToFavorites={props.onAddToFavorites}
+                onRemoveFromFavourites={props.onRemoveFromFavourites}
+                onAddToCart={props.onAddToCart}
+                onRemoveFromCart={props.onRemoveFromCart}/>
                 </div>
             </Tabs>
         </div>
@@ -69,6 +72,14 @@ const mapDispatchToProps = (dispatch) => {
         }),
         onRemoveFromFavourites: (item) => dispatch({
             type: actionTypes.REMOVE_FAVOURITES,
+            item,
+        }),
+        onAddToCart: (item) => dispatch({
+            type: actionTypes.ADD_TO_CART,
+            item,
+        }),
+        onRemoveFromCart: (item) => dispatch({
+            type: actionTypes.REMOVE_FROM_CART,
             item,
         }),
     }

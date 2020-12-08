@@ -103,7 +103,9 @@ export default function ItemPageGeneral( props ) {
                     </a>
                 </div>
                 <div className='ItemPageGeneral__inStockStatus'>
-                    <span className='ItemPageGeneral__inStock'>В наличии</span>
+                    {itemData.inStock 
+                    ? <span className='ItemPageGeneral__inStock'>В наличии</span>
+                    : <span className='ItemPageGeneral__notInStock'>Нет в наличии</span>}
                 </div>
                 <div className='ItemPageGeneral__order'>
                     <div className='ItemPageGeneral__addToCart'>

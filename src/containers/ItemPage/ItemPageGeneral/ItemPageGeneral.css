@@ -126,7 +126,7 @@
     fill: #000;
 }
 
-.ItemPageGeneral__inStock {
+.ItemPageGeneral__inStock, .ItemPageGeneral__notInStock {
     display: inline-block;
     vertical-align: middle;
     color: #000;
@@ -136,7 +136,7 @@
     margin-top: 15px;
 }
 
-.ItemPageGeneral__inStock::before {
+.ItemPageGeneral__inStock::before, .ItemPageGeneral__notInStock::before {
     content: '';
     border-radius: 50px;
     display: inline-block;
@@ -144,6 +144,10 @@
     width: 10px;
     background-color: #0bb648;
     margin-right: 5px;
+}
+
+.ItemPageGeneral__notInStock::before {
+    background-color: red;
 }
 
 .ItemPageGeneral__addToCart {

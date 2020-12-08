@@ -98,7 +98,7 @@ function ItemsCard(props) {
             <div className='ItemsCard_actions'>
                 <div className='ItemsCard_action-wrapper' onClick={() => {
                     inCart
-                        ? props.onRemoveFromFCart({ ...props.itemData, amount: 1 })
+                        ? props.onRemoveFromCart({ ...props.itemData, amount: 1 })
                         : props.onAddToCart({ ...props.itemData, amount: 1 });
                 }}>
                     {CartIcon}
@@ -155,7 +155,7 @@ const mapDispatchToProps = (dispatch) => {
             type: actionTypes.ADD_TO_CART,
             item,
         }),
-        onRemoveFromFCart: (item) => dispatch({
+        onRemoveFromCart: (item) => dispatch({
             type: actionTypes.REMOVE_FROM_CART,
             item,
         }),

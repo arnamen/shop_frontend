@@ -1,3 +1,7 @@
+.ItemPageCharacteristics {
+    display: flex;
+}
+
 .ItemPageCharacteristics__info {
     width: 50vw;
 }
@@ -31,4 +35,112 @@
     flex-grow: 1;
     margin-left: 20px;
     border-bottom: 1px dotted #d2d2d2;
+}
+
+.ItemPageCharacteristics__carriage {
+    width: 35vw;
+    margin-left: 5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.ItemPageCharacteristics__carriage__name {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #e9e9e9;
+    border-radius: 4px;
+}
+
+.ItemPageCharacteristics__carriage__name__image {
+    width: 30%;
+    margin-right: 24px;
+}
+
+
+.ItemPageCharacteristics__carriage__name__image img {
+    width: 100%;
+}
+
+.ItemPageCharacteristics__carriage__name-text {
+    width: 80%;
+    font-size: 18px;
+}
+
+.ItemPageCharacteristics__carriage__actions {
+    display: flex;
+}
+
+.ItemPageCharacteristics__carriage__buy {
+    margin-top: 15px;
+    padding: 16px;
+    border: 1px solid #e9e9e9;
+    border-radius: 4px;
+}
+
+.ItemPageCharacteristics__carriage__buy-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ItemPageCharacteristics__carriage__buy__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00a046;
+    color: #fff;
+    width: 100%;
+    height: 48px;
+    font-size: 18px;
+    margin-top: 15px;
+    transition: 0.5s background-color;
+}
+
+.ItemPageCharacteristics__carriage__buy__button:hover {
+    background-color: #00bc52;
+}
+
+.ItemPageCharacteristics__carriage__buy-status__price {
+    display: inline-flex;
+    justify-content: space-between;  
+    font-size: 28px;
+}
+
+.ItemPageCharacteristics__carriage__buy-status__price span {
+    margin-left: 3px;
+    font-size: 24px;
+}
+
+.ItemPageCharacteristics__carriage__buy-status__old-price {
+    color: red;
+    text-decoration: line-through;
+    margin-left: 15px;
+}
+
+.ItemPageCharacteristics_action-icon_cart {
+    fill: white;
+}
+
+.ItemPageCharacteristics__carriage__seller {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #e9e9e9;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+.ItemPageCharacteristics__carriage__seller-name {
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+.ItemPageCharacteristics__carriage__seller-logo .logo__image-wrapper-simple {
+    height: 50px;
+}
+
+.ItemPageCharacteristics__carriage__seller-logo .logo__title_1-simple,
+.ItemPageCharacteristics__carriage__seller-logo .logo__title_2-simple {
+    font-size: 18px;
 }

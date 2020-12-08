@@ -27,6 +27,7 @@ const initialState = {
             to: '/',
             id: 'Samsung-Galaxy-M31s',
             labels: ['new', 'popular'],
+            inStock: true,
             description: `Экран (6.5", Super AMOLED, 2400х1080) 
             / Samsung Exynos 9611 (4 x 2.3 ГГц + 4 x 1.7 ГГц) 
             / основная квадро-камера: 64 Мп + 12 Мп + 5 Мп + 5 Мп, фронтальная 32 Мп 
@@ -55,6 +56,7 @@ const initialState = {
             stars: 5,
             id: 'Nokia-5.3-DualSim-Charcoal',
             labels: ['popular'],
+            inStock: false,
             description: `Экран (6.55", 1600x720) 
             / Qualcomm Snapdragon 665 (2.0 ГГц) 
             / основная квадро-камера: 13 Мп + 5 Мп + 2 Мп + 2 Мп, фронтальная камера: 8 Мп 
@@ -79,6 +81,7 @@ const initialState = {
             stars: 4,
             id: 'Xiaomi-Mi-LED-TV-4A-32',
             labels: ['new'],
+            inStock: true,
             description: 'useTags'
         },
     ]

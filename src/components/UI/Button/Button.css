@@ -10,4 +10,6 @@
     font-weight: 700;
     outline: none;
     border: none;
+    cursor: pointer;
+    border-radius: 4px;
 }

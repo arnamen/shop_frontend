@@ -25,7 +25,7 @@
 }
 
 .logo__image-wrapper-simple {
-    height: 10vh;
+    height: 75px;
 }
 
 .logo__title-wrapper-simple {
@@ -36,14 +36,14 @@
 
 .logo__title_1, .logo__title_2 {
     font-weight: 700;
-    font-size: 4vh;
+    font-size: 32px;
     color: #ffdd00;
     
     /* text-shadow: 1px 1px rgba(0, 0, 0, 0.6); */
 }
 
 .logo__title_1-simple , .logo__title_2-simple {
-    font-size: 3.6vh;
+    font-size: 24px;
     color: #edc225;
 }
 
