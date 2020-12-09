@@ -1,10 +1,11 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
 import './CategoriesCard.css'
 
 export default function CategoriesCard(props) {
     return (
-        <a href={props.to} className='CategoriesCard'>
+        <Link to={props.to} className='CategoriesCard'>
             <div className='CategoriesCard_wrapper'>
                 <div className='CategoriesCard_title-wrapper'>
                     <span className='CategoriesCard_title'>
@@ -13,6 +14,6 @@ export default function CategoriesCard(props) {
                 </div>
                 <img src={props.img} alt='category' className='CategoriesCard_image'></img>
             </div>
-        </a>
+        </Link>
     )
 }

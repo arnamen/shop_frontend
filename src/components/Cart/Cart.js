@@ -21,7 +21,7 @@ function Cart(props) {
                 <img src={item.images[0]} className='Cart__item__image' alt='item_image' />
             </div>
             </td>
-            <td><Link to='/' className='Cart__item-descr'>{item.name}</Link></td>
+            <td><Link to={'/item/' + item.id.toLowerCase()} className='Cart__item-descr'>{item.name}</Link></td>
             <td>
                 <div className='Cart__item__unit-price'>{`${item.amount} × ${item.price}₴`}</div>
                 <div className='Cart__item__total-price'>{`${(item.amount * item.price).toFixed()}₴`}</div>

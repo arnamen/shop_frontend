@@ -1,6 +1,7 @@
 import React from 'react'
 import { v4 } from 'uuid';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import Label from '../../../Label/label';
 import * as actionTypes from '../../../../../store/actions/actionTypes';
@@ -69,7 +70,7 @@ function ItemsCard(props) {
         console.log(isNoImage)
     return (
         <div className={`ItemsCard ${isStaticImage && ` itemCard__image__static`}`}>
-            <a href={href} className='ItemsCard_image-wrapper'>
+            <Link to={href} className='ItemsCard_image-wrapper'>
                 {isNoImage
                     ? <img className='ItemsCard_image-main'
                         src={imagePlaceholder}
@@ -84,8 +85,8 @@ function ItemsCard(props) {
                     </React.Fragment>
                 }
 
-            </a>
-            <a className='ItemsCard_descr' href={href}>{props.itemData.name}</a>
+            </Link>
+            <Link className='ItemsCard_descr' to={href}>{props.itemData.name}</Link>
             <div className='ItemsCard_stars'>
                 {stars}
             </div>

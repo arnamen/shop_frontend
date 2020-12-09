@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect } from 'react-redux';
 import Tabs from '../../containers/Tabs/Tabs';
 
@@ -15,6 +15,11 @@ function ItemPage(props) {
     const compared = !!props.compare.find(item => item.name === itemData.name);
     const favored = !!props.favourites.find(item => item.name === itemData.name);
     const inCart = !!props.cart.find(item => item.name === itemData.name);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     return (
         <div className='ItemPage'>
             <Tabs tabsNames={['Осноная информация', 'Характеристики']}>

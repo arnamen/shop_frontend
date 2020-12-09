@@ -19,6 +19,9 @@ function ContentPage(props) {
     // eslint-disable-next-line no-unused-vars
     const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
     const sidebarItems = useCreateSidebarItems(availableFilters);
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     //при первом рендере получить параметры запроса для фильтров если есть
     useEffect(() => {
 
