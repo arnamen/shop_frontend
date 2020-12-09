@@ -12,12 +12,12 @@ import {translate} from '../../utils/translate';
 import './Compare.css';
 
 function Compare( props ) {
-
     const tableHead = <tr>
         <th>Товар</th>
         {props.compare.map(item => {
+            console.log(item)
             return <th style={{width: (100 / Math.max(props.compare.length, 1)) + '%'}} key={v4()}>
-                <Link to='/'>
+                <Link to={'/item/' + item.id}>
                 <img src={item.images[0]} className='Compare__img' alt='compare_item_img'></img>
                 <span>{item.name}</span>
                 </Link>
