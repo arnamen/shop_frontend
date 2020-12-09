@@ -18,37 +18,38 @@ import shoes from '../../assets/categories/shoes.png';
 import './MainPage.css';
 import { connect } from 'react-redux';
 
-//двухмерный массив категорий (для распределения по блокам)
+//массив категорий
+const href = '/page/collection';
 const categoriesData = [
         {
             name: 'Свитеры',
             image: sveter,
-            to: '/'
+            to: href
         },
         {
             name: 'шапки',
             image: hat,
-            to: '/'
+            to: href
         },
         {
             name: 'обувь',
             image: shoes,
-            to: '/'
+            to: href
         },
         {
             name: 'смартфоны',
             image: smartphone,
-            to: '/'
+            to: href + '?categories=phones'
         },
         {
             name: 'ноутбуки',
             image: laptop,
-            to: '/'
+            to: href
         },
         {
             name: 'Наушники',
             image: headphones,
-            to: '/'
+            to: href
         }
 ]
 

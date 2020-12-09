@@ -48,6 +48,7 @@
     transition: 0.5s padding;
     display: inline-block;
     min-width: 10vw;
+    color: black;
 }
 
 .CategoriesCard_wrapper {
