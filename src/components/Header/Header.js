@@ -18,94 +18,115 @@ import useItemsFilter from '../../hooks/useItemsFilter/useItemsFilter';
 
 import './Header.css';
 
+let contentHref = '/page/collection';
 
 const dropdownsData = [
     {
         text: 'Каталог товаров',
-        to: '/page/collection',
+        to: contentHref,
         children: [{
-            text: 'cart',
-            to: '/'
+            text: 'Категория',
+            to: contentHref
         },
         {
-            text: 'first',
-            to: '/',
+            text: 'Телефоны',
+            to: contentHref + '?categories=phones,smartphones',
             children: [{
-                text: 'first',
-                to: '/'
+                text: 'Категория',
+                to: contentHref
             },
             {
-                text: 'second',
-                to: '/',
+                text: 'Смартфоны',
+                to: contentHref + '?categories=smartphones',
                 children: [{
-                    text: 'first',
-                    to: '/'
+                    text: 'Категория',
+                    to: contentHref,
                 },
                 {
-                    text: 'testукеукеуке2',
-                    to: '/',
+                    text: 'Категория',
+                    to: contentHref,
 
                 }, {
-                    text: 'teее1',
-                    to: '/'
+                    text: 'Категория',
+                    to: contentHref
                 },
                 {
-                    text: 'teецукеst2',
-                    to: '/',
+                    text: 'Категория',
+                    to: contentHref,
 
                 }, {
-                    text: 'test1',
-                    to: '/'
+                    text: 'Категория',
+                    to: contentHref
                 },
                 {
-                    text: 'test2',
-                    to: '/',
+                    text: 'Категория',
+                    to: contentHref,
 
                 }]
             }, {
-                text: 'third',
-                to: '/',
+                text: 'Категория',
+                to: contentHref,
                 children: [{
-                    text: 'first',
-                    to: '/'
+                    text: 'Категория',
+                    to: contentHref,
                 },
                 {
-                    text: 'test2',
-                    to: '/',
+                    text: 'Категория',
+                    to: contentHref,
 
                 }, {
-                    text: 'test1',
-                    to: '/'
+                    text: 'Категория',
+                    to: contentHref,
                 },
                 {
-                    text: 'test2',
-                    to: '/',
+                    text: 'Категория',
+                    to: contentHref,
 
                 }, {
-                    text: 'test1',
-                    to: '/'
+                    text: 'Категория',
+                    to: contentHref,
                 },
                 {
-                    text: 'test2',
-                    to: '/',
+                    text: 'Категория',
+                    to: contentHref,
 
                 }]
             },
             {
-                text: 'test2',
-                to: '/',
+                text: 'Категория',
+                to: contentHref,
 
             }, {
-                text: 'test1',
-                to: '/'
+                text: 'Категория',
+                to: contentHref,
             },
             {
-                text: 'test2',
-                to: '/',
+                text: 'Категория',
+                to: contentHref,
 
             }]
+        },
+        {
+            text: 'Телевизоры',
+            to: contentHref + '?categories=tv',
+            children: [
+                {
+                    text: 'Категория',
+                    to: contentHref,
+    
+                }, {
+                    text: 'Категория',
+                    to: contentHref,
+                },
+                {
+                    text: 'Категория',
+                    to: contentHref,
+    
+                }
+            ]
         }]
     },
+
 ]
 
 const AccountListData = [
