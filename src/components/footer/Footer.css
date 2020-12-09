@@ -2,6 +2,7 @@
     display: flex;
     padding: 0 5vw;
     background-color: #eee;
+    justify-content: space-between;
 }
 
 .Footer__wrapper ul > li {
@@ -25,4 +26,18 @@
     font-size: 22px;
     margin-top: 3vh;
     color: black;
+}
+
+@media screen and (max-width: 960px) {
+    .Footer__wrapper ul {
+        padding: 0;
+
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .Footer__wrapper {
+        display: flex;
+        justify-content: space-around;
+    }
 }

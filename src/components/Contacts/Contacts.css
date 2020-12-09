@@ -16,12 +16,12 @@
 
 .Contacts__dots {
     display: flex;
-    font-size: 1.1vw;
+    font-size: 15px;
 }
 
 .Contacts__get-feedback {
     font-weight: 700;
-    font-size: 1.1vw;
+    font-size: 15px;
     color: #ed8d12;
 }
 
@@ -32,7 +32,7 @@
 
 .Contacts__phone-number {
     text-align: center;
-    font-size: 1.6vw;
+    font-size: 18px;
     color: #ffc804;
     /* text-shadow: 1px 1px rgba(0, 0, 0, 0.6); */
 }

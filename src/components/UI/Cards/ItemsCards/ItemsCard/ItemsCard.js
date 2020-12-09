@@ -67,7 +67,7 @@ function ItemsCard(props) {
     
     if (!props.itemData.images || !Array.isArray(props.itemData.images)) {isNoImage = true; isStaticImage = true;}
     else if (props.itemData.static || props.itemData.images.length < 2) isStaticImage = true;
-        console.log(isNoImage)
+ 
     return (
         <div className={`ItemsCard ${isStaticImage && ` itemCard__image__static`}`}>
             <Link to={href} className='ItemsCard_image-wrapper'>

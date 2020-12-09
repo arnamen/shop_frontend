@@ -1,3 +1,9 @@
 .FooterInfo__wrapper {
     width: 25%;
 }
+
+@media screen and (max-width: 500px) {
+    .FooterInfo__wrapper {
+        display: none;
+    }
+}

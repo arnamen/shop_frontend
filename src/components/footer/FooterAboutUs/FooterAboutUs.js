@@ -25,7 +25,7 @@ export default function FooterAboutUs() {
                     </span>
                 </li>
                 <li>
-                    <div>
+                    <div className='FooterAboutUs__social'>
                         <span className='FooterAboutUs__social__title'>Мы в социальных сетях</span>
                         <div className='FooterAboutUs__social__icons'>
                         <a href='http://google.com'><ReactGooglePlus className='FooterAboutUs__icon'/></a>

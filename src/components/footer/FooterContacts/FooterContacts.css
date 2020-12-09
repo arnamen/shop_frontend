@@ -17,3 +17,13 @@
     display: flex;
     justify-content: space-around;
 }
+
+
+@media screen and (max-width: 500px) {
+    .FooterContacts__wrapper {
+        width: 100%;
+    }
+    .FooterContacts__wrapper .Contacts__wrapper {
+        width: auto;
+    }
+}

@@ -8,7 +8,7 @@
     margin-right: 15px;
 }
 .FooterAboutUs__social {
-
+    max-width: 100%;
 }
 
 .FooterAboutUs__social__title {
@@ -21,4 +21,10 @@
     display: flex;
     justify-content: space-around;
     margin-top: 16px;
+}
+
+@media screen and (max-width: 960px) {
+    .FooterAboutUs__wrapper {
+        display: none;
+    }
 }
