@@ -2,6 +2,8 @@ import React from 'react'
 
 import './FooterGoodsList.css';
 
+let contentHref = '/page/collection';
+
 export default function FooterGoodsList() {
     return (
         <div className='FooterGoodsList__wrapper'>
@@ -10,25 +12,25 @@ export default function FooterGoodsList() {
                     <span className='FooterGoodsList__title'>Каталог товаров</span>
                 </li>
                 <li>
-                    <a href='/'>Телефоны</a>
+                    <a href={contentHref + '?categories=phones'}>Телефоны</a>
                 </li>
                 <li>
-                    <a href='/'>Фото и видео</a>
+                    <a href={contentHref}>Фото и видео</a>
                 </li>
                 <li>
-                    <a href='/'>Ноутбуки, планшеты, компьютеры</a>
+                    <a href={contentHref}>Ноутбуки, планшеты, компьютеры</a>
                 </li>
                 <li>
-                    <a href='/'>Наушники</a>
+                    <a href={contentHref}>Наушники</a>
                 </li>                
                 <li>
-                    <a href='/'>Аксессуары</a>
+                    <a href={contentHref}>Аксессуары</a>
                 </li>
                 <li>
-                    <a href='/'>Игрушки</a>
+                    <a href={contentHref}>Игрушки</a>
                 </li>
                 <li>
-                    <a href='/'>Разное</a>
+                    <a href={contentHref}>Разное</a>
                 </li>
             </ul>
         </div>

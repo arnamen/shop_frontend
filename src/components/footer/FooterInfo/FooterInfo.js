@@ -2,6 +2,8 @@ import React from 'react'
 
 import './FooterInfo.css';
 
+let contentHref = '/page/';
+
 export default function FooterInfo() {
     return (
         <div className='FooterInfo__wrapper'>
@@ -10,10 +12,10 @@ export default function FooterInfo() {
                     <span className='FooterGoodsList__title'>Информация</span>
                 </li>
                 <li>
-                    <a href='/'>Часто задаваемые вопросы</a>
+                    <a href={'/'}>Часто задаваемые вопросы</a>
                 </li>
                 <li>
-                    <a href='/'>Политика конфиденциальности и оферта</a>
+                    <a href={contentHref + 'offer'}>Политика конфиденциальности и оферта</a>
                 </li>
                 <li>
                     <a href='/'>Пользовательское соглашение</a>
@@ -25,16 +27,16 @@ export default function FooterInfo() {
                     <a href='/'>Статьи</a>
                 </li>
                 <li>
-                    <a href='/'>Обратная связь</a>
+                    <a href={contentHref + 'feedback'}>Обратная связь</a>
                 </li>
                 <li>
-                    <a href='/'>Доставка</a>
+                    <a href={contentHref + 'delivery'}>Доставка</a>
                 </li>
                 <li>
-                    <a href='/'>Оплата</a>
+                    <a href={contentHref + 'payment'}>Оплата</a>
                 </li>
                 <li>
-                    <a href='/'>Контакты</a>
+                    <a href={contentHref + 'contacts'}>Контакты</a>
                 </li>
             </ul>
         </div>

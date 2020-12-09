@@ -28,14 +28,14 @@ export default function FooterAboutUs() {
                     <div>
                         <span className='FooterAboutUs__social__title'>Мы в социальных сетях</span>
                         <div className='FooterAboutUs__social__icons'>
-                        <ReactGooglePlus className='FooterAboutUs__icon'/>
-                        <ReactVK className='FooterAboutUs__icon'/>
-                        <ReactMessenger className='FooterAboutUs__icon'/>
-                        <ReactTwitter className='FooterAboutUs__icon'/>
-                        <ReactWhatsApp className='FooterAboutUs__icon'/>
-                        <ReactSkype className='FooterAboutUs__icon'/>
-                        <ReactTumblr className='FooterAboutUs__icon'/>
-                        <ReactLinkedin className='FooterAboutUs__icon'/>
+                        <a href='http://google.com'><ReactGooglePlus className='FooterAboutUs__icon'/></a>
+                        <a href='http://vk.com'><ReactVK className='FooterAboutUs__icon'/></a>
+                        <a href='http://messenger.com'><ReactMessenger className='FooterAboutUs__icon'/></a>
+                        <a href='http://twitter.com'><ReactTwitter className='FooterAboutUs__icon'/></a>
+                        <a href='http://whatsapp.com'><ReactWhatsApp className='FooterAboutUs__icon'/></a>
+                        <a href='http://skype.com'><ReactSkype className='FooterAboutUs__icon'/></a>
+                        <a href='http://tumblr.com'><ReactTumblr className='FooterAboutUs__icon'/></a>
+                        <a href='http://linkedin.com'><ReactLinkedin className='FooterAboutUs__icon'/></a>
                         </div>
                     </div>
                 </li>
