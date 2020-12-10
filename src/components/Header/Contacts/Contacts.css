@@ -17,6 +17,7 @@
 .Contacts__dots {
     display: flex;
     font-size: 15px;
+    position: relative;
 }
 
 .Contacts__get-feedback {
@@ -50,3 +51,43 @@
     border-radius: 50%;
     display: block;
   }
+
+.Contacts__dots:hover .PopupSimple {
+    opacity: 1;
+    z-index: 999;
+}
+
+.Contacts__social-wrapper {
+    background-color: #e2e2e2;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px 0;
+}
+
+.Contacts__icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+    margin: 0 10px;
+}
+
+.Contacts__dots a {
+    color: black;
+}
+
+.Contacts__dots a:hover {
+    text-decoration: underline;
+}
+
+.Contacts__dots ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.Contacts__dots ul > li:not(.Contacts__social-wrapper) {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}

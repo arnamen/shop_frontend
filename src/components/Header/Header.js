@@ -7,7 +7,7 @@ import Logo from '../Logo/Logo';
 import Search from '../../containers/Search/Search';
 import UserIconLinks from '../UserIconLinks/UserIconLinks';
 import UserIconLink from '../UserIconLinks/UserIconLink/UserIconLink';
-import Contacts from '../Contacts/Contacts';
+import Contacts from './Contacts/Contacts';
 import LinkButton from '../UI/LinkButton/LinkButton';
 import Dropdown from '../UI/Dropdown/Dropdown';
 import Popup from '../UI/Popup/Popup';

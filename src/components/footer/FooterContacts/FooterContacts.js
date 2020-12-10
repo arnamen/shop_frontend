@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Logo from '../../Logo/Logo';
-import Contacts from '../../Contacts/Contacts';
+import Contacts from '../../Header/Contacts/Contacts';
 
 import './FooterContacts.css';
 
