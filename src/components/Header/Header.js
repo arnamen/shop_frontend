@@ -160,8 +160,8 @@ function Header(props) {
         <React.Fragment>
             {/* этот заголовок виден когда пользователь наверху старницы */}
             <VisibilitySensor partialVisibility onChange={(isVisible) => setVisible(isVisible)}>
-                <div className={'header'}>
-                    <div className={`header__wrapper-top`}>
+                <div className={'Header'}>
+                    <div className={`Header__wrapper-top`}>
                         <Logo />
                         <Search />
                         <Contacts />
@@ -182,7 +182,7 @@ function Header(props) {
                             </UserIconLink>
                         </UserIconLinks>
                     </div>
-                    <div className={`header__wrapper-bottom ${!visible && `header-bottom__hide`}`}>
+                    <div className={`Header__wrapper-bottom ${!visible && `Header-bottom__hide`}`}>
                         <Dropdown items={dropdownsData} />
                         <LinkButton to='/page/about-us'>О компании</LinkButton>
                         <LinkButton to='/page/contacts'>Контакты</LinkButton>
@@ -191,10 +191,14 @@ function Header(props) {
                         <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
                         <LinkButton to='/page/offer'>Оферта</LinkButton>
                     </div>
+                    <div className='Header__bottom-simple'>
+                        <Logo/>
+                    </div>
                 </div>
+
             </VisibilitySensor>
             {/* этот заголовок виден когда пользователь скролит вниз */}
-            <div className={`header__sticky ${visible && `header-bottom__hide`}`}>
+            <div className={`Header__sticky ${visible && `Header-bottom__hide`}`}>
                 <Dropdown items={dropdownsData} />
                 <LinkButton to='/page/about-us'>О компании</LinkButton>
                 <LinkButton to='/page/contacts'>Контакты</LinkButton>

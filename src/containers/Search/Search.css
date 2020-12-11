@@ -1,4 +1,4 @@
-.search_wrapper {
+.Search {
     width: 40vw;
     height: 50%;
     display: flex;
@@ -7,7 +7,7 @@
     padding-left: 2vw;
 }
 
-.search_field {
+.Search__field {
     height: 5vh;
     width: 100%;
     font-size: 1.1vw;
@@ -17,13 +17,13 @@
     transition: 0.5s all;
 }
 
-.search_field:focus {
+.Search__field:focus {
     outline: none;
     box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.33)
 }
 
 
-.search {
+.Search__button {
     transform: translateX(-7vh);
     width: 5vh;
     height: 5vh;

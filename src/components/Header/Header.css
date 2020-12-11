@@ -1,11 +1,11 @@
-.header {
+.Header {
     width: 100%;
     height: 30%;
 }
 
 
 
-.header__wrapper-top {
+.Header__wrapper-top {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,7 @@
     padding: 0 2vw;
 }
 
-.header__wrapper-bottom, .header__sticky {
+.Header__wrapper-bottom, .Header__sticky {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -24,7 +24,7 @@
     font-size: 1.5vw;
 }
 
-.header__sticky {
+.Header__sticky {
     transition: 0.5s opacity;
     opacity: 1;
     position: sticky;
@@ -38,13 +38,36 @@
     padding-bottom: 16px;
 }
 
-.header__sticky .main-navigation {
+.Header__sticky .main-navigation {
     height: 5.5vh;
 }
 
-.header-bottom__hide {
+.Header-bottom__hide {
     overflow: hidden;
     opacity: 0;
     height: 0;
     padding: 0;
+}
+
+.Header__bottom-simple {
+    display: none;
+}
+
+@media screen and (max-width: 1035px) {
+    .Header__wrapper-top {
+        box-shadow: 0px 3px 5px -3px rgba(0, 0, 0, 0.3);
+        height: auto;
+        padding: 1vh;
+    }
+    .Header .Contacts__wrapper, 
+    .Header__wrapper-bottom, 
+    .Header__sticky, 
+    .Header__wrapper-top .logo__wrapper,
+    .Header__wrapper-top .Search {
+        display: none;
+    }
+    .Header__bottom-simple {
+        display: flex;
+        justify-content: center;
+    }
 }

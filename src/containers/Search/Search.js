@@ -1,14 +1,14 @@
 import React from 'react'
 
-import classes from './Search.module.css';
+import classes from './Search.css';
 
 import searchImg from '../../assets/search/magnifying-glass.png';
 
 export default function Search() {
     return (
-        <div className={classes.search_wrapper}>
-            <input type='text' className={classes.search_field} placeholder='Поиск...'/>
-            <img onClick={() => alert('clicked!')} className={classes.search} src={searchImg} alt='search'></img>
+        <div className={'Search'}>
+            <input type='text' className={'Search__field'} placeholder='Поиск...'/>
+            <img onClick={() => alert('clicked!')} className={'Search__button'} src={searchImg} alt='search'></img>
         </div>
     )
 }

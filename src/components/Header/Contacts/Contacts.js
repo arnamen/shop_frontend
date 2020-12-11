@@ -24,7 +24,6 @@ export default function Contacts(props) {
                 <a className={'Contacts__get-feedback'} href='/'>
                     Заказать звонок
                 </a>
-                {/* не получает данные вместе с class из css модуля */}
                 {!props.simple && <div className='Contacts__dots'>
                     <div className={'circle'}></div>
                     <div className={'circle'}></div>
