@@ -53,21 +53,46 @@
     display: none;
 }
 
+.Header__wrapper-top .Burger {
+    display: none;
+}
+
+.Header__wrapper-top-mobile {
+    display: none;
+}
+
 @media screen and (max-width: 1035px) {
-    .Header__wrapper-top {
+
+    .Header__wrapper-top-mobile {
+        position: sticky;
+        top: 0;
         box-shadow: 0px 3px 5px -3px rgba(0, 0, 0, 0.3);
-        height: auto;
-        padding: 1vh;
+        height: 45px;
+        padding-right: 2vw;
+        padding-left: 0;
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        z-index: 999;
+        align-items: center;
     }
+
+    .Header__wrapper-top {
+        height: 0;
+    }
+
+    .Header__wrapper-top * {
+        display: none;
+    }
+
     .Header .Contacts__wrapper, 
     .Header__wrapper-bottom, 
-    .Header__sticky, 
-    .Header__wrapper-top .logo__wrapper,
-    .Header__wrapper-top .Search {
+    .Header__sticky{
         display: none;
     }
     .Header__bottom-simple {
         display: flex;
         justify-content: center;
+        padding: 2vh 0;
     }
 }

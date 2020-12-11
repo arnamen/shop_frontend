@@ -1,0 +1,112 @@
+.Burger {
+    display: inline-block;
+    height: 100%;
+    background: darkorange;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.Burger::selection {
+    background: darkorange;
+}
+
+.Burger .Burger__dummyImg {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+
+.Burger__lines {
+    height: 50%;
+    margin-top: 14px;
+}
+
+.Burger__line {
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+    height: 3px;
+}
+
+.Burger__line::before {
+    content: '';
+    display: block;
+    margin: 0 auto;
+    background-color: black;
+    width: 50%;
+    height: 100%;
+}
+
+.Burger__padding {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100vh;
+}
+
+@keyframes slidein {
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 0;
+    }
+}
+
+@keyframes slideout {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -100%;
+    }
+}
+
+@keyframes removeElem {
+    from {
+        height: 100%;
+    }
+
+    to {
+        height: 0;
+    }
+    99% {
+        height: 100%;
+    }
+}
+
+.Burger__itemsList {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    height: 100vh;
+    display: inline-block;
+    width: 30%;
+    min-width: 200px;
+    text-align: center;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: slidein 0.5s;
+}
+
+
+.Burger__item {
+    padding: 6vh 1vw 1vh 1vw;
+    color: white;
+    display: block;
+}
+
+.Burger__hide {
+    animation: removeElem 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.Burger__hide .Burger__itemsList {
+    animation: slideout 0.5s;
+    animation-fill-mode: forwards;
+}

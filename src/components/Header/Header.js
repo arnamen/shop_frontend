@@ -11,6 +11,7 @@ import Contacts from './Contacts/Contacts';
 import LinkButton from '../UI/LinkButton/LinkButton';
 import Dropdown from '../UI/Dropdown/Dropdown';
 import Popup from '../UI/Popup/Popup';
+import Burger from '../../containers/Burger/Burger';
 
 import * as actionTypes from '../../store/actions/actionTypes';
 
@@ -113,7 +114,7 @@ const dropdownsData = [
                 {
                     text: 'Категория',
                     to: contentHref,
-    
+
                 }, {
                     text: 'Категория',
                     to: contentHref,
@@ -121,7 +122,7 @@ const dropdownsData = [
                 {
                     text: 'Категория',
                     to: contentHref,
-    
+
                 }
             ]
         }]
@@ -148,6 +149,16 @@ const AccountListData = [
     },
 ]
 
+const burgerData = [
+    { to: '/', name: 'Главная' },
+    { to: '/page/collection', name: 'Каталог товаров' },
+    { to: '/page/about-us', name: 'О компании' },
+    { to: '/page/contacts', name: 'Контакты' },
+    { to: '/page/delivery', name: 'Доставка' },
+    { to: '/page/payment', name: 'Оплата' },
+    { to: '/page/feedback', name: 'Обратная связь' },
+]
+
 function Header(props) {
     // eslint-disable-next-line no-unused-vars
     const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
@@ -158,10 +169,31 @@ function Header(props) {
 
     return (
         <React.Fragment>
+            {/* Этот заголовок видно когда пользователь скролит вниз с телефона */}
+            <div className={`Header__wrapper-top-mobile`}>
+                <Burger data={burgerData} />
+                <UserIconLinks>
+                    <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
+                        <Popup items={props.compare} type='compare' redirectButtonNotEmpty onDelete={props.onRemoveFromCompare} />
+                    </UserIconLink>
+                    <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} activeColor='red' key={v4()}>
+                        <Popup items={props.favourites} type='favourites' redirectButtonNotEmpty onDelete={props.onRemoveFromFavourites} />
+                    </UserIconLink>
+                    <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
+                        <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart} />
+                    </UserIconLink>
+                    <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
+                        {props.login
+                            ? <Popup type='authenticated' actionButton listData={AccountListData} />
+                            : <Popup type='account' redirectButton actionButton />}
+                    </UserIconLink>
+                </UserIconLinks>
+            </div>
             {/* этот заголовок виден когда пользователь наверху старницы */}
             <VisibilitySensor partialVisibility onChange={(isVisible) => setVisible(isVisible)}>
                 <div className={'Header'}>
                     <div className={`Header__wrapper-top`}>
+                        <Burger data={burgerData} />
                         <Logo />
                         <Search />
                         <Contacts />
@@ -192,7 +224,7 @@ function Header(props) {
                         <LinkButton to='/page/offer'>Оферта</LinkButton>
                     </div>
                     <div className='Header__bottom-simple'>
-                        <Logo/>
+                        <Logo />
                     </div>
                 </div>
 
