@@ -15,26 +15,24 @@ import './Cart.css';
 function Cart(props) {
 
     const content = props.cart.map(item => {
-        return <tr className='Cart__item' key={v4()}>
-            <td>
+        return <div className='Cart__item' key={v4()}>
             <div className='Cart__item__image-wrapper'>
                 <img src={item.images[0]} className='Cart__item__image' alt='item_image' />
             </div>
-            </td>
-            <td><Link to={'/item/' + item.id.toLowerCase()} className='Cart__item-descr'>{item.name}</Link></td>
-            <td>
+            <div><Link to={'/item/' + item.id.toLowerCase()} className='Cart__item-descr'>{item.name}</Link></div>
+            <div>
                 <div className='Cart__item__unit-price'>{`${item.amount} × ${item.price}₴`}</div>
                 <div className='Cart__item__total-price'>{`${(item.amount * item.price).toFixed()}₴`}</div>
-            </td>
-            <td className='Cart__amount-wrapper'>
+            </div>
+            <div className='Cart__amount-wrapper'>
                 <Counter defaultValue={item.amount}
                 onClickDecrease = {() => props.onDecreaseItemInCart(item)}
                 onClickIncrease={() => props.onIncreaseItemInCart(item)}/>
-            </td>
-            <td onClick={() => props.onRemoveFromCart(item)}>
+            </div>
+            <div onClick={() => props.onRemoveFromCart(item)}>
                 <ReactTrash className='Cart__trash-image' />
-            </td>
-        </tr>
+            </div>
+        </div>
     })
 
     let totalPrice = 0;
@@ -66,11 +64,11 @@ function Cart(props) {
                 ? <React.Fragment>
                     <h1 className='Cart__title'>Корзина</h1>
                     <div className='Cart__content-wrapper'>
-                        <table className='Cart__items-wrapper'>
-                            <tbody>
+                        <div className='Cart__items-wrapper'>
+                            <div>
                             {content}
-                            </tbody>
-                        </table>
+                            </div>
+                        </div>
                         <div className='Cart__form-wrapper'></div>
                         {proceedForm}
                     </div>

@@ -11,6 +11,7 @@
     height: 22px;
     fill: #ed8d12;
     margin-right: 15px;
+    flex-grow: 1;
 }
 
 .FooterContacts__social-wrapper {
