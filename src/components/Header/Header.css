@@ -98,6 +98,6 @@
         padding: 2vh 0;
     }
     .Header__bottom-simple .logo__wrapper {
-        max-width: auto;
+        max-width: fit-content;
     }
 }

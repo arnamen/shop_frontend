@@ -1,5 +1,10 @@
 .Compare {
     padding: 50px 10vw 5vh 10vw;
+    max-width: 100%;
+}
+
+.Compare__data {
+    overflow: auto;
 }
 
 .Compare__img {

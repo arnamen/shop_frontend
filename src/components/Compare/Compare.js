@@ -55,6 +55,7 @@ function Compare( props ) {
 
     return (
         <div className='Compare'>
+            <div className='Compare__data'>
             <h1 className='Compare__title'>Сравнение товаров</h1>
             {props.compare.length > 0 
             ? <table>
@@ -72,6 +73,7 @@ function Compare( props ) {
                 <ReactCompare className='Compare__empty-img' viewBox="0 0 512 512"/>
                 <p>Похоже, тут ничего нету</p>
             </div>}
+            </div>
         </div>
     )
 }
