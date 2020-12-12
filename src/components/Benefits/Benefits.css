@@ -27,3 +27,18 @@
 .benefits_image-descr {
     font-size: 1.1vw;
 }
+
+@media screen and (max-width: 560px) {
+    .benefits_image-title {
+        font-size: 2vw;
+    }
+    .benefits_image-descr {
+        font-size: 1.8vw;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .benefits_wrapper {
+        display: none;
+    }
+}

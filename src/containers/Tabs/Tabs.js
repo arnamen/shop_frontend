@@ -26,7 +26,7 @@ export default function Tabs(props) {
     const children = React.Children.map(props.children, (child, index) => {
         return React.cloneElement(child, {
             key: v4(),
-            className: `${child.props.className ? child.props.className : ''} ${index === selectedTab ? 'active' :'inactive'}`
+            className: `${child.props.className ? child.props.className : ''} ${index === selectedTab ? '' :'inactive'}`
         })
     })
 

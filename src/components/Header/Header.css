@@ -76,7 +76,9 @@
         z-index: 999;
         align-items: center;
     }
-
+    .Header__wrapper-top-mobile .UserIconLink__wrapper {
+        margin: 0 1vw;
+    }
     .Header__wrapper-top {
         height: 0;
     }
@@ -94,5 +96,8 @@
         display: flex;
         justify-content: center;
         padding: 2vh 0;
+    }
+    .Header__bottom-simple .logo__wrapper {
+        max-width: auto;
     }
 }

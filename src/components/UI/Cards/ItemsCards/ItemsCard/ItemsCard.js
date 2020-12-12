@@ -93,9 +93,7 @@ function ItemsCard(props) {
             <div className='ItemsCard_price-wrapper'>
                 {price}
             </div>
-            <div className='ItemsCard_labels'>
-                {labels}
-            </div>
+
             <div className='ItemsCard_actions'>
                 <div className='ItemsCard_action-wrapper' onClick={() => {
                     inCart
@@ -121,6 +119,9 @@ function ItemsCard(props) {
                                 : props.onAddToCompare(props.itemData)
                         }} />
                 </div>
+            </div>
+            <div className='ItemsCard_labels'>
+                {labels}
             </div>
         </div>
     )

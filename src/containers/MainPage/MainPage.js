@@ -82,7 +82,7 @@ function MainPage( props ) {
                 <ItemsCards itemsData={content_tab2}/>
             </Tabs>
             <div className='MainPage__viewAllGoods-wrapper' onClick={(e) => window.scrollTo(0,0)}>
-                <NavLink className='MainPage__viewAllGoods' to='/page/collection'>Посмотреть все товары</NavLink>
+                <NavLink className='MainPage__viewAllGoods' to='/page/collection'><span>Посмотреть все товары</span></NavLink>
             </div>
             <GoodsList title='Только у нас' img='Star' data={phones}/>
             <GoodsList title='Популярно в категории "Телевизоры"' img='Chat' data={tv}/>

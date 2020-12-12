@@ -2,4 +2,6 @@
 
 .ItemsCards {
     padding: 0 2%;
+    display: flex;
+    flex-wrap: wrap;
 }

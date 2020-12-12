@@ -58,3 +58,9 @@
     position: relative;
 }
 
+@media screen and (max-width: 550px) {
+    .CategoriesCard_title {
+        font-size: 12px;
+        line-height: 12px;
+    }
+}
