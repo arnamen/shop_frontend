@@ -10,7 +10,10 @@ export default function SidebarNavItem ( props ) {
     const [showList, setShowList] = useState(false);
 
     return (
-        <li className='SidebarNavItem' onClick={() => setShowList(!showList)}>
+        <li className='SidebarNavItem' onClick={(event) => {
+            event.stopPropagation();
+            setShowList(!showList);
+        }}>
             <div className='SidebarNavItem__title-wrapper'>
                 <span className='SidebarNavItem__title'>{props.title}</span>
                 {showList 

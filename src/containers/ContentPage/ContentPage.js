@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import queryString from 'query-string';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import { v4 } from 'uuid';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 import Sidebar from '../../components/UI/Sidebar/Sidebar';
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
 import '../../components/UI/Checkbox/Checkbox';
+import Button from '../../components/UI/Button/Button';
+
+import {ReactComponent as ReactFilter} from '../../assets/misc/filter.svg';
 
 import useItemsFilter from '../../hooks/useItemsFilter/useItemsFilter';
 import useCreateSidebarItems from '../../hooks/useCreateSidebarItems/useCreateSidebarItems';
@@ -24,6 +27,7 @@ function ContentPage(props) {
     const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
     const sidebarItems = useCreateSidebarItems(availableFilters);
     const [sortingOrder, setSotringOrder] = useState('default');
+    const [showMobileFilters, setShowMobileFilters] = useState(false);
     let content = filterItems(props.content);
     const minPrice = content.reduce((curMin, cur) => curMin.price > cur.price ? cur : curMin).price;
     const maxPrice = content.reduce((curMax, cur) => curMax.price < cur.price ? cur : curMax).price;
@@ -31,41 +35,43 @@ function ContentPage(props) {
     const [sliderPriceRange, setSliderPriceRange] = React.useState([minPrice, maxPrice]);
     let inputMinRef = useRef();
     let inputMaxRef = useRef();
-    console.log(sortingOrder)
+
+    if(showMobileFilters) disableBodyScroll(document.querySelector('.Sidebar__wrapper') || <React.Fragment></React.Fragment>);
+    else enableBodyScroll(document.querySelector('.Sidebar__wrapper') || <React.Fragment></React.Fragment>)
     if (sortingOrder !== 'default')
         switch (sortingOrder) {
             case 'name':
                 content = content.sort((item1, item2) => {
-                    if(item1.name < item2.name) return -1;
-                    else if(item1.name > item2.name) return 1;
+                    if (item1.name < item2.name) return -1;
+                    else if (item1.name > item2.name) return 1;
                     else return 0;
                 });
                 break;
             case 'popular':
                 content = content.sort((item1, item2) => {
-                    if(item1.stars > item2.stars) return -1;
-                    else if(item1.stars < item2.stars) return 1;
+                    if (item1.stars > item2.stars) return -1;
+                    else if (item1.stars < item2.stars) return 1;
                     else return 0;
                 });
                 break;
             case 'price-asc':
                 content = content.sort((item1, item2) => {
-                    if(item1.price < item2.price) return -1;
-                    else if(item1.price > item2.price) return 1;
+                    if (item1.price < item2.price) return -1;
+                    else if (item1.price > item2.price) return 1;
                     else return 0;
                 });
                 break;
             case 'price-desc':
                 content = content.sort((item1, item2) => {
-                    if(item1.price > item2.price) return -1;
-                    else if(item1.price < item2.price) return 1;
+                    if (item1.price > item2.price) return -1;
+                    else if (item1.price < item2.price) return 1;
                     else return 0;
                 });
                 break;
             default:
                 break;
         }
-    console.log(content)
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -96,7 +102,8 @@ function ContentPage(props) {
 
     return (
         <div className='ContentPage'>
-            <div className='ContentPage__sidebar-wrapper'>
+            <div className={`ContentPage__sidebar-wrapper ${!showMobileFilters && 'ContentPage__mobile-filters-hide'}`}
+            onClick={() => setShowMobileFilters(false)}>
                 <Sidebar title='Фильтры'>
                     <Sidebar.NavItem title='Цена'>
                         <Sidebar.Item>
@@ -154,18 +161,23 @@ function ContentPage(props) {
             <div className='ContentPage__content'>
                 <h2 className='ContentPage__title'>Товары на главной</h2>
                 <div className='ContentPage__order'>
-                    <span>Сортировать:</span>
-                    <select name="ContentPage__order-select" 
-                    className="ContentPage__order-select"
-                    onChange={(event) => {
-                        setSotringOrder(event.target.value);
-                    }} defaultValue='default'>
-                        <option value="default">По умолчанию</option>
-                        <option value="name">По названию</option>
-                        <option value="popular">По популярности</option>
-                        <option value="price-asc">По возрастанию цены</option>
-                        <option value="price-desc">По убыванию цены</option>
-                    </select>
+                        <Button className='ContentPage__mobile-filters' onClick={() => setShowMobileFilters(true)}>
+                            <ReactFilter className='ContentPage__mobile-filters__icon' viewBox="0 0 512 512"/>
+                            <span>Фильтр товаров</span>
+                            </Button>
+                        <span className='ContentPage__order-select-text'>Сортировать:</span>
+                        <select name="ContentPage__order-select"
+                            className="ContentPage__order-select"
+                            onChange={(event) => {
+                                setSotringOrder(event.target.value);
+                            }} defaultValue='default'>
+                            <option value="default">По умолчанию</option>
+                            <option value="name">По названию</option>
+                            <option value="popular">По популярности</option>
+                            <option value="price-asc">По возрастанию цены</option>
+                            <option value="price-desc">По убыванию цены</option>
+                        </select>
+
                 </div>
                 <ItemsCards itemsData={content} />
             </div>

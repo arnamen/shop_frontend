@@ -64,3 +64,101 @@
     padding: 3px 23px 3px 8px;
     outline: none;
 }
+
+.ContentPage__mobile-filters {
+    align-items: center;
+    display: none;
+}
+
+.ContentPage__mobile-filters__icon {
+    height: 15px;
+    width: 15px;
+    fill: white;
+    margin-right: 10px;
+}
+
+.ContentPage__mobile-filters-hide {
+    display: block;
+}
+
+.ContentPage__price-slider {
+    width: 90%;
+}
+
+@keyframes removeElem {
+    from {
+        height: 100%;
+    }
+
+    to {
+        height: 0;
+    }
+    99% {
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .ContentPage {
+        display: flex;
+        justify-content: center;
+    }
+    .ContentPage__mobile-filters-hide {
+        animation: removeElem 0.5s;
+        animation-fill-mode: forwards;
+    }
+
+    .ContentPage__mobile-filters-hide .Sidebar__wrapper {
+        transform: translateX(-100%);
+    }
+
+    .ContentPage__order {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        width: calc(100% - 4.8%);
+        margin: 0 2.4%;
+    }
+    .ContentPage__mobile-filters {
+        display: inline-flex;
+        align-items: center;
+        width: 50%;
+        line-height: 20px;
+    }
+    .ContentPage__order-select {
+        width: 50%;
+        margin: 0;
+    }
+    .ContentPage__order-select-text {
+        display: none;
+    }
+    /*  */
+    .ContentPage__sidebar-wrapper {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 999;
+    }
+    .ContentPage__sidebar-wrapper .Sidebar__title {
+        display: none;
+    }
+
+    .ContentPage__sidebar-wrapper .Sidebar__wrapper {
+        width: 250px;
+        background-color: white;
+        padding: 20px 20px 0px;
+        overflow: auto;
+        animation: slidein 0.5s;
+        animation-fill-mode: forwards;
+        transition: 0.5s transform;
+    }
+
+    .ContentPage__sidebar-wrapper .Checkbox,
+    .ContentPage__sidebar-wrapper .Sidebar li span.SidebarNavItem__title {
+        color: black;
+    }
+}
