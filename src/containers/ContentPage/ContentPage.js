@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import {v4} from 'uuid';
+import { v4 } from 'uuid';
 
 import Sidebar from '../../components/UI/Sidebar/Sidebar';
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
@@ -23,14 +23,49 @@ function ContentPage(props) {
     // eslint-disable-next-line no-unused-vars
     const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
     const sidebarItems = useCreateSidebarItems(availableFilters);
-    
-    const content = filterItems(props.content);
-    const minPrice = content.reduce((curMin,cur) => curMin.price > cur.price ? cur : curMin).price;
-    const maxPrice = content.reduce((curMax,cur) => curMax.price < cur.price ? cur : curMax).price;
+    const [sortingOrder, setSotringOrder] = useState('default');
+    let content = filterItems(props.content);
+    const minPrice = content.reduce((curMin, cur) => curMin.price > cur.price ? cur : curMin).price;
+    const maxPrice = content.reduce((curMax, cur) => curMax.price < cur.price ? cur : curMax).price;
     const [priceRange, setPriceRange] = React.useState([minPrice, maxPrice]);
     const [sliderPriceRange, setSliderPriceRange] = React.useState([minPrice, maxPrice]);
     let inputMinRef = useRef();
     let inputMaxRef = useRef();
+    console.log(sortingOrder)
+    if (sortingOrder !== 'default')
+        switch (sortingOrder) {
+            case 'name':
+                content = content.sort((item1, item2) => {
+                    if(item1.name < item2.name) return -1;
+                    else if(item1.name > item2.name) return 1;
+                    else return 0;
+                });
+                break;
+            case 'popular':
+                content = content.sort((item1, item2) => {
+                    if(item1.stars > item2.stars) return -1;
+                    else if(item1.stars < item2.stars) return 1;
+                    else return 0;
+                });
+                break;
+            case 'price-asc':
+                content = content.sort((item1, item2) => {
+                    if(item1.price < item2.price) return -1;
+                    else if(item1.price > item2.price) return 1;
+                    else return 0;
+                });
+                break;
+            case 'price-desc':
+                content = content.sort((item1, item2) => {
+                    if(item1.price > item2.price) return -1;
+                    else if(item1.price < item2.price) return 1;
+                    else return 0;
+                });
+                break;
+            default:
+                break;
+        }
+    console.log(content)
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -85,29 +120,29 @@ function ContentPage(props) {
                             <div className='ContentPage__price-range'>
                                 <div className='ContentPage__price-min'>
                                     <label htmlFor='ContentPage__price-min__input'>От:</label>
-                                    <input type='text' key={'input_min'} id='ContentPage__price-min__input' 
-                                    ref={inputMinRef}
-                                    placeholder={`${priceRange[0]}₴`}
-                                    onFocus={(event) => event.target.value=''}
-                                    onChange={(event) => {
-                                        const regexp = new RegExp('(?!([0-9])|$)', 'g');
-                                        const isValid = !regexp.test(event.target.value);
-                                        if(isValid) setPriceRange([+event.target.value, priceRange[1]]);
-                                        else event.target.value = priceRange[0]+'₴';
-                                    }}/>
+                                    <input type='text' key={'input_min'} id='ContentPage__price-min__input'
+                                        ref={inputMinRef}
+                                        placeholder={`${priceRange[0]}₴`}
+                                        onFocus={(event) => event.target.value = ''}
+                                        onChange={(event) => {
+                                            const regexp = new RegExp('(?!([0-9])|$)', 'g');
+                                            const isValid = !regexp.test(event.target.value);
+                                            if (isValid) setPriceRange([+event.target.value, priceRange[1]]);
+                                            else event.target.value = priceRange[0] + '₴';
+                                        }} />
                                 </div>
                                 <div className='ContentPage__price-max'>
                                     <label htmlFor='ContentPage__price-max__input'>До:</label>
                                     <input type='text' key={'input_max'} id='ContentPage__price-max__input'
-                                    ref={inputMaxRef} 
-                                    placeholder={`${priceRange[1]}₴`}
-                                    onFocus={(event) => event.target.value = ''}
-                                    onChange={(event) => {
-                                        const regexp = new RegExp('(?!([0-9])|$)', 'g');
-                                        const isValid = !regexp.test(event.target.value);
-                                        if(isValid) setPriceRange([priceRange[0], +event.target.value]);
-                                        else event.target.value = priceRange[1]+'₴';
-                                    }}
+                                        ref={inputMaxRef}
+                                        placeholder={`${priceRange[1]}₴`}
+                                        onFocus={(event) => event.target.value = ''}
+                                        onChange={(event) => {
+                                            const regexp = new RegExp('(?!([0-9])|$)', 'g');
+                                            const isValid = !regexp.test(event.target.value);
+                                            if (isValid) setPriceRange([priceRange[0], +event.target.value]);
+                                            else event.target.value = priceRange[1] + '₴';
+                                        }}
                                     />
                                 </div>
                             </div>
@@ -117,6 +152,21 @@ function ContentPage(props) {
                 </Sidebar>
             </div>
             <div className='ContentPage__content'>
+                <h2 className='ContentPage__title'>Товары на главной</h2>
+                <div className='ContentPage__order'>
+                    <span>Сортировать:</span>
+                    <select name="ContentPage__order-select" 
+                    className="ContentPage__order-select"
+                    onChange={(event) => {
+                        setSotringOrder(event.target.value);
+                    }} defaultValue='default'>
+                        <option value="default">По умолчанию</option>
+                        <option value="name">По названию</option>
+                        <option value="popular">По популярности</option>
+                        <option value="price-asc">По возрастанию цены</option>
+                        <option value="price-desc">По убыванию цены</option>
+                    </select>
+                </div>
                 <ItemsCards itemsData={content} />
             </div>
         </div>

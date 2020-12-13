@@ -37,3 +37,30 @@
     width: 100%;
     display: block;
 }
+
+.ContentPage__title {
+    margin-left: 2.4%;
+}
+
+.ContentPage__order {
+    text-align: right;
+    font-weight: 300;
+    color: #888;
+    font-size: 14px;
+}
+
+.ContentPage__order-select {
+    margin: 0 2.4%;
+    appearance: none;
+    border: 2px solid #eee;
+    background: #f7f8fa url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJzb3J0LWRvd24iIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMzIwIDUxMiIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLXNvcnQtZG93biBmYS13LTEwIGZhLTN4Ij48cGF0aCBmaWxsPSIjMDAwIiBkPSJNNDEgMjg4aDIzOGMyMS40IDAgMzIuMSAyNS45IDE3IDQxTDE3NyA0NDhjLTkuNCA5LjQtMjQuNiA5LjQtMzMuOSAwTDI0IDMyOWMtMTUuMS0xNS4xLTQuNC00MSAxNy00MXoiIGNsYXNzPSIiPjwvcGF0aD48L3N2Zz4=) right center no-repeat;
+    background-position: calc(100% - 7px) 2px;
+    background-size: 10px;
+    color: #000;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 500;
+    height: 30px;
+    padding: 3px 23px 3px 8px;
+    outline: none;
+}
