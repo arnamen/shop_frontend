@@ -37,14 +37,15 @@
 
 .Sidebar input {
     padding-left: 10px;
+    max-width: 80%;
 }
 
-.Sidebar label {
+.Sidebar label.Checkbox {
     display: block;
     height: 100%;
 }
 
-.Sidebar li:hover > span,
+.Sidebar li:hover > span.SidebarNavItem__title,
 .Sidebar li:hover > label,
 .Sidebar li:hover > a,
 .Sidebar li:hover > div > span,
@@ -56,7 +57,10 @@
      fill: #ed8d12;
 }
 
-.Sidebar li span, .Sidebar a, .Sidebar .chevron, .Sidebar label {
+.Sidebar li span.SidebarNavItem__title, 
+.Sidebar a, 
+.Sidebar .chevron, 
+.Sidebar label {
     font-weight: 300;
     color: #888;
     fill: #888;

@@ -38,6 +38,7 @@ export default function useCreateSidebarItems(sidebarItemsDataOriginal) {
                     <Checkbox
                         id={id}
                         checked={categoryAlreadyInFilter}
+                        
                         onChange={(e) => {
 
                             categoryAlreadyInFilter
@@ -59,18 +60,18 @@ export default function useCreateSidebarItems(sidebarItemsDataOriginal) {
     //категории уже добавлены в сайдбар, так что удалить их
     delete sidebarItemsData.categories;
     //создать чекбоксы для фильтрации по тегам
-    sidebarItems.push(...Object.keys(sidebarItemsData).map(filterName => {
-        return <Sidebar.NavItem key={v4()} title={translate[filterName] || filterName}>
-            {sidebarItemsData[filterName].map(filter => {
+    sidebarItems.push(...Object.keys(sidebarItemsData).map((filterName, index) => {
+        return <Sidebar.NavItem key={'SidebarNavItem ' + index} title={translate[filterName] || filterName}>
+            {sidebarItemsData[filterName].map((filter, index) => {
 
-                const id = v4();
+                const id = 'SidebarItem ' + index;
                 let alreadyFiltered = null;
                 //проверка отмечен ли чекбокс
                 if (!storeState.filters.tagsFilters[filterName]) alreadyFiltered = false;
                 else if (!!storeState.filters.tagsFilters[filterName].find(filterString => filterString === filter)) alreadyFiltered = true;
                 else alreadyFiltered = false;
 
-                return <Sidebar.Item key={v4()} >
+                return <Sidebar.Item key={id} >
 
                     <Checkbox id={id}
                         checked={alreadyFiltered}

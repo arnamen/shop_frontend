@@ -27,16 +27,16 @@ export default function Carousel ( props ) {
         >
             <Slider>
                 <Slide className='cursor-pointer' index={0}>
-                    <Image src={sale1} alt='sale1' onClick={() => window.location.href='#'}></Image>
+                    <Image src={sale1} alt='sale1' onClick={() => alert('clicked')}></Image>
                 </Slide>
                 <Slide className='cursor-pointer' index={1}>
-                    <Image src={smartphones} alt='smartphones' onClick={() => window.location.href='#'}></Image>
+                    <Image src={smartphones} alt='smartphones' onClick={() => alert('clicked')}></Image>
                 </Slide>
                 <Slide className='cursor-pointer' index={2}>
-                    <Image src={delivery} alt='delivery' onClick={() => window.location.href='#'}></Image>
+                    <Image src={delivery} alt='delivery' onClick={() => alert('clicked')}></Image>
                 </Slide>
                 <Slide className='cursor-pointer' index={3}>
-                    <Image src={sale2} alt='sale2' onClick={() => window.location.href='#'}></Image>
+                    <Image src={sale2} alt='sale2' onClick={() => alert('clicked')}></Image>
                 </Slide>
             </Slider>
         </CarouselProvider>

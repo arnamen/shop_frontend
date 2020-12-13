@@ -20,3 +20,20 @@
 .ContentPage__filters {
     background-color: #666;
 }
+
+.ContentPage__price-range {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ContentPage__price-min, .ContentPage__price-max {
+    display: inline-flex;
+    width: 50%;
+    flex-direction: column;
+}
+
+#ontentPage__price-min__input, #ContentPage__price-max__input {
+    width: 100%;
+    display: block;
+}

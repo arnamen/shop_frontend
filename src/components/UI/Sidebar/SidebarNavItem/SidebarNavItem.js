@@ -12,7 +12,7 @@ export default function SidebarNavItem ( props ) {
     return (
         <li className='SidebarNavItem' onClick={() => setShowList(!showList)}>
             <div className='SidebarNavItem__title-wrapper'>
-                <span>{props.title}</span>
+                <span className='SidebarNavItem__title'>{props.title}</span>
                 {showList 
                 ? <ReactChevronDown className='chevron'/> 
                 : <ReactChevronRight className='chevron'/>}
