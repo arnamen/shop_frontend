@@ -33,6 +33,9 @@ function ContentPage(props) {
     const maxPrice = content.reduce((curMax, cur) => curMax.price < cur.price ? cur : curMax).price;
     const [priceRange, setPriceRange] = React.useState([minPrice, maxPrice]);
     const [sliderPriceRange, setSliderPriceRange] = React.useState([minPrice, maxPrice]);
+
+    content = content.filter(item => item.price >= priceRange[0] && item.price <= priceRange[1]);
+
     let inputMinRef = useRef();
     let inputMaxRef = useRef();
 

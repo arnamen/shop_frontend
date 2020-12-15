@@ -23,11 +23,11 @@ export default function PopupItemsTable( props ) {
                                 <div className='PopupItemsTable__item__unit-price'>{`${item.amount ? (item.amount + ' × ') : ''}${item.price}₴`}</div>
                             </Link>
                         </td>
-                        <td onClick={() => props.onDelete(item)}>
+                        {props.onDelete && <td onClick={() => props.onDelete(item)}>
                             <div className='PopupItemsTable__trash-wrapper'>
                                 <ReactTrash className='PopupItemsTable__trash-image' />
                             </div>
-                        </td>
+                        </td>}
                     </tr>)
             }
             </tbody>

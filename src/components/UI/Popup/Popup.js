@@ -15,8 +15,9 @@ export default function Popup(props) {
 
     let redirectButton;
     let actionButton;
-
+    //если в popup переданы товары
     if (props.items && props.items.length > 0) content = <PopupItemsTable content={props.items} onDelete={props.onDelete}/>
+    //если в popup переданы любые другие данные
     else if(props.listData) content = <PopupList listData={props.listData}/>
     else if ((props.content && props.content.length === 0) || !props.content) content = <PopupEmpty type={props.type}/>
     //если в props указано redirectButtonNotEmpty (показывать кнопку только если есть товары)
