@@ -7,8 +7,8 @@ import './ItemsCards.css';
 export default function ItemsCards( props ) {
     let cards;
     if(props.itemsData && props.itemsData.length) {
-        cards =  props.itemsData.map((itemData) => {
-            return <ItemsCard key={itemData.name} itemData={itemData}/>   
+        cards =  props.itemsData.map((itemData, index) => {
+            return <ItemsCard key={itemData.name + index} itemData={itemData}/>   
         })
     }
 

@@ -62,3 +62,7 @@
 .Popup__action-button {
     background-color: #3095dd;
 }
+
+.Popup table {
+    width: 100%;
+}

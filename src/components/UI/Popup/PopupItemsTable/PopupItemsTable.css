@@ -16,7 +16,7 @@
 }
 
 .PopupItemsTable__item-descr {
-    width: 160px;
+    min-width: 160px;
     display: block;
     text-align: left;
     margin: 0 15px;
@@ -42,4 +42,15 @@
     height: 20px;
     transition: 0.2s fill;
     cursor: pointer;
+}
+
+.PopupItemsTable__item-descr-tr {
+    width: 100%;
+}
+
+.PopupItemsTable__item-descr__custom-text {
+    font-weight: 300;
+    color: #888;
+    font-size: 14px;
+    margin-top: 5px;
 }

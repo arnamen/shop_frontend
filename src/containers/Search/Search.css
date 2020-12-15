@@ -5,6 +5,7 @@
     align-items: center;
     margin: 0 1vw;
     padding-left: 2vw;
+    position: relative;
 }
 
 .Search__field {
@@ -28,4 +29,51 @@
     width: 5vh;
     height: 5vh;
     cursor: pointer;
+}
+
+.Search__matched-content {
+    position: absolute;
+    left: 2vw;
+    z-index: 999;
+    background-color: black;
+}
+
+@keyframes slideInFromBottom {
+    from {
+        margin-top: 35px;
+        opacity: 0;
+    }
+    to {
+        margin-top: 25px;
+        opacity: 1;
+    }
+}
+
+@keyframes slideAwayToBottom {
+    from {
+        margin-top: 25px;
+        opacity: 1;
+    }
+    to {
+        margin-top: 35px;
+        opacity: 0;
+    }
+}
+
+.Search .Popup {
+    animation: 0.5s slideAwayToBottom;
+    z-index: -999;
+    left: 0;
+    min-width: 34vw;
+    margin-top: 4vh;
+}
+
+.Search:focus-within .Popup {
+    opacity: 1;
+    display: block;
+    animation: 0.5s slideFromBottom;
+}
+
+.Search__matched-content .Popup::before {
+    right: auto;
 }

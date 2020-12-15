@@ -17,10 +17,11 @@ export default function PopupItemsTable( props ) {
                                 <img src={item.images[0]} className='PopupItemsTable__item__image' alt='item_image' />
                             </div>
                         </td>
-                        <td>
-                            <Link to={`/item/${item.id.toLowerCase()}`} className='PopupItemsTable__item-descr'>
+                        <td className='PopupItemsTable__item-descr-tr'>
+                            <Link to={`/item/${item.id.toLowerCase()}`} className='PopupItemsTable__item-descr' onClick={() => document.activeElement.blur()}>
                                 {item.name}
                                 <div className='PopupItemsTable__item__unit-price'>{`${item.amount ? (item.amount + ' × ') : ''}${item.price}₴`}</div>
+                                {item.customText && <div className='PopupItemsTable__item-descr__custom-text'>{item.customText}</div>}
                             </Link>
                         </td>
                         {props.onDelete && <td onClick={() => props.onDelete(item)}>
