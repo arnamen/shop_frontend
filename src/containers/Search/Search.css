@@ -28,7 +28,10 @@
     transform: translateX(-7vh);
     width: 5vh;
     height: 5vh;
-    cursor: pointer;
+}
+
+.Search:focus-within .Search__button {
+    opacity: 0;
 }
 
 .Search__matched-content {
@@ -40,22 +43,22 @@
 
 @keyframes slideInFromBottom {
     from {
-        margin-top: 35px;
+        margin-top: 5vh;
         opacity: 0;
     }
     to {
-        margin-top: 25px;
+        margin-top: 4vh;
         opacity: 1;
     }
 }
 
 @keyframes slideAwayToBottom {
     from {
-        margin-top: 25px;
+        margin-top: 4vh;
         opacity: 1;
     }
     to {
-        margin-top: 35px;
+        margin-top: 5vh;
         opacity: 0;
     }
 }
@@ -64,14 +67,14 @@
     animation: 0.5s slideAwayToBottom;
     z-index: -999;
     left: 0;
-    min-width: 34vw;
+    min-width: 33vw;
     margin-top: 4vh;
 }
 
 .Search:focus-within .Popup {
     opacity: 1;
     display: block;
-    animation: 0.5s slideFromBottom;
+    animation: 0.5s slideInFromBottom;
 }
 
 .Search__matched-content .Popup::before {

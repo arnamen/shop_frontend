@@ -15,7 +15,6 @@ function Search( props ) {
     const content = cloneDeep(props.content);
     const matchedContent = [];
 
-
     content.forEach(item => {
             let matched = false;
             if(searchQuery === '') return;
@@ -51,7 +50,7 @@ function Search( props ) {
             className={'Search__field'} 
             placeholder='Поиск...'
             onChange={(event) => setSearchQuery(event.target.value)}/>
-            <img onClick={() => alert('clicked!')} className={'Search__button'} src={searchImg} alt='search'></img>
+            <img className={'Search__button'} src={searchImg} alt='search'></img>
             {matchedContent.length > 0 && 
             <div className='Search__matched-content'>
                 <Popup items={matchedContent}/>
