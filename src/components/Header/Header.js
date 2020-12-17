@@ -12,7 +12,7 @@ import LinkButton from '../UI/LinkButton/LinkButton';
 import Dropdown from '../UI/Dropdown/Dropdown';
 import Popup from '../UI/Popup/Popup';
 import Burger from '../../containers/Burger/Burger';
-import RegisterModal from '../RegisterModal/RegisterModal';
+import LoginModal from '../LoginModal/LoginModal';
 
 import * as actionTypes from '../../store/actions/actionTypes';
 
@@ -267,7 +267,7 @@ function Header(props) {
                     </div>
                 </div>
             </VisibilitySensor>
-            {showRegForm && <RegisterModal onClose={() => setShowRegForm(false)}/>}
+            {showRegForm && <LoginModal onClose={() => setShowRegForm(false)}/>}
         </React.Fragment>
     )
 }

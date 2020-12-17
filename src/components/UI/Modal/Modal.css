@@ -12,13 +12,15 @@
 }
 
 .Modal__wrapper {
-    width: 50%;
+    width: 45%;
     height: 30%;
     min-height: 300px;
-    max-height: 50vh;
+    max-height: 80vh;
+    min-width: 600px;
     overflow: auto;
     height: fit-content;
     background-color: white;
+    border-radius: 10px;
 }
 
 .Modal__content {
