@@ -13,6 +13,7 @@ import Dropdown from '../UI/Dropdown/Dropdown';
 import Popup from '../UI/Popup/Popup';
 import Burger from '../../containers/Burger/Burger';
 
+
 import * as actionTypes from '../../store/actions/actionTypes';
 
 import useItemsFilter from '../../hooks/useItemsFilter/useItemsFilter';
@@ -163,6 +164,8 @@ function Header(props) {
     // eslint-disable-next-line no-unused-vars
     const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
     const [visible, setVisible] = useState(true)
+    const [showRegForm, setShowRegForm] = useState(false);
+    const [showLoginForm, setShowLoginForm] = useState(false);
     const compareActive = props.compare.length > 0;
     const favouritesActive = props.favourites.length > 0;
     const cartActive = props.cart.length > 0;
@@ -185,14 +188,17 @@ function Header(props) {
                     <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
                         {props.login
                             ? <Popup type='authenticated' actionButton listData={AccountListData} />
-                            : <Popup type='account' redirectButton actionButton />}
+                            : <Popup type='account' 
+                            redirectButton={() => {setShowRegForm(true)}} 
+                            actionButton ={() => {setShowLoginForm(true)}}/>}
                     </UserIconLink>
                 </UserIconLinks>
             </div>
             {/* этот заголовок виден когда пользователь наверху старницы */}
             <VisibilitySensor partialVisibility onChange={(isVisible) => setVisible(isVisible)}>
                 <div className={'Header'}>
-                    <div className={`Header__wrapper-top`}>
+                    
+                    <div className={`Header__wrapper-top ${!visible && `Header__wrapper-top-hidden`}`}>
                         <Burger data={burgerData} />
                         <Logo />
                         <Search />
@@ -210,11 +216,13 @@ function Header(props) {
                             <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
                                 {props.login
                                     ? <Popup type='authenticated' actionButton listData={AccountListData} />
-                                    : <Popup type='account' redirectButton actionButton />}
+                                    : <Popup type='account'
+                                    redirectButton={() => {setShowRegForm(true)}} 
+                                    actionButton ={() => {setShowLoginForm(true)}}/>}
                             </UserIconLink>
                         </UserIconLinks>
                     </div>
-                    <div className={`Header__wrapper-bottom ${!visible && `Header-bottom__hide`}`}>
+                    <div className={`Header__wrapper-bottom ${!visible && `Header__fixed`}`}>
                         <Dropdown items={dropdownsData} />
                         <LinkButton to='/page/about-us'>О компании</LinkButton>
                         <LinkButton to='/page/contacts'>Контакты</LinkButton>
@@ -229,31 +237,6 @@ function Header(props) {
                 </div>
 
             </VisibilitySensor>
-            {/* этот заголовок виден когда пользователь скролит вниз */}
-            <div className={`Header__sticky ${visible && `Header-bottom__hide`}`}>
-                <Dropdown items={dropdownsData} />
-                <LinkButton to='/page/about-us'>О компании</LinkButton>
-                <LinkButton to='/page/contacts'>Контакты</LinkButton>
-                <LinkButton to='/page/delivery'>Доставка</LinkButton>
-                <LinkButton to='/page/payment'>Оплата</LinkButton>
-                <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
-                <UserIconLinks>
-                    <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
-                        <Popup items={props.compare} type='compare' redirectButtonNotEmpty onDelete={props.onRemoveFromCompare} />
-                    </UserIconLink>
-                    <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} activeColor='red' key={v4()}>
-                        <Popup items={props.favourites} type='favourites' redirectButtonNotEmpty onDelete={props.onRemoveFromFavourites} />
-                    </UserIconLink>
-                    <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
-                        <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart} />
-                    </UserIconLink>
-                    <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
-                        {props.login
-                            ? <Popup type='authenticated' actionButton listData={AccountListData} />
-                            : <Popup type='account' redirectButton actionButton />}
-                    </UserIconLink>
-                </UserIconLinks>
-            </div>
         </React.Fragment>
     )
 }

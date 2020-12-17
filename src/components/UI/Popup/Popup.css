@@ -44,25 +44,6 @@
     margin: 0;
 }
 
-.Popup__redirect-button, .Popup__action-button {
-    font-size: 10px;
-    line-height: 17px;
-    background-color: #0bb648;
-    color: #fff;
-    display: block;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 5px 10px;
-    font-weight: 700;
-    width: 100%;
-    margin: 0 auto;
-}
-
-.Popup__action-button {
-    background-color: #3095dd;
-}
-
 .Popup table {
     width: 100%;
 }

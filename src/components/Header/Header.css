@@ -13,6 +13,10 @@
     padding: 0 2vw;
 }
 
+.Header__wrapper-top-hidden {
+    height: 19vh;
+}
+
 .Header__wrapper-bottom, .Header__sticky {
     display: flex;
     justify-content: space-around;
@@ -22,12 +26,13 @@
     color: white;
     padding: 0 5vw;
     font-size: 1.5vw;
+    transition: 0.5s color, 0.5s background-color;
 }
 
-.Header__sticky {
-    transition: 0.5s opacity;
+.Header__fixed {
+    transition: 0s all;
     opacity: 1;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 999;
     background-color: white;
@@ -36,6 +41,7 @@
     box-shadow: 0px 3px 5px -3px rgba(0, 0, 0, 0.3);
     padding-top: 16px;
     padding-bottom: 16px;
+    width: 100%;
 }
 
 .Header__sticky .main-navigation {
