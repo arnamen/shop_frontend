@@ -11,6 +11,9 @@
     font-weight: 700;
     width: 100%;
     margin: 0 auto;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .Popup__button-blue {

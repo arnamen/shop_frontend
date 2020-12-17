@@ -12,7 +12,7 @@ import LinkButton from '../UI/LinkButton/LinkButton';
 import Dropdown from '../UI/Dropdown/Dropdown';
 import Popup from '../UI/Popup/Popup';
 import Burger from '../../containers/Burger/Burger';
-
+import RegisterModal from '../RegisterModal/RegisterModal';
 
 import * as actionTypes from '../../store/actions/actionTypes';
 
@@ -188,9 +188,9 @@ function Header(props) {
                     <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
                         {props.login
                             ? <Popup type='authenticated' actionButton listData={AccountListData} />
-                            : <Popup type='account' 
-                            redirectButton={() => {setShowRegForm(true)}} 
-                            actionButton ={() => {setShowLoginForm(true)}}/>}
+                            : <Popup type='account'
+                                redirectButton={() => { setShowRegForm(true) }}
+                                actionButton={() => { setShowLoginForm(true) }} />}
                     </UserIconLink>
                 </UserIconLinks>
             </div>
@@ -204,20 +204,27 @@ function Header(props) {
                         <Contacts />
                         <UserIconLinks>
                             <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
-                                <Popup items={props.compare} type='compare' redirectButtonNotEmpty onDelete={props.onRemoveFromCompare} />
+                                <Popup items={props.compare} type='compare' onDelete={props.onRemoveFromCompare}>
+                                    {compareActive && <Popup.Button green to='/page/compare'>Перейти к сравнению</Popup.Button>}
+                                </Popup>
                             </UserIconLink>
                             <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} activeColor='red' key={v4()}>
-                                <Popup items={props.favourites} type='favourites' redirectButtonNotEmpty onDelete={props.onRemoveFromFavourites} />
+                                <Popup items={props.favourites} type='favourites' onDelete={props.onRemoveFromFavourites}>
+                                    {favouritesActive && <Popup.Button green to='/page/favourites'>Избранное</Popup.Button>}
+                                </Popup>
                             </UserIconLink>
                             <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
-                                <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart} />
+                                <Popup items={props.cart} type='cart' onDelete={props.onRemoveFromCart}>
+                                    {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
+                                </Popup>
                             </UserIconLink>
                             <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
                                 {props.login
                                     ? <Popup type='authenticated' actionButton listData={AccountListData} />
-                                    : <Popup type='account'
-                                    redirectButton={() => {setShowRegForm(true)}} 
-                                    actionButton ={() => {setShowLoginForm(true)}}/>}
+                                    : <Popup type='account'>
+                                        <Popup.Button green onClick={(event) => setShowRegForm(true)}>Регистрация</Popup.Button>
+                                        <Popup.Button blue onClick={(event) => setShowLoginForm(true)}>Авторизация</Popup.Button>
+                                    </Popup>}
                             </UserIconLink>
                         </UserIconLinks>
                     </div>
@@ -230,39 +237,37 @@ function Header(props) {
                         <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
                         {visible && <LinkButton to='/page/offer'>Оферта</LinkButton>}
                         {!visible && <UserIconLinks>
-                    <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
-                        <Popup items={props.compare} type='compare' redirectButtonNotEmpty onDelete={props.onRemoveFromCompare} >
-                            {cartActive && <Popup.Button green to='/page/compare'>Перейти к сравнению</Popup.Button>}
-                        </Popup>
-                    </UserIconLink>
-                    <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} activeColor='red' key={v4()}>
-                        <Popup items={props.favourites} type='favourites' redirectButtonNotEmpty onDelete={props.onRemoveFromFavourites} >
-                        {favouritesActive && <Popup.Button green to='/page/favourites'>Избранное</Popup.Button>}
-                        </Popup>
-                    </UserIconLink>
-                    <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
-                        <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart}>
-                        {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
-                        </Popup>
-                    </UserIconLink>
-                    <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
-                        {props.login
-                            ? <Popup type='authenticated' actionButton listData={AccountListData} />
-                            : <Popup type='account'
-                            redirectButton={(event) => {setShowRegForm(true)}} 
-                            actionButton ={(event) => {setShowLoginForm(true)}}>
-                                    <Popup.Button green>Авторизация</Popup.Button>
-                                    <Popup.Button blue>Регистрация</Popup.Button>
-                                </Popup>}
-                    </UserIconLink>
-                </UserIconLinks>}
+                            <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
+                                <Popup items={props.compare} type='compare' redirectButtonNotEmpty onDelete={props.onRemoveFromCompare} >
+                                    {cartActive && <Popup.Button green to='/page/compares'>Перейти к сравнению</Popup.Button>}
+                                </Popup>
+                            </UserIconLink>
+                            <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} activeColor='red' key={v4()}>
+                                <Popup items={props.favourites} type='favourites' redirectButtonNotEmpty onDelete={props.onRemoveFromFavourites} >
+                                    {favouritesActive && <Popup.Button green to='/page/favourites'>Избранное</Popup.Button>}
+                                </Popup>
+                            </UserIconLink>
+                            <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
+                                <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart}>
+                                    {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
+                                </Popup>
+                            </UserIconLink>
+                            <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
+                                {props.login
+                                    ? <Popup type='authenticated' actionButton listData={AccountListData} />
+                                    : <Popup type='account'>
+                                        <Popup.Button green onClick={(event) => { setShowRegForm(true) }}>Авторизация</Popup.Button>
+                                        <Popup.Button blue onClick={(event) => { setShowLoginForm(true) }}>Регистрация</Popup.Button>
+                                    </Popup>}
+                            </UserIconLink>
+                        </UserIconLinks>}
                     </div>
                     <div className='Header__bottom-simple'>
                         <Logo />
                     </div>
                 </div>
-
             </VisibilitySensor>
+            {showRegForm && <RegisterModal onClose={() => setShowRegForm(false)}/>}
         </React.Fragment>
     )
 }
