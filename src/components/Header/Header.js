@@ -197,7 +197,6 @@ function Header(props) {
             {/* этот заголовок виден когда пользователь наверху старницы */}
             <VisibilitySensor partialVisibility onChange={(isVisible) => setVisible(isVisible)}>
                 <div className={'Header'}>
-                    
                     <div className={`Header__wrapper-top ${!visible && `Header__wrapper-top-hidden`}`}>
                         <Burger data={burgerData} />
                         <Logo />
@@ -229,7 +228,34 @@ function Header(props) {
                         <LinkButton to='/page/delivery'>Доставка</LinkButton>
                         <LinkButton to='/page/payment'>Оплата</LinkButton>
                         <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
-                        <LinkButton to='/page/offer'>Оферта</LinkButton>
+                        {visible && <LinkButton to='/page/offer'>Оферта</LinkButton>}
+                        {!visible && <UserIconLinks>
+                    <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
+                        <Popup items={props.compare} type='compare' redirectButtonNotEmpty onDelete={props.onRemoveFromCompare} >
+                            {cartActive && <Popup.Button green to='/page/compare'>Перейти к сравнению</Popup.Button>}
+                        </Popup>
+                    </UserIconLink>
+                    <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} activeColor='red' key={v4()}>
+                        <Popup items={props.favourites} type='favourites' redirectButtonNotEmpty onDelete={props.onRemoveFromFavourites} >
+                        {favouritesActive && <Popup.Button green to='/page/favourites'>Избранное</Popup.Button>}
+                        </Popup>
+                    </UserIconLink>
+                    <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
+                        <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart}>
+                        {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
+                        </Popup>
+                    </UserIconLink>
+                    <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
+                        {props.login
+                            ? <Popup type='authenticated' actionButton listData={AccountListData} />
+                            : <Popup type='account'
+                            redirectButton={(event) => {setShowRegForm(true)}} 
+                            actionButton ={(event) => {setShowLoginForm(true)}}>
+                                    <Popup.Button green>Авторизация</Popup.Button>
+                                    <Popup.Button blue>Регистрация</Popup.Button>
+                                </Popup>}
+                    </UserIconLink>
+                </UserIconLinks>}
                     </div>
                     <div className='Header__bottom-simple'>
                         <Logo />
