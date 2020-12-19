@@ -6,7 +6,7 @@
 
 .ClientAccount__content {
     flex-grow: 10;
-    padding: 40px;
+    padding: 20px 40px 40px 8vw;
 }
 
 .ClientAccount__navigation {

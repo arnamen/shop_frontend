@@ -1,0 +1,37 @@
+.AccountDiscount__subtitle {
+    font-weight: 500;
+}
+
+.AccountDiscount table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #cccccc;
+}
+
+.AccountDiscount table thead tr th {
+    padding: 1rem;
+    font-weight: normal;
+    border-bottom: 1px solid #cccccc;
+    opacity: 0.75;
+    color: #747474;
+}
+
+.AccountDiscount table tbody tr {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.AccountDiscount table tbody tr:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.AccountDiscount table tr td, .AccountDiscount table tr th {
+    padding: 1rem;
+    border-bottom: 1px solid #cccccc;
+    text-align: left;
+    font-weight: 300;
+}
+
+.AccountDiscount table tr td:last-child,
+.AccountDiscount table tr th:last-child {
+    text-align: right;
+}

@@ -4,6 +4,7 @@ import { NavLink, Route, Switch } from 'react-router-dom';
 
 import AccountHistory from './AccountHistory/AccountHistory';
 import AccountAddress from './AccountAddress/AccountAddress';
+import AccountDiscount from './AccountDiscount/AccountDiscount';
 
 import './ClientAccount.css';
 
@@ -12,9 +13,8 @@ function ClientAccount( props ) {
         <div className='ClientAccount'>
             <div className='ClientAccount__content'>
                 <Switch>
-                    <Route exact path='/account/address'>
-                        <AccountAddress/>
-                    </Route>
+                    <Route exact path='/account/address' render={() => <AccountAddress/>}/>
+                    <Route exact path='/account/discount' render={() => <AccountDiscount/>}/>
                     <Route><AccountHistory historyItems={props.content}/></Route>
                 </Switch>
             </div>
