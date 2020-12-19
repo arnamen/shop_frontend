@@ -12,7 +12,9 @@ function ClientAccount( props ) {
         <div className='ClientAccount'>
             <div className='ClientAccount__content'>
                 <Switch>
-                    <Route exact path='/account/address'>{<AccountAddress/>}</Route>
+                    <Route exact path='/account/address'>
+                        <AccountAddress/>
+                    </Route>
                     <Route><AccountHistory historyItems={props.content}/></Route>
                 </Switch>
             </div>

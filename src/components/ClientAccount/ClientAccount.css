@@ -1,7 +1,7 @@
 .ClientAccount {
-    padding: 0 40px;
+    padding: 0 0 40px;
     display: flex;
-    min-height: 100vh;
+    min-height: 90vh;
 }
 
 .ClientAccount__content {
@@ -23,7 +23,7 @@
     color: #000;
     border-bottom: 1px #000 dashed;
     height: max-content;
-    width: fit-content;
+    width: max-content;
     margin-top: 0.5rem;
 }
 

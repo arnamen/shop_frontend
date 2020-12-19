@@ -37,11 +37,7 @@ function App(props) {
       <Route exact path='/page/favourites' component={FavouritesPage}/>
       <Route exact path='/page/cart' component={CartPage}/>
       <Route exact path='/item/:itemid' component={ItemPage}/>
-      <Route path='/account'>
-        <ClientAccount>
-          
-        </ClientAccount>
-      </Route>
+      <Route path='/account' component={ClientAccount}/>
       <Footer/>
     </React.Fragment>
   );
