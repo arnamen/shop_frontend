@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink, Route, Switch } from 'react-router-dom';
 
 import AccountHistory from './AccountHistory/AccountHistory';
+import AccountAddress from './AccountAddress/AccountAddress';
 
 import './ClientAccount.css';
 
@@ -11,6 +12,7 @@ function ClientAccount( props ) {
         <div className='ClientAccount'>
             <div className='ClientAccount__content'>
                 <Switch>
+                    <Route exact path='/account/address'>{<AccountAddress/>}</Route>
                     <Route><AccountHistory historyItems={props.content}/></Route>
                 </Switch>
             </div>
@@ -24,7 +26,7 @@ function ClientAccount( props ) {
                 to='/account/orders'>История заказов</NavLink>
                 <NavLink className='ClientAccount__navigation-link' 
                 activeClassName='ClientAccount__navigation-link-active'
-                to='/account/delivery'>Адрес доставки</NavLink>
+                to='/account/address'>Адрес доставки</NavLink>
                 <NavLink className='ClientAccount__navigation-link' 
                 activeClassName='ClientAccount__navigation-link-active'
                 to='/account/discount'>Скидки и бонусы</NavLink>

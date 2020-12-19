@@ -7,6 +7,20 @@ import { ReactComponent as ReactMagnifier } from '../../../../assets/search/magn
 
 import './ModalSelect.css';
 
+//в props необходимо передавать данные вида
+/* {
+    placeholder: String,
+    data: [
+        ...
+        {
+            name: String,
+            subtitle: String optional
+        }
+        ...
+    ],
+    onSubmit: function
+} */
+
 export default function ModalSelect(props) {
 
     const [filterString, setFilterString] = useState("")
@@ -31,7 +45,7 @@ export default function ModalSelect(props) {
                 <div className='ModalSelect__title'>
                     <ReactMagnifier className='ModalSelect__searchIcon' />
                     <input type='text'
-                        placeholder='Поиск, например: Одесса'
+                        placeholder={props.placeholder || 'Поиск, например: Одесса'}
                         className='ModalSelect__input'
                         onChange={(e) => setFilterString(e.target.value)} />
                 </div>
