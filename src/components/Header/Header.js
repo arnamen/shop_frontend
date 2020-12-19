@@ -219,9 +219,11 @@ function Header(props) {
                                     {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
+                            <UserIconLink type='account' to='/account' key={v4()} active={props.login} activeColor='orange'>
                                 {props.login
-                                    ? <Popup type='authenticated' actionButton listData={AccountListData} />
+                                    ? <Popup type='authenticated' listData={AccountListData}>
+                                        <Popup.Button blue onClick={(event) => { }}>Выход</Popup.Button>
+                                    </Popup>
                                     : <Popup type='account'>
                                         <Popup.Button green onClick={(event) => setShowRegForm(true)}>Регистрация</Popup.Button>
                                         <Popup.Button blue onClick={(event) => setShowLoginForm(true)}>Авторизация</Popup.Button>
@@ -253,9 +255,11 @@ function Header(props) {
                                     {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
+                            <UserIconLink type='account' to='/account' key={v4()} active={props.login} activeColor='orange'>
                                 {props.login
-                                    ? <Popup type='authenticated' actionButton listData={AccountListData} />
+                                    ? <Popup type='authenticated' listData={AccountListData}>
+                                        <Popup.Button blue onClick={(event) => { }}>Выход</Popup.Button>
+                                    </Popup>
                                     : <Popup type='account'>
                                         <Popup.Button green onClick={(event) => { setShowRegForm(true) }}>Авторизация</Popup.Button>
                                         <Popup.Button blue onClick={(event) => { setShowLoginForm(true) }}>Регистрация</Popup.Button>
@@ -268,8 +272,8 @@ function Header(props) {
                     </div>
                 </div>
             </VisibilitySensor>
-            {showLoginForm && <LoginModal onClose={() => setShowLoginForm(false)}/>}
-            {showRegForm && <RegisterModal onClose={() => setShowRegForm(false)}/>}
+            {showLoginForm && <LoginModal onClose={() => setShowLoginForm(false)} />}
+            {showRegForm && <RegisterModal onClose={() => setShowRegForm(false)} />}
         </React.Fragment>
     )
 }

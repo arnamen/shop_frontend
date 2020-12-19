@@ -29,10 +29,11 @@
 .Popup::after {
     content: '';
     width: 100%;
-    height: 25%;
+    height: 15%;
     position: absolute;
     right: 0;
-    top: -20%;
+    top: -8%;
+
 }
 
 .Popup__actions-wrapper {
