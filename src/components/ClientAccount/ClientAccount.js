@@ -1,14 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
+
+import AccountHistory from './AccountHistory/AccountHistory';
 
 import './ClientAccount.css';
 
-function ClientAccount() {
+function ClientAccount( props ) {
     return (
         <div className='ClientAccount'>
             <div className='ClientAccount__content'>
-                <h1>Содержимое</h1>
+                <Switch>
+                    <Route><AccountHistory historyItems={props.content}/></Route>
+                </Switch>
             </div>
             <div className='ClientAccount__navigation'>
                 <NavLink className='ClientAccount__navigation-link' 
@@ -37,6 +41,7 @@ function ClientAccount() {
 
 const mapStateToProps = state => {
     return {
+        content: state.content.content,
         compare: state.compare.compare,
         favourites: state.favourites.favourites,
         cart: state.cart.cart,
