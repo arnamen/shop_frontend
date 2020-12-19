@@ -1,3 +1,28 @@
 .ClientAccount {
     padding: 40px;
+    display: flex;
+    min-height: 100vh;
+}
+
+.ClientAccount__content {
+    flex-grow: 10;
+}
+
+.ClientAccount__navigation {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ClientAccount__navigation-link {
+    color: #000;
+    border-bottom: 1px #000 dashed;
+    height: max-content;
+    width: fit-content;
+    margin-top: 0.5rem;
+}
+
+.ClientAccount__navigation-link-active {
+    color: #e78905;
+    border-bottom: 1px #e78905 dashed;
 }
