@@ -29,6 +29,12 @@
     margin-left: 3px;
 }
 
+.AccountContacts__formRow {
+    position: relative;
+    max-height: 55px;
+    transition: 0.5s max-height, 0.5s margin-top;
+}
+
 .AccountContacts__formRow-empty:not(:focus-within) > .TextField {
     height: 40px;
     padding-left: 12px;
@@ -38,4 +44,30 @@
 .AccountContacts__formRow-empty:not(:focus-within) > .AccountContacts__input-title {
     top: 50%;
     transform: translateY(-50%);
+}
+
+.AccountContacts__formRow-hide {
+    max-height: 0px;
+    margin-top: 0px;
+    overflow: hidden;
+}
+
+.AccountContacts__calendar-hide {
+    display: none;
+}
+
+.AccountContacts__calendar {
+    position: absolute;
+}
+
+.AccountContacts__submit {
+    border-radius: 0px;
+    background-color: #0bb648;
+    color: #fff;
+    font-size: 14px;
+    line-height: 22px;
+    height: auto;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    margin-top: 20px;
 }

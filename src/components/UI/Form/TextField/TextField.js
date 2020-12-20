@@ -12,7 +12,7 @@ export default function TextField( props ) {
         placeholder={props.placeholder || ''}
         defaultValue={props.defaultValue}
         required={props.required || false}
-        key={props.autoupdate && v4()}
+        key={props.autoupdate ? v4(): undefined}
         onClick={props.onClick}
         value={props.value}
         readOnly={props.value}/>
