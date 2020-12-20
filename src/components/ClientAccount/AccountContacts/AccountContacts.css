@@ -23,10 +23,6 @@
     pointer-events: none;
 }
 
-.AccountContacts__formRow {
-    position: relative;
-}
-
 .AccountContacts__input-title-required::after {
     content: '*';
     color: red;
@@ -42,24 +38,4 @@
 .AccountContacts__formRow-empty:not(:focus-within) > .AccountContacts__input-title {
     top: 50%;
     transform: translateY(-50%);
-}
-
-.AccountContacts__submit {
-    border-radius: 0px;
-    background-color: #0bb648;
-    color: #fff;
-    font-size: 14px;
-    line-height: 22px;
-    height: auto;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    margin-top: 20px;
-}
-
-.AccountContacts__calendar-hide {
-    display: none;
-}
-
-.AccountContacts__calendar {
-    position: absolute;
 }

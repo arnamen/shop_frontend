@@ -5,6 +5,7 @@ import { NavLink, Route, Switch } from 'react-router-dom';
 import AccountHistory from './AccountHistory/AccountHistory';
 import AccountAddress from './AccountAddress/AccountAddress';
 import AccountDiscount from './AccountDiscount/AccountDiscount';
+import AccountContacts from './AccountContacts/AccountContacts';
 
 import './ClientAccount.css';
 
@@ -15,6 +16,7 @@ function ClientAccount( props ) {
                 <Switch>
                     <Route exact path='/account/address' render={() => <AccountAddress/>}/>
                     <Route exact path='/account/discount' render={() => <AccountDiscount/>}/>
+                    <Route exact path='/account/contacts' render={() => <AccountContacts/>}/>
                     <Route><AccountHistory historyItems={props.content}/></Route>
                 </Switch>
             </div>

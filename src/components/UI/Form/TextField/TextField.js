@@ -10,8 +10,11 @@ export default function TextField( props ) {
         onChange={props.onChange} 
         id={props.id || ''}
         placeholder={props.placeholder || ''}
-        defaultValue={props.defaultValue || ''}
+        defaultValue={props.defaultValue}
         required={props.required || false}
-        key={props.autoupdate && v4()}/>
+        key={props.autoupdate && v4()}
+        onClick={props.onClick}
+        value={props.value}
+        readOnly={props.value}/>
     )
 }
