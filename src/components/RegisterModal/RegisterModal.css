@@ -147,3 +147,18 @@
     background-color: #fff;
     padding: 5px;
 }
+
+@media screen and (max-width: 700px) {
+    .RegisterModal__form-wrapper, .RegisterModal__autoAuth-wrapper, .RegisterModal__content {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+    }
+    .RegisterModal__form-wrapper {
+        border: none;
+    }
+    .RegisterModal__choice-text {
+        display: none;
+    }
+}

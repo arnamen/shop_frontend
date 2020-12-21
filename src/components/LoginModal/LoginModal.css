@@ -147,3 +147,18 @@
     background-color: #fff;
     padding: 5px;
 }
+
+@media screen and (max-width: 700px) {
+    .LoginModal__form-wrapper, .LoginModal__autoAuth-wrapper, .LoginModal__content {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+    }
+    .LoginModal__form-wrapper {
+        border: none;
+    }
+    .LoginModal__choice-text {
+        display: none;
+    }
+}
