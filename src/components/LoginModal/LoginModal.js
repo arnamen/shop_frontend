@@ -8,11 +8,12 @@ import {ReactComponent as ReactGoogle} from '../../assets/social/google.svg';
 import {ReactComponent as ReactFacebook} from '../../assets/social/043-facebook-1.svg';
 import {ReactComponent as ReactClose} from '../../assets/misc/cross.svg';
 
-import './LoginModal.css';;
+import './LoginModal.css';
 
 export default function LoginModal(props) {
+
     return (
-        <Modal onClose={props.onClose}>
+        <Modal onClose={props.onClose} visible={props.visible}>
             <div className='LoginModal'>
                 <div className='LoginModal__title'>
                     <h2>Вход</h2>

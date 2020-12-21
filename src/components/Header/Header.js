@@ -171,6 +171,7 @@ function Header(props) {
     const favouritesActive = props.favourites.length > 0;
     const cartActive = props.cart.length > 0;
 
+
     return (
         <React.Fragment>
             {/* Этот заголовок видно когда пользователь скролит вниз с телефона */}
@@ -261,8 +262,8 @@ function Header(props) {
                                         <Popup.Button blue onClick={(event) => { }}>Выход</Popup.Button>
                                     </Popup>
                                     : <Popup type='account'>
-                                        <Popup.Button green onClick={(event) => { setShowRegForm(true) }}>Авторизация</Popup.Button>
-                                        <Popup.Button blue onClick={(event) => { setShowLoginForm(true) }}>Регистрация</Popup.Button>
+                                        <Popup.Button green onClick={(event) => { setShowLoginForm(true) }}>Авторизация</Popup.Button>
+                                        <Popup.Button blue onClick={(event) => { setShowRegForm(true) }}>Регистрация</Popup.Button>
                                     </Popup>}
                             </UserIconLink>
                         </UserIconLinks>}
@@ -272,8 +273,8 @@ function Header(props) {
                     </div>
                 </div>
             </VisibilitySensor>
-            {showLoginForm && <LoginModal onClose={() => setShowLoginForm(false)} />}
-            {showRegForm && <RegisterModal onClose={() => setShowRegForm(false)} />}
+            {<LoginModal onClose={() => setShowLoginForm(false)} visible={showLoginForm}/>}
+            {<RegisterModal onClose={() => setShowRegForm(false)} visible={showRegForm}/>}
         </React.Fragment>
     )
 }

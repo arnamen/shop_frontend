@@ -38,10 +38,11 @@ export default function DeliveryCard(props) {
     const modalData = CitiesList.map(cityData => { return { name: cityData.city, subtitle: cityData.region } })
     return (
         <div className='DeliveryCard'>
-            {showSelectModal && <ModalSelect show={showSelectModal}
+            <ModalSelect
+                visible={showSelectModal}
                 data={modalData}
                 onSubmit={(selectedData) => { setSelectedCity({ city: selectedData.name, region: selectedData.subtitle }); setShowSelectModal(false) }}
-                onClose={() => setShowSelectModal(false)} />}
+                onClose={() => setShowSelectModal(false)} />
             <div className='DeliveryCard__header'>
                 <ReactDeliveryTruck className='DeliveryCard__deliveryIcon' />
                 <span>Доставка в &nbsp;

@@ -40,7 +40,7 @@ export default function ModalSelect(props) {
     )
 
     return (
-        <Modal onClose={props.onClose}>
+        <Modal onClose={props.onClose} visible={props.visible}>
             <header className='ModalSelect__header'>
                 <div className='ModalSelect__title'>
                     <ReactMagnifier className='ModalSelect__searchIcon' />

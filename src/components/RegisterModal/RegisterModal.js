@@ -12,7 +12,7 @@ import './RegisterModal.css';
 
 export default function RegisterModal(props) {
     return (
-        <Modal onClose={props.onClose}>
+        <Modal onClose={props.onClose} visible={props.visible}>
             <div className='RegisterModal'>
                 <div className='RegisterModal__title'>
                     <h2>Регистрация</h2>
