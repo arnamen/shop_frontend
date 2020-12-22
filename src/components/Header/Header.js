@@ -12,9 +12,7 @@ import LinkButton from '../UI/LinkButton/LinkButton';
 import Dropdown from '../UI/Dropdown/Dropdown';
 import Popup from '../UI/Popup/Popup';
 import Burger from '../../containers/Burger/Burger';
-import LoginModal from '../LoginModal/LoginModal';
-import RegisterModal from '../RegisterModal/RegisterModal';
-
+import AuthModal from '../AuthModal/AuthModal';
 import * as actionTypes from '../../store/actions/actionTypes';
 
 import useItemsFilter from '../../hooks/useItemsFilter/useItemsFilter';
@@ -165,13 +163,25 @@ function Header(props) {
     // eslint-disable-next-line no-unused-vars
     const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
     const [visible, setVisible] = useState(true)
-    const [showRegForm, setShowRegForm] = useState(false);
-    const [showLoginForm, setShowLoginForm] = useState(false);
+    const [showAuthForm, setShowAuthForm] = useState(false);
+    const [authFormType, setAuthFormType] = useState();
     const compareActive = props.compare.length > 0;
     const favouritesActive = props.favourites.length > 0;
     const cartActive = props.cart.length > 0;
 
-
+    const switchAuthType = (currentAuthType) => {
+        switch (currentAuthType) {
+            case 'register':
+                setAuthFormType('login');
+                break;
+            case 'login':
+                setAuthFormType('register');
+                break;
+            default:
+                break;
+        }
+    }
+    console.log(authFormType)
     return (
         <React.Fragment>
             {/* Этот заголовок видно когда пользователь скролит вниз с телефона */}
@@ -190,9 +200,16 @@ function Header(props) {
                     <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
                         {props.login
                             ? <Popup type='authenticated' actionButton listData={AccountListData} />
-                            : <Popup type='account'
-                                redirectButton={() => { setShowRegForm(true) }}
-                                actionButton={() => { setShowLoginForm(true) }} />}
+                            : <Popup type='account'>
+                                <Popup.Button green
+                                    onClick={(event) => { setShowAuthForm(true); setAuthFormType('register') }}>
+                                    Регистрация
+                                    </Popup.Button>
+                                <Popup.Button blue
+                                    onClick={(event) => { setShowAuthForm(true); setAuthFormType('login') }}>
+                                    Авторизация
+                                    </Popup.Button>
+                            </Popup>}
                     </UserIconLink>
                 </UserIconLinks>
             </div>
@@ -226,8 +243,14 @@ function Header(props) {
                                         <Popup.Button blue onClick={(event) => { }}>Выход</Popup.Button>
                                     </Popup>
                                     : <Popup type='account'>
-                                        <Popup.Button green onClick={(event) => setShowRegForm(true)}>Регистрация</Popup.Button>
-                                        <Popup.Button blue onClick={(event) => setShowLoginForm(true)}>Авторизация</Popup.Button>
+                                        <Popup.Button green
+                                            onClick={(event) => { setShowAuthForm(true); setAuthFormType('register') }}>
+                                            Регистрация
+                                    </Popup.Button>
+                                        <Popup.Button blue
+                                            onClick={(event) => { setShowAuthForm(true); setAuthFormType('login') }}>
+                                            Авторизация
+                                    </Popup.Button>
                                     </Popup>}
                             </UserIconLink>
                         </UserIconLinks>
@@ -262,8 +285,14 @@ function Header(props) {
                                         <Popup.Button blue onClick={(event) => { }}>Выход</Popup.Button>
                                     </Popup>
                                     : <Popup type='account'>
-                                        <Popup.Button green onClick={(event) => { setShowLoginForm(true) }}>Авторизация</Popup.Button>
-                                        <Popup.Button blue onClick={(event) => { setShowRegForm(true) }}>Регистрация</Popup.Button>
+                                        <Popup.Button green
+                                            onClick={(event) => { setShowAuthForm(true); setAuthFormType('register') }}>
+                                            Регистрация
+                                    </Popup.Button>
+                                        <Popup.Button blue
+                                            onClick={(event) => { setShowAuthForm(true); setAuthFormType('login') }}>
+                                            Авторизация
+                                    </Popup.Button>
                                     </Popup>}
                             </UserIconLink>
                         </UserIconLinks>}
@@ -273,8 +302,10 @@ function Header(props) {
                     </div>
                 </div>
             </VisibilitySensor>
-            {<LoginModal onClose={() => setShowLoginForm(false)} visible={showLoginForm}/>}
-            {<RegisterModal onClose={() => setShowRegForm(false)} visible={showRegForm}/>}
+            {<AuthModal onClose={() => setShowAuthForm(false)} 
+            visible={showAuthForm} 
+            authMethod={authFormType}
+            switchAuthType={(currentAuthType) => switchAuthType(currentAuthType)} />}
         </React.Fragment>
     )
 }
