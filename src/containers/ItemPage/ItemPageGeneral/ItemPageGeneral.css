@@ -244,3 +244,35 @@
 .ItemPageGeneral__action-wrapper:hover > .ItemPageGeneral__action-icon_heart {
     fill: red;
 }
+
+@media screen and (max-width: 950px) {
+
+    .ItemPageGeneral {
+        padding: 3vh 5vw 5vh 5vw;
+    }
+
+    .ItemPageGeneral__information-mobile {
+        display: block!important;
+    }
+    .ItemPageGeneral__content .ItemPageGeneral__labels,
+    .ItemPageGeneral__content .ItemPageGeneral__itemName,
+    .ItemPageGeneral__content .ItemPageGeneral__rating {
+        display: none!important;
+    }
+    .ItemPageGeneral__information {
+        display: block!important;
+        width: 100%!important;
+    }
+    .ItemPageGeneral {
+        display: flex;
+        flex-direction: column;
+    }
+    .ItemPageGeneral__content {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.ItemPageGeneral__information-mobile {
+    display: none;
+};

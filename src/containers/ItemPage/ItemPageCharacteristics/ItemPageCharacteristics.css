@@ -102,7 +102,7 @@
 
 .ItemPageCharacteristics__carriage__buy-status__price {
     display: inline-flex;
-    justify-content: space-between;  
+    justify-content: space-between;
     font-size: 28px;
 }
 
@@ -143,4 +143,18 @@
 .ItemPageCharacteristics__carriage__seller-logo .logo__title_1-simple,
 .ItemPageCharacteristics__carriage__seller-logo .logo__title_2-simple {
     font-size: 18px;
+}
+
+@media screen and (max-width: 950px) {
+
+    .ItemPageCharacteristics {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 10px 0;
+    }
+
+    .ItemPageCharacteristics__carriage__seller {
+        display: flex;
+        flex-direction: column;
+    }
 }

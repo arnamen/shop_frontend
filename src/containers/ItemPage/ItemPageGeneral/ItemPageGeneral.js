@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ImageGallery from 'react-image-gallery';
 import { v4 } from 'uuid';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Label from '../../../components/UI/Label/label';
 import Counter from '../../../components/Counter/Counter';
@@ -17,11 +17,11 @@ import { ReactComponent as ReactCompare } from '../../../assets/account/compare.
 import { ReactComponent as ReactHeart } from '../../../assets/account/heart.svg';
 import { ReactComponent as ReactPiggybank } from '../../../assets/misc/piggy-bank.svg';
 
-import {translate} from '../../../utils/translate';
+import { translate } from '../../../utils/translate';
 
 import './ItemPageGeneral.css';
 
-export default function ItemPageGeneral( props ) {
+export default function ItemPageGeneral(props) {
 
     const [itemAmount, setItemAmount] = useState(1);
     const labels = [];
@@ -73,6 +73,14 @@ export default function ItemPageGeneral( props ) {
     return (
         <div className='ItemPageGeneral'>
             <div className='ItemPageGeneral__information'>
+            <div className='ItemPageGeneral__information-mobile'>
+                <div className='ItemPageGeneral__itemName'>
+                    <h2>{itemData.name}</h2>
+                </div>
+                <div className='ItemPageGeneral__labels'>
+                    {labels}
+                </div>
+            </div>
                 <div className='ItemPageGeneral__carousel'>
                     <ImageGallery items={imagesData}
                         showFullscreenButton={false}
@@ -104,9 +112,9 @@ export default function ItemPageGeneral( props ) {
                     </Link>
                 </div>
                 <div className='ItemPageGeneral__inStockStatus'>
-                    {itemData.inStock 
-                    ? <span className='ItemPageGeneral__inStock'>В наличии</span>
-                    : <span className='ItemPageGeneral__notInStock'>Нет в наличии</span>}
+                    {itemData.inStock
+                        ? <span className='ItemPageGeneral__inStock'>В наличии</span>
+                        : <span className='ItemPageGeneral__notInStock'>Нет в наличии</span>}
                 </div>
                 <div className='ItemPageGeneral__order'>
                     <div className='ItemPageGeneral__addToCart'>
