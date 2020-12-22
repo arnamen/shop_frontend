@@ -19,21 +19,26 @@ export default function UserIconLink(props) {
     let ContentMarker = null;
     let className = 'UserIconLink__icon';
 
-    if(props.active && props.activeColor) 
+    if (props.active && props.activeColor)
         className += ` UserIconLink__icon-active UserIconLink__icon-active-${props.activeColor}`;
-    else if(props.active)
+    else if (props.active)
         className += ` UserIconLink__icon-active`;
 
     if (props.markContent && props.active) ContentMarker = <div className='UserIconLink__ContentMarker'>{props.markContent}</div>
 
     return (
         <div className='UserIconLink__wrapper'>
-            <Link to={props.to}>
-                <SVGimage className={className}
-                    viewBox="0 0 512 512" />
-                {ContentMarker}
-
-            </Link>
+            {props.active
+                ? <Link to={props.to}>
+                    <SVGimage className={className}
+                        viewBox="0 0 512 512" />
+                    {ContentMarker}
+                </Link>
+                : <span>
+                    <SVGimage className={className}
+                        viewBox="0 0 512 512" />
+                    {ContentMarker}
+                </span>}
             {props.children}
         </div>
     )

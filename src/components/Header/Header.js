@@ -181,7 +181,7 @@ function Header(props) {
                 break;
         }
     }
-    console.log(authFormType)
+
     return (
         <React.Fragment>
             {/* Этот заголовок видно когда пользователь скролит вниз с телефона */}

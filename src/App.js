@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Route} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-import {loginTest} from './store/actions/login';
+import { loginTest } from './store/actions/login';
 import Header from './components/Header/Header';
 import MainPage from './containers/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
@@ -21,24 +21,28 @@ import ItemPage from './containers/ItemPage/ItemPage';
 import ClientAccount from './components/ClientAccount/ClientAccount';
 
 function App(props) {
-  
+
   return (
     <React.Fragment>
-      <Header/>
-      <Route exact path='/' component={MainPage}/>
-      <Route exact path='/page/about-us' component={AboutUsPage}/>
-      <Route exact path='/page/delivery' component={DeliveryPage}/>
-      <Route exact path='/page/contacts' component={ContactsPage}/>
-      <Route exact path='/page/feedback' component={FeedbackPage}/>
-      <Route exact path='/page/offer' component={OfferPage}/>
-      <Route exact path='/page/payment' component={PaymentPage}/>
-      <Route exact path='/page/collection' component={ContentPage}/>
-      <Route exact path='/page/compares' component={ComparePage}/>
-      <Route exact path='/page/favourites' component={FavouritesPage}/>
-      <Route exact path='/page/cart' component={CartPage}/>
-      <Route exact path='/item/:itemid' component={ItemPage}/>
-      <Route path='/account' component={ClientAccount}/>
-      <Footer/>
+      <Header />
+      {props.login &&
+        <Switch>
+          <Route path='/account' component={ClientAccount} />
+        </Switch>}
+      <Route exact path='/' component={MainPage} />
+      <Route exact path='/page/about-us' component={AboutUsPage} />
+      <Route exact path='/page/delivery' component={DeliveryPage} />
+      <Route exact path='/page/contacts' component={ContactsPage} />
+      <Route exact path='/page/feedback' component={FeedbackPage} />
+      <Route exact path='/page/offer' component={OfferPage} />
+      <Route exact path='/page/payment' component={PaymentPage} />
+      <Route exact path='/page/collection' component={ContentPage} />
+      <Route exact path='/page/compares' component={ComparePage} />
+      <Route exact path='/page/favourites' component={FavouritesPage} />
+      <Route exact path='/page/cart' component={CartPage} />
+      <Route exact path='/item/:itemid' component={ItemPage} />
+
+      <Footer />
     </React.Fragment>
   );
 }
@@ -49,7 +53,7 @@ const mapStateToProps = (state) => {
     login: state.login.login
   }
 }
- 
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onLogin: () => dispatch(loginTest())
