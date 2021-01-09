@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
-import { loginTest } from './store/actions/login';
 import Header from './components/Header/Header';
 import MainPage from './containers/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
+import {} from './store/actions/login';
 
 import AboutUsPage from './components/InformationPages/AboutUs/AboutUs';
 import ContactsPage from './components/InformationPages/Contacts/Contacts';
@@ -56,7 +56,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLogin: () => dispatch(loginTest())
+    onAuthLogin: () => dispatch()
   }
 }
 

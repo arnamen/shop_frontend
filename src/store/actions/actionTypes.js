@@ -1,4 +1,5 @@
-export const LOGIN_TEST = "LOGIN_TEST";
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
 
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const ADD_FILTERS = 'ADD_FILTERS';

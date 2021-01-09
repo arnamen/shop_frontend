@@ -162,25 +162,13 @@ const burgerData = [
 function Header(props) {
     // eslint-disable-next-line no-unused-vars
     const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
+    const [authFormType, setAuthFormType] = useState('login');
+
     const [visible, setVisible] = useState(true)
     const [showAuthForm, setShowAuthForm] = useState(false);
-    const [authFormType, setAuthFormType] = useState();
     const compareActive = props.compare.length > 0;
     const favouritesActive = props.favourites.length > 0;
     const cartActive = props.cart.length > 0;
-
-    const switchAuthType = (currentAuthType) => {
-        switch (currentAuthType) {
-            case 'register':
-                setAuthFormType('login');
-                break;
-            case 'login':
-                setAuthFormType('register');
-                break;
-            default:
-                break;
-        }
-    }
 
     return (
         <React.Fragment>
@@ -202,11 +190,11 @@ function Header(props) {
                             ? <Popup type='authenticated' actionButton listData={AccountListData} />
                             : <Popup type='account'>
                                 <Popup.Button green
-                                    onClick={(event) => { setShowAuthForm(true); setAuthFormType('register') }}>
+                                    onClick={(event) => setShowAuthForm(true)}>
                                     Регистрация
                                     </Popup.Button>
                                 <Popup.Button blue
-                                    onClick={(event) => { setShowAuthForm(true); setAuthFormType('login') }}>
+                                    onClick={(event) => setShowAuthForm(true)}>
                                     Авторизация
                                     </Popup.Button>
                             </Popup>}
@@ -244,11 +232,11 @@ function Header(props) {
                                     </Popup>
                                     : <Popup type='account'>
                                         <Popup.Button green
-                                            onClick={(event) => { setShowAuthForm(true); setAuthFormType('register') }}>
+                                            onClick={(event) => {setShowAuthForm(true); setAuthFormType('register')}}>
                                             Регистрация
                                     </Popup.Button>
                                         <Popup.Button blue
-                                            onClick={(event) => { setShowAuthForm(true); setAuthFormType('login') }}>
+                                            onClick={(event) => {setShowAuthForm(true); setAuthFormType('login')}}>
                                             Авторизация
                                     </Popup.Button>
                                     </Popup>}
@@ -285,15 +273,15 @@ function Header(props) {
                                         <Popup.Button blue onClick={(event) => { }}>Выход</Popup.Button>
                                     </Popup>
                                     : <Popup type='account'>
-                                        <Popup.Button green
-                                            onClick={(event) => { setShowAuthForm(true); setAuthFormType('register') }}>
-                                            Регистрация
-                                    </Popup.Button>
-                                        <Popup.Button blue
-                                            onClick={(event) => { setShowAuthForm(true); setAuthFormType('login') }}>
-                                            Авторизация
-                                    </Popup.Button>
-                                    </Popup>}
+                                    <Popup.Button green
+                                        onClick={(event) => {setShowAuthForm(true); setAuthFormType('register')}}>
+                                        Регистрация
+                                </Popup.Button>
+                                    <Popup.Button blue
+                                        onClick={(event) => {setShowAuthForm(true); setAuthFormType('login')}}>
+                                        Авторизация
+                                </Popup.Button>
+                                </Popup>}
                             </UserIconLink>
                         </UserIconLinks>}
                     </div>
@@ -303,9 +291,8 @@ function Header(props) {
                 </div>
             </VisibilitySensor>
             {<AuthModal onClose={() => setShowAuthForm(false)} 
-            visible={showAuthForm} 
-            authMethod={authFormType}
-            switchAuthType={(currentAuthType) => switchAuthType(currentAuthType)} />}
+            visible={showAuthForm}
+            authFormType={authFormType}/>}
         </React.Fragment>
     )
 }
