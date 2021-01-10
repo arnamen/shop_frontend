@@ -18,6 +18,7 @@ import * as actionTypes from '../../store/actions/actionTypes';
 import useItemsFilter from '../../hooks/useItemsFilter/useItemsFilter';
 
 import './Header.css';
+import { logOut } from '../../store/actions/auth';
 
 let contentHref = '/page/collection';
 
@@ -160,15 +161,16 @@ const burgerData = [
 ]
 
 function Header(props) {
-    // eslint-disable-next-line no-unused-vars
-    const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
-    const [authFormType, setAuthFormType] = useState('login');
 
+    const [authFormType, setAuthFormType] = useState('login');
     const [visible, setVisible] = useState(true)
     const [showAuthForm, setShowAuthForm] = useState(false);
+
     const compareActive = props.compare.length > 0;
     const favouritesActive = props.favourites.length > 0;
     const cartActive = props.cart.length > 0;
+
+    console.log(props.loggedIn)
 
     return (
         <React.Fragment>
@@ -185,8 +187,8 @@ function Header(props) {
                     <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
                         <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart} />
                     </UserIconLink>
-                    <UserIconLink type='account' to='/' key={v4()} active={props.login} activeColor='orange'>
-                        {props.login
+                    <UserIconLink type='account' to='/' key={v4()} active={props.loggedIn} activeColor='orange'>
+                        {props.loggedIn
                             ? <Popup type='authenticated' actionButton listData={AccountListData} />
                             : <Popup type='account'>
                                 <Popup.Button green
@@ -225,14 +227,14 @@ function Header(props) {
                                     {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='account' to='/account' key={v4()} active={props.login} activeColor='orange'>
-                                {props.login
+                            <UserIconLink type='account' to='/account' key={v4()} active={props.loggedIn} activeColor='orange'>
+                                {props.loggedIn
                                     ? <Popup type='authenticated' listData={AccountListData}>
-                                        <Popup.Button blue onClick={(event) => { }}>Выход</Popup.Button>
+                                        <Popup.Button blue onClick={() => props.onLogout()}>Выход</Popup.Button>
                                     </Popup>
                                     : <Popup type='account'>
                                         <Popup.Button green
-                                            onClick={(event) => {setShowAuthForm(true); setAuthFormType('register')}}>
+                                            onClick={(event) => {setShowAuthForm(true); setAuthFormType('signup')}}>
                                             Регистрация
                                     </Popup.Button>
                                         <Popup.Button blue
@@ -267,14 +269,14 @@ function Header(props) {
                                     {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='account' to='/account' key={v4()} active={props.login} activeColor='orange'>
-                                {props.login
+                            <UserIconLink type='account' to='/account' key={v4()} active={props.loggedIn} activeColor='orange'>
+                                {props.loggedIn
                                     ? <Popup type='authenticated' listData={AccountListData}>
-                                        <Popup.Button blue onClick={(event) => { }}>Выход</Popup.Button>
+                                        <Popup.Button blue onClick={() => props.onLogout()}>Выход</Popup.Button>
                                     </Popup>
                                     : <Popup type='account'>
                                     <Popup.Button green
-                                        onClick={(event) => {setShowAuthForm(true); setAuthFormType('register')}}>
+                                        onClick={(event) => {setShowAuthForm(true); setAuthFormType('signup')}}>
                                         Регистрация
                                 </Popup.Button>
                                     <Popup.Button blue
@@ -290,7 +292,7 @@ function Header(props) {
                     </div>
                 </div>
             </VisibilitySensor>
-            {<AuthModal onClose={() => setShowAuthForm(false)} 
+            {showAuthForm && <AuthModal onClose={() => setShowAuthForm(false)} 
             visible={showAuthForm}
             authFormType={authFormType}/>}
         </React.Fragment>
@@ -302,7 +304,7 @@ const mapStateToProps = state => {
         compare: state.compare.compare,
         favourites: state.favourites.favourites,
         cart: state.cart.cart,
-        login: state.login.login
+        loggedIn: !!state.auth.token
     };
 }
 
@@ -320,6 +322,9 @@ const mapDispatchToProps = (dispatch) => {
             type: actionTypes.REMOVE_FROM_CART,
             item,
         }),
+        onLogout: () => {
+            dispatch(logOut())
+        }
     }
 }
 

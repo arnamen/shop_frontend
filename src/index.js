@@ -8,14 +8,14 @@ import {BrowserRouter} from 'react-router-dom'
 
 import './index.css';
 
-import loginReducer from './store/reducers/loginReducer';
+import authReducer from './store/reducers/authReducer';
 import contentReducer from './store/reducers/contentReducer';
 import filtersReducer from './store/reducers/filtersReducer';
 import compareReducer from './store/reducers/compareReducer';
 import favouritesReducer from './store/reducers/favouritesReducer';
 import cartReducer from './store/reducers/cartReducer';
 const rootReducer = combineReducers({
-  login: loginReducer,
+  auth: authReducer,
   content: contentReducer,
   filters: filtersReducer,
   compare: compareReducer,

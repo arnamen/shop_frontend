@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header/Header';
 import MainPage from './containers/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
-import {} from './store/actions/login';
+import { authCheckState } from './store/actions/auth';
 
 import AboutUsPage from './components/InformationPages/AboutUs/AboutUs';
 import ContactsPage from './components/InformationPages/Contacts/Contacts';
@@ -22,10 +22,14 @@ import ClientAccount from './components/ClientAccount/ClientAccount';
 
 function App(props) {
 
+  useEffect(() => {
+    props.onAutoAuth();
+  }, [props]);
+
   return (
     <React.Fragment>
       <Header />
-      {props.login &&
+      {props.auth &&
         <Switch>
           <Route path='/account' component={ClientAccount} />
         </Switch>}
@@ -50,13 +54,13 @@ function App(props) {
 //REDUX 
 const mapStateToProps = (state) => {
   return {
-    login: state.login.login
+    auth: state.auth.auth
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAuthLogin: () => dispatch()
+    onAutoAuth: () => dispatch(authCheckState())
   }
 }
 

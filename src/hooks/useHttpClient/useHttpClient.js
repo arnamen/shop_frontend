@@ -38,12 +38,12 @@ const useHttpClient = () => {
         }
     }, [])
 
-    return {
+    return [
         isLoading,
         error,
         sendRequest,
         clearError
-    }
+    ]
 }
 
 export default useHttpClient;
