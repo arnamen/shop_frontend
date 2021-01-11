@@ -4,15 +4,16 @@ import InputMask from 'react-input-mask';
 
 import {validate} from '../../../../utils/validator';
 
-import './TextField.css';;
+import './TextField.css';
 
 const inputReducer = (state, action) => {
+
     switch (action.type) {
       case 'CHANGE':
         return {
           ...state,
           value: action.val,
-          isValid: action.validators ? validate(action.val, action.validators) : true
+          isValid: action.validators ? validate(action.val, action.validators, action.mask) : true
         };
       case 'TOUCH': {
         return {
@@ -35,7 +36,8 @@ export default function TextField( props ) {
     
       const { id, onInput } = props;
       const { value, isValid } = inputState;
-    
+      const className = ['TextField'];
+      if(!isValid) className.push('TextField-invalid');
       useEffect(() => {
         onInput(id, value, isValid)
       }, [id, value, isValid, onInput]);
@@ -44,14 +46,16 @@ export default function TextField( props ) {
         dispatch({
           type: 'CHANGE',
           val: event.target.value,
-          validators: props.validators
+          validators: props.validators,
+          mask: props.mask
         });
       };
 
     return (
-        <InputMask mask={props.mask} value={props.value} onChange={changeHandler} alwaysShowMask maskOptions={{maskChar:'.'}}>
+        props.mask 
+        ? <InputMask mask={props.mask} value={props.value} onChange={changeHandler} alwaysShowMask>
           {(inputProps => <input type={props.type || 'text'} 
-          className='TextField' 
+          className={className.join(' ')} 
           id={props.id || ''}
           placeholder={props.placeholder || ''}
           defaultValue={props.defaultValue}
@@ -60,5 +64,14 @@ export default function TextField( props ) {
           readOnly={props.value}
           {...inputProps}/>)}
         </InputMask>
+        : <input type={props.type || 'text'} 
+        onChange={changeHandler}
+        className={className.join(' ')} 
+        id={props.id || ''}
+        placeholder={props.placeholder || ''}
+        defaultValue={props.defaultValue}
+        required={props.required || false}
+        key={props.autoupdate ? v4(): undefined}
+        readOnly={props.value}/>
     )
 }

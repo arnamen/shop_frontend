@@ -13,7 +13,7 @@ import { ReactComponent as ReactGoogle } from '../../assets/social/google.svg';
 import { ReactComponent as ReactFacebook } from '../../assets/social/043-facebook-1.svg';
 import { ReactComponent as ReactClose } from '../../assets/misc/cross.svg';
 
-import { VALIDATOR_EMAIL, VALIDATOR_MIN, VALIDATOR_MAXLENGTH, VALIDATOR_REQUIRE } from '../../utils/validator';
+import { VALIDATOR_EMAIL, VALIDATOR_MIN, VALIDATOR_MAXLENGTH, VALIDATOR_REQUIRE, VALIDATOR_EXACT_LENGTH, VALIDATOR_MINLENGTH } from '../../utils/validator';
 
 import './AuthModal.css';
 
@@ -102,27 +102,27 @@ function AuthModal(props) {
                         <Form>
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
                                 <Form.Label for='field' className='AuthModal__label'>Фамилия</Form.Label>
-                                <Form.TextField id='surname' onInput={inputHandler}/>
+                                <Form.TextField id='surname' onInput={inputHandler} initialValid/>
                             </Form.Row>}
 
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
                                 <Form.Label for='field' className='AuthModal__label' required>Имя</Form.Label>
-                                <Form.TextField id='name' onInput={inputHandler} />
+                                <Form.TextField id='name' onInput={inputHandler} initialValid validators={[VALIDATOR_REQUIRE()]}/>
                             </Form.Row>}
 
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
                                 <Form.Label for='field' className='AuthModal__label'>Номер телефона</Form.Label>
-                                <Form.TextField id='phone' onInput={inputHandler} mask='+380 (99) 999-99-99'/>
+                                <Form.TextField id='phone' onInput={inputHandler} mask='+380 (99) 999-99-99' initialValid validators={[VALIDATOR_EXACT_LENGTH(19)]}/>
                             </Form.Row>}
 
                             <Form.Row>
-                                <Form.Label for='field' className='AuthModal__label' required>Эл. почта</Form.Label>
-                                <Form.TextField id='email' onInput={inputHandler} />
+                                <Form.Label for='field' className='AuthModal__label' required initialValid validators={[VALIDATOR_EMAIL()]}>Эл. почта</Form.Label>
+                                <Form.TextField id='email' onInput={inputHandler} initialValid/>
                             </Form.Row>
 
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
-                                <Form.Label for='field' className='AuthModal__label' required>Придумайте пароль</Form.Label>
-                                <Form.TextField id='password' type='password'  onInput={inputHandler}/>
+                                <Form.Label for='field' className='AuthModal__label' required validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}>Придумайте пароль</Form.Label>
+                                <Form.TextField id='password' type='password'  onInput={inputHandler} initialValid/>
                                 <Form.Label for='field' className='AuthModal__label'>Пароль должен быть не менее 6 символов, содержать цифры и латинские буквы, в том числе заглавные, и не должен совпадать с именем и эл. почтой</Form.Label>
                             </Form.Row>}
 
@@ -137,7 +137,7 @@ function AuthModal(props) {
                             {authFormType === AUTH_METHOD_LOGIN && <React.Fragment>
                                 <Form.Row>
                                 <Form.Label for='field' className='AuthModal__label'>Пароль</Form.Label>
-                                <Form.TextField id='password' type='password'  onInput={inputHandler}/>
+                                <Form.TextField id='password' type='password'  onInput={inputHandler} initialValid/>
                             </Form.Row>
 
                             <Form.Row>

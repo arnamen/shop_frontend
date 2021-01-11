@@ -13,3 +13,7 @@
     height: 40px;
     width: 100%;
 }
+
+.TextField-invalid {
+    border-color: red;
+}
