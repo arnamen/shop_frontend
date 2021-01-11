@@ -1,4 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react'
+import { connect } from 'react-redux';
 
 import Modal from '../UI/Modal/Modal';
 import Form from '../UI/Form/Form';
@@ -7,13 +8,14 @@ import Checkbox from '../UI/Checkbox/Checkbox';
 import * as actions from '../../store/actions/auth';
 
 import { useForm } from '../../hooks/useForm/useForm';
-import useHttpClient from '../../hooks/useHttpClient/useHttpClient';
 
 import { ReactComponent as ReactGoogle } from '../../assets/social/google.svg';
 import { ReactComponent as ReactFacebook } from '../../assets/social/043-facebook-1.svg';
 import { ReactComponent as ReactClose } from '../../assets/misc/cross.svg';
+
+import { VALIDATOR_EMAIL, VALIDATOR_MIN, VALIDATOR_MAXLENGTH, VALIDATOR_REQUIRE } from '../../utils/validator';
+
 import './AuthModal.css';
-import { connect } from 'react-redux';
 
 const AUTH_METHOD_LOGIN = 'login';
 const AUTH_METHOD_SIGNUP = 'signup';
@@ -47,11 +49,11 @@ function AuthModal(props) {
                     },
                     surname: {
                         value: '',
-                        isValid: false
+                        isValid: true
                     },
                     phone: {
                         value: '',
-                        isValid: false
+                        isValid: true
                     }
                 })
                 break;
@@ -74,14 +76,14 @@ function AuthModal(props) {
 
         const name = formState.inputs.name ? formState.inputs.name.value : undefined;
         const surname = formState.inputs.surname ? formState.inputs.surname.value : undefined;
-        const phone = formState.inputs.phone ? formState.inputs.phone.value : undefined;
+        const phoneNumber = formState.inputs.phone ? formState.inputs.phone.value : undefined;
 
         const authData = {
             email: formState.inputs.email.value,
             password: formState.inputs.password.value,
             name,
             surname,
-            phone
+            phoneNumber
         }
         props.onAuth(CURRENT_AUTH_METHOD, authData);
     }   
@@ -104,22 +106,22 @@ function AuthModal(props) {
                             </Form.Row>}
 
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
-                                <Form.Label for='field' className='AuthModal__label'>Имя</Form.Label>
+                                <Form.Label for='field' className='AuthModal__label' required>Имя</Form.Label>
                                 <Form.TextField id='name' onInput={inputHandler} />
                             </Form.Row>}
 
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
                                 <Form.Label for='field' className='AuthModal__label'>Номер телефона</Form.Label>
-                                <Form.TextField id='phone' onInput={inputHandler} />
+                                <Form.TextField id='phone' onInput={inputHandler} mask='+380 (99) 999-99-99'/>
                             </Form.Row>}
 
                             <Form.Row>
-                                <Form.Label for='field' className='AuthModal__label'>Эл. почта</Form.Label>
+                                <Form.Label for='field' className='AuthModal__label' required>Эл. почта</Form.Label>
                                 <Form.TextField id='email' onInput={inputHandler} />
                             </Form.Row>
 
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
-                                <Form.Label for='field' className='AuthModal__label'>Придумайте пароль</Form.Label>
+                                <Form.Label for='field' className='AuthModal__label' required>Придумайте пароль</Form.Label>
                                 <Form.TextField id='password' type='password'  onInput={inputHandler}/>
                                 <Form.Label for='field' className='AuthModal__label'>Пароль должен быть не менее 6 символов, содержать цифры и латинские буквы, в том числе заглавные, и не должен совпадать с именем и эл. почтой</Form.Label>
                             </Form.Row>}

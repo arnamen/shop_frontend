@@ -15,8 +15,6 @@ import Burger from '../../containers/Burger/Burger';
 import AuthModal from '../AuthModal/AuthModal';
 import * as actionTypes from '../../store/actions/actionTypes';
 
-import useItemsFilter from '../../hooks/useItemsFilter/useItemsFilter';
-
 import './Header.css';
 import { logOut } from '../../store/actions/auth';
 
@@ -169,8 +167,6 @@ function Header(props) {
     const compareActive = props.compare.length > 0;
     const favouritesActive = props.favourites.length > 0;
     const cartActive = props.cart.length > 0;
-
-    console.log(props.loggedIn)
 
     return (
         <React.Fragment>

@@ -4,3 +4,9 @@
     display: block;
     margin-bottom: 4px;
 }
+
+.FormLabel-required:after {
+    content: '*';
+    color: red;
+    margin: 0 3px;
+}

@@ -1,5 +1,8 @@
 import React, {useReducer, useEffect} from 'react'
 import {v4} from 'uuid';
+import InputMask from 'react-input-mask';
+
+import {validate} from '../../../../utils/validator';
 
 import './TextField.css';;
 
@@ -9,7 +12,7 @@ const inputReducer = (state, action) => {
         return {
           ...state,
           value: action.val,
-          isValid: false//validate(action.val, action.validators)
+          isValid: action.validators ? validate(action.val, action.validators) : true
         };
       case 'TOUCH': {
         return {
@@ -44,19 +47,18 @@ export default function TextField( props ) {
           validators: props.validators
         });
       };
-    
 
     return (
-        <input type={props.type || 'text'} 
-        className='TextField' 
-        onChange={changeHandler} 
-        id={props.id || ''}
-        placeholder={props.placeholder || ''}
-        defaultValue={props.defaultValue}
-        required={props.required || false}
-        key={props.autoupdate ? v4(): undefined}
-        onClick={props.onClick}
-        value={props.value}
-        readOnly={props.value}/>
+        <InputMask mask={props.mask} value={props.value} onChange={changeHandler} alwaysShowMask maskOptions={{maskChar:'.'}}>
+          {(inputProps => <input type={props.type || 'text'} 
+          className='TextField' 
+          id={props.id || ''}
+          placeholder={props.placeholder || ''}
+          defaultValue={props.defaultValue}
+          required={props.required || false}
+          key={props.autoupdate ? v4(): undefined}
+          readOnly={props.value}
+          {...inputProps}/>)}
+        </InputMask>
     )
 }
