@@ -31,7 +31,8 @@ function AuthModal(props) {
                 setFormData({
                     ...formState.inputs,
                     name: undefined,
-                    surname: undefined
+                    surname: undefined,
+                    phone: undefined
                 })
                 break;
 
@@ -45,6 +46,10 @@ function AuthModal(props) {
                         isValid: false
                     },
                     surname: {
+                        value: '',
+                        isValid: false
+                    },
+                    phone: {
                         value: '',
                         isValid: false
                     }
@@ -69,14 +74,15 @@ function AuthModal(props) {
 
         const name = formState.inputs.name ? formState.inputs.name.value : undefined;
         const surname = formState.inputs.surname ? formState.inputs.surname.value : undefined;
+        const phone = formState.inputs.phone ? formState.inputs.phone.value : undefined;
 
         const authData = {
             email: formState.inputs.email.value,
             password: formState.inputs.password.value,
             name,
-            surname
+            surname,
+            phone
         }
-
         props.onAuth(CURRENT_AUTH_METHOD, authData);
     }   
 
@@ -102,8 +108,13 @@ function AuthModal(props) {
                                 <Form.TextField id='name' onInput={inputHandler} />
                             </Form.Row>}
 
+                            {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
+                                <Form.Label for='field' className='AuthModal__label'>Номер телефона</Form.Label>
+                                <Form.TextField id='phone' onInput={inputHandler} />
+                            </Form.Row>}
+
                             <Form.Row>
-                                <Form.Label for='field' className='AuthModal__label'>Эл. почта или телефон</Form.Label>
+                                <Form.Label for='field' className='AuthModal__label'>Эл. почта</Form.Label>
                                 <Form.TextField id='email' onInput={inputHandler} />
                             </Form.Row>
 
