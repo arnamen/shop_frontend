@@ -41,8 +41,11 @@
     display: flex;
 }
 
-.AuthModal__label {
-    
+.AuthModal__invalid-form-label {
+    display: block;
+    color: red;
+    margin-bottom: 16px;
+    font-size: 12px;
 }
 
 .AuthModal__passCheckbox {

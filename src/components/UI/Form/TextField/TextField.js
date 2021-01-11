@@ -37,12 +37,19 @@ export default function TextField( props ) {
       const { id, onInput } = props;
       const { value, isValid } = inputState;
       const className = ['TextField'];
-      if(!isValid) className.push('TextField-invalid');
+      if(!isValid && inputState.isTouched) className.push('TextField-invalid');
       useEffect(() => {
         onInput(id, value, isValid)
       }, [id, value, isValid, onInput]);
     
+      const touchHandler = event => {
+        dispatch({
+          type: 'TOUCH',
+        });
+      };
+
       const changeHandler = event => {
+        console.log(props.validators)
         dispatch({
           type: 'CHANGE',
           val: event.target.value,
@@ -53,7 +60,7 @@ export default function TextField( props ) {
 
     return (
         props.mask 
-        ? <InputMask mask={props.mask} value={props.value} onChange={changeHandler} alwaysShowMask>
+        ? <InputMask mask={props.mask} value={props.value} onChange={changeHandler} alwaysShowMask onFocus={touchHandler}>
           {(inputProps => <input type={props.type || 'text'} 
           className={className.join(' ')} 
           id={props.id || ''}
@@ -72,6 +79,7 @@ export default function TextField( props ) {
         defaultValue={props.defaultValue}
         required={props.required || false}
         key={props.autoupdate ? v4(): undefined}
-        readOnly={props.value}/>
+        readOnly={props.value}
+        onFocus={touchHandler}/>
     )
 }
