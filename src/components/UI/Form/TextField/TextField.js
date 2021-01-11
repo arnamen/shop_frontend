@@ -49,7 +49,6 @@ export default function TextField( props ) {
       };
 
       const changeHandler = event => {
-        console.log(props.validators)
         dispatch({
           type: 'CHANGE',
           val: event.target.value,

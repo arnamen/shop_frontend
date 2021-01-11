@@ -77,14 +77,14 @@ export const auth = (authMethod, authData) => {
         dispatch(authStart());
 
         let url;    
-        console.log(authMethod)
+
         if(authMethod === 'signup') url = 'http://127.0.0.1:5000/api/users/signup';
         else if(authMethod === 'login') url = 'http://127.0.0.1:5000/api/users/login';
         else return dispatch(authFail('undefined auth method'));
 
         axios.post(url, authData)
             .then(response => {
-                console.log(response.data)
+
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn);
 
                 localStorage.setItem('token', response.data.token)
@@ -95,7 +95,8 @@ export const auth = (authMethod, authData) => {
                 dispatch(checkAuthTimeOut(response.data.expiresIn))
             })
             .catch(err => {
-                dispatch(authFail(err.response.data));
+                const response = err.response;
+                dispatch(authFail(response ? response.data : {message: 'Невозможно подключиться к серверу'}));
             });
     };
 };

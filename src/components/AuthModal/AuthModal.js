@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { connect } from 'react-redux';
 
+import LoadingSpinner from '../UI/LoadingSpinner/LoadingSpinner';
 import Modal from '../UI/Modal/Modal';
 import Form from '../UI/Form/Form';
 import Button from '../UI/Button/Button';
@@ -36,6 +37,9 @@ function AuthModal(props) {
     const [showInvalidFormMessage, setShowInvalidFormMessage] = useState(false);
 
     const switchAuthType = useCallback((currentAuthType) => {
+
+        setShowInvalidFormMessage(false);
+
         switch (currentAuthType) {
             case 'login':
                 if (authFormType === 'login') return;
@@ -79,7 +83,7 @@ function AuthModal(props) {
     const authSubmitHandler = async (event) => {
 
         event.preventDefault();
-        console.log(formState.isValid)
+
         if (!formState.isValid) return setShowInvalidFormMessage(true);
         else if (formState.isValid && showInvalidFormMessage) setShowInvalidFormMessage(false);
 
@@ -99,8 +103,11 @@ function AuthModal(props) {
             surname,
             phoneNumber
         }
-        // props.onAuth(CURRENT_AUTH_METHOD, authData);
+
+            props.onAuth(CURRENT_AUTH_METHOD, authData);
     }
+
+    if(props.authError && !showInvalidFormMessage) setShowInvalidFormMessage(true);
 
     return (
         <Modal onClose={props.onClose} visible={props.visible}>
@@ -113,8 +120,14 @@ function AuthModal(props) {
                 <div className='AuthModal__content'>
                     <div className='AuthModal__form-wrapper'>
                         <span className='AuthModal__choice-text'>или</span>
-                        {showInvalidFormMessage
-                            && <span className='AuthModal__invalid-form-label'>Упс, похоже, что в форме есть ошибки. Необходимо их исправить прежде чем завершить регистрацию.</span>}
+                        {/* Error messages that will appear on different form errors */}
+                        {showInvalidFormMessage && !formState.isValid &&  authFormType === AUTH_METHOD_SIGNUP
+                            && <span className='AuthModal__invalid-form-label'>Упс, похоже, что в форме есть ошибки. Необходимо их исправить перед тем как завершить регистрацию.</span>}
+                            {showInvalidFormMessage && !formState.isValid && authFormType === AUTH_METHOD_LOGIN
+                            && <span className='AuthModal__invalid-form-label'>Данные для входа заполнены с ошибками.</span>}
+                            {showInvalidFormMessage && props.authError
+                            && <span className='AuthModal__invalid-form-label'>{props.authError.message}</span>}
+                        {/*  */}
                         <Form>
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
                                 <Form.Label for='field' className='AuthModal__label'>Фамилия</Form.Label>
@@ -138,12 +151,12 @@ function AuthModal(props) {
 
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
                                 <Form.Label for='field' className='AuthModal__label' required>Придумайте пароль</Form.Label>
-                                <Form.TextField id='password-signup' type='password' onInput={inputHandler} initialValid={false} validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}/>
+                                <Form.TextField id='password' type='password' onInput={inputHandler} initialValid={false} validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}/>
                                 <Form.Label for='field' className='AuthModal__label'>Пароль должен быть не менее 6 символов, содержать цифры и латинские буквы, в том числе заглавные, и не должен совпадать с именем и эл. почтой</Form.Label>
                             </Form.Row>}
 
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
-                                <Button className='AuthModal__submit' onClick={authSubmitHandler}>Зарегистрироваться</Button>
+                                <Button className='AuthModal__submit' onClick={authSubmitHandler}>{props.loading ? <LoadingSpinner/> : 'Зарегистрироваться'}</Button>
                             </Form.Row>}
 
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
@@ -152,8 +165,8 @@ function AuthModal(props) {
 
                             {authFormType === AUTH_METHOD_LOGIN && <React.Fragment>
                                 <Form.Row>
-                                    <Form.Label for='field' className='AuthModal__label'>Пароль</Form.Label>
-                                    <Form.TextField id='password-login' type='password' onInput={inputHandler} initialValid validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}/>
+                                    <Form.Label for='field' className='AuthModal__label' required>Пароль</Form.Label>
+                                    <Form.TextField id='password' type='password' onInput={inputHandler} initialValid validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}/>
                                 </Form.Row>
 
                                 <Form.Row>
@@ -164,7 +177,7 @@ function AuthModal(props) {
                                 </Form.Row>
 
                                 <Form.Row>
-                                    <Button className='AuthModal__submit' onClick={authSubmitHandler}>Войти</Button>
+                                    <Button className='AuthModal__submit' onClick={authSubmitHandler}>{props.loading ? <LoadingSpinner/> : 'Войти'}</Button>
                                 </Form.Row>
 
                                 <Form.Row>
@@ -195,8 +208,8 @@ const mapStateToProps = (state) => {
     return {
         userId: state.auth.userId,
         token: state.auth.token,
-        isLoading: state.auth.isLoading,
-        error: state.auth.error
+        loading: state.auth.loading,
+        authError: state.auth.error
     }
 }
 
