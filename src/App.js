@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
+import publicIp from 'public-ip';
 
 import Header from './components/Header/Header';
 import MainPage from './containers/MainPage/MainPage';
 import Footer from './components/Footer/Footer';
-import { authCheckState } from './store/actions/auth';
+import { authCheckState, authSetIp } from './store/actions/auth';
 
 import AboutUsPage from './components/InformationPages/AboutUs/AboutUs';
 import ContactsPage from './components/InformationPages/Contacts/Contacts';
@@ -19,21 +20,29 @@ import FavouritesPage from './components/Favourites/Favourites';
 import CartPage from './components/Cart/Cart';
 import ItemPage from './containers/ItemPage/ItemPage';
 import ClientAccount from './components/ClientAccount/ClientAccount';
+import Admin from './containers/Admin/Admin';
 
 function App(props) {
 
   useEffect(() => {
+
+    publicIp.v4().then(ip => {
+      console.log(ip);
+      props.onSetIp(ip)
+    });
     props.onAutoAuth();
+    
   }, [props]);
 
   return (
     <React.Fragment>
       <Header />
+
       {props.auth &&
         <Switch>
           <Route path='/account' component={ClientAccount} />
         </Switch>}
-      <Route exact path='/' component={MainPage} />
+      <Switch>
       <Route exact path='/page/about-us' component={AboutUsPage} />
       <Route exact path='/page/delivery' component={DeliveryPage} />
       <Route exact path='/page/contacts' component={ContactsPage} />
@@ -46,6 +55,13 @@ function App(props) {
       <Route exact path='/page/cart' component={CartPage} />
       <Route exact path='/item/:itemid' component={ItemPage} />
 
+      {props.ip === '94.45.100.38' 
+          ? <Route path='/admin' component={Admin}/>
+          : <MainPage/>}
+        
+      <Route path='/' component={MainPage} />
+      </Switch>
+
       <Footer />
     </React.Fragment>
   );
@@ -54,13 +70,15 @@ function App(props) {
 //REDUX 
 const mapStateToProps = (state) => {
   return {
-    auth: state.auth.auth
+    auth: state.auth.auth,
+    ip: state.auth.ip
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAutoAuth: () => dispatch(authCheckState())
+    onAutoAuth: () => dispatch(authCheckState()),
+    onSetIp: (ip) => dispatch(authSetIp(ip))
   }
 }
 

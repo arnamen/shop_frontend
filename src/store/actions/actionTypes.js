@@ -4,6 +4,7 @@ export const AUTH_FAIL = "AUTH_FAIL";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const AUTH_START = "AUTH_START";
 export const SET_AUTH_REDIRECT_PATH = "SET_AUTH_REDIRECT_PATH";
+export const AUTH_SET_IP = "AUTH_SET_IP";
 
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const ADD_FILTERS = 'ADD_FILTERS';

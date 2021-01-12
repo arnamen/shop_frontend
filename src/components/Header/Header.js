@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import VisibilitySensor from 'react-visibility-sensor';
 import { v4 } from 'uuid';
 import { connect } from 'react-redux';
@@ -16,7 +16,7 @@ import AuthModal from '../AuthModal/AuthModal';
 import * as actionTypes from '../../store/actions/actionTypes';
 
 import './Header.css';
-import { logOut } from '../../store/actions/auth';
+import { authSetIp, logOut } from '../../store/actions/auth';
 
 let contentHref = '/page/collection';
 
@@ -148,6 +148,13 @@ const AccountListData = [
     },
 ]
 
+const AdminAccountListData = [
+    {
+        title: 'Панель администратора',
+        to: '/admin'
+    },
+]
+
 const burgerData = [
     { to: '/', name: 'Главная' },
     { to: '/page/collection', name: 'Каталог товаров' },
@@ -168,6 +175,9 @@ function Header(props) {
     const favouritesActive = props.favourites.length > 0;
     const cartActive = props.cart.length > 0;
 
+    const currentAccountRoutes = [...AccountListData];
+
+
     return (
         <React.Fragment>
             {/* Этот заголовок видно когда пользователь скролит вниз с телефона */}
@@ -185,7 +195,7 @@ function Header(props) {
                     </UserIconLink>
                     <UserIconLink type='account' to='/' key={v4()} active={props.loggedIn} activeColor='orange'>
                         {props.loggedIn
-                            ? <Popup type='authenticated' actionButton listData={AccountListData} />
+                            ? <Popup type='authenticated' actionButton listData={[...AccountListData]} />
                             : <Popup type='account'>
                                 <Popup.Button green
                                     onClick={(event) => setShowAuthForm(true)}>
@@ -300,7 +310,8 @@ const mapStateToProps = state => {
         compare: state.compare.compare,
         favourites: state.favourites.favourites,
         cart: state.cart.cart,
-        loggedIn: !!state.auth.token
+        loggedIn: !!state.auth.token,
+        ip: state.auth.ip
     };
 }
 
@@ -320,7 +331,7 @@ const mapDispatchToProps = (dispatch) => {
         }),
         onLogout: () => {
             dispatch(logOut())
-        }
+        },
     }
 }
 

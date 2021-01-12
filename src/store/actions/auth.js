@@ -10,6 +10,7 @@ export const authStart = () => {
 };
 
 export const authSuccess = (token, userId) => {
+
     return {
         type: actionTypes.AUTH_SUCCESS,
         token: token,
@@ -24,15 +25,21 @@ export const authFail = (error) => {
     };
 };
 
+export const authSetIp = (ip) => {
+    return {
+        type: actionTypes.AUTH_SET_IP,
+        ip: ip,
+    };
+};
+
 export const logOut = () => {
-    
+
     localStorage.removeItem('token')
     localStorage.removeItem('expirationDate')
     localStorage.removeItem('userId')
 
-    return {type: actionTypes.AUTH_LOGOUT}
+    return { type: actionTypes.AUTH_LOGOUT }
 }
-
 
 export const checkAuthTimeOut = (expirationTime) => {
 
@@ -53,14 +60,15 @@ export const authRedirectPath = (path) => {
 export const authCheckState = () => {
     return dispatch => {
         const token = localStorage.getItem('token')
-        if(!token) {
+        if (!token) {
             dispatch(logOut())
         } else {
             const expirationTime = new Date(localStorage.getItem('expirationDate'));
 
-            if(expirationTime > new Date()) {
+            if (expirationTime > new Date()) {
                 const userId = localStorage.getItem('userId');
                 dispatch(authSuccess(token, userId));
+
                 dispatch(checkAuthTimeOut(expirationTime.getTime() - new Date().getTime()));
 
             }
@@ -76,11 +84,11 @@ export const auth = (authMethod, authData) => {
     return dispatch => {
         dispatch(authStart());
 
-        let url;    
+        let url;
 
-        if(authMethod === 'signup') url = 'http://127.0.0.1:5000/api/users/signup';
-        else if(authMethod === 'login') url = 'http://127.0.0.1:5000/api/users/login';
-        else return dispatch(authFail('undefined auth method'));
+        if (authMethod === 'signup') url = 'http://127.0.0.1:5000/api/users/signup';
+        else if (authMethod === 'login') url = 'http://127.0.0.1:5000/api/users/login';
+        else return dispatch(authFail('Ошибка аутентификации'));
 
         axios.post(url, authData)
             .then(response => {
@@ -92,11 +100,14 @@ export const auth = (authMethod, authData) => {
                 localStorage.setItem('userId', response.data.userId)
 
                 dispatch(authSuccess(response.data.token, response.data.userId));
-                dispatch(checkAuthTimeOut(response.data.expiresIn))
+                dispatch(checkAuthTimeOut(response.data.expiresIn));
+
             })
             .catch(err => {
                 const response = err.response;
-                dispatch(authFail(response ? response.data : {message: 'Невозможно подключиться к серверу'}));
+                console.log(response);
+                console.log(err);
+                dispatch(authFail(response ? response.data : { message: 'Невозможно подключиться к серверу' }));
             });
     };
 };

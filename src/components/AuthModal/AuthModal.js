@@ -105,6 +105,7 @@ function AuthModal(props) {
         }
 
             props.onAuth(CURRENT_AUTH_METHOD, authData);
+            if(!props.uathError) props.onClose();
     }
 
     if(props.authError && !showInvalidFormMessage) setShowInvalidFormMessage(true);
