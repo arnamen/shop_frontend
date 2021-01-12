@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { connect } from 'react-redux';
 import queryString from 'query-string';
-import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+
 
 import Sidebar from '../../components/UI/Sidebar/Sidebar';
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
@@ -20,8 +20,6 @@ import * as actionTypes from '../../store/actions/actionTypes';
 import { translate } from '../../utils/translate';
 import './ContentPage.css';
 
-
-/* TODO: Вынести фильтрацию в хуки */
 function ContentPage(props) {
     // eslint-disable-next-line no-unused-vars
     const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
@@ -29,10 +27,19 @@ function ContentPage(props) {
     const [sortingOrder, setSotringOrder] = useState('default');
     const [showMobileFilters, setShowMobileFilters] = useState(false);
     let content = filterItems(props.content);
-    const minPrice = content.reduce((curMin, cur) => curMin.price > cur.price ? cur : curMin).price;
-    const maxPrice = content.reduce((curMax, cur) => curMax.price < cur.price ? cur : curMax).price;
-    const [priceRange, setPriceRange] = React.useState([minPrice, maxPrice]);
-    const [sliderPriceRange, setSliderPriceRange] = React.useState([minPrice, maxPrice]);
+    const minPrice = content.length > 0 ? content.reduce((curMin, cur) => curMin.price > cur.price ? cur : curMin).price : 0;
+    const maxPrice = content.length > 0 ? content.reduce((curMax, cur) => curMax.price < cur.price ? cur : curMax).price : 0;
+
+    const [priceRange, setPriceRange] = useState([minPrice, maxPrice]);
+    const [sliderPriceRange, setSliderPriceRange] = useState([minPrice, maxPrice]);
+
+    useEffect(() => {
+        let content = filterItems(props.content);
+        const minPrice = content.length > 0 ? content.reduce((curMin, cur) => curMin.price > cur.price ? cur : curMin).price : 0;
+        const maxPrice = content.length > 0 ? content.reduce((curMax, cur) => curMax.price < cur.price ? cur : curMax).price : 0;
+        if(priceRange[0] !== minPrice || priceRange[1] !== maxPrice) setPriceRange([minPrice, maxPrice]);
+        if(sliderPriceRange[0] !== minPrice || sliderPriceRange[1] !== maxPrice) setSliderPriceRange([minPrice, maxPrice]);
+    }, [props.content, filterItems, priceRange, sliderPriceRange]);
 
     content = content.filter(item => item.price >= priceRange[0] && item.price <= priceRange[1]);
 

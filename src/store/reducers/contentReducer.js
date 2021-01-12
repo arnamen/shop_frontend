@@ -1,3 +1,5 @@
+
+
 import smartphone1_front from '../../assets/itemsCards/smartphone_1/front/smartphone1_front.jpg';
 import smartphone1_back from '../../assets/itemsCards/smartphone_1/back/smartphone1_back.jpg';
 import smartphone2_front from '../../assets/itemsCards/smartphone_2/front/smartphone2_front.png'
@@ -5,8 +7,10 @@ import smartphone2_back from '../../assets/itemsCards/smartphone_2/back/smartpho
 import tv_1 from '../../assets/itemsCards/tv/1/tv_1.jpg';
 import tv_2 from '../../assets/itemsCards/tv/2/tv_2.jpg';
 
+import * as actionTypes from '../actions/actionTypes';
+
 const initialState = {
-    content: [
+    content: [/* 
         {
             name: 'Мобильный телефон Samsung Galaxy M31s 6/128GB Blue',
             categories: ['Телефоны', 'Смартфоны'],
@@ -83,13 +87,41 @@ const initialState = {
             labels: ['new'],
             inStock: true,
             description: 'useTags'
-        },
-    ]
+        }, */
+    ],
+    loading: false,
+    error: null
+}
+
+const contentRetrieveStart = (state, action) => {
+    return {
+        ...state,
+        loading: true
+    }
+}
+
+const contentRetrieveSuccess = (state, action) => {
+    return {
+        ...state,
+        loading: false,
+        error: null,
+        content: action.content
+    }
+}
+
+const contentRetrieveFail = (state, action) => {
+    return {
+        ...state,
+        loading: false,
+        error: action.error
+    }
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-
+        case actionTypes.CONTENT_RETRIEVE_START: return contentRetrieveStart(state, action);
+        case actionTypes.CONTENT_RETRIEVE_SUCCESS: return contentRetrieveSuccess(state, action);
+        case actionTypes.CONTENT_RETRIEVE_FAIL: return contentRetrieveFail(state, action);
         default:
             return state;
     }

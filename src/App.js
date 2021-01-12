@@ -21,18 +21,17 @@ import CartPage from './components/Cart/Cart';
 import ItemPage from './containers/ItemPage/ItemPage';
 import ClientAccount from './components/ClientAccount/ClientAccount';
 import Admin from './containers/Admin/Admin';
+import { updateContent } from './store/actions/items';
 
 function App(props) {
 
   useEffect(() => {
 
-    publicIp.v4().then(ip => {
-      console.log(ip);
-      props.onSetIp(ip)
-    });
+    publicIp.v4().then(ip => props.onSetIp(ip));
+    props.onUpdateContent();
     props.onAutoAuth();
     
-  }, [props]);
+  }, []);
 
   return (
     <React.Fragment>
@@ -71,14 +70,15 @@ function App(props) {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth.auth,
-    ip: state.auth.ip
+    ip: state.auth.ip,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onAutoAuth: () => dispatch(authCheckState()),
-    onSetIp: (ip) => dispatch(authSetIp(ip))
+    onSetIp: (ip) => dispatch(authSetIp(ip)),
+    onUpdateContent: () => dispatch(updateContent())
   }
 }
 

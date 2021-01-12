@@ -43,7 +43,7 @@ const { store } = useContext(ReactReduxContext);
                   categoriesInFilter => categoriesInFilter === category
               )
           ) && addItem;
-      
+
         Object.keys(tagsFilters).forEach(tagName => {
 
           if(tagsFilters[tagName].length)
@@ -54,11 +54,9 @@ const { store } = useContext(ReactReduxContext);
             return filterString === item.tags[tagName];
           }) && addItem;
         })
-
       return addItem;
   
   })
-  
   return filteredItems;
   }
   
