@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import queryString from 'query-string';
 import Slider from '@material-ui/core/Slider';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-
+import {v4} from 'uuid';
 
 import Sidebar from '../../components/UI/Sidebar/Sidebar';
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
@@ -22,8 +22,8 @@ import './ContentPage.css';
 
 function ContentPage(props) {
     // eslint-disable-next-line no-unused-vars
-    const [filteredItems, filterItems, availableFilters] = useItemsFilter(props.content);
-    const sidebarItems = useCreateSidebarItems(availableFilters);
+    const [filteredItems, filterItems, availableFilters, updateFilters] = useItemsFilter(props.content);
+    const [sidebarItems, updateSidebarItems] = useCreateSidebarItems(availableFilters);
     const [sortingOrder, setSotringOrder] = useState('default');
     const [showMobileFilters, setShowMobileFilters] = useState(false);
     let content = filterItems(props.content);
@@ -34,13 +34,18 @@ function ContentPage(props) {
     const [sliderPriceRange, setSliderPriceRange] = useState([minPrice, maxPrice]);
 
     useEffect(() => {
+
         let content = filterItems(props.content);
         const minPrice = content.length > 0 ? content.reduce((curMin, cur) => curMin.price > cur.price ? cur : curMin).price : 0;
         const maxPrice = content.length > 0 ? content.reduce((curMax, cur) => curMax.price < cur.price ? cur : curMax).price : 0;
         if(priceRange[0] !== minPrice || priceRange[1] !== maxPrice) setPriceRange([minPrice, maxPrice]);
         if(sliderPriceRange[0] !== minPrice || sliderPriceRange[1] !== maxPrice) setSliderPriceRange([minPrice, maxPrice]);
+    
     }, [props.content, filterItems, priceRange, sliderPriceRange]);
 
+    useEffect(() => {
+        updateFilters(props.content);
+    }, [updateFilters, props.content]);
     content = content.filter(item => item.price >= priceRange[0] && item.price <= priceRange[1]);
 
     let inputMinRef = useRef();
