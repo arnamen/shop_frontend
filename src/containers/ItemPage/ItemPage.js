@@ -35,10 +35,14 @@ function ItemPage(props) {
                 itemData={itemData}
                 compared={compared}
                 favored={favored}
+                inCart={inCart}
                 onAddToCompare={props.onAddToCompare}
                 onRemoveFromCompare={props.onRemoveFromCompare}
                 onAddToFavorites={props.onAddToFavorites}
-                onRemoveFromFavourites={props.onRemoveFromFavourites}/>
+                onRemoveFromFavourites={props.onRemoveFromFavourites}
+                onAddToCart={props.onAddToCart}
+                onRemoveFromCart={props.onRemoveFromCart}/>
+                
                 </div>
                 <div>
                 <ItemPageCharacteristics 

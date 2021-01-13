@@ -123,9 +123,15 @@ export default function ItemPageGeneral(props) {
                                 onClickIncrease={() => setItemAmount(itemAmount + 1)}
                                 onClickDecrease={() => setItemAmount(Math.max(itemAmount - 1, 1))} />
                         </div>
-                        <Button className='ItemPageGeneral__cartButton' onClick={() => { }}>
+                        <Button className='ItemPageGeneral__cartButton' onClick={() => {
+                                props.inCart
+                                    ? props.onRemoveFromCart({ ...props.itemData, amount: 1 })
+                                    : props.onAddToCart({ ...props.itemData, amount: 1 });
+                            }}>
                             <ReactCart className='ItemPageGeneral__cartIcon' />
-                            <span>В корину</span>
+                            {props.inCart
+                            ? <span>Убрать из корзины</span>
+                            : <span>В корину</span>}
                         </Button>
                     </div>
                     <div>
