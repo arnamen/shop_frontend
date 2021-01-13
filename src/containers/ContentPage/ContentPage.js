@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import queryString from 'query-string';
 import Slider from '@material-ui/core/Slider';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import {v4} from 'uuid';
 
 import Sidebar from '../../components/UI/Sidebar/Sidebar';
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
@@ -19,6 +18,7 @@ import * as actionTypes from '../../store/actions/actionTypes';
 
 import { translate } from '../../utils/translate';
 import './ContentPage.css';
+import { updateContent } from '../../store/actions/items';
 
 function ContentPage(props) {
     // eslint-disable-next-line no-unused-vars
@@ -34,15 +34,10 @@ function ContentPage(props) {
     const [sliderPriceRange, setSliderPriceRange] = useState([minPrice, maxPrice]);
 
     useEffect(() => {
-
-        let content = filterItems(props.content);
-        const minPrice = content.length > 0 ? content.reduce((curMin, cur) => curMin.price > cur.price ? cur : curMin).price : 0;
-        const maxPrice = content.length > 0 ? content.reduce((curMax, cur) => curMax.price < cur.price ? cur : curMax).price : 0;
-        if(priceRange[0] !== minPrice || priceRange[1] !== maxPrice) setPriceRange([minPrice, maxPrice]);
-        if(sliderPriceRange[0] !== minPrice || sliderPriceRange[1] !== maxPrice) setSliderPriceRange([minPrice, maxPrice]);
-    
-    }, [props.content, filterItems, priceRange, sliderPriceRange]);
-
+        const minPrice = props.content.length > 0 ? props.content.reduce((curMin, cur) => curMin.price > cur.price ? cur : curMin).price : 0;
+        const maxPrice = props.content.length > 0 ? props.content.reduce((curMax, cur) => curMax.price < cur.price ? cur : curMax).price : 0;
+        setPriceRange([minPrice, maxPrice])
+    }, [props.content])
     useEffect(() => {
         updateFilters(props.content);
     }, [updateFilters, props.content]);
@@ -114,6 +109,13 @@ function ContentPage(props) {
         // необходимо выполнить это только при первом рендере и данные для url там будут всегда
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        if(props.content.length === 0) props.onUpdateContent();
+        const minPrice = props.content.length > 0 ? props.content.reduce((curMin, cur) => curMin.price > cur.price ? cur : curMin).price : 0;
+        const maxPrice = props.content.length > 0 ? props.content.reduce((curMax, cur) => curMax.price < cur.price ? cur : curMax).price : 0;
+        setPriceRange([minPrice, maxPrice])
+    }, []);
 
     return (
         <div className='ContentPage'>
@@ -224,7 +226,8 @@ const mapDispatchToProps = (dispatch) => {
         onRemoveFilter: (filters) => dispatch({
             type: actionTypes.REMOVE_FILTERS,
             filters,
-        })
+        }),
+        onUpdateContent: () => dispatch(updateContent())
     }
 }
 

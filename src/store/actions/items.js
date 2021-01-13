@@ -39,7 +39,7 @@ export const contentRetrieveFail = (error) => {
 export const updateContent = () => {
     return dispatch => {
         dispatch(contentRetrieveStart());
-        axios.get('http://127.0.0.1:5000/api/items')
+        axios.get('http://80.78.240.76:5001/api/items')
         .then(response => {
             dispatch(contentRetrieveSuccess(response.data));
         })

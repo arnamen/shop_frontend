@@ -96,9 +96,11 @@
 
 
 .Burger__item {
-    padding: 6vh 1vw 1vh 1vw;
-    color: white;
+    padding: 3vh 1vw 3vh;
+    margin: 1vh 0;
+    color: #fff;
     display: block;
+    background-color: rgba(0,0,0,.3);
 }
 
 .Burger__hide {

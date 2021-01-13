@@ -69,6 +69,7 @@
     left: 0;
     min-width: 33vw;
     margin-top: 4vh;
+    pointer-events: none;
 }
 
 .Search:focus-within .Popup {

@@ -86,8 +86,8 @@ export const auth = (authMethod, authData) => {
 
         let url;
 
-        if (authMethod === 'signup') url = 'http://127.0.0.1:5000/api/users/signup';
-        else if (authMethod === 'login') url = 'http://127.0.0.1:5000/api/users/login';
+        if (authMethod === 'signup') url = 'http://80.78.240.76:5001/api/users/signup';
+        else if (authMethod === 'login') url = 'http://80.78.240.76:5001/api/users/login';
         else return dispatch(authFail('Ошибка аутентификации'));
 
         axios.post(url, authData)

@@ -7,18 +7,25 @@ import ItemPageCharacteristics from './ItemPageCharacteristics/ItemPageCharacter
 
 import './ItemPage.css';
 import * as actionTypes from '../../store/actions/actionTypes';
+import { updateContent } from '../../store/actions/items';
 
 function ItemPage(props) {
+
+    useEffect(() => {
+        if(props.content.length === 0) props.onUpdateContent();
+    }, [])
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
+    if(props.content.length === 0) return (<div>Loading...</div>)
 
     const itemId = props.location.pathname.split('/').pop();
     const itemData = props.content.filter(item => item.id.toLowerCase() === itemId)[0];
     const compared = !!props.compare.find(item => item.name === itemData.name);
     const favored = !!props.favourites.find(item => item.name === itemData.name);
     const inCart = !!props.cart.find(item => item.name === itemData.name);
-
-    useEffect(() => {
-        window.scrollTo(0, 0)
-      }, [])
 
     return (
         <div className='ItemPage'>
@@ -30,7 +37,7 @@ function ItemPage(props) {
                 favored={favored}
                 onAddToCompare={props.onAddToCompare}
                 onRemoveFromCompare={props.onRemoveFromCompare}
-                onAddToFavourites={props.onAddToFavorites}
+                onAddToFavorites={props.onAddToFavorites}
                 onRemoveFromFavourites={props.onRemoveFromFavourites}/>
                 </div>
                 <div>
@@ -87,6 +94,7 @@ const mapDispatchToProps = (dispatch) => {
             type: actionTypes.REMOVE_FROM_CART,
             item,
         }),
+        onUpdateContent: () => dispatch(updateContent())
     }
 }
 

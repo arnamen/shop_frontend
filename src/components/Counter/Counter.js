@@ -13,7 +13,7 @@ export default function Counter(props) {
             <button className='Counter' onClick={() => props.onClickDecrease()}>
                 <ReactDecrease className='Counter-image' />
             </button>
-            <input className='Counter' type='text' defaultValue={props.defaultValue || 0} />
+            <input disabled className='Counter' type='text' defaultValue={props.defaultValue || 0} />
             <button className='Counter' onClick={() => props.onClickIncrease()}>
                 <ReactIncrease className='Counter-image' />
             </button>

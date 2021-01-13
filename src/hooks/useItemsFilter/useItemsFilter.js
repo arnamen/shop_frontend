@@ -76,7 +76,6 @@ const { store } = useContext(ReactReduxContext);
         //добавить категории в фильтры
         extractedFilters.categories = [...new Set([...(extractedFilters.categories || []), ...item.categories])]
     });
-    console.log(extractedFilters)
     if(!isEqual(extractedFilters, availableFilters)) {
       setAvailableFilters(extractedFilters)
     };

@@ -40,7 +40,7 @@ const ItemPageCharacteristics = (props) => {
         : <ReactCartFull className={`ItemsCard_action-icon ItemsCard_action-icon_cart`} />
 
     return (
-        <div className='ItemPageCharacteristics'>
+        <div className='ItemPageCharacteristics-wrapper' style={{display: 'flex'}}>
             <div className='ItemPageCharacteristics__info'>
                 <table className='ItemPageCharacteristics__info__table'>
                     <thead>
