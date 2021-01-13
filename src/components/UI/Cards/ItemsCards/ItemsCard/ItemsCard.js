@@ -38,12 +38,11 @@ function ItemsCard(props) {
     //если есть старая цена - создать лейбл о скидке
     //и застилизировать цены
     const labels = [];
-
-    if (props.itemData.old_price) {
-        labels.push(<Label key={v4()} type='red'>{"СКИДКА " + ((1 - props.itemData.price / props.itemData.old_price) * 100).toFixed() + '%'}</Label>);
+    if (props.itemData.oldPrice) {
+        labels.push(<Label key={v4()} type='red'>{"СКИДКА " + ((1 - props.itemData.price / props.itemData.oldPrice) * 100).toFixed() + '%'}</Label>);
         price = (<React.Fragment>
             <span className='ItemsCard_price_discount'>{props.itemData.price + '₴'}</span>
-            <span className='ItemsCard_price_before'>{props.itemData.old_price + '₴'}</span>
+            <span className='ItemsCard_price_before'>{props.itemData.oldPrice + '₴'}</span>
         </React.Fragment>)
     }
 
