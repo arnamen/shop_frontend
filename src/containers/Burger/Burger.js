@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom';
+import { Link } from 'next/router';
 import {v4} from 'uuid';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
@@ -17,7 +17,7 @@ export default function Burger(props) {
     const burgerList = <div className='Burger__itemsList'>
         {props.data.map(item => {
             return <div key={v4()}>
-                <Link className='Burger__item' to={item.to}>{item.name}</Link>
+                <Link className='Burger__item' href={item.to}>{item.name}</Link>
             </div>
         })}
     </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { Link } from 'next/router';
 
 import Carousel from '../../components/Carousel/Carousel';
 import Benefits from '../../components/Benefits/Benefits';
@@ -17,6 +17,11 @@ import shoes from '../../assets/categories/shoes.png';
 
 import './MainPage.css';
 import { connect } from 'react-redux';
+
+/**
+ * TODO:
+ * add custom NavLink
+ */
 
 //массив категорий
 const href = '/page/collection';
@@ -85,8 +90,8 @@ function MainPage(props) {
                 <ItemsCards itemsData={content_tab1} />
                 <ItemsCards itemsData={content_tab2} />
             </Tabs>
-            <div className='MainPage__viewAllGoods-wrapper' onClick={(e) => window.scrollTo(0, 0)}>
-                <NavLink className='MainPage__viewAllGoods' to='/page/collection'><span>Посмотреть все товары</span></NavLink>
+            <div className='MainPage__viewAllGoods-wrapper'>
+                <Link className='MainPage__viewAllGoods' href='/page/collection'><span>Посмотреть все товары</span></Link>
             </div>
             <GoodsList title='Только у нас' img='Star' data={phones} />
             <GoodsList title='Популярно в категории "Телевизоры"' img='Chat' data={tv} />

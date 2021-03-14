@@ -34,9 +34,11 @@ export const authSetIp = (ip) => {
 
 export const logOut = () => {
 
-    localStorage.removeItem('token')
+    if(window) {
+        localStorage.removeItem('token')
     localStorage.removeItem('expirationDate')
     localStorage.removeItem('userId')
+    }
 
     return { type: actionTypes.AUTH_LOGOUT }
 }
@@ -58,22 +60,24 @@ export const authRedirectPath = (path) => {
 }
 
 export const authCheckState = () => {
-    return dispatch => {
-        const token = localStorage.getItem('token')
-        if (!token) {
-            dispatch(logOut())
-        } else {
-            const expirationTime = new Date(localStorage.getItem('expirationDate'));
-
-            if (expirationTime > new Date()) {
-                const userId = localStorage.getItem('userId');
-                dispatch(authSuccess(token, userId));
-
-                dispatch(checkAuthTimeOut(expirationTime.getTime() - new Date().getTime()));
-
-            }
-            else {
-                dispatch(logOut());
+    if(window) {
+        return dispatch => {
+            const token = localStorage.getItem('token')
+            if (!token) {
+                dispatch(logOut())
+            } else {
+                const expirationTime = new Date(localStorage.getItem('expirationDate'));
+    
+                if (expirationTime > new Date()) {
+                    const userId = localStorage.getItem('userId');
+                    dispatch(authSuccess(token, userId));
+    
+                    dispatch(checkAuthTimeOut(expirationTime.getTime() - new Date().getTime()));
+    
+                }
+                else {
+                    dispatch(logOut());
+                }
             }
         }
     }
@@ -95,9 +99,11 @@ export const auth = (authMethod, authData) => {
 
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn);
 
-                localStorage.setItem('token', response.data.token)
-                localStorage.setItem('expirationDate', expirationDate)
-                localStorage.setItem('userId', response.data.userId)
+                if(window) {
+                    localStorage.setItem('token', response.data.token)
+                    localStorage.setItem('expirationDate', expirationDate)
+                    localStorage.setItem('userId', response.data.userId)
+                }
 
                 dispatch(authSuccess(response.data.token, response.data.userId));
                 dispatch(checkAuthTimeOut(response.data.expiresIn));

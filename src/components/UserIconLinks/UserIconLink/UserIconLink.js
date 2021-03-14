@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link } from 'next/router';
 
 import './UserIconLink.css';
 
@@ -29,7 +29,7 @@ export default function UserIconLink(props) {
     return (
         <div className='UserIconLink__wrapper'>
             {props.active
-                ? <Link to={props.to}>
+                ? <Link href={props.to}>
                     <SVGimage className={className}
                         viewBox="0 0 512 512" />
                     {ContentMarker}

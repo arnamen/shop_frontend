@@ -1,14 +1,16 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'next/router'
 
 import './LinkButton.css';
-
+/*  TODO
+ *   add custom navlink
+ */
 export default function LinkButton( props ) {
 
     return (
             <React.Fragment>
                 {props.to 
-                ? <NavLink activeClassName='LinkButton__active' className='LinkButton' to={props.to}><span>{props.children}</span></NavLink> 
+                ? <Link activeClassName='LinkButton__active' className='LinkButton' href={props.to}><span>{props.children}</span></Link> 
                 : <span className='LinkButton'>{props.children}</span>}
             </React.Fragment>
     )

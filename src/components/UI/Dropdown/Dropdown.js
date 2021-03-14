@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { v4 } from 'uuid';
-import {Link} from 'react-router-dom';
+import {Link} from 'next/router';
 
 import './Dropdown.css';
 
@@ -8,10 +8,6 @@ import {ReactComponent as ReactChevronRight} from '../../../assets/misc/right-ch
 
 export default function Dropdown(props) {
   const itemsData = props.items || [];
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
 
   //превратить вложенный список в ul>li>ul...
   const getListItems = (itemsData = []) => {
@@ -32,7 +28,7 @@ export default function Dropdown(props) {
 
           {index === 0 && <span className='dots'></span>}
 
-          <Link to={itemData.to || '/'}>
+          <Link href={itemData.to || '/'}>
             <span>{itemData.text}</span>
           </Link>
 
@@ -53,7 +49,7 @@ export default function Dropdown(props) {
       }
       // иначе вернуть обычный элемент
       return <li key={v4()} className='nav-item'>
-        <Link to={itemData.to}><span>{itemData.text}</span></Link>
+        <Link href={itemData.to}><span>{itemData.text}</span></Link>
       </li>
 
     })

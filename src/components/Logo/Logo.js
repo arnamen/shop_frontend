@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link } from 'next/router';
 
 import logo from '../../assets/logo/logo.svg';
 import './Logo.css';
@@ -7,7 +7,7 @@ import './Logo.css';
 export default function Logo( props ) {
     return (
         <div className={'logo__wrapper'}>
-            <Link className='logo__link' to='/'>
+            <Link className='logo__link' href='/'>
             <div className={'logo__image-wrapper ' + (props.simple ? 'logo__image-wrapper-simple' : '')}>
             <div className={'logo'}>
                     <img className={'logo'} src={logo} alt='logo'></img>

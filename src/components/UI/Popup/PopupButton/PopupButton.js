@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link} from 'next/router';
 
 import './PopupButton.css';
 
@@ -10,6 +10,6 @@ export default function PopupButton( props ) {
     return (
              props.onClick 
             ? <button className={classes.join(' ')} onClick={props.onClick}>{props.children}</button>
-            : <Link className={classes.join(' ')} to={props.to || ''}>{props.children}</Link>
+            : <Link className={classes.join(' ')} href={props.to || ''}>{props.children}</Link>
     )
 }

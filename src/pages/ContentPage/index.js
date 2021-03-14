@@ -82,9 +82,6 @@ function ContentPage(props) {
                 break;
         }
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
     //при первом рендере получить параметры запроса для фильтров если есть
     useEffect(() => {
 

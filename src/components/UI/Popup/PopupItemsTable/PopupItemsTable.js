@@ -1,6 +1,6 @@
 import React from 'react'
 import { v4 } from 'uuid';
-import { Link } from 'react-router-dom';
+import { Link } from 'next/router';
 
 import { ReactComponent as ReactTrash } from '../../../../assets/misc/trash.svg';
 
@@ -13,12 +13,12 @@ export default function PopupItemsTable( props ) {
             {
                  props.content.map(item => <tr className='PopupItemsTable__item' key={v4()}>
                         <td>
-                            <div className='PopupItemsTable__item__image-wrapper'>
+                            <Link href={`/item/${item.id.toLowerCase()}`} className='PopupItemsTable__item__image-wrapper'>
                                 <img src={item.images[0]} className='PopupItemsTable__item__image' alt='item_image' />
-                            </div>
+                            </Link>
                         </td>
                         <td className='PopupItemsTable__item-descr-tr'>
-                            <Link to={`/item/${item.id.toLowerCase()}`} className='PopupItemsTable__item-descr' onClick={() => document.activeElement.blur()}>
+                            <Link href={`/item/${item.id.toLowerCase()}`} className='PopupItemsTable__item-descr' onClick={() => document.activeElement.blur()}>
                                 {item.name}
                                 <div className='PopupItemsTable__item__unit-price'>{`${item.amount ? (item.amount + ' × ') : ''}${item.price}₴`}</div>
                                 {item.customText && <div className='PopupItemsTable__item-descr__custom-text'>{item.customText}</div>}

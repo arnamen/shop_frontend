@@ -13,6 +13,7 @@
     "clone-deep": "^4.0.1",
     "deep-copy": "^1.4.2",
     "deep-equal": "^2.0.5",
+    "next": "^10.0.8",
     "public-ip": "^4.0.3",
     "pure-react-carousel": "^1.27.5",
     "query-string": "^6.13.7",
@@ -23,16 +24,13 @@
     "react-input-mask": "^2.0.4",
     "react-portal": "^4.2.1",
     "react-redux": "^7.2.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.1",
     "react-visibility-sensor": "^5.1.1",
     "uuid": "^8.3.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "eslintConfig": {
     "extends": "react-app"

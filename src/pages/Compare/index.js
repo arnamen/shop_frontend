@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import {v4} from 'uuid';
-import {Link} from 'react-router-dom';
+import {Link} from 'next/router';
 
 import * as actionTypes from '../../store/actions/actionTypes';
 
@@ -17,7 +17,7 @@ function Compare( props ) {
         {props.compare.map(item => {
 
             return <th style={{width: (100 / Math.max(props.compare.length, 1)) + '%'}} key={v4()}>
-                <Link to={'/item/' + item.id.toLowerCase()}>
+                <Link href={'/item/' + item.id.toLowerCase()}>
                 <img src={item.images[0]} className='Compare__img' alt='compare_item_img'></img>
                 <span>{item.name}</span>
                 </Link>

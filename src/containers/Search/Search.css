@@ -76,6 +76,7 @@
     opacity: 1;
     display: block;
     animation: 0.5s slideInFromBottom;
+    pointer-events: all;
 }
 
 .Search__matched-content .Popup::before {

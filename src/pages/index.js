@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './_app';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import {HashRouter} from 'react-router-dom'
 
 import './index.css';
 
-import authReducer from './store/reducers/authReducer';
-import contentReducer from './store/reducers/contentReducer';
-import filtersReducer from './store/reducers/filtersReducer';
-import compareReducer from './store/reducers/compareReducer';
-import favouritesReducer from './store/reducers/favouritesReducer';
-import cartReducer from './store/reducers/cartReducer';
+import authReducer from '../store/reducers/authReducer';
+import contentReducer from '../store/reducers/contentReducer';
+import filtersReducer from '../store/reducers/filtersReducer';
+import compareReducer from '../store/reducers/compareReducer';
+import favouritesReducer from '../store/reducers/favouritesReducer';
+import cartReducer from '../store/reducers/cartReducer';
 const rootReducer = combineReducers({
   auth: authReducer,
   content: contentReducer,
@@ -31,9 +30,7 @@ const store = createStore(rootReducer, composeEnhancers(
 
 ReactDOM.render(
     <Provider store={store}>
-      <HashRouter>
         <App />
-      </HashRouter>
     </Provider>,
   document.getElementById('root')
 );

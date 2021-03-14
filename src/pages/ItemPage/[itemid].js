@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react'
 import { connect } from 'react-redux';
+import { useRouter } from 'next/router'
+
 import Tabs from '../../containers/Tabs/Tabs';
 
 import ItemPageGeneral from './ItemPageGeneral/ItemPageGeneral';
@@ -11,20 +13,21 @@ import { updateContent } from '../../store/actions/items';
 
 function ItemPage(props) {
 
+    const router = useRouter();
+    const { itemid } = router.query;
+
     useEffect(() => {
         if(props.content.length === 0) props.onUpdateContent();
     }, [])
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-      }, [])
-
     if(props.content.length === 0) return (<div>Loading...</div>)
-
-    const itemId = props.location.pathname.split('/').pop();
+    //get find item in fetched items
     const itemData = props.content.filter(item => item.id.toLowerCase() === itemId)[0];
+    //check if item added to compare
     const compared = !!props.compare.find(item => item.name === itemData.name);
+    //check if item added to favourites
     const favored = !!props.favourites.find(item => item.name === itemData.name);
+    //check if item added to cart
     const inCart = !!props.cart.find(item => item.name === itemData.name);
 
     return (

@@ -1,46 +1,48 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { NavLink, Route, Switch } from 'react-router-dom';
-
-import AccountHistory from './AccountHistory/AccountHistory';
-import AccountAddress from './AccountAddress/AccountAddress';
-import AccountDiscount from './AccountDiscount/AccountDiscount';
-import AccountContacts from './AccountContacts/AccountContacts';
+import { Link } from 'next/router';
 
 import './ClientAccount.css';
+
+/**
+ * TODO:
+ * convert Link to NavLink (to display selected tab)
+ * check content display when tab is selected
+ */
 
 function ClientAccount( props ) {
     
     return (
         <div className='ClientAccount'>
             <div className='ClientAccount__content'>
-                <Switch>
+                {props.children}
+                {/* <Switch>
                     <Route exact path='/account/address' render={() => <AccountAddress/>}/>
                     <Route exact path='/account/discount' render={() => <AccountDiscount/>}/>
                     <Route exact path='/account/contacts' render={() => <AccountContacts/>}/>
                     <Route><AccountHistory historyItems={props.content}/></Route>
-                </Switch>
+                </Switch> */}
             </div>
             <div className='ClientAccount__navigation'>
-                <NavLink className='ClientAccount__navigation-link' 
+                <Link className='ClientAccount__navigation-link' 
                 isActive={(match, location) => {
                     if(match || location.pathname === '/account') return true;
                     return false;
                 }}
                 activeClassName='ClientAccount__navigation-link-active'
-                to='/account/orders'>История заказов</NavLink>
-                <NavLink className='ClientAccount__navigation-link' 
+                href='/account/orders'>История заказов</Link>
+                <Link className='ClientAccount__navigation-link' 
                 activeClassName='ClientAccount__navigation-link-active'
-                to='/account/address'>Адрес доставки</NavLink>
-                <NavLink className='ClientAccount__navigation-link' 
+                href='/account/address'>Адрес доставки</Link>
+                <Link className='ClientAccount__navigation-link' 
                 activeClassName='ClientAccount__navigation-link-active'
-                to='/account/discount'>Скидки и бонусы</NavLink>
-                <NavLink className='ClientAccount__navigation-link' 
+                href='/account/discount'>Скидки и бонусы</Link>
+                <Link className='ClientAccount__navigation-link' 
                 activeClassName='ClientAccount__navigation-link-active'
-                to='/account/contacts'>Контактные данные</NavLink>
-                <NavLink className='ClientAccount__navigation-link' 
+                href='/account/contacts'>Контактные данные</Link>
+                <Link className='ClientAccount__navigation-link' 
                 activeClassName='ClientAccount__navigation-link-active'
-                to='/account/loguot'>Выход</NavLink>
+                href='/account/loguot'>Выход</Link>
             </div>
         </div>
     )

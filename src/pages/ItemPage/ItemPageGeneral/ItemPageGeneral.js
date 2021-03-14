@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ImageGallery from 'react-image-gallery';
 import { v4 } from 'uuid';
-import { Link } from 'react-router-dom';
+import { Link } from 'next/router';
 
 import Label from '../../../components/UI/Label/label';
 import Counter from '../../../components/Counter/Counter';
@@ -106,7 +106,7 @@ export default function ItemPageGeneral(props) {
                 </div>
                 <div className='ItemPageGeneral__rating'>
                     {stars}
-                    <Link className='ItemPageGeneral__reviews-link' to={'/'}>
+                    <Link className='ItemPageGeneral__reviews-link' href={'/'}>
                         <ReactChat className='ItemPageGeneral__reviews-link__icon' />
                         <span>Рейтинг и отзывы</span>
                     </Link>

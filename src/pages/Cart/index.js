@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { v4 } from 'uuid';
-import { Link } from 'react-router-dom';
+import { Link } from 'next/router';
 
 import Counter from '../Counter/Counter';
 
@@ -19,7 +19,7 @@ function Cart(props) {
             <div className='Cart__item__image-wrapper'>
                 <img src={item.images[0]} className='Cart__item__image' alt='item_image' />
             </div>
-            <div><Link to={'/item/' + item.id.toLowerCase()} className='Cart__item-descr'>{item.name}</Link></div>
+            <div><Link href={'/item/' + item.id.toLowerCase()} className='Cart__item-descr'>{item.name}</Link></div>
             <div>
                 <div className='Cart__item__unit-price'>{`${item.amount} × ${item.price}₴`}</div>
                 <div className='Cart__item__total-price'>{`${(item.amount * item.price).toFixed()}₴`}</div>
