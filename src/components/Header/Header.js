@@ -15,7 +15,7 @@ import Burger from '../../containers/Burger/Burger';
 import AuthModal from '../AuthModal/AuthModal';
 import * as actionTypes from '../../store/actions/actionTypes';
 
-import './Header.css';
+import classes from './Header.module.css';
 import { authSetIp, logOut } from '../../store/actions/auth';
 
 let contentHref = '/page/collection';
@@ -293,7 +293,7 @@ function Header(props) {
                             </UserIconLink>
                         </UserIconLinks>}
                     </div>
-                    <div className='Header__bottom-simple'>
+                    <div className={classes['Header__bottom-simple']}>
                         <Logo />
                     </div>
                 </div>

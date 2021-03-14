@@ -1,21 +1,21 @@
 import React from 'react'
 import { v4 } from 'uuid';
 
-import { ReactComponent as ReactIncrease } from '../../assets/counter/counter-increase.svg';
-import { ReactComponent as ReactDecrease } from '../../assets/counter/counter-decrease.svg';
+import { ReactComponent as ReactIncrease } from '../../public/assets/counter/counter-increase.svg';
+import { ReactComponent as ReactDecrease } from '../../public/assets/counter/counter-decrease.svg';
 
-import './Counter.css';
+import classes from './Counter.module.css';
 
 
 export default function Counter(props) {
     return (
         <div key={v4()}>
-            <button className='Counter' onClick={() => props.onClickDecrease()}>
-                <ReactDecrease className='Counter-image' />
+            <button className={classes.Counter} onClick={() => props.onClickDecrease()}>
+                <ReactDecrease className={classes['Counter-image']} />
             </button>
-            <input disabled className='Counter' type='text' defaultValue={props.defaultValue || 0} />
-            <button className='Counter' onClick={() => props.onClickIncrease()}>
-                <ReactIncrease className='Counter-image' />
+            <input disabled className={classes.Counter} type='text' defaultValue={props.defaultValue || 0} />
+            <button className={classes.Counter} onClick={() => props.onClickIncrease()}>
+                <ReactIncrease className={classes['Counter-image']} />
             </button>
         </div>
     )

@@ -5,11 +5,11 @@ import FooterGoodsList from './FooterGoodsList/FooterGoodsList';
 import FooterInfo from './FooterInfo/FooterInfo';
 import FooterAboutUs from './FooterAboutUs/FooterAboutUs';
 
-import './Footer.css';
+import classes from './Footer.module.css';
 
 export default function Footer() {
     return (
-        <div className='Footer__wrapper'>
+        <div className={classes.Footer__wrapper}>
             <FooterContacts/>
             <FooterGoodsList/>
             <FooterInfo/>

@@ -4,7 +4,7 @@ import InputMask from 'react-input-mask';
 
 import {validate} from '../../../../utils/validator';
 
-import './TextField.css';
+import classes from './TextField.module.css';
 
 const inputReducer = (state, action) => {
 

@@ -1,18 +1,18 @@
 import React from 'react'
 
-import './Contacts.css';
+import classes from './Contacts.module.css';
 
 export default function Contacts() {
     return (
         <React.Fragment>
-            <div className='Contacts'>
+            <div className={classes.Contacts}>
                 <h1>Контакты</h1>
                 <span>Вы можете найти нас по адресу: г. Киев, ул. Т. Шевченка, дом 123, офис 456</span>
                 <span>Как добраться: Линия метро M1, последний вагон из центра, выход в сторону вокзала.</span>
                 <span>Телефон отдела продаж: 38-093-123-45-67</span>
                 <span>Телефон отдела оптовых продаж: 38-093-123-45-67</span>
                 <span>Email: <a href="/pages/contacts">example@example.com</a></span>
-                <span className='Contacts__table-title'><strong>График работы офиса и склада:</strong></span>
+                <span className={classes['Contacts__table-title']}><strong>График работы офиса и склада:</strong></span>
                 <table>
                     <tbody>
                         <tr>

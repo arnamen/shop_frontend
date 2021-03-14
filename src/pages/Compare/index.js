@@ -5,11 +5,11 @@ import {Link} from 'next/router';
 
 import * as actionTypes from '../../store/actions/actionTypes';
 
-import {ReactComponent as ReactCompare} from '../../assets/account/compare.svg';
+import {ReactComponent as ReactCompare} from '../../../public/assets/account/compare.svg';
 
 import {translate} from '../../utils/translate';
 
-import './Compare.css';
+import classes from './Compare.module.css';
 
 function Compare( props ) {
     const tableHead = <tr>
@@ -18,7 +18,7 @@ function Compare( props ) {
 
             return <th style={{width: (100 / Math.max(props.compare.length, 1)) + '%'}} key={v4()}>
                 <Link href={'/item/' + item.id.toLowerCase()}>
-                <img src={item.images[0]} className='Compare__img' alt='compare_item_img'></img>
+                <img src={item.images[0]} className={classes.Compare__img} alt='compare_item_img'></img>
                 <span>{item.name}</span>
                 </Link>
             </th>
@@ -54,9 +54,9 @@ function Compare( props ) {
 </tr>
 
     return (
-        <div className='Compare'>
-            <div className='Compare__data'>
-            <h1 className='Compare__title'>Сравнение товаров</h1>
+        <div className={classes.Compare}>
+            <div className={classes.Compare__data}>
+            <h1 className={classes.Compare__title}>Сравнение товаров</h1>
             {props.compare.length > 0 
             ? <table>
             <thead>
@@ -69,8 +69,8 @@ function Compare( props ) {
                 {tableFooter}
             </tfoot>
         </table>
-        : <div className='Compare__empty-wrapper'>
-                <ReactCompare className='Compare__empty-img' viewBox="0 0 512 512"/>
+        : <div className={classes['Compare__empty-wrapper']}>
+                <ReactCompare className={classes['Compare__empty-img']} viewBox="0 0 512 512"/>
                 <p>Похоже, тут ничего нету</p>
             </div>}
             </div>

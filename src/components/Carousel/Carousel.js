@@ -1,13 +1,12 @@
 import React from 'react'
 import { CarouselProvider, Slider, Slide, Image} from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
 
-import './Carousel.css';
+import classes from './Carousel.module.css';
 
-import sale1 from '../../assets/Carousel/sale1.jpg';
-import sale2 from '../../assets/Carousel/sale2.jpg';
-import smartphones from '../../assets/Carousel/smartphones.jpg';
-import delivery from '../../assets/Carousel/delivery.jpg';
+import sale1 from '../../../public/assets/Carousel/sale1.jpg';
+import sale2 from '../../../public/assets/Carousel/sale2.jpg';
+import smartphones from '../../../public/assets/Carousel/smartphones.jpg';
+import delivery from '../../../public/assets/Carousel/delivery.jpg';
 
 export default function Carousel ( props ) {
     return (
@@ -26,16 +25,16 @@ export default function Carousel ( props ) {
             
         >
             <Slider>
-                <Slide className='cursor-pointer' index={0}>
+                <Slide className={classes['cursor-pointer']} index={0}>
                     <Image src={sale1} alt='sale1'></Image>
                 </Slide>
-                <Slide className='cursor-pointer' index={1}>
+                <Slide className={classes['cursor-pointer']} index={1}>
                     <Image src={smartphones} alt='smartphones'></Image>
                 </Slide>
-                <Slide className='cursor-pointer' index={2}>
+                <Slide className={classes['cursor-pointer']} index={2}>
                     <Image src={delivery} alt='delivery'></Image>
                 </Slide>
-                <Slide className='cursor-pointer' index={3}>
+                <Slide className={classes['cursor-pointer']} index={3}>
                     <Image src={sale2} alt='sale2'></Image>
                 </Slide>
             </Slider>

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'next/router';
 
-import './ClientAccount.css';
+import classes from './ClientAccount.module.css';
 
 /**
  * TODO:
@@ -13,8 +13,8 @@ import './ClientAccount.css';
 function ClientAccount( props ) {
     
     return (
-        <div className='ClientAccount'>
-            <div className='ClientAccount__content'>
+        <div className={classes.ClientAccount}>
+            <div className={classes.ClientAccount__content}>
                 {props.children}
                 {/* <Switch>
                     <Route exact path='/account/address' render={() => <AccountAddress/>}/>
@@ -23,25 +23,25 @@ function ClientAccount( props ) {
                     <Route><AccountHistory historyItems={props.content}/></Route>
                 </Switch> */}
             </div>
-            <div className='ClientAccount__navigation'>
-                <Link className='ClientAccount__navigation-link' 
+            <div className={classes.ClientAccount__navigation}>
+                <Link className={classes['ClientAccount__navigation-link']} 
                 isActive={(match, location) => {
                     if(match || location.pathname === '/account') return true;
                     return false;
                 }}
-                activeClassName='ClientAccount__navigation-link-active'
+                activeclassName={classes['ClientAccount__navigation-link-active']}
                 href='/account/orders'>История заказов</Link>
-                <Link className='ClientAccount__navigation-link' 
-                activeClassName='ClientAccount__navigation-link-active'
+                <Link className={classes['ClientAccount__navigation-link']} 
+                activeclassName={classes['ClientAccount__navigation-link-active']}
                 href='/account/address'>Адрес доставки</Link>
-                <Link className='ClientAccount__navigation-link' 
-                activeClassName='ClientAccount__navigation-link-active'
+                <Link className={classes['ClientAccount__navigation-link']} 
+                activeclassName={classes['ClientAccount__navigation-link-active']}
                 href='/account/discount'>Скидки и бонусы</Link>
-                <Link className='ClientAccount__navigation-link' 
-                activeClassName='ClientAccount__navigation-link-active'
+                <Link className={classes['ClientAccount__navigation-link']} 
+                activeclassName={classes['ClientAccount__navigation-link-active']}
                 href='/account/contacts'>Контактные данные</Link>
-                <Link className='ClientAccount__navigation-link' 
-                activeClassName='ClientAccount__navigation-link-active'
+                <Link className={classes['ClientAccount__navigation-link']} 
+                activeclassName={classes['ClientAccount__navigation-link-active']}
                 href='/account/loguot'>Выход</Link>
             </div>
         </div>

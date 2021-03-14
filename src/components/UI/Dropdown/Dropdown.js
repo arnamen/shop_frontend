@@ -2,9 +2,9 @@ import React, {useEffect} from 'react'
 import { v4 } from 'uuid';
 import {Link} from 'next/router';
 
-import './Dropdown.css';
+import classes from './Dropdown.module.css';
 
-import {ReactComponent as ReactChevronRight} from '../../../assets/misc/right-chevron.svg';
+import {ReactComponent as ReactChevronRight} from '../../../../public/assets/misc/right-chevron.svg';
 
 export default function Dropdown(props) {
   const itemsData = props.items || [];
@@ -24,19 +24,19 @@ export default function Dropdown(props) {
           verticalAlignment = -index * 100;
         //
 
-        return <li key={v4()} className='nav-item'>
+        return <li key={v4()} className={classes['nav-item']}>
 
-          {index === 0 && <span className='dots'></span>}
+          {index === 0 && <span className={classes.dots}></span>}
 
           <Link href={itemData.to || '/'}>
             <span>{itemData.text}</span>
           </Link>
 
-          {index !== 0 && <ReactChevronRight className='chevron'/>}
+          {index !== 0 && <ReactChevronRight className={classes.chevron}/>}
 
           {/* при создании нового списка учитывать границу при наведении 3 пикселя */}
 
-          <ul className='nested-navigation'
+          <ul className={classes['nested-navigation']}
             style={{
               height: 5 * (itemData.children.length) + 'vh',
               top: `calc(${verticalAlignment}% - ${3 * index}px)`,
@@ -48,7 +48,7 @@ export default function Dropdown(props) {
         </li>
       }
       // иначе вернуть обычный элемент
-      return <li key={v4()} className='nav-item'>
+      return <li key={v4()} className={classes['nav-item']}>
         <Link href={itemData.to}><span>{itemData.text}</span></Link>
       </li>
 

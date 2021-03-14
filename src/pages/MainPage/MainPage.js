@@ -5,17 +5,17 @@ import Carousel from '../../components/Carousel/Carousel';
 import Benefits from '../../components/Benefits/Benefits';
 import CategoriesCards from '../../components/UI/Cards/CategoriesCards/CategoriesCards';
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
-import Tabs from '../Tabs/Tabs';
+import Tabs from '../../containers/Tabs/Tabs';
 import GoodsList from '../../components/GoodsList/GoodsList';
 
-import smartphone from '../../assets/categories/smartphone.png';
-import sveter from '../../assets/categories/sveter.png';
-import laptop from '../../assets/categories/laptop.png';
-import hat from '../../assets/categories/hat.png';
-import headphones from '../../assets/categories/headphones.png';
-import shoes from '../../assets/categories/shoes.png';
+import smartphone from '../../../public/assets/categories/smartphone.png';
+import sveter from '../../../public/assets/categories/sveter.png';
+import laptop from '../../../public/assets/categories/laptop.png';
+import hat from '../../../public/assets/categories/hat.png';
+import headphones from '../../../public/assets/categories/headphones.png';
+import shoes from '../../../public/assets/categories/shoes.png';
 
-import './MainPage.css';
+import classes from './MainPage.module.css';
 import { connect } from 'react-redux';
 
 /**
@@ -90,8 +90,8 @@ function MainPage(props) {
                 <ItemsCards itemsData={content_tab1} />
                 <ItemsCards itemsData={content_tab2} />
             </Tabs>
-            <div className='MainPage__viewAllGoods-wrapper'>
-                <Link className='MainPage__viewAllGoods' href='/page/collection'><span>Посмотреть все товары</span></Link>
+            <div className={classes['MainPage__viewAllGoods-wrapper']}>
+                <Link className={classes.MainPage__viewAllGoods} href='/page/collection'><span>Посмотреть все товары</span></Link>
             </div>
             <GoodsList title='Только у нас' img='Star' data={phones} />
             <GoodsList title='Популярно в категории "Телевизоры"' img='Chat' data={tv} />

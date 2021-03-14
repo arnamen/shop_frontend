@@ -1,15 +1,18 @@
 import React from 'react'
 
-import '../../UI/Cards/ItemsCards/ItemsCards';
+import classes from './../UI/Cards/ItemsCards/ItemsCards';
 import ItemsCards from '../../UI/Cards/ItemsCards/ItemsCards';
+import ClientAccount from '../';
 
-import './AccountHistory.css';
+import classes from './AccountHistory.module.css';
 
-export default function AccountHistory( props ) {
+export default function AccountHistory(props) {
     return (
-        <div className='AccountHistory'>
-            <h1>История заказов</h1>
-            <ItemsCards itemsData={props.historyItems}/>
-        </div>
+        <ClientAccount>
+            <div className={classes.AccountHistory}>
+                <h1>История заказов</h1>
+                <ItemsCards itemsData={props.historyItems} />
+            </div>
+        </ClientAccount>
     )
 }

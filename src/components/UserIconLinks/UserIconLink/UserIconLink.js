@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'next/router';
 
-import './UserIconLink.css';
+import classes from './UserIconLink.module.css';
 
-import { ReactComponent as ReactAccount } from '../../../assets/account/account.svg';
-import { ReactComponent as ReactCart } from '../../../assets/account/cart.svg';
-import { ReactComponent as ReactCompare } from '../../../assets/account/compare.svg';
-import { ReactComponent as ReactHeart } from '../../../assets/account/heart.svg';
+import { ReactComponent as ReactAccount } from '../../../../public/assets/account/account.svg';
+import { ReactComponent as ReactCart } from '../../../../public/assets/account/cart.svg';
+import { ReactComponent as ReactCompare } from '../../../../public/assets/account/compare.svg';
+import { ReactComponent as ReactHeart } from '../../../../public/assets/account/heart.svg';
 const iconTypes = {
     account: ReactAccount,
     cart: ReactCart,
@@ -24,10 +24,10 @@ export default function UserIconLink(props) {
     else if (props.active)
         className += ` UserIconLink__icon-active`;
 
-    if (props.markContent && props.active) ContentMarker = <div className='UserIconLink__ContentMarker'>{props.markContent}</div>
+    if (props.markContent && props.active) ContentMarker = <div className={classes.UserIconLink__ContentMarker}>{props.markContent}</div>
 
     return (
-        <div className='UserIconLink__wrapper'>
+        <div className={classes.UserIconLink__wrapper}>
             {props.active
                 ? <Link href={props.to}>
                     <SVGimage className={className}

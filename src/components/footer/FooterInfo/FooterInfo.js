@@ -1,15 +1,15 @@
 import React from 'react'
 
-import './FooterInfo.css';
+import classes from './FooterInfo.module.css';
 
 let contentHref = '/page/';
 
 export default function FooterInfo() {
     return (
-        <div className='FooterInfo__wrapper'>
+        <div className={classes.FooterInfo__wrapper}>
             <ul>
                 <li>
-                    <span className='FooterGoodsList__title'>Информация</span>
+                    <span className={classes.FooterGoodsList__title}>Информация</span>
                 </li>
                 <li>
                     <a href={'/'}>Часто задаваемые вопросы</a>

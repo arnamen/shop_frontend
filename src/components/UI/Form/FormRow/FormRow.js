@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './FormRow.css';
+import classes from './FormRow.module.css';
 
 export default function FormRow( props ) {
     const classes = ['FormRow'];

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Portal } from 'react-portal';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
-import './Modal.css';
+import classes from './Modal.module.css';
 
 export default function Modal(props) {
 
@@ -21,8 +21,8 @@ export default function Modal(props) {
     return (
         props.visible
             ? <Portal node={document && document.getElementById('root')}>
-                <div className='Modal__background' onClick={() => props.onClose() || 0}>
-                    <div className='Modal__wrapper' onClick={(e) => e.stopPropagation()} ref={modalRef}>
+                <div className={classes.Modal__background} onClick={() => props.onClose() || 0}>
+                    <div className={classes.Modal__wrapper} onClick={(e) => e.stopPropagation()} ref={modalRef}>
                         {props.children}
                     </div>
                 </div>

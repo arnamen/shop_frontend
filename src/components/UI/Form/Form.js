@@ -4,7 +4,7 @@ import TextField from './TextField/TextField'
 import Submit from './Submit/Submit';
 import FormLabel from './FormLabel/FormLabel';
 import FormRow from './FormRow/FormRow';
-import './Form.css';
+import classes from './Form.module.css';
 
 export default function Form( props ) {
     const classes = ['Form'];

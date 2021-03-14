@@ -5,8 +5,6 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
-import './index.css';
-
 import authReducer from '../store/reducers/authReducer';
 import contentReducer from '../store/reducers/contentReducer';
 import filtersReducer from '../store/reducers/filtersReducer';
@@ -22,16 +20,15 @@ const rootReducer = combineReducers({
   cart: cartReducer
 });
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+let composeEnhancers = compose;
 
-const store = createStore(rootReducer, composeEnhancers(
-  applyMiddleware(thunk)
-));
+const store = createStore(rootReducer,
+  applyMiddleware(thunk));
 
-ReactDOM.render(
+/* ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
   document.getElementById('root')
 );
-
+ */

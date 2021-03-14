@@ -6,10 +6,9 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import Sidebar from '../../components/UI/Sidebar/Sidebar';
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
-import '../../components/UI/Checkbox/Checkbox';
 import Button from '../../components/UI/Button/Button';
 
-import {ReactComponent as ReactFilter} from '../../assets/misc/filter.svg';
+import {ReactComponent as ReactFilter} from '../../public/assets/misc/filter.svg';
 
 import useItemsFilter from '../../hooks/useItemsFilter/useItemsFilter';
 import useCreateSidebarItems from '../../hooks/useCreateSidebarItems/useCreateSidebarItems';
@@ -17,8 +16,13 @@ import useCreateSidebarItems from '../../hooks/useCreateSidebarItems/useCreateSi
 import * as actionTypes from '../../store/actions/actionTypes';
 
 import { translate } from '../../utils/translate';
-import './ContentPage.css';
+
+import classesCheckbox from './../components/UI/Checkbox/Checkbox';
+import classesContentPage from './ContentPage.module.css';
+
 import { updateContent } from '../../store/actions/items';
+
+const classes = {...classesCheckbox, ...classesContentPage};
 
 function ContentPage(props) {
     // eslint-disable-next-line no-unused-vars
@@ -115,14 +119,14 @@ function ContentPage(props) {
     }, []);
 
     return (
-        <div className='ContentPage'>
+        <div className={classes.ContentPage}>
             <div className={`ContentPage__sidebar-wrapper ${!showMobileFilters && 'ContentPage__mobile-filters-hide'}`}
             onClick={() => setShowMobileFilters(false)}>
                 <Sidebar title='Фильтры'>
                     <Sidebar.NavItem title='Цена'>
                         <Sidebar.Item>
                             <Slider
-                                className='ContentPage__price-slider'
+                                className={classes['ContentPage__price-slider']}
                                 value={sliderPriceRange}
                                 onChangeCommitted={(event, newValue) => {
                                     inputMinRef.current.value = newValue[0];
@@ -138,10 +142,10 @@ function ContentPage(props) {
                             />
                         </Sidebar.Item>
                         <Sidebar.Item>
-                            <div className='ContentPage__price-range'>
-                                <div className='ContentPage__price-min'>
+                            <div className={classes['ContentPage__price-range']}>
+                                <div className={classes['ContentPage__price-min']}>
                                     <label htmlFor='ContentPage__price-min__input'>От:</label>
-                                    <input type='text' key={'input_min'} id='ContentPage__price-min__input'
+                                    <input type='text' key={'input_min'} id={classes['ContentPage__price-min__input']}
                                         ref={inputMinRef}
                                         placeholder={`${priceRange[0]}₴`}
                                         onFocus={(event) => event.target.value = ''}
@@ -152,9 +156,9 @@ function ContentPage(props) {
                                             else event.target.value = priceRange[0] + '₴';
                                         }} />
                                 </div>
-                                <div className='ContentPage__price-max'>
+                                <div className={classes['ContentPage__price-max']}>
                                     <label htmlFor='ContentPage__price-max__input'>До:</label>
-                                    <input type='text' key={'input_max'} id='ContentPage__price-max__input'
+                                    <input type='text' key={'input_max'} id={classes['ContentPage__price-max__input']}
                                         ref={inputMaxRef}
                                         placeholder={`${priceRange[1]}₴`}
                                         onFocus={(event) => event.target.value = ''}
@@ -172,14 +176,14 @@ function ContentPage(props) {
                     {sidebarItems}
                 </Sidebar>
             </div>
-            <div className='ContentPage__content'>
-                <h2 className='ContentPage__title'>Товары на главной</h2>
-                <div className='ContentPage__order'>
-                        <Button className='ContentPage__mobile-filters' onClick={() => setShowMobileFilters(true)}>
-                            <ReactFilter className='ContentPage__mobile-filters__icon' viewBox="0 0 512 512"/>
+            <div className={classes.ContentPage__content}>
+                <h2 className={classes.ContentPage__title}>Товары на главной</h2>
+                <div className={classes.ContentPage__order}>
+                        <Button className={classes['ContentPage__mobile-filters']} onClick={() => setShowMobileFilters(true)}>
+                            <ReactFilter className={classes['ContentPage__mobile-filters__icon']} viewBox="0 0 512 512"/>
                             <span>Фильтр товаров</span>
                             </Button>
-                        <span className='ContentPage__order-select-text'>Сортировать:</span>
+                        <span className={classes['ContentPage__order-select-text']}>Сортировать:</span>
                         <select name="ContentPage__order-select"
                             className="ContentPage__order-select"
                             onChange={(event) => {

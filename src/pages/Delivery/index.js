@@ -1,10 +1,10 @@
 import React from 'react'
 
-import './Delivery.css';
+import classes from './Delivery.module.css';
 
 export default function Delivery() {
     return (
-        <div className='Delivery'>
+        <div className={classes.Delivery}>
             <h1>Доставка</h1>
             <span>Разместить на этой странице информацию с описанием способов доставки, которые использует ваш интернет-магазин.</span>
             <span><strong>Например:</strong></span>

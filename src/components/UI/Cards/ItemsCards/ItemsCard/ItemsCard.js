@@ -6,21 +6,21 @@ import {Link} from 'next/router';
 import Label from '../../../Label/label';
 import * as actionTypes from '../../../../../store/actions/actionTypes';
 
-import { ReactComponent as ReactCart } from '../../../../../assets/itemsCards/cart-for-card-item.svg';
-import { ReactComponent as ReactCartFull } from '../../../../../assets/account/cart.svg';
-import { ReactComponent as ReactCompare } from '../../../../../assets/account/compare.svg';
-import { ReactComponent as ReactHeart } from '../../../../../assets/account/heart.svg';
+import { ReactComponent as ReactCart } from '../../../../../../public/assets/itemsCards/cart-for-card-item.svg';
+import { ReactComponent as ReactCartFull } from '../../../../../../public/assets/account/cart.svg';
+import { ReactComponent as ReactCompare } from '../../../../../../public/assets/account/compare.svg';
+import { ReactComponent as ReactHeart } from '../../../../../../public/assets/account/heart.svg';
 
-import star from '../../../../../assets/rating/stars/star.svg';
-import star_empty from '../../../../../assets/rating/stars/star_empty.svg';
-import imagePlaceholder from '../../../../../assets/misc/image_placeholder.png';
+import star from '../../../../../../public/assets/rating/stars/star.svg';
+import star_empty from '../../../../../../public/assets/rating/stars/star_empty.svg';
+import imagePlaceholder from '../../../../../../public/assets/misc/image_placeholder.png';
 
-import './ItemsCard.css'
+import classes from './ItemsCard.module.css';
 
 
 function ItemsCard(props) {
     const stars = [];
-    let price = <span className='ItemsCard_price'>{props.itemData.price + '₴'}</span>;
+    let price = <span className={classes.ItemsCard_price}>{props.itemData.price + '₴'}</span>;
     const compared = !!props.compare.find(item => item.name === props.itemData.name);
     const favored = !!props.favourites.find(item => item.name === props.itemData.name);
     const inCart = !!props.cart.find(item => item.name === props.itemData.name);
@@ -30,10 +30,10 @@ function ItemsCard(props) {
         : <ReactCartFull className={`ItemsCard_action-icon ItemsCard_action-icon_cart`} />
 
     for (let i = 0; i < props.itemData.stars; i++) {
-        stars.push(<img key={v4()} className='ItemsCard_star' src={star} alt='star'></img>)
+        stars.push(<img key={v4()} className={classes.ItemsCard_star} src={star} alt='star'></img>)
     }
     for (let i = stars.length; i < 5; i++) {
-        stars.push(<img key={v4()} className='ItemsCard_star' src={star_empty} alt='star_empty'></img>)
+        stars.push(<img key={v4()} className={classes.ItemsCard_star} src={star_empty} alt='star_empty'></img>)
     }
     //если есть старая цена - создать лейбл о скидке
     //и застилизировать цены
@@ -41,8 +41,8 @@ function ItemsCard(props) {
     if (props.itemData.oldPrice) {
         labels.push(<Label key={v4()} type='red'>{"СКИДКА " + ((1 - props.itemData.price / props.itemData.oldPrice) * 100).toFixed() + '%'}</Label>);
         price = (<React.Fragment>
-            <span className='ItemsCard_price_discount'>{props.itemData.price + '₴'}</span>
-            <span className='ItemsCard_price_before'>{props.itemData.oldPrice + '₴'}</span>
+            <span className={classes.ItemsCard_price_discount}>{props.itemData.price + '₴'}</span>
+            <span className={classes.ItemsCard_price_before}>{props.itemData.oldPrice + '₴'}</span>
         </React.Fragment>)
     }
 
@@ -69,32 +69,32 @@ function ItemsCard(props) {
  
     return (
         <div className={`ItemsCard ${isStaticImage && ` itemCard__image__static`}`}>
-            <Link href={href} className='ItemsCard_image-wrapper'>
+            <Link href={href} className={classes['ItemsCard_image-wrapper']}>
                 {isNoImage
-                    ? <img className='ItemsCard_image-main'
+                    ? <img className={classes['ItemsCard_image-main']}
                         src={imagePlaceholder}
                         alt='card-item-main' />
                     : <React.Fragment>
-                        <img className='ItemsCard_image-main'
+                        <img className={classes['ItemsCard_image-main']}
                             src={props.itemData.images[0]}
                             alt='card-item-main' />
-                        {props.itemData.images[1] && <img className='ItemsCard_image-secondary'
+                        {props.itemData.images[1] && <img className={classes['ItemsCard_image-secondary']}
                             src={props.itemData.images[1]}
                             alt='card-item-secondary' />}
                     </React.Fragment>
                 }
 
             </Link>
-            <Link className='ItemsCard_descr' href={href}>{props.itemData.name}</Link>
-            <div className='ItemsCard_stars'>
+            <Link className={classes.ItemsCard_descr} href={href}>{props.itemData.name}</Link>
+            <div className={classes.ItemsCard_stars}>
                 {stars}
             </div>
-            <div className='ItemsCard_price-wrapper'>
+            <div className={classes['ItemsCard_price-wrapper']}>
                 {price}
             </div>
 
-            <div className='ItemsCard_actions'>
-                <div className='ItemsCard_action-wrapper' onClick={() => {
+            <div className={classes.ItemsCard_actions}>
+                <div className={classes['ItemsCard_action-wrapper']} onClick={() => {
                     inCart
                         ? props.onRemoveFromCart({ ...props.itemData, amount: 1 })
                         : props.onAddToCart({ ...props.itemData, amount: 1 });
@@ -102,7 +102,7 @@ function ItemsCard(props) {
                     {CartIcon}
                     <span>{inCart ? 'Убрать' : 'В корзину'}</span>
                 </div>
-                <div className='ItemsCard_action-wrapper'>
+                <div className={classes['ItemsCard_action-wrapper']}>
                     <ReactHeart className={`ItemsCard_action-icon ItemsCard_action-icon_heart ${favored && 'ItemsCard_action-icon-active-red'}`} viewBox="0 0 512 512"
                         onClick={e => {
                             favored
@@ -110,7 +110,7 @@ function ItemsCard(props) {
                                 : props.onAddToFavorites(props.itemData)
                         }} />
                 </div>
-                <div className='ItemsCard_action-wrapper'>
+                <div className={classes['ItemsCard_action-wrapper']}>
                     <ReactCompare className={`ItemsCard_action-icon ItemsCard_action-icon_compare ${compared && 'ItemsCard_action-icon-active'}`}
                         onClick={e => {
                             compared
@@ -119,7 +119,7 @@ function ItemsCard(props) {
                         }} />
                 </div>
             </div>
-            <div className='ItemsCard_labels'>
+            <div className={classes.ItemsCard_labels}>
                 {labels}
             </div>
         </div>

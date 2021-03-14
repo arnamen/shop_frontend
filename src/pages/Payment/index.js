@@ -1,10 +1,10 @@
 import React from 'react'
 
-import './Payment.css'
+import classes from './Payment.module.css';
 
 export default function Payment() {
     return (
-        <div className='Payment'>
+        <div className={classes.Payment}>
             <h1>Оплата</h1>
             <span>Разместите на этой странице информацию с описанием способов оплаты, которые использует ваш интернет-магазин.</span>
             <span><strong>Например:</strong></span>

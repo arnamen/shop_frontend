@@ -10,7 +10,7 @@ import { useForm } from '../../hooks/useForm/useForm';
 
 import { VALIDATOR_EMAIL, VALIDATOR_REQUIRE, VALIDATOR_EXACT_LENGTH, VALIDATOR_MINLENGTH } from '../../utils/validator';
 
-import './Admin.css';
+import classes from './Admin.module.css';
 
 function Admin( props ) {
 
@@ -83,57 +83,57 @@ function Admin( props ) {
     if(props.authError && !showInvalidFormMessage) setShowInvalidFormMessage(true);
 
     return (
-        <div className='Admin'>
-            <div className='Admin__form-wrapper'>
+        <div className={classes.Admin}>
+            <div className={classes['Admin__form-wrapper']}>
                         {/* Error messages that will appear on different form errors */}
                             {showInvalidFormMessage && !formState.isValid
-                            && <span className='Admin__invalid-form-label'>Данные для создания товара заполнены с ошибками.</span>}
+                            && <span className={classes['Admin__invalid-form-label']}>Данные для создания товара заполнены с ошибками.</span>}
                             {showInvalidFormMessage && props.authError
-                            && <span className='Admin__invalid-form-label'>{props.authError.message}</span>}
+                            && <span className={classes['Admin__invalid-form-label']}>{props.authError.message}</span>}
                         {/*  */}
                         <Form>
                             {<Form.Row>
-                                <Form.Label for='field' className='Admin__label'>Название</Form.Label>
-                                <Form.TextField id='surname' onInput={inputHandler} initialValid />
+                                <Form.Label for='field' className={classes.Admin__label}>Название</Form.Label>
+                                <Form.TextField id={classes.surname} onInput={inputHandler} initialValid />
                             </Form.Row>}
 
                             {<Form.Row>
-                                <Form.Label for='field' className='Admin__label' required>Описание</Form.Label>
-                                <Form.TextField id='name' onInput={inputHandler} initialValid={false} validators={[VALIDATOR_REQUIRE()]} />
+                                <Form.Label for='field' className={classes.Admin__label} required>Описание</Form.Label>
+                                <Form.TextField id={classes.name} onInput={inputHandler} initialValid={false} validators={[VALIDATOR_REQUIRE()]} />
                             </Form.Row>}
 
                             {<Form.Row>
-                                <Form.Label for='field' className='Admin__label'>Категории (через пробел)</Form.Label>
-                                <Form.TextField id='phone' onInput={inputHandler} mask='+380 (99) 999-99-99' initialValid validators={[VALIDATOR_EXACT_LENGTH(19)]} />
+                                <Form.Label for='field' className={classes.Admin__label}>Категории (через пробел)</Form.Label>
+                                <Form.TextField id={classes['phone']} onInput={inputHandler} mask='+380 (99) 999-99-99' initialValid validators={[VALIDATOR_EXACT_LENGTH(19)]} />
                             </Form.Row>}
 
                             <Form.Row>
-                                <Form.Label for='field' className='Admin__label' required>Теги</Form.Label>
-                                <Form.TextField id='email' onInput={inputHandler} initialValid={false} validators={[VALIDATOR_EMAIL()]} />
+                                <Form.Label for='field' className={classes.Admin__label} required>Теги</Form.Label>
+                                <Form.TextField id={classes.email} onInput={inputHandler} initialValid={false} validators={[VALIDATOR_EMAIL()]} />
                             </Form.Row>
 
                             {<Form.Row>
-                                <Form.Label for='field' className='Admin__label' required>Поле</Form.Label>
-                                <Form.TextField id='password' type='password' onInput={inputHandler} initialValid={false} validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}/>
-                                <Form.Label for='field' className='Admin__label'>Описание поля</Form.Label>
+                                <Form.Label for='field' className={classes.Admin__label} required>Поле</Form.Label>
+                                <Form.TextField id={classes.password} type='password' onInput={inputHandler} initialValid={false} validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}/>
+                                <Form.Label for='field' className={classes.Admin__label}>Описание поля</Form.Label>
                             </Form.Row>}
 
                             {<Form.Row>
-                                <Button className='Admin__submit' onClick={authSubmitHandler}>{props.loading ? <LoadingSpinner/> : 'Создать'}</Button>
+                                <Button className={classes.Admin__submit} onClick={authSubmitHandler}>{props.loading ? <LoadingSpinner/> : 'Создать'}</Button>
                             </Form.Row>}
 
                             {<Form.Row>
-                                <button className='Admin__register' onClick={() => switchAuthType('login')}>Создать</button>
+                                <button className={classes.Admin__register} onClick={() => switchAuthType('login')}>Создать</button>
                             </Form.Row>}
 
                             {<React.Fragment>
                                 <Form.Row>
-                                    <Form.Label for='field' className='Admin__label' required>Поле</Form.Label>
-                                    <Form.TextField id='password' type='password' onInput={inputHandler} initialValid validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}/>
+                                    <Form.Label for='field' className={classes.Admin__label} required>Поле</Form.Label>
+                                    <Form.TextField id={classes.password} type='password' onInput={inputHandler} initialValid validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}/>
                                 </Form.Row>
 
                                 <Form.Row>
-                                    <Button className='Admin__submit' onClick={authSubmitHandler}>{props.loading ? <LoadingSpinner/> : 'Кнопка'}</Button>
+                                    <Button className={classes.Admin__submit} onClick={authSubmitHandler}>{props.loading ? <LoadingSpinner/> : 'Кнопка'}</Button>
                                 </Form.Row>
 
 

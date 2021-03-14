@@ -7,7 +7,7 @@ import Tabs from '../../containers/Tabs/Tabs';
 import ItemPageGeneral from './ItemPageGeneral/ItemPageGeneral';
 import ItemPageCharacteristics from './ItemPageCharacteristics/ItemPageCharacteristics';
 
-import './ItemPage.css';
+import classes from './ItemPage.module.css';
 import * as actionTypes from '../../store/actions/actionTypes';
 import { updateContent } from '../../store/actions/items';
 
@@ -31,7 +31,7 @@ function ItemPage(props) {
     const inCart = !!props.cart.find(item => item.name === itemData.name);
 
     return (
-        <div className='ItemPage'>
+        <div className={classes.ItemPage}>
             <Tabs tabsNames={['Осноная информация', 'Характеристики']}>
                 <div>
                 <ItemPageGeneral 

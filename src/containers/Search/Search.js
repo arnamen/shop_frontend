@@ -4,9 +4,9 @@ import cloneDeep from 'clone-deep';
 
 import Popup from '../../components/UI/Popup/Popup';
 
-import './Search.css';
+import classes from './Search.module.css';
 
-import searchImg from '../../assets/search/magnifying-glass.png';
+import searchImg from '../../../public/assets/search/magnifying-glass.png';
 function Search( props ) {
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -52,7 +52,7 @@ function Search( props ) {
             onChange={(event) => setSearchQuery(event.target.value)}/>
             <img className={'Search__button'} src={searchImg} alt='search'></img>
             {matchedContent.length > 0 && 
-            <div className='Search__matched-content'>
+            <div className={classes['Search__matched-content']}>
                 <Popup items={matchedContent}/>
             </div>
             }

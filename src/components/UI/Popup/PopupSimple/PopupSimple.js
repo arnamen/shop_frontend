@@ -1,10 +1,10 @@
 import React from 'react';
 
-import './PopupSimple.css';
+import classes from './PopupSimple.module.css';
 
 const PopupSimple = ( props ) => {
     return (
-        <div className='PopupSimple'>
+        <div className={classes.PopupSimple}>
             {props.children}
         </div>
     );

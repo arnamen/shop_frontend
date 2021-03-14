@@ -14,6 +14,7 @@
     "deep-copy": "^1.4.2",
     "deep-equal": "^2.0.5",
     "next": "^10.0.8",
+    "next-images": "^1.7.0",
     "public-ip": "^4.0.3",
     "pure-react-carousel": "^1.27.5",
     "query-string": "^6.13.7",

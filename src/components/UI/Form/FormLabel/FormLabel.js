@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './FormLabel.css';
+import classes from './FormLabel.module.css';
 
 export default function FormLabel( props ) {
     const classes = ['FormLabel'];

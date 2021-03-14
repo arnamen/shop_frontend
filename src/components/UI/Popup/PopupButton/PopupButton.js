@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link} from 'next/router';
 
-import './PopupButton.css';
+import classes from './PopupButton.module.css';
 
 export default function PopupButton( props ) {
     const classes = [];

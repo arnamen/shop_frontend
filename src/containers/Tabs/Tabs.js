@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { v4 } from 'uuid';
 
-import './Tabs.css'
+import classes from './Tabs.module.css';
 
 export default function Tabs(props) {
 
@@ -32,7 +32,7 @@ export default function Tabs(props) {
 
     return (
         <div className={`Tabs ${props.className ?' ' + props.className : ''}`}>
-            <div className='Tabs__radio-wrapper'>
+            <div className={classes['Tabs__radio-wrapper']}>
                 {tabs}
             </div>
             {children}

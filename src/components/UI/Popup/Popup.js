@@ -2,7 +2,7 @@ import React from 'react'
 
 import PopupItemsTable from './PopupItemsTable/PopupItemsTable';
 
-import './Popup.css';
+import classes from './Popup.module.css';
 import PopupEmpty from './PopupEmpty/PopupEmpty';
 import PopupList from './PopupList/PopupList';
 import PopupButton from './PopupButton/PopupButton';
@@ -18,11 +18,11 @@ export default function Popup(props) {
     else if ((props.content && props.content.length === 0) || !props.content) content = <PopupEmpty type={props.type}/>
 
     return (
-        <div className='Popup' onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}>
+        <div className={classes.Popup} onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}>
             <div>
                 {content}
             </div>
-            <div className='Popup__actions-wrapper'>
+            <div className={classes['Popup__actions-wrapper']}>
                 {props.children}
             </div>
         </div>
