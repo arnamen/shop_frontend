@@ -67,9 +67,9 @@ function MainPage(props) {
 
 
     const content_tab1 = []
-    const itemsAmount_tab1 = randomInteger(3, 10);
+    const itemsAmount_tab1 = 5;
     const content_tab2 = []
-    const itemsAmount_tab2 = randomInteger(3, 10);
+    const itemsAmount_tab2 = 8;
 
     let phones = [];
     let tv = [];
@@ -80,7 +80,7 @@ function MainPage(props) {
         phones = props.content.filter(item => item.categories.includes('Телефоны'));
         phones.push(...phones); //заполнить строку для красоты
         for (let i = 0; i < itemsAmount_tab1; i++) content_tab1.push(props.content[i % (props.content.length)]);
-        for (let i = 0; i < itemsAmount_tab2; i++) content_tab2.push(props.content[i % (props.content.length)]);
+        for (let i = 0; i < itemsAmount_tab2; i++) content_tab2.push(props.content[Math.max(props.content.length - 1 - i, 0)]);
     }
     return (
         <div>

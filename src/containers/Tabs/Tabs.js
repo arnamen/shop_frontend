@@ -9,29 +9,28 @@ export default function Tabs(props) {
 
     if (!props.tabsNames) return <React.Fragment>{props.children}</React.Fragment>
     const tabs = React.Children.map(props.children, (_, index) => {
-        const id = v4();
-
+        const id = 'input_' + index + '_' + selectedTab;
         return <React.Fragment>
-            <input id={index} 
+            <input id={id} 
             name='Tabs' 
             type='radio' 
             defaultChecked={index === 0}
             onClick={() => setSelectedTab(index)}
             />
 
-            <label htmlFor={index}>{props.tabsNames[index]}</label>
+            <label htmlFor={id} className={index === selectedTab ? classes.CheckedLabel : ''}>{props.tabsNames[index]}</label>
         </React.Fragment>
     })
     //каждого потомка завернуть в отдельный таб
     const children = React.Children.map(props.children, (child, index) => {
         return React.cloneElement(child, {
             key: index,
-            className: `Tabs__tab ${child.props.className ? child.props.className : ''} ${index === selectedTab ? '' :'inactive'}`
+            className: `${classes.Tabs__tab} ${child.props.className ? classes[child.props.className] : ''} ${index === selectedTab ? '' : classes['inactive']}`
         })
     })
 
     return (
-        <div className={`Tabs ${props.className ?' ' + props.className : ''}`}>
+        <div className={`${classes.Tabs} ${props.className ?' ' + classes[props.className] : ''}`}>
             <div className={classes['Tabs__radio-wrapper']}>
                 {tabs}
             </div>
