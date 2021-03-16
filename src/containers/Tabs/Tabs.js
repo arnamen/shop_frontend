@@ -12,20 +12,20 @@ export default function Tabs(props) {
         const id = v4();
 
         return <React.Fragment>
-            <input id={id} 
+            <input id={index} 
             name='Tabs' 
             type='radio' 
             defaultChecked={index === 0}
             onClick={() => setSelectedTab(index)}
             />
 
-            <label htmlFor={id}>{props.tabsNames[index]}</label>
+            <label htmlFor={index}>{props.tabsNames[index]}</label>
         </React.Fragment>
     })
     //каждого потомка завернуть в отдельный таб
     const children = React.Children.map(props.children, (child, index) => {
         return React.cloneElement(child, {
-            key: v4(),
+            key: index,
             className: `Tabs__tab ${child.props.className ? child.props.className : ''} ${index === selectedTab ? '' :'inactive'}`
         })
     })
