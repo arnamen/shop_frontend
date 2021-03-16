@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { v4 } from 'uuid';
-import {Link} from 'next/router';
+import Link from 'next/link';
 
 import classes from './Dropdown.module.css';
 

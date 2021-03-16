@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 } from 'uuid';
 import { connect } from 'react-redux';
-import {Link} from 'next/router';
+import Link from 'next/link';
 
 import Label from '../../../Label/label';
 import * as actionTypes from '../../../../../store/actions/actionTypes';
