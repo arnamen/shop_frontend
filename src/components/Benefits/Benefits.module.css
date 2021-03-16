@@ -8,6 +8,7 @@
 
 .benefits_image {
     height: 100%;
+    max-width: 5vw;
 }
 
 .benefits_image-wrapper {
