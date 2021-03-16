@@ -10,6 +10,7 @@
     padding: 15px;
     opacity: 0;
     transition: 0.35s margin-top, 0.35s opacity, 0.35s z-index;
+    composes: Popup from "../../UserIconLinks/UserIconLink/UserIconLink.module.css"; /* hmm */
 }
 
 .Popup::before {

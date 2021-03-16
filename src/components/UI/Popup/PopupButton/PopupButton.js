@@ -1,15 +1,20 @@
 import React from 'react'
-import { Link} from 'next/router';
+import Link from 'next/link';
 
 import classes from './PopupButton.module.css';
 
-export default function PopupButton( props ) {
-    const classes = [];
-    classes.push('Popup__button');
-    props.blue && classes.push('Popup__button-blue')
+export default function PopupButton(props) {
+    const className = [];
+    className.push(classes['Popup__button']);
+    if(props.blue) className.push(classes['Popup__button-blue'])
+    
     return (
-             props.onClick 
-            ? <button className={classes.join(' ')} onClick={props.onClick}>{props.children}</button>
-            : <Link className={classes.join(' ')} href={props.to || ''}>{props.children}</Link>
+        props.onClick
+            ? <button className={className.join(' ')} onClick={props.onClick}>{props.children}</button>
+            : <Link href={props.to || ''}>
+                <a className={className.join(' ')}>
+                    {props.children}
+                </a>
+            </Link>
     )
 }

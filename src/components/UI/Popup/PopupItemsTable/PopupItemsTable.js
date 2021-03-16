@@ -13,15 +13,19 @@ export default function PopupItemsTable( props ) {
             {
                  props.content.map(item => <tr className={classes.PopupItemsTable__item} key={v4()}>
                         <td>
-                            <Link href={`/item/${item.id.toLowerCase()}`} className={classes['PopupItemsTable__item__image-wrapper']}>
-                                <img src={item.images[0]} className={classes.PopupItemsTable__item__image} alt='item_image' />
+                            <Link href={`/item/${item.id.toLowerCase()}`}>
+                                <a className={classes['PopupItemsTable__item__image-wrapper']}>
+                                 <img src={item.images[0]} className={classes.PopupItemsTable__item__image} alt='item_image' />
+                                </a>
                             </Link>
                         </td>
                         <td className={classes['PopupItemsTable__item-descr-tr']}>
-                            <Link href={`/item/${item.id.toLowerCase()}`} className={classes['PopupItemsTable__item-descr']} onClick={() => document.activeElement.blur()}>
+                            <Link href={`/item/${item.id.toLowerCase()}`}>
+                                <a className={classes['PopupItemsTable__item-descr']} onClick={() => document.activeElement.blur()}>
                                 {item.name}
                                 <div className={classes['PopupItemsTable__item__unit-price']}>{`${item.amount ? (item.amount + ' × ') : ''}${item.price}₴`}</div>
                                 {item.customText && <div className={classes['PopupItemsTable__item-descr__custom-text']}>{item.customText}</div>}
+                                </a>
                             </Link>
                         </td>
                         {props.onDelete && <td onClick={() => props.onDelete(item)}>

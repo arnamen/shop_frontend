@@ -30,9 +30,11 @@ export default function UserIconLink(props) {
         <div className={classes.UserIconLink__wrapper}>
             {props.active
                 ? <Link href={props.to}>
-                    {SVGimage && <SVGimage className={className.join(' ')}
-                        viewBox="0 0 512 512" />}
-                    {ContentMarker}
+                    <a>
+                        {SVGimage && <SVGimage className={className.join(' ')}
+                            viewBox="0 0 512 512" />}
+                        {ContentMarker}
+                    </a>
                 </Link>
                 : <span>
                     {SVGimage && <SVGimage className={className.join(' ')}

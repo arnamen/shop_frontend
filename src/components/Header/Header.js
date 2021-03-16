@@ -173,9 +173,9 @@ function Header(props) {
 
     const dispatch = useDispatch();
 
-    const compare = useSelector(state => state.compare);
-    const favourites = useSelector(state => state.favourites);
-    const cart = useSelector(state => state.cart);
+    const compare = useSelector(state => state.compare.compare);
+    const favourites = useSelector(state => state.favourites.favourites);
+    const cart = useSelector(state => state.cart.cart);
     const loggedIn = useSelector(state => !!state.auth.token);
     const ip = useSelector(state => state.auth.ip);
 
@@ -255,7 +255,7 @@ function Header(props) {
                                     {favouritesActive && <Popup.Button green to='/page/favourites'>Избранное</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
+                            <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={cart.length} key={v4()}>
                                 <Popup items={cart} type='cart' onDelete={onRemoveFromCart}>
                                     {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
                                 </Popup>
@@ -332,14 +332,4 @@ function Header(props) {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        compare: state.compare.compare,
-        favourites: state.favourites.favourites,
-        cart: state.cart.cart,
-        loggedIn: !!state.auth.token,
-        ip: state.auth.ip
-    };
-}
-
-export default connect(mapStateToProps, null)(Header)
+export default Header

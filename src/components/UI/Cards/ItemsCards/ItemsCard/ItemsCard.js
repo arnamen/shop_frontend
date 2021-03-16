@@ -26,8 +26,8 @@ function ItemsCard(props) {
     const inCart = !!props.cart.find(item => item.name === props.itemData.name);
 
     const CartIcon = !inCart
-        ? <ReactCart className={`${classes['ItemsCard_action-icon']} ${classes['ItemsCard_action-icon_cart']}`} />
-        : <ReactCartFull className={`${classes['ItemsCard_action-icon']} ${classes['ItemsCard_action-icon_cart']}`} />
+        ? <ReactCart className={`${classes['ItemsCard_action-icon']} ${classes['ItemsCard_action-icon_cart']}`} viewBox="0 0 512 512"/>
+        : <ReactCartFull className={`${classes['ItemsCard_action-icon']} ${classes['ItemsCard_action-icon_cart']}`} viewBox="0 0 512 512"/>
 
     for (let i = 0; i < props.itemData.stars; i++) {
         stars.push(<Star key={v4()} className={classes.ItemsCard_star} alt='star'></Star>)
