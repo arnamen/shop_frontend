@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { v4 } from 'uuid';
 import Link from 'next/link';
 
@@ -19,8 +19,8 @@ export default function Dropdown(props) {
         let verticalAlignment = 100;
 
         if (index !== 0)
-        //пересчитать вертикальную позицию нового списка относительно родитльского элемента 
-        //чтобы прижать его к верху
+          //пересчитать вертикальную позицию нового списка относительно родитльского элемента 
+          //чтобы прижать его к верху
           verticalAlignment = -index * 100;
         //
 
@@ -29,10 +29,12 @@ export default function Dropdown(props) {
           {index === 0 && <span className={classes.dots}></span>}
 
           <Link href={itemData.to || '/'}>
-            <span>{itemData.text}</span>
+            <a>
+              <span>{itemData.text}</span>
+            </a>
           </Link>
 
-          {index !== 0 && <ReactChevronRight className={classes.chevron}/>}
+          {index !== 0 && <ReactChevronRight className={classes.chevron} />}
 
           {/* при создании нового списка учитывать границу при наведении 3 пикселя */}
 
@@ -40,7 +42,8 @@ export default function Dropdown(props) {
             style={{
               height: 5 * (itemData.children.length) + 'vh',
               top: `calc(${verticalAlignment}% - ${3 * index}px)`,
-              zIndex: index}}>
+              zIndex: index
+            }}>
             {/* создать дочерние элементы */}
             {getListItems(itemData.children)}
           </ul>
@@ -49,7 +52,11 @@ export default function Dropdown(props) {
       }
       // иначе вернуть обычный элемент
       return <li key={v4()} className={classes['nav-item']}>
-        <Link href={itemData.to}><span>{itemData.text}</span></Link>
+        <Link href={itemData.to}>
+          <a>
+            <span>{itemData.text}</span>
+          </a>
+        </Link>
       </li>
 
     })
@@ -59,7 +66,7 @@ export default function Dropdown(props) {
   const listItems = getListItems(itemsData);
 
   return (
-    <ul className="main-navigation">
+    <ul className={classes["main-navigation"]}>
       {listItems}
     </ul>
   )

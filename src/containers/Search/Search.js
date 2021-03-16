@@ -45,12 +45,12 @@ function Search( props ) {
 
 
     return (
-        <div className={'Search'}>
+        <div className={classes['Search']}>
             <input type='text' 
-            className={'Search__field'} 
+            className={classes['Search__field']} 
             placeholder='Поиск...'
             onChange={(event) => setSearchQuery(event.target.value)}/>
-            <img className={'Search__button'} src={searchImg} alt='search'></img>
+            <img className={classes['Search__button']} src={searchImg} alt='search'></img>
             {matchedContent.length > 0 && 
             <div className={classes['Search__matched-content']}>
                 <Popup items={matchedContent}/>

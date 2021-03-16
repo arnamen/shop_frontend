@@ -20,7 +20,7 @@
 .logo__title-wrapper {
     display: inline-flex;
     flex-direction: column;
-    margin-top: 10px;
+    justify-content: center;
     height: 100%;
 }
 

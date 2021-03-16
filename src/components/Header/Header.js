@@ -201,10 +201,14 @@ function Header(props) {
         dispatch(logOut())
     };
 
+    const changeVisibility = (isVisible) => {
+        if(window) setVisible(isVisible);
+    }
+
     return (
         <React.Fragment>
             {/* Этот заголовок видно когда пользователь скролит вниз с телефона */}
-            <div className={`Header__wrapper-top-mobile`}>
+            <div className={classes[`Header__wrapper-top-mobile`]}>
                 <Burger data={burgerData} />
                 <UserIconLinks>
                     <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={compare.length} key={v4()}>
@@ -233,10 +237,10 @@ function Header(props) {
                 </UserIconLinks>
             </div>
             {/* этот заголовок виден когда пользователь наверху старницы */}
-            <VisibilitySensor partialVisibility onChange={(isVisible) => setVisible(isVisible)}>
-                <div className={'Header'}>
-                    <div className={`Header__wrapper-top ${!visible && `Header__wrapper-top-hidden`}`}>
-                        <Burger data={burgerData} />
+            <VisibilitySensor partialVisibility onChange={(isVisible) => {changeVisibility(isVisible)}}>
+                <div className={classes['Header']}>
+                    <div className={`${classes['Header__wrapper-top']} ${!visible && `${classes['Header__wrapper-top-hidden']}`}`}>
+                        {/* <Burger data={burgerData} /> ?????*/}
                         <Logo />
                         <Search />
                         <Contacts />
@@ -274,7 +278,7 @@ function Header(props) {
                             </UserIconLink>
                         </UserIconLinks>
                     </div>
-                    <div className={`Header__wrapper-bottom ${!visible && `Header__fixed`}`}>
+                    <div className={`${classes['Header__wrapper-bottom']} ${!visible && `${classes['Header__fixed']}`}`}>
                         <Dropdown items={dropdownsData} />
                         <LinkButton to='/page/about-us'>О компании</LinkButton>
                         <LinkButton to='/page/contacts'>Контакты</LinkButton>

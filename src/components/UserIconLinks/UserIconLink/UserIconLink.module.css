@@ -18,8 +18,10 @@
 }
 
 .UserIconLink__icon {
-    width: 24px;
-    height: 24px;
+    width: 2vw;
+    height: 2vw;
+    max-width: 30px;
+    max-height: 30px;
     margin: 0 0.5vw;
     margin-top: 6px;
     fill: black;

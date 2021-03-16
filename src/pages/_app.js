@@ -37,7 +37,6 @@ function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <React.Fragment>
-      <Component {...pageProps} />
         <Header />
         <Component {...pageProps} />
         <Footer />
