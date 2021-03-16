@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'next/router';
+import Link from 'next/link';
 
 import classes from './CategoriesCard.module.css';
 

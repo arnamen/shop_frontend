@@ -2,14 +2,14 @@ import React from 'react'
 
 import classes from './FooterAboutUs.module.css';
 
-import {ReactComponent as ReactVK} from '../../../../public/assets/social/009-vk.svg';
-import {ReactComponent as ReactMessenger} from '../../../../public/assets/social/044-messenger.svg';
-import {ReactComponent as ReactGooglePlus} from '../../../../public/assets/social/035-google-plus.svg';
-import {ReactComponent as ReactTwitter} from '../../../../public/assets/social/013-twitter-1.svg';
-import {ReactComponent as ReactWhatsApp} from '../../../../public/assets/social/007-whatsapp.svg';
-import {ReactComponent as ReactSkype} from '../../../../public/assets/social/022-skype.svg';
-import {ReactComponent as ReactTumblr} from '../../../../public/assets/social/016-tumblr.svg';
-import {ReactComponent as ReactLinkedin} from '../../../../public/assets/social/031-linkedin.svg';
+import ReactVK from '../../../../public/assets/social/009-vk.svg';
+import ReactMessenger from '../../../../public/assets/social/044-messenger.svg';
+import ReactGooglePlus from '../../../../public/assets/social/035-google-plus.svg';
+import ReactTwitter from '../../../../public/assets/social/013-twitter-1.svg';
+import ReactWhatsApp from '../../../../public/assets/social/007-whatsapp.svg';
+import ReactSkype from '../../../../public/assets/social/022-skype.svg';
+import ReactTumblr from '../../../../public/assets/social/016-tumblr.svg';
+import ReactLinkedin from '../../../../public/assets/social/031-linkedin.svg';
 
 export default function FooterAboutUs() {
     return (

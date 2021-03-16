@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ImageGallery from 'react-image-gallery';
 import { v4 } from 'uuid';
-import { Link } from 'next/router';
+import Link from 'next/link';
 
 import Label from '../../../components/UI/Label/label';
 import Counter from '../../../components/Counter/Counter';
@@ -11,11 +11,11 @@ import DeliveryCard from '../../../components/UI/Cards/DeliveryCard/DeliveryCard
 import star from '../../../../public/assets/rating/stars/star.svg';
 import star_empty from '../../../../public/assets/rating/stars/star_empty.svg';
 
-import { ReactComponent as ReactChat } from '../../../../public/assets/misc/chat.svg';
-import { ReactComponent as ReactCart } from '../../../../public/assets/itemsCards/cart-for-card-item.svg';
-import { ReactComponent as ReactCompare } from '../../../../public/assets/account/compare.svg';
-import { ReactComponent as ReactHeart } from '../../../../public/assets/account/heart.svg';
-import { ReactComponent as ReactPiggybank } from '../../../../public/assets/misc/piggy-bank.svg';
+import  ReactChat  from '../../../../public/assets/misc/chat.svg';
+import  ReactCart  from '../../../../public/assets/itemsCards/cart-for-card-item.svg';
+import  ReactCompare  from '../../../../public/assets/account/compare.svg';
+import  ReactHeart  from '../../../../public/assets/account/heart.svg';
+import  ReactPiggybank  from '../../../../public/assets/misc/piggy-bank.svg';
 
 import { translate } from '../../../utils/translate';
 

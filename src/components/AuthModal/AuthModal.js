@@ -10,9 +10,9 @@ import * as actions from '../../store/actions/auth';
 
 import { useForm } from '../../hooks/useForm/useForm';
 
-import { ReactComponent as ReactGoogle } from '../../../public/assets/social/google.svg';
-import { ReactComponent as ReactFacebook } from '../../../public/assets/social/043-facebook-1.svg';
-import { ReactComponent as ReactClose } from '../../../public/assets/misc/cross.svg';
+import ReactGoogle from '../../../public/assets/social/google.svg';
+import ReactFacebook from '../../../public/assets/social/043-facebook-1.svg';
+import ReactClose from '../../../public/assets/misc/cross.svg';
 
 import { VALIDATOR_EMAIL, VALIDATOR_REQUIRE, VALIDATOR_EXACT_LENGTH, VALIDATOR_MINLENGTH } from '../../utils/validator';
 

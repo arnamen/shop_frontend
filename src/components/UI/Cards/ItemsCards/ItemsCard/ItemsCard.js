@@ -6,10 +6,10 @@ import {Link} from 'next/router';
 import Label from '../../../Label/label';
 import * as actionTypes from '../../../../../store/actions/actionTypes';
 
-import { ReactComponent as ReactCart } from '../../../../../../public/assets/itemsCards/cart-for-card-item.svg';
-import { ReactComponent as ReactCartFull } from '../../../../../../public/assets/account/cart.svg';
-import { ReactComponent as ReactCompare } from '../../../../../../public/assets/account/compare.svg';
-import { ReactComponent as ReactHeart } from '../../../../../../public/assets/account/heart.svg';
+import  ReactCart  from '../../../../../../public/assets/itemsCards/cart-for-card-item.svg';
+import  ReactCartFull  from '../../../../../../public/assets/account/cart.svg';
+import  ReactCompare  from '../../../../../../public/assets/account/compare.svg';
+import  ReactHeart  from '../../../../../../public/assets/account/heart.svg';
 
 import star from '../../../../../../public/assets/rating/stars/star.svg';
 import star_empty from '../../../../../../public/assets/rating/stars/star_empty.svg';

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {ReactComponent as ReactCheckmark} from '../../../../public/assets/misc/checkmark.svg';
+import ReactCheckmark from '../../../../public/assets/misc/checkmark.svg';
 
 import classes from './Checkbox.module.css';
 

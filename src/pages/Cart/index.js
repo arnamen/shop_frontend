@@ -1,15 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { v4 } from 'uuid';
-import { Link } from 'next/router';
+import Link from 'next/link';
 
 import Counter from '../Counter/Counter';
 
 import * as actionTypes from '../../store/actions/actionTypes';
 
-import { ReactComponent as ReactCart } from '../../public/assets/itemsCards/cart-for-card-item.svg';
-import { ReactComponent as ReactTrash } from '../../public/assets/misc/trash.svg';
-import { ReactComponent as ReactCheckmark } from '../../public/assets/misc/checkmark.svg';
+import  ReactCart  from '../../public/assets/itemsCards/cart-for-card-item.svg';
+import  ReactTrash  from '../../public/assets/misc/trash.svg';
+import  ReactCheckmark  from '../../public/assets/misc/checkmark.svg';
 import classes from './Cart.module.css';
 
 function Cart(props) {

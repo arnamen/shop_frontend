@@ -4,7 +4,7 @@ import {Link} from 'next/router';
 
 import classes from './Dropdown.module.css';
 
-import {ReactComponent as ReactChevronRight} from '../../../../public/assets/misc/right-chevron.svg';
+import ReactChevronRight from '../../../../public/assets/misc/right-chevron.svg';
 
 export default function Dropdown(props) {
   const itemsData = props.items || [];

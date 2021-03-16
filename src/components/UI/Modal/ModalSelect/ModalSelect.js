@@ -3,7 +3,7 @@ import { v4 } from 'uuid';
 
 import Modal from '../Modal';
 
-import { ReactComponent as ReactMagnifier } from '../../../../../public/assets/search/magnifier-black.svg';
+import  ReactMagnifier  from '../../../../../public/assets/search/magnifier-black.svg';
 
 import classes from './ModalSelect.module.css';
 

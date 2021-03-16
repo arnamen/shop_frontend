@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link } from 'next/router';
+import Link from 'next/link';
 
 import classes from './UserIconLink.module.css';
 
-import { ReactComponent as ReactAccount } from '../../../../public/assets/account/account.svg';
-import { ReactComponent as ReactCart } from '../../../../public/assets/account/cart.svg';
-import { ReactComponent as ReactCompare } from '../../../../public/assets/account/compare.svg';
-import { ReactComponent as ReactHeart } from '../../../../public/assets/account/heart.svg';
+import ReactAccount from '../../../../public/assets/account/account.svg';
+import ReactCart from '../../../../public/assets/account/cart.svg';
+import ReactCompare from '../../../../public/assets/account/compare.svg';
+import ReactHeart from '../../../../public/assets/account/heart.svg';
 const iconTypes = {
     account: ReactAccount,
     cart: ReactCart,
@@ -30,13 +30,13 @@ export default function UserIconLink(props) {
         <div className={classes.UserIconLink__wrapper}>
             {props.active
                 ? <Link href={props.to}>
-                    <SVGimage className={className}
-                        viewBox="0 0 512 512" />
+                    {SVGimage && <SVGimage className={className}
+                        viewBox="0 0 512 512" />}
                     {ContentMarker}
                 </Link>
                 : <span>
-                    <SVGimage className={className}
-                        viewBox="0 0 512 512" />
+                    {SVGimage && <SVGimage className={className}
+                        viewBox="0 0 512 512" />}
                     {ContentMarker}
                 </span>}
             {props.children}

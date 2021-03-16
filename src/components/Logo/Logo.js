@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'next/router';
+import Link from 'next/link';
 
 import logo from '../../../public/assets/logo/logo.svg';
 import classes from './Logo.module.css';

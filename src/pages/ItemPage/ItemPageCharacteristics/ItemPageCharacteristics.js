@@ -6,10 +6,10 @@ import Logo from '../../../components/Logo/Logo';
 
 import classes from './ItemPageCharacteristics.module.css';
 
-import { ReactComponent as ReactCart } from '../../../../public/assets/itemsCards/cart-for-card-item.svg';
-import { ReactComponent as ReactCartFull } from '../../../../public/assets/account/cart.svg';
-import { ReactComponent as ReactCompare } from '../../../../public/assets/account/compare.svg';
-import { ReactComponent as ReactHeart } from '../../../../public/assets/account/heart.svg';
+import  ReactCart  from '../../../../public/assets/itemsCards/cart-for-card-item.svg';
+import  ReactCartFull  from '../../../../public/assets/account/cart.svg';
+import  ReactCompare  from '../../../../public/assets/account/compare.svg';
+import  ReactHeart  from '../../../../public/assets/account/heart.svg';
 
 import { translate } from '../../../utils/translate';
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import VisibilitySensor from 'react-visibility-sensor';
 import { v4 } from 'uuid';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../Logo/Logo';
 import Search from '../../containers/Search/Search';
@@ -171,12 +171,35 @@ function Header(props) {
     const [visible, setVisible] = useState(true)
     const [showAuthForm, setShowAuthForm] = useState(false);
 
-    const compareActive = props.compare.length > 0;
-    const favouritesActive = props.favourites.length > 0;
-    const cartActive = props.cart.length > 0;
+    const dispatch = useDispatch();
+
+    const compare = useSelector(state => state.compare);
+    const favourites = useSelector(state => state.favourites);
+    const cart = useSelector(state => state.cart);
+    const loggedIn = useSelector(state => !!state.auth.token);
+    const ip = useSelector(state => state.auth.ip);
+
+    const compareActive = compare.length > 0;
+    const favouritesActive = favourites.length > 0;
+    const cartActive = cart.length > 0;
 
     const currentAccountRoutes = [...AccountListData];
 
+    const onRemoveFromCompare = (item) => dispatch({
+        type: actionTypes.REMOVE_COMPARE,
+        item,
+    });
+    const onRemoveFromFavourites = (item) => dispatch({
+        type: actionTypes.REMOVE_FAVOURITES,
+        item,
+    });
+    const onRemoveFromCart = (item) => dispatch({
+        type: actionTypes.REMOVE_FROM_CART,
+        item,
+    });
+    const onLogout = () => {
+        dispatch(logOut())
+    };
 
     return (
         <React.Fragment>
@@ -184,17 +207,17 @@ function Header(props) {
             <div className={`Header__wrapper-top-mobile`}>
                 <Burger data={burgerData} />
                 <UserIconLinks>
-                    <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
-                        <Popup items={props.compare} type='compare' redirectButtonNotEmpty onDelete={props.onRemoveFromCompare} />
+                    <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={compare.length} key={v4()}>
+                        <Popup items={compare} type='compare' redirectButtonNotEmpty onDelete={onRemoveFromCompare} />
                     </UserIconLink>
-                    <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} activeColor='red' key={v4()}>
-                        <Popup items={props.favourites} type='favourites' redirectButtonNotEmpty onDelete={props.onRemoveFromFavourites} />
+                    <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={favourites.length} activeColor='red' key={v4()}>
+                        <Popup items={favourites} type='favourites' redirectButtonNotEmpty onDelete={onRemoveFromFavourites} />
                     </UserIconLink>
-                    <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
-                        <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart} />
+                    <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={cart.length} key={v4()}>
+                        <Popup items={cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={onRemoveFromCart} />
                     </UserIconLink>
-                    <UserIconLink type='account' to='/' key={v4()} active={props.loggedIn} activeColor='orange'>
-                        {props.loggedIn
+                    <UserIconLink type='account' to='/' key={v4()} active={loggedIn} activeColor='orange'>
+                        {loggedIn
                             ? <Popup type='authenticated' actionButton listData={[...AccountListData]} />
                             : <Popup type='account'>
                                 <Popup.Button green
@@ -218,25 +241,25 @@ function Header(props) {
                         <Search />
                         <Contacts />
                         <UserIconLinks>
-                            <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
-                                <Popup items={props.compare} type='compare' onDelete={props.onRemoveFromCompare}>
+                            <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={compare.length} key={v4()}>
+                                <Popup items={compare} type='compare' onDelete={onRemoveFromCompare}>
                                     {compareActive && <Popup.Button green to='/page/compare'>Перейти к сравнению</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} activeColor='red' key={v4()}>
-                                <Popup items={props.favourites} type='favourites' onDelete={props.onRemoveFromFavourites}>
+                            <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={favourites.length} activeColor='red' key={v4()}>
+                                <Popup items={favourites} type='favourites' onDelete={onRemoveFromFavourites}>
                                     {favouritesActive && <Popup.Button green to='/page/favourites'>Избранное</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
                             <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
-                                <Popup items={props.cart} type='cart' onDelete={props.onRemoveFromCart}>
+                                <Popup items={cart} type='cart' onDelete={onRemoveFromCart}>
                                     {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='account' to='/account' key={v4()} active={props.loggedIn} activeColor='orange'>
-                                {props.loggedIn
+                            <UserIconLink type='account' to='/account' key={v4()} active={loggedIn} activeColor='orange'>
+                                {loggedIn
                                     ? <Popup type='authenticated' listData={AccountListData}>
-                                        <Popup.Button blue onClick={() => props.onLogout()}>Выход</Popup.Button>
+                                        <Popup.Button blue onClick={() => onLogout()}>Выход</Popup.Button>
                                     </Popup>
                                     : <Popup type='account'>
                                         <Popup.Button green
@@ -260,25 +283,25 @@ function Header(props) {
                         <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
                         {visible && <LinkButton to='/page/offer'>Оферта</LinkButton>}
                         {!visible && <UserIconLinks>
-                            <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
-                                <Popup items={props.compare} type='compare' redirectButtonNotEmpty onDelete={props.onRemoveFromCompare} >
+                            <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={compare.length} key={v4()}>
+                                <Popup items={compare} type='compare' redirectButtonNotEmpty onDelete={onRemoveFromCompare} >
                                     {cartActive && <Popup.Button green to='/page/compares'>Перейти к сравнению</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} activeColor='red' key={v4()}>
-                                <Popup items={props.favourites} type='favourites' redirectButtonNotEmpty onDelete={props.onRemoveFromFavourites} >
+                            <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={favourites.length} activeColor='red' key={v4()}>
+                                <Popup items={favourites} type='favourites' redirectButtonNotEmpty onDelete={onRemoveFromFavourites} >
                                     {favouritesActive && <Popup.Button green to='/page/favourites'>Избранное</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
-                                <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart}>
+                            <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={cart.length} key={v4()}>
+                                <Popup items={cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={onRemoveFromCart}>
                                     {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='account' to='/account' key={v4()} active={props.loggedIn} activeColor='orange'>
-                                {props.loggedIn
+                            <UserIconLink type='account' to='/account' key={v4()} active={loggedIn} activeColor='orange'>
+                                {loggedIn
                                     ? <Popup type='authenticated' listData={AccountListData}>
-                                        <Popup.Button blue onClick={() => props.onLogout()}>Выход</Popup.Button>
+                                        <Popup.Button blue onClick={() => onLogout()}>Выход</Popup.Button>
                                     </Popup>
                                     : <Popup type='account'>
                                     <Popup.Button green
@@ -315,24 +338,4 @@ const mapStateToProps = state => {
     };
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onRemoveFromCompare: (item) => dispatch({
-            type: actionTypes.REMOVE_COMPARE,
-            item,
-        }),
-        onRemoveFromFavourites: (item) => dispatch({
-            type: actionTypes.REMOVE_FAVOURITES,
-            item,
-        }),
-        onRemoveFromCart: (item) => dispatch({
-            type: actionTypes.REMOVE_FROM_CART,
-            item,
-        }),
-        onLogout: () => {
-            dispatch(logOut())
-        },
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, null)(Header)

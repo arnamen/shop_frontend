@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import ModalSelect from '../../Modal/ModalSelect/ModalSelect';
 
 import { cities as CitiesList } from '../../../../utils/cities';
-import { ReactComponent as ReactDeliveryTruck } from '../../../../../public/assets/delivery/delivery-truck.svg';
+import  ReactDeliveryTruck  from '../../../../../public/assets/delivery/delivery-truck.svg';
 
 import classes from './DeliveryCard.module.css';
 

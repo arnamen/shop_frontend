@@ -1,8 +1,8 @@
 import React from 'react'
 import { v4 } from 'uuid';
-import { Link } from 'next/router';
+import Link from 'next/link';
 
-import { ReactComponent as ReactTrash } from '../../../../../public/assets/misc/trash.svg';
+import ReactTrash from '../../../../../public/assets/misc/trash.svg';
 
 import classes from './PopupItemsTable.module.css';
 

@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { Link } from 'next/router';
+import React, {useState, useEffect} from 'react'
+import Link from 'next/link';
 import {v4} from 'uuid';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
@@ -11,8 +11,15 @@ export default function Burger(props) {
 
     if (!props.data) return <React.Fragment></React.Fragment>
 
-    if(showBurger) disableBodyScroll(document.querySelector('.Burger__list') || <React.Fragment></React.Fragment>);
-    else enableBodyScroll(document.querySelector('.Burger__list') || <React.Fragment></React.Fragment>);
+    useEffect(() => {
+        if(showBurger) {
+            console.log('here')
+            disableBodyScroll(document.querySelector('.Burger__list') || <span></span>);
+        } else {
+            console.log('here2')
+            enableBodyScroll(document.querySelector('.Burger__list') || <span></span>);
+        }
+    }, [showBurger])
 
     const burgerList = <div className={classes.Burger__itemsList}>
         {props.data.map(item => {

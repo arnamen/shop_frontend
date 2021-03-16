@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { Link } from 'next/router';
+import Link from 'next/link';
 
 import classes from './ClientAccount.module.css';
 

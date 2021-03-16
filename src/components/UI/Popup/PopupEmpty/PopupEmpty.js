@@ -2,10 +2,10 @@ import React from 'react'
 import { v4 } from 'uuid';
 
 
-import { ReactComponent as ReactCart } from '../../../../../public/assets/itemsCards/cart-for-card-item.svg';
-import { ReactComponent as ReactCompare } from '../../../../../public/assets/account/compare.svg';
-import { ReactComponent as ReactHeart } from '../../../../../public/assets/account/heart.svg';
-import { ReactComponent as ReactAccount } from '../../../../../public/assets/account/account.svg';
+import ReactCart from '../../../../../public/assets/itemsCards/cart-for-card-item.svg';
+import ReactCompare from '../../../../../public/assets/account/compare.svg';
+import ReactHeart from '../../../../../public/assets/account/heart.svg';
+import ReactAccount from '../../../../../public/assets/account/account.svg';
 
 import { popupMessages } from '../../../../utils/popup_messages';
 

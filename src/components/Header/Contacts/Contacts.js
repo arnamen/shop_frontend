@@ -4,15 +4,15 @@ import classesPopup from './../../UI/Popup/PopupSimple/PopupSimple.module.css';
 import PopupSimple from './../../UI/Popup/PopupSimple/PopupSimple';
 
 import classesContacts from './Contacts.module.css';
-import {ReactComponent as ReactEnvelope} from '../../../../public/assets/footer/envelope.svg';
-import {ReactComponent as ReactPlaceLocalizer} from '../../../../public/assets/footer/place-localizer.svg';
-import {ReactComponent as ReactClock} from '../../../../public/assets/footer/clock.svg';
-import {ReactComponent as ReactVK} from '../../../../public/assets/social/009-vk.svg';
-import {ReactComponent as ReactMessenger} from '../../../../public/assets/social/044-messenger.svg';
-import {ReactComponent as ReactGooglePlus} from '../../../../public/assets/social/035-google-plus.svg';
-import {ReactComponent as ReactTwitter} from '../../../../public/assets/social/013-twitter-1.svg';
-import {ReactComponent as ReactWhatsApp} from '../../../../public/assets/social/007-whatsapp.svg';
-import {ReactComponent as ReactSkype} from '../../../../public/assets/social/022-skype.svg';
+import ReactEnvelope from '../../../../public/assets/footer/envelope.svg';
+import ReactPlaceLocalizer from '../../../../public/assets/footer/place-localizer.svg';
+import ReactClock from '../../../../public/assets/footer/clock.svg';
+import ReactVK from '../../../../public/assets/social/009-vk.svg';
+import ReactMessenger from '../../../../public/assets/social/044-messenger.svg';
+import ReactGooglePlus from '../../../../public/assets/social/035-google-plus.svg';
+import ReactTwitter from '../../../../public/assets/social/013-twitter-1.svg';
+import ReactWhatsApp from '../../../../public/assets/social/007-whatsapp.svg';
+import ReactSkype from '../../../../public/assets/social/022-skype.svg';
 
 const classes = {...classesPopup, ...classesContacts}
 
