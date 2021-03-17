@@ -25,11 +25,18 @@
     font-weight: 700;
     font-size: 15px;
     color: #ed8d12;
+    border: none;
+    background-color: transparent;
+    padding: 0;
 }
 
 .Contacts__get-feedback:hover {
     text-decoration: underline;
     color: #ed8d12;
+}
+
+.Contacts__get-feedback:focus {
+    outline: none;
 }
 
 .Contacts__phone-number {

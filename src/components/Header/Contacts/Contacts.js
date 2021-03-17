@@ -23,9 +23,9 @@ export default function Contacts(props) {
                 +38 (093) 055-91-47
             </div>
             <div className={`${classes['Contacts__feedback-wrapper']} ${(props.simple && classes['Contacts__feedback-wrapper-simple'])}`}>
-                <a className={classes['Contacts__get-feedback']} href='/'>
+                <button className={classes['Contacts__get-feedback']} href='/' onClick={(e) => e.preventDefault()}>
                     Заказать звонок
-                </a>
+                </button>
                 {!props.simple && <div className={classes.Contacts__dots}>
                     <div className={classes['circle']}></div>
                     <div className={classes['circle']}></div>

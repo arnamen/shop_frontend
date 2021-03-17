@@ -6,11 +6,11 @@ import classes from './Checkbox.module.css';
 
 export default function Checkbox( props ) {
 
-    const classes = ['Checkbox'];
-    props.className && classes.push(props.className);
+    const className = [classes['Checkbox']];
+    props.className && className.push(classes[props.className]);
 
     return (
-            <label htmlFor={props.id} className={classes.join(' ')}>
+            <label htmlFor={props.id} className={className.join(' ')}>
                 {props.children}
                     <input id={props.id} 
                     type='checkbox'

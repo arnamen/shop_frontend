@@ -24,7 +24,7 @@ import { connect } from 'react-redux';
  */
 
 //массив категорий
-const href = '/page/collection';
+const href = '/collection';
 const categoriesData = [
     {
         name: 'Свитеры',
@@ -92,7 +92,7 @@ function MainPage(props) {
                 <ItemsCards itemsData={content_tab2} />
             </Tabs>
             <div className={classes['MainPage__viewAllGoods-wrapper']}>
-                <Link className={classes.MainPage__viewAllGoods} href='/page/collection'><span>Посмотреть все товары</span></Link>
+                <Link className={classes.MainPage__viewAllGoods} href='/collection'><span>Посмотреть все товары</span></Link>
             </div>
             <GoodsList title='Только у нас' img='Star' data={phones} />
             <GoodsList title='Популярно в категории "Телевизоры"' img='Chat' data={tv} />

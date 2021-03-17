@@ -11,6 +11,15 @@
     width: 100%;
 }
 
+.SidebarNavItem__title {
+    font-weight: 300;
+    color: #888;
+    fill: #888;
+    font-size: 14px;
+    transition: 0.3s all;
+    cursor: pointer;
+}
+
 .SidebarNavItem__inner-hide {
     display: none;
 }
@@ -26,4 +35,10 @@
     right: 1vw;
     top: 50%;
     transform: translate(0px, -50%);
+    font-weight: 300;
+    color: #888;
+    fill: #888;
+    font-size: 14px;
+    transition: 0.3s all;
+    cursor: pointer;
 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 import classes from './FooterGoodsList.module.css';
 
-let contentHref = '/page/collection';
+let contentHref = '/collection';
 
 export default function FooterGoodsList() {
     return (

@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { connect } from 'react-redux';
-import queryString from 'query-string';
 import Slider from '@material-ui/core/Slider';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import {useRouter} from 'next/router';
+import queryString from 'query-string';
 
 import Sidebar from '../../components/UI/Sidebar/Sidebar';
 import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
 import Button from '../../components/UI/Button/Button';
 
-import {ReactComponent as ReactFilter} from '../../public/assets/misc/filter.svg';
+import ReactFilter from '../../../public/assets/misc/filter.svg';
 
 import useItemsFilter from '../../hooks/useItemsFilter/useItemsFilter';
 import useCreateSidebarItems from '../../hooks/useCreateSidebarItems/useCreateSidebarItems';
@@ -17,7 +18,7 @@ import * as actionTypes from '../../store/actions/actionTypes';
 
 import { translate } from '../../utils/translate';
 
-import classesCheckbox from './../components/UI/Checkbox/Checkbox';
+import classesCheckbox from './../../components/UI/Checkbox/Checkbox';
 import classesContentPage from './ContentPage.module.css';
 
 import { updateContent } from '../../store/actions/items';
@@ -30,7 +31,10 @@ function ContentPage(props) {
     const [sidebarItems, updateSidebarItems] = useCreateSidebarItems(availableFilters);
     const [sortingOrder, setSotringOrder] = useState('default');
     const [showMobileFilters, setShowMobileFilters] = useState(false);
+    const router = useRouter();
+
     let content = filterItems(props.content);
+
     const minPrice = content.length > 0 ? content.reduce((curMin, cur) => curMin.price > cur.price ? cur : curMin).price : 0;
     const maxPrice = content.length > 0 ? content.reduce((curMax, cur) => curMax.price < cur.price ? cur : curMax).price : 0;
 
@@ -42,6 +46,12 @@ function ContentPage(props) {
         const maxPrice = props.content.length > 0 ? props.content.reduce((curMax, cur) => curMax.price < cur.price ? cur : curMax).price : 0;
         setPriceRange([minPrice, maxPrice])
     }, [props.content])
+
+    useEffect(() => {
+        if(showMobileFilters) disableBodyScroll(document.querySelector('.Sidebar__wrapper') || <React.Fragment></React.Fragment>);
+        else enableBodyScroll(document.querySelector('.Sidebar__wrapper') || <React.Fragment></React.Fragment>)
+    }, [showMobileFilters])
+
     useEffect(() => {
         updateFilters(props.content);
     }, [updateFilters, props.content]);
@@ -50,8 +60,7 @@ function ContentPage(props) {
     let inputMinRef = useRef();
     let inputMaxRef = useRef();
 
-    if(showMobileFilters) disableBodyScroll(document.querySelector('.Sidebar__wrapper') || <React.Fragment></React.Fragment>);
-    else enableBodyScroll(document.querySelector('.Sidebar__wrapper') || <React.Fragment></React.Fragment>)
+    
     if (sortingOrder !== 'default')
         switch (sortingOrder) {
             case 'name':
@@ -88,9 +97,9 @@ function ContentPage(props) {
 
     //при первом рендере получить параметры запроса для фильтров если есть
     useEffect(() => {
-
-        const filterParams = queryString.parse(props.location.search, { arrayFormat: 'comma' });
-
+        //get params and split them ("?" is a separator)
+        const filterParams = queryString.parse(router.asPath.split('?')[1], { arrayFormat: 'comma' });
+        console.log(filterParams)
         if (filterParams.categories && Array.isArray(filterParams.categories)) {
             filterParams.categories.forEach(category => {
 
@@ -100,6 +109,7 @@ function ContentPage(props) {
             })
         }
 
+        
         else if (typeof filterParams.categories === 'string') {
 
             if (availableFilters.categories.find(availableCategory => availableCategory === translate[filterParams.categories]))
@@ -120,7 +130,7 @@ function ContentPage(props) {
 
     return (
         <div className={classes.ContentPage}>
-            <div className={`ContentPage__sidebar-wrapper ${!showMobileFilters && 'ContentPage__mobile-filters-hide'}`}
+            <div className={`${classes['ContentPage__sidebar-wrapper']} ${!showMobileFilters && classes['ContentPage__mobile-filters-hide']}`}
             onClick={() => setShowMobileFilters(false)}>
                 <Sidebar title='Фильтры'>
                     <Sidebar.NavItem title='Цена'>

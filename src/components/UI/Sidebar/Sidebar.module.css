@@ -56,9 +56,7 @@
      fill: #ed8d12;
 }
 
-.Sidebar li span.SidebarNavItem__title, 
 .Sidebar a, 
-.Sidebar .chevron, 
 .Sidebar label {
     font-weight: 300;
     color: #888;
