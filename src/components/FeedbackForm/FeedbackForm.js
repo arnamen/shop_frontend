@@ -19,7 +19,7 @@ export default function Form() {
                 <span className={classes.FeedbackForm__important}>*</span>
             </span>
             <textarea id={classes['input-message']} type='textarea' required></textarea>
-            <button>Отправить</button>
+            <button onClick={() => alert('Sent successfully')}>Отправить</button>
         </form>
     )
 }

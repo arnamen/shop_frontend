@@ -157,12 +157,12 @@ const AdminAccountListData = [
 
 const burgerData = [
     { to: '/', name: 'Главная' },
-    { to: '/page/collection', name: 'Каталог товаров' },
-    { to: '/page/about-us', name: 'О компании' },
-    { to: '/page/contacts', name: 'Контакты' },
-    { to: '/page/delivery', name: 'Доставка' },
-    { to: '/page/payment', name: 'Оплата' },
-    { to: '/page/feedback', name: 'Обратная связь' },
+    { to: '/collection', name: 'Каталог товаров' },
+    { to: '/about-us', name: 'О компании' },
+    { to: '/contacts', name: 'Контакты' },
+    { to: '/delivery', name: 'Доставка' },
+    { to: '/payment', name: 'Оплата' },
+    { to: '/feedback', name: 'Обратная связь' },
 ]
 
 function Header(props) {
@@ -245,17 +245,17 @@ function Header(props) {
                         <Search />
                         <Contacts />
                         <UserIconLinks>
-                            <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={compare.length} key={v4()}>
+                            <UserIconLink type='compare' to='compares' active={compareActive} markContent={compare.length} key={v4()}>
                                 <Popup items={compare} type='compare' onDelete={onRemoveFromCompare}>
                                     {compareActive && <Popup.Button green to='/page/compare'>Перейти к сравнению</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={favourites.length} activeColor='red' key={v4()}>
+                            <UserIconLink type='heart' to='favourites' active={favouritesActive && 'red'} markContent={favourites.length} activeColor='red' key={v4()}>
                                 <Popup items={favourites} type='favourites' onDelete={onRemoveFromFavourites}>
                                     {favouritesActive && <Popup.Button green to='/page/favourites'>Избранное</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={cart.length} key={v4()}>
+                            <UserIconLink type='cart' to='cart' active={cartActive} markContent={cart.length} key={v4()}>
                                 <Popup items={cart} type='cart' onDelete={onRemoveFromCart}>
                                     {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
                                 </Popup>
@@ -280,24 +280,24 @@ function Header(props) {
                     </div>
                     <div className={`${classes['Header__wrapper-bottom']} ${!visible && `${classes['Header__fixed']}`}`}>
                         <Dropdown items={dropdownsData} />
-                        <LinkButton to='/page/about-us'>О компании</LinkButton>
-                        <LinkButton to='/page/contacts'>Контакты</LinkButton>
-                        <LinkButton to='/page/delivery'>Доставка</LinkButton>
-                        <LinkButton to='/page/payment'>Оплата</LinkButton>
-                        <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
-                        {visible && <LinkButton to='/page/offer'>Оферта</LinkButton>}
+                        <LinkButton to='/about-us'>О компании</LinkButton>
+                        <LinkButton to='/contacts'>Контакты</LinkButton>
+                        <LinkButton to='/delivery'>Доставка</LinkButton>
+                        <LinkButton to='/payment'>Оплата</LinkButton>
+                        <LinkButton to='/feedback'>Обратная связь</LinkButton>
+                        {visible && <LinkButton to='/offer'>Оферта</LinkButton>}
                         {!visible && <UserIconLinks>
-                            <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={compare.length} key={v4()}>
+                            <UserIconLink type='compare' to='/compares' active={compareActive} markContent={compare.length} key={v4()}>
                                 <Popup items={compare} type='compare' redirectButtonNotEmpty onDelete={onRemoveFromCompare} >
                                     {cartActive && <Popup.Button green to='/page/compares'>Перейти к сравнению</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={favourites.length} activeColor='red' key={v4()}>
+                            <UserIconLink type='heart' to='/favourites' active={favouritesActive && 'red'} markContent={favourites.length} activeColor='red' key={v4()}>
                                 <Popup items={favourites} type='favourites' redirectButtonNotEmpty onDelete={onRemoveFromFavourites} >
                                     {favouritesActive && <Popup.Button green to='/page/favourites'>Избранное</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={cart.length} key={v4()}>
+                            <UserIconLink type='cart' to='/cart' active={cartActive} markContent={cart.length} key={v4()}>
                                 <Popup items={cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={onRemoveFromCart}>
                                     {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
                                 </Popup>
