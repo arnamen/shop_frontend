@@ -7,10 +7,10 @@ import FormRow from './FormRow/FormRow';
 import classes from './Form.module.css';
 
 export default function Form( props ) {
-    const classes = ['Form'];
-    if(props.className) classes.push(props.className)
+    const className = [classes['Form']];
+    if(props.className) className.push(props.className)
     return (
-        <form className={classes.join(' ')}>
+        <form className={className.join(' ')}>
             {props.children}
         </form>
     )

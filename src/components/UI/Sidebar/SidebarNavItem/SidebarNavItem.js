@@ -8,7 +8,7 @@ import ReactChevronDown from '../../../../../public/assets/misc/down-chevron.svg
 export default function SidebarNavItem ( props ) {
 
     const [showList, setShowList] = useState(false);
-    console.log(classes)
+
     return (
         <li className={classes.SidebarNavItem} onClick={(event) => {
             event.stopPropagation();

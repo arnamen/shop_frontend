@@ -6,6 +6,19 @@
     width: 50vw;
 }
 
+.ItemPageCharacteristics_action-icon {
+    fill: black;
+    height: 20px;
+    width: 20px;
+    transition: 0.5s all;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.ItemPageCharacteristics_action-icon_cart, .ItemPageCharacteristics_action-icon-active {
+    fill: green;
+}
+
 .ItemPageCharacteristics__info-header {
     font-size: 28px;
     font-weight: 400;
@@ -117,9 +130,10 @@
     margin-left: 15px;
 }
 
-.ItemPageCharacteristics_action-icon_cart {
-    fill: white;
+.ItemPageCharacteristics_action-icon-active-red, .ItemPageCharacteristics_action-icon_heart:hover {
+    fill: red;
 }
+
 
 .ItemPageCharacteristics__carriage__seller {
     display: flex;

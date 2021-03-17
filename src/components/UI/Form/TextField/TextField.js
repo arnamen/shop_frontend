@@ -36,8 +36,8 @@ export default function TextField( props ) {
     
       const { id, onInput } = props;
       const { value, isValid } = inputState;
-      const className = ['TextField'];
-      if(!isValid && inputState.isTouched) className.push('TextField-invalid');
+      const className = [classes['TextField']];
+      if(!isValid && inputState.isTouched) className.push(classes['TextField-invalid']);
       useEffect(() => {
         onInput(id, value, isValid)
       }, [id, value, isValid, onInput]);

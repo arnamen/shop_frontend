@@ -99,7 +99,7 @@ function ContentPage(props) {
     useEffect(() => {
         //get params and split them ("?" is a separator)
         const filterParams = queryString.parse(router.asPath.split('?')[1], { arrayFormat: 'comma' });
-        console.log(filterParams)
+
         if (filterParams.categories && Array.isArray(filterParams.categories)) {
             filterParams.categories.forEach(category => {
 

@@ -8,8 +8,8 @@ import Counter from '../../../components/Counter/Counter';
 import Button from '../../../components/UI/Button/Button';
 import DeliveryCard from '../../../components/UI/Cards/DeliveryCard/DeliveryCard';
 
-import star from '../../../../public/assets/rating/stars/star.svg';
-import star_empty from '../../../../public/assets/rating/stars/star_empty.svg';
+import Star from '../../../../public/assets/rating/stars/star.svg';
+import starEmpty from '../../../../public/assets/rating/stars/star_empty.svg';
 
 import  ReactChat  from '../../../../public/assets/misc/chat.svg';
 import  ReactCart  from '../../../../public/assets/itemsCards/cart-for-card-item.svg';
@@ -64,10 +64,10 @@ export default function ItemPageGeneral(props) {
         })
 
     for (let i = 0; i < itemData.stars; i++) {
-        stars.push(<img key={v4()} className={classes.ItemPageGeneral__star} src={star} alt='star'></img>)
+        stars.push(<Star key={v4()} className={classes.ItemPageGeneral__star}></Star>)
     }
     for (let i = stars.length; i < 5; i++) {
-        stars.push(<img key={v4()} className={classes.ItemPageGeneral__star} src={star_empty} alt='star__empty'></img>)
+        stars.push(<StarEmpty key={v4()} className={classes.ItemPageGeneral__star}></StarEmpty>)
     }
 
     return (
@@ -106,9 +106,11 @@ export default function ItemPageGeneral(props) {
                 </div>
                 <div className={classes.ItemPageGeneral__rating}>
                     {stars}
-                    <Link className={classes['ItemPageGeneral__reviews-link']} href={'/'}>
+                    <Link href={'/'}>
+                        <a className={classes['ItemPageGeneral__reviews-link']}>
                         <ReactChat className={classes['ItemPageGeneral__reviews-link__icon']} />
                         <span>Рейтинг и отзывы</span>
+                        </a>
                     </Link>
                 </div>
                 <div className={classes.ItemPageGeneral__inStockStatus}>
@@ -142,7 +144,7 @@ export default function ItemPageGeneral(props) {
                 </div>
                 <div className={classes.ItemPageGeneral__actions}>
                     <div className={classes['ItemPageGeneral__action-wrapper'] + ' ' + classes['ItemPageGeneral__action-wrapper__piggy']}>
-                        <ReactPiggybank className={`ItemPageGeneral__action-icon`}
+                        <ReactPiggybank className={classes[`ItemPageGeneral__action-icon`]}
                             onClick={e => { }} />
                         <span>2999 бонусов</span>
                     </div>

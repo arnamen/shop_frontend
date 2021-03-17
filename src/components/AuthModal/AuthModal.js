@@ -21,6 +21,10 @@ import classes from './AuthModal.module.css';
 const AUTH_METHOD_LOGIN = 'login';
 const AUTH_METHOD_SIGNUP = 'signup';
 
+/**
+ * TODO: fix form submit
+ */
+
 function AuthModal(props) {
 
     const [authFormType, setAuthFormType] = useState(props.authFormType);

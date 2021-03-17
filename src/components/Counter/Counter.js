@@ -1,8 +1,8 @@
 import React from 'react'
 import { v4 } from 'uuid';
 
-import  ReactIncrease  from '../../public/assets/counter/counter-increase.svg';
-import  ReactDecrease  from '../../public/assets/counter/counter-decrease.svg';
+import  ReactIncrease  from '../../../public/assets/counter/counter-increase.svg';
+import  ReactDecrease  from '../../../public/assets/counter/counter-decrease.svg';
 
 import classes from './Counter.module.css';
 

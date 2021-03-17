@@ -22,14 +22,14 @@ function ItemPage(props) {
 
     if(props.content.length === 0) return (<div>Loading...</div>)
     //get find item in fetched items
-    const itemData = props.content.filter(item => item.id.toLowerCase() === itemId)[0];
+    const itemData = props.content.filter(item => item.id.toLowerCase() === itemid)[0];
     //check if item added to compare
     const compared = !!props.compare.find(item => item.name === itemData.name);
     //check if item added to favourites
     const favored = !!props.favourites.find(item => item.name === itemData.name);
     //check if item added to cart
     const inCart = !!props.cart.find(item => item.name === itemData.name);
-
+    console.log(compared, favored, inCart)
     return (
         <div className={classes.ItemPage}>
             <Tabs tabsNames={['Осноная информация', 'Характеристики']}>

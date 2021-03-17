@@ -16,6 +16,7 @@ const contentRetrieveStart = (state, action) => {
 }
 
 const contentRetrieveSuccess = (state, action) => {
+    
     return {
         ...state,
         loading: false,
