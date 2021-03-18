@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ClientAccount from '../';
+import ClientAccount from '..';
 
 import classes from './AccountDiscount.module.css';
 

@@ -54,5 +54,6 @@ export const validate = (value, validators, mask) => {
       else isValid = isValid && (value.trim().length === validator.val || value.trim().length === 0);
     }
   }
+  console.log(isValid);
   return isValid;
 };

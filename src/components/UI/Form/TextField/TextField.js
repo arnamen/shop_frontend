@@ -38,7 +38,9 @@ export default function TextField( props ) {
       const { value, isValid } = inputState;
       const className = [classes['TextField']];
       if(!isValid && inputState.isTouched) className.push(classes['TextField-invalid']);
+      props.className && className.push(props.className);
       useEffect(() => {
+        if(!onInput) return;
         onInput(id, value, isValid)
       }, [id, value, isValid, onInput]);
     
@@ -67,7 +69,7 @@ export default function TextField( props ) {
           defaultValue={props.defaultValue}
           required={props.required || false}
           key={props.autoupdate ? v4(): undefined}
-          readOnly={props.value}
+          readOnly={!!props.value}
           {...inputProps}/>)}
         </InputMask>
         : <input type={props.type || 'text'} 
@@ -76,9 +78,11 @@ export default function TextField( props ) {
         id={props.id || ''}
         placeholder={props.placeholder || ''}
         defaultValue={props.defaultValue}
+        value={props.value}
         required={props.required || false}
         key={props.autoupdate ? v4(): undefined}
-        readOnly={props.value}
+        readOnly={!!props.value}
+        onClick={props.onClick}
         onFocus={touchHandler}/>
     )
 }

@@ -38,7 +38,6 @@ export default function ModalSelect(props) {
             )
     }
     )
-
     return (
         <Modal onClose={props.onClose} visible={props.visible}>
             <header className={classes.ModalSelect__header}>

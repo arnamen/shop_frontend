@@ -14,7 +14,7 @@ import store from '../store';
 
 import './index.css';
 import 'pure-react-carousel/dist/react-carousel.cjs.css';
-
+import 'react-calendar/dist/Calendar.css';
 function App({ Component, pageProps }) {
 
   const router = useRouter();
