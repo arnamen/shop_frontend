@@ -116,7 +116,7 @@ function ContentPage(props) {
                 props.onAddCategory(translate[filterParams.categories]);
 
         }
-
+        console.log(availableFilters.categories)
         // необходимо выполнить это только при первом рендере и данные для url там будут всегда
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
