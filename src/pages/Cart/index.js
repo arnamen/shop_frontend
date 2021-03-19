@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { v4 } from 'uuid';
 import Link from 'next/link';
 
-import Counter from '../Counter/Counter';
+import Counter from '../../components/Counter/Counter';
 
 import * as actionTypes from '../../store/actions/actionTypes';
 
-import  ReactCart  from '../../public/assets/itemsCards/cart-for-card-item.svg';
-import  ReactTrash  from '../../public/assets/misc/trash.svg';
-import  ReactCheckmark  from '../../public/assets/misc/checkmark.svg';
+import  ReactCart  from '../../../public/assets/itemsCards/cart-for-card-item.svg';
+import  ReactTrash  from '../../../public/assets/misc/trash.svg';
+import  ReactCheckmark  from '../../../public/assets/misc/checkmark.svg';
 import classes from './Cart.module.css';
 
 function Cart(props) {
@@ -53,8 +53,8 @@ function Cart(props) {
                     <ReactCheckmark className={classes['Cart__promocode-submit-image']} viewBox="0 0 512 512" />
                 </span>
             </div>
-            <button className={classes['Cart__checkout-button']} onClick={(e) => e.preventDefault()}>оформить заказ</button>
-            <button className={classes['Cart__checkout-instant-button']} onClick={(e) => e.preventDefault()}>Заказ в один клик</button>
+            <button className={classes['Cart__checkout-button']} onClick={(e) => {e.preventDefault(); alert('Submitted (test mode)')}}>оформить заказ</button>
+            <button className={classes['Cart__checkout-instant-button']} onClick={(e) => {e.preventDefault(); alert('Submitted (test mode)')}}>Заказ в один клик</button>
         </div>
     </form>;
 

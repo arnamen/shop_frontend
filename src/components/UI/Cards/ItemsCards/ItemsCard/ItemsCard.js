@@ -117,7 +117,7 @@ function ItemsCard(props) {
                         }} />
                 </div>
                 <div className={classes['ItemsCard_action-wrapper']}>
-                    <ReactCompare className={`${classes['ItemsCard_action-icon']} ${classes['ItemsCard_action-icon_compare']} ${favored && classes['ItemsCard_action-icon-active']}`}
+                    <ReactCompare className={`${classes['ItemsCard_action-icon']} ${classes['ItemsCard_action-icon_compare']} ${compared && classes['ItemsCard_action-icon-active']}`}
                         onClick={e => {
                             compared
                                 ? props.onRemoveFromCompare(props.itemData)

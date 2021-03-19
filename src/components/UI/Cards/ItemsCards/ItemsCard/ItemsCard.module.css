@@ -11,6 +11,7 @@
     overflow: hidden;
     padding: 10px;
     box-sizing: border-box;
+    composes: ItemsCard from '../../../../../pages/account/orders/AccountHistory.module.css';
 }
 
 .ItemsCard_image-main {

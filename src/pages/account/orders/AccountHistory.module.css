@@ -1,0 +1,9 @@
+
+.AccountHistory {
+    max-height: 100vh;
+    overflow: auto;
+}
+
+.AccountHistory .ItemsCard {
+    min-width: 190px!important;
+}

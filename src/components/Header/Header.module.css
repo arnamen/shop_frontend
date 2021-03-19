@@ -86,7 +86,7 @@
         margin: 0 1vw;
     }
     .Header__wrapper-top {
-        height: 0;
+        display: none;
     }
 
     .Header__wrapper-top * {
@@ -101,7 +101,7 @@
     .Header__bottom-simple {
         display: flex;
         justify-content: center;
-        padding: 2vh 0;
+        padding: 25px 0 25px 0;
     }
     .Header__bottom-simple .logo__wrapper {
         max-width: fit-content;

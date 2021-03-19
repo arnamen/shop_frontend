@@ -40,7 +40,7 @@ const ItemPageCharacteristics = (props) => {
 
     const CartIcon = !inCart
         ? <ReactCart className={classes[`ItemPageCharacteristics_action-icon`]} viewBox="0 0 512 512"/>
-        : <ReactCartFull className={`${classes[`ItemPageCharacteristics_action-icon`]} ${classes[`ItemPageCharacteristics_action-icon_cart`]}`} viewBox="0 0 512 512"/>
+        : <ReactCartFull className={`${classes[`ItemPageCharacteristics_action-icon`]} ${classes[`ItemPageCharacteristics_action-icon-active`]}`} viewBox="0 0 512 512"/>
 
     return (
         <div className={classes['ItemPageCharacteristics-wrapper']} style={{display: 'flex'}}>

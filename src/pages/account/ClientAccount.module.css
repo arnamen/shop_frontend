@@ -35,3 +35,9 @@
 .AccountAddress__formRow {
     position: relative;
 }
+
+@media (max-width: 565px) {
+    .ClientAccount__content {
+        padding: 20px 5px 40px 5px;
+    }
+}

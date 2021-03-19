@@ -7,19 +7,21 @@
     pointer-events: none;
 }
 
-@media (hover:hover) {
-    .UserIconLink__wrapper:hover .Popup {
-        /* display: block; */
-        margin-top: 8px;
-        opacity: 1;
-        z-index: 999;
-        pointer-events: all;
-    }
+
+.UserIconLink__wrapper:hover .Popup {
+    /* display: block; */
+    margin-top: 8px;
+    opacity: 1;
+    z-index: 999;
+    pointer-events: all;
 }
+
 
 .UserIconLink__icon {
     width: 2vw;
     height: 2vw;
+    min-width: 25px;
+    min-height: 25px;
     max-width: 30px;
     max-height: 30px;
     margin: 0 0.5vw;

@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux';
 
 import * as actionTypes from '../../store/actions/actionTypes';
-import ItemsCards from '../UI/Cards/ItemsCards/ItemsCards';
+import ItemsCards from '../../components/UI/Cards/ItemsCards/ItemsCards';
 
-import {ReactComponent as ReactFavouritesEmpty} from '../../../public/assets/account/heart.svg';
+import ReactFavouritesEmpty from '../../../public/assets/account/heart.svg';
 
 import classes from './Favourites.module.css';
 

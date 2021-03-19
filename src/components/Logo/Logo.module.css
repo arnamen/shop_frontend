@@ -59,3 +59,9 @@
     font-size: 2.5vh;
     color: #e78905;
 }
+
+@media screen and (max-width: 1035px) {
+    .logo__wrapper {
+        max-width: unset;
+    }
+}

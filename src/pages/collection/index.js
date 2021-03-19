@@ -116,7 +116,6 @@ function ContentPage(props) {
                 props.onAddCategory(translate[filterParams.categories]);
 
         }
-        console.log(availableFilters.categories)
         // необходимо выполнить это только при первом рендере и данные для url там будут всегда
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -154,7 +153,7 @@ function ContentPage(props) {
                         <Sidebar.Item>
                             <div className={classes['ContentPage__price-range']}>
                                 <div className={classes['ContentPage__price-min']}>
-                                    <label htmlFor='ContentPage__price-min__input'>От:</label>
+                                    <label htmlFor={classes['ContentPage__price-min__input']}>От:</label>
                                     <input type='text' key={'input_min'} id={classes['ContentPage__price-min__input']}
                                         ref={inputMinRef}
                                         placeholder={`${priceRange[0]}₴`}
@@ -195,7 +194,7 @@ function ContentPage(props) {
                             </Button>
                         <span className={classes['ContentPage__order-select-text']}>Сортировать:</span>
                         <select name="ContentPage__order-select"
-                            className="ContentPage__order-select"
+                            className={classes["ContentPage__order-select"]}
                             onChange={(event) => {
                                 setSotringOrder(event.target.value);
                             }} defaultValue='default'>

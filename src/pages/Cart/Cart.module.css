@@ -89,7 +89,7 @@
 
 .Cart__amount-wrapper {
     display: flex;
-    width: 160px;
+    width: 220px;
     margin-left: 5px;
 }
 
@@ -219,7 +219,7 @@
      }
  }
 
- @media screen and (max-width: 1024px) {
+ @media screen and (max-width: 1075px) {
     .Cart__content-wrapper {
         display: block;
     }

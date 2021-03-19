@@ -1,5 +1,6 @@
 .ItemPageCharacteristics-wrapper {
     display: flex;
+    padding-bottom: 15px;
 }
 
 .ItemPageCharacteristics__info {

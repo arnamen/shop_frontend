@@ -85,13 +85,14 @@
     margin: 0;
     list-style-type: none;
     height: 100vh;
+    left: -100%;
     display: inline-block;
     width: 30%;
     min-width: 200px;
     text-align: center;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.6);
-    animation: slidein 0.5s;
+    animation-fill-mode: forwards;
 }
 
 
@@ -103,8 +104,15 @@
     background-color: rgba(0,0,0,.3);
 }
 
+
+
 .Burger__hide {
     animation: removeElem 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.Burger__show .Burger__itemsList {
+    animation: slidein 0.5s;
     animation-fill-mode: forwards;
 }
 

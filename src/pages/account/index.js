@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import redirect from 'nextjs-redirect';
 
 import AccountHistory from './orders';
 
@@ -17,9 +18,16 @@ import classes from './ClientAccount.module.css';
 function ClientAccount(props) {
 
     const router = useRouter();
+
+
+    const Redirect = redirect('/');
+
+    if(!props.userId && process.browser) return <Redirect/>
+
     //if there is nothing to wrap this component in - return account history
     if(!props.children) return <AccountHistory historyItems={props.content}/>;
 
+    
     return (
         <div className={classes.ClientAccount}>
             <div className={classes.ClientAccount__content}>
@@ -67,6 +75,7 @@ const mapStateToProps = state => {
         compare: state.compare.compare,
         favourites: state.favourites.favourites,
         cart: state.cart.cart,
+        userId: state.auth.userId
     };
 }
 

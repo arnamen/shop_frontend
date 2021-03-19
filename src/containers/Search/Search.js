@@ -43,8 +43,6 @@ function Search( props ) {
             if(matched) matchedContent.push(item);
     });
 
-    console.log(matchedContent)
-
     return (
         <div className={classes['Search']}>
             <input type='text' 

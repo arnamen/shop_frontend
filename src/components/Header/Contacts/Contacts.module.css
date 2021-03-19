@@ -4,6 +4,7 @@
     width: 18vw;
     max-width: 180px;
     margin-right: 3vw;
+    composes: Contacts__wrapper from '../../Footer/FooterContacts/FooterContacts.module.css';
 }
 
 .Contacts__feedback-wrapper {
