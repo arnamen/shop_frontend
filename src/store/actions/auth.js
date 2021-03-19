@@ -59,6 +59,12 @@ export const authRedirectPath = (path) => {
     }
 }
 
+export const authClearError = () => {
+    return {
+        type: actionTypes.AUTH_CLEAR_ERROR,
+    }
+}
+
 export const authCheckState = () => {
     if(window) {
         return dispatch => {

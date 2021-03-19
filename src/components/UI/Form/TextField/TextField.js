@@ -61,7 +61,12 @@ export default function TextField( props ) {
 
     return (
         props.mask 
-        ? <InputMask mask={props.mask} value={props.value} onChange={changeHandler} alwaysShowMask onFocus={touchHandler}>
+        ? <InputMask mask={props.mask} 
+        value={props.value} 
+        onChange={changeHandler} 
+        alwaysShowMask 
+        onFocus={touchHandler}
+        readOnly={!!props.value}>
           {(inputProps => <input type={props.type || 'text'} 
           className={className.join(' ')} 
           id={props.id || ''}
@@ -69,7 +74,6 @@ export default function TextField( props ) {
           defaultValue={props.defaultValue}
           required={props.required || false}
           key={props.autoupdate ? v4(): undefined}
-          readOnly={!!props.value}
           {...inputProps}/>)}
         </InputMask>
         : <input type={props.type || 'text'} 

@@ -14,9 +14,12 @@
     margin: 0 5px;
     cursor: pointer;
 }
-
-.ItemPageCharacteristics_action-icon_cart, .ItemPageCharacteristics_action-icon-active {
+.ItemPageCharacteristics_action-icon-active {
     fill: green;
+}
+
+.ItemPageCharacteristics_action-icon_cart {
+    fill: white;
 }
 
 .ItemPageCharacteristics__info-header {

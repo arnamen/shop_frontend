@@ -51,6 +51,13 @@ const authSetIp = (state, action) => {
     };
 }
 
+const authClearError = (state, action) => {
+    return {
+        ...state,
+        error: null
+    };
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
@@ -58,6 +65,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.AUTH_START: return authStart(state, action);
         case actionTypes.AUTH_FAIL: return authFail(state, action);
         case actionTypes.AUTH_SET_IP: return authSetIp(state, action);
+        case actionTypes.AUTH_CLEAR_ERROR: return authClearError(state, action);
         default:
             return state;
     }

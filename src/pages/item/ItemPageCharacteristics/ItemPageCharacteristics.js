@@ -102,7 +102,7 @@ const ItemPageCharacteristics = (props) => {
                             </div>
                         </div>
                     </div>
-                    <Button onClick={() => 0} className={classes.ItemPageCharacteristics__carriage__buy__button}>
+                    <Button onClick={() => alert("ordered! (test mode)")} className={classes.ItemPageCharacteristics__carriage__buy__button}>
                         <span>
                             <ReactCart className={`${classes['ItemPageCharacteristics_action-icon']} ${classes['ItemPageCharacteristics_action-icon_cart']}`} />
                         </span>

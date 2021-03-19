@@ -29,7 +29,7 @@ function ItemPage(props) {
     const favored = !!props.favourites.find(item => item.name === itemData.name);
     //check if item added to cart
     const inCart = !!props.cart.find(item => item.name === itemData.name);
-    console.log(compared, favored, inCart)
+
     return (
         <div className={classes.ItemPage}>
             <Tabs tabsNames={['Осноная информация', 'Характеристики']}>

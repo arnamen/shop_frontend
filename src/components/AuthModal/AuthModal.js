@@ -21,10 +21,6 @@ import classes from './AuthModal.module.css';
 const AUTH_METHOD_LOGIN = 'login';
 const AUTH_METHOD_SIGNUP = 'signup';
 
-/**
- * TODO: fix form submit
- */
-
 function AuthModal(props) {
 
     const [authFormType, setAuthFormType] = useState(props.authFormType);
@@ -39,10 +35,11 @@ function AuthModal(props) {
         },
     }, false);
     const [showInvalidFormMessage, setShowInvalidFormMessage] = useState(false);
-
+    const [errorMessageAuthType, setErrorMessageAuthType] = useState(props.authFormType);
+    if (props.authError && !showInvalidFormMessage) setShowInvalidFormMessage(true);
     const switchAuthType = useCallback((currentAuthType) => {
-
         setShowInvalidFormMessage(false);
+        props.onClearError();
 
         switch (currentAuthType) {
             case 'login':
@@ -80,10 +77,6 @@ function AuthModal(props) {
         }
     }, [formState, setFormData, authFormType]);
 
-    useEffect(() => {
-        switchAuthType(props.authFormType);
-    }, []);
-
     const authSubmitHandler = async (event) => {
 
         event.preventDefault();
@@ -108,11 +101,22 @@ function AuthModal(props) {
             phoneNumber
         }
 
-            props.onAuth(CURRENT_AUTH_METHOD, authData);
-            if(!props.uathError) props.onClose();
+        props.onAuth(CURRENT_AUTH_METHOD, authData);
+
     }
 
-    if(props.authError && !showInvalidFormMessage) setShowInvalidFormMessage(true);
+    useEffect(() => {
+        //close modal if token recieved
+        if (props.token) props.onClose();
+    }, [props.token])
+
+    useEffect(() => {
+        //erase error message after modal is closed
+        return () => {
+            props.onClearError();
+            setShowInvalidFormMessage(false);
+        }
+    }, [])
 
     return (
         <Modal onClose={props.onClose} visible={props.visible}>
@@ -126,11 +130,11 @@ function AuthModal(props) {
                     <div className={classes['AuthModal__form-wrapper']}>
                         <span className={classes['AuthModal__choice-text']}>или</span>
                         {/* Error messages that will appear on different form errors */}
-                        {showInvalidFormMessage && !formState.isValid &&  authFormType === AUTH_METHOD_SIGNUP
+                        {showInvalidFormMessage && !formState.isValid && authFormType === AUTH_METHOD_SIGNUP
                             && <span className={classes['AuthModal__invalid-form-label']}>Упс, похоже, что в форме есть ошибки. Необходимо их исправить перед тем как завершить регистрацию.</span>}
-                            {showInvalidFormMessage && !formState.isValid && authFormType === AUTH_METHOD_LOGIN
+                        {showInvalidFormMessage && !formState.isValid && authFormType === AUTH_METHOD_LOGIN
                             && <span className={classes['AuthModal__invalid-form-label']}>Данные для входа заполнены с ошибками.</span>}
-                            {showInvalidFormMessage && props.authError
+                        {showInvalidFormMessage && props.authError
                             && <span className={classes['AuthModal__invalid-form-label']}>{props.authError.message}</span>}
                         {/*  */}
                         <Form>
@@ -156,12 +160,12 @@ function AuthModal(props) {
 
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
                                 <Form.Label for='field' className={classes.AuthModal__label} required>Придумайте пароль</Form.Label>
-                                <Form.TextField id={"password"} type='password' onInput={inputHandler} initialValid={false} validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}/>
+                                <Form.TextField id={"password"} type='password' onInput={inputHandler} initialValid={false} validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]} />
                                 <Form.Label for='field' className={classes.AuthModal__label}>Пароль должен быть не менее 6 символов, содержать цифры и латинские буквы, в том числе заглавные, и не должен совпадать с именем и эл. почтой</Form.Label>
                             </Form.Row>}
 
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
-                                <Button className={classes.AuthModal__submit} onClick={authSubmitHandler}>{props.loading ? <LoadingSpinner/> : 'Зарегистрироваться'}</Button>
+                                <Button className={classes.AuthModal__submit} onClick={authSubmitHandler}>{props.loading ? <LoadingSpinner /> : 'Зарегистрироваться'}</Button>
                             </Form.Row>}
 
                             {authFormType === AUTH_METHOD_SIGNUP && <Form.Row>
@@ -171,7 +175,7 @@ function AuthModal(props) {
                             {authFormType === AUTH_METHOD_LOGIN && <React.Fragment>
                                 <Form.Row>
                                     <Form.Label for='field' className={classes.AuthModal__label} required>Пароль</Form.Label>
-                                    <Form.TextField id={"password"} type='password' onInput={inputHandler} initialValid validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}/>
+                                    <Form.TextField id={"password"} type='password' onInput={inputHandler} initialValid validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]} />
                                 </Form.Row>
 
                                 <Form.Row>
@@ -182,7 +186,7 @@ function AuthModal(props) {
                                 </Form.Row>
 
                                 <Form.Row>
-                                    <Button className={classes.AuthModal__submit} onClick={authSubmitHandler}>{props.loading ? <LoadingSpinner/> : 'Войти'}</Button>
+                                    <Button className={classes.AuthModal__submit} onClick={authSubmitHandler}>{props.loading ? <LoadingSpinner /> : 'Войти'}</Button>
                                 </Form.Row>
 
                                 <Form.Row>
@@ -210,6 +214,7 @@ function AuthModal(props) {
 }
 
 const mapStateToProps = (state) => {
+
     return {
         userId: state.auth.userId,
         token: state.auth.token,
@@ -221,7 +226,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (authMethod, authData) => dispatch(actions.auth(authMethod, authData)),
-        // onSetAuthRedirectPath: () => dispatch(actions.authRedirectPath('/'))
+        onClearError: () => dispatch(actions.authClearError()),
     };
 };
 

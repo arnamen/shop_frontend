@@ -137,7 +137,7 @@ export default function ItemPageGeneral(props) {
                         </Button>
                     </div>
                     <div>
-                        <Button className={classes['ItemPageGeneral__cartButton-blue']} onClick={() => { }}>
+                        <Button className={classes['ItemPageGeneral__cartButton-blue']} onClick={() => alert("Ordered! (test mode)")}>
                             <span>заказ в один клик</span>
                         </Button>
                     </div>

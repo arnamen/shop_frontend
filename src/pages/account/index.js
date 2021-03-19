@@ -50,7 +50,7 @@ function ClientAccount(props) {
                         Контактные данные
                         </a>
                 </Link>
-                <Link href='/account/loguot'>
+                <Link href='/account/logout'>
                     <a className={`${classes['ClientAccount__navigation-link']} 
                     ${router.pathname === '/account/logout' && classes['ClientAccount__navigation-link-active']}`}>
                         Выход

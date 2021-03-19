@@ -18,6 +18,12 @@ export default function Modal(props) {
         setLockScroll(props.visible);
     }, [props])
 
+    useEffect(() => {
+        return () => {
+            clearAllBodyScrollLocks();
+        }
+    }, [])
+
     return (
         props.visible
             ? <Portal node={document && document.getElementById('root')}>
