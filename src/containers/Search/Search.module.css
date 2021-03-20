@@ -64,8 +64,9 @@
 }
 
 .Search .Popup {
-    animation: 0.5s slideAwayToBottom;
     z-index: -999;
+    animation-name: slideAwayToBottom;
+    animation-duration: 0.5s;
     left: 0;
     min-width: 33vw;
     margin-top: 4vh;
@@ -75,7 +76,8 @@
 .Search:focus-within .Popup {
     opacity: 1;
     display: block;
-    animation: 0.5s slideInFromBottom;
+    animation-duration: 0.5s;
+    animation-name: slideInFromBottom;
     pointer-events: all;
 }
 
