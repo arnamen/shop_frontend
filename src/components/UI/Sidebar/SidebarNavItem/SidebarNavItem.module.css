@@ -1,0 +1,44 @@
+
+
+.SidebarNavItem {
+    width: 100%;
+    position: relative;
+}
+
+.SidebarNavItem__inner {
+    margin: 0;
+    list-style-type: none;
+    width: 100%;
+}
+
+.SidebarNavItem__title {
+    font-weight: 300;
+    color: #888;
+    fill: #888;
+    font-size: 14px;
+    transition: 0.3s all;
+    cursor: pointer;
+}
+
+.SidebarNavItem__inner-hide {
+    display: none;
+}
+
+.SidebarNavItem .SidebarNavItem__title-wrapper {
+    position: relative;
+}
+
+.SidebarNavItem .chevron {
+    width: 25px;
+    height: 12px;
+    position: absolute;
+    right: 1vw;
+    top: 50%;
+    transform: translate(0px, -50%);
+    font-weight: 300;
+    color: #888;
+    fill: #888;
+    font-size: 14px;
+    transition: 0.3s all;
+    cursor: pointer;
+}

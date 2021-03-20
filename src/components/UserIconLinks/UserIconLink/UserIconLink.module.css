@@ -1,0 +1,61 @@
+.UserIconLink__wrapper {
+    position: relative;
+}
+
+.UserIconLink__wrapper .Popup {
+    z-index: -999;
+    pointer-events: none;
+}
+
+
+.UserIconLink__wrapper:hover .Popup {
+    /* display: block; */
+    margin-top: 8px;
+    opacity: 1;
+    z-index: 999;
+    pointer-events: all;
+}
+
+
+.UserIconLink__icon {
+    width: 2vw;
+    height: 2vw;
+    min-width: 25px;
+    min-height: 25px;
+    max-width: 30px;
+    max-height: 30px;
+    margin: 0 0.5vw;
+    margin-top: 6px;
+    fill: black;
+}
+
+.UserIconLink__icon-white {
+    fill: white;
+}
+
+.UserIconLink__icon-active {
+    fill: green;
+    cursor: pointer;
+}
+
+.UserIconLink__icon-active-red {
+    fill: red;
+}
+
+.UserIconLink__icon-active-orange {
+    fill: #e78905;
+}
+
+.UserIconLink__ContentMarker {
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    text-align: center;
+    position: absolute;
+    top: 3px;
+    right: 0;
+    border-radius: 50px;
+    background-color: red;
+    color: white;
+    font-size: 9px;
+}

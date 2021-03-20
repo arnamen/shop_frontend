@@ -1,15 +1,15 @@
 import React from 'react'
 import {v4} from 'uuid';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
-import './PopupList.css';
+import classes from './PopupList.module.css';
 
 export default function PopupList( props ) {
     return (
-        <div className='PopupList'>
+        <div className={classes.PopupList}>
             <ul>
                 {props.listData.map(listItem => <li key={v4()}>
-                <Link to={listItem.to || '/'}>{listItem.title}</Link>
+                <Link href={listItem.to || '/'}>{listItem.title}</Link>
                 </li>)}
             </ul>
         </div>

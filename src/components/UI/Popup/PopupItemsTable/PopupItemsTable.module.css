@@ -1,0 +1,66 @@
+.PopupItemsTable__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vh 1vw;
+    transition: 0.5s all;
+    cursor: pointer;
+}
+
+.PopupItemsTable__item:hover {
+    box-shadow: 0px 0px 0px 0px white, 0px 0px 5px 5px rgba(0, 0, 0, 0.05);
+}
+
+.PopupItemsTable__item__image-wrapper {
+    text-align: center;
+    width: 75px;
+    display: block;
+}
+
+.PopupItemsTable__item__image {
+    max-height: 65px;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.PopupItemsTable__item-descr {
+    min-width: 160px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 15px;
+    font-size: 12px;
+    font-weight: 300;
+    color: black;
+    transition: 0.3s color;
+    cursor: pointer;
+}
+
+.PopupItemsTable__item-descr:hover {
+    color: #e78905;
+}
+
+.PopupItemsTable__item__unit-price {
+    color: #000;
+    text-align: left;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.PopupItemsTable__trash-image {
+    width: 20px;
+    height: 20px;
+    transition: 0.2s fill;
+    cursor: pointer;
+}
+
+.PopupItemsTable__item-descr-tr {
+    width: 100%;
+}
+
+.PopupItemsTable__item-descr__custom-text {
+    font-weight: 300;
+    color: #888;
+    font-size: 14px;
+    margin-top: 5px;
+}

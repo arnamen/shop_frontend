@@ -1,0 +1,42 @@
+.ItemPage {
+    width: 100%;
+    padding: 3vh 5vw 5vh 5vw;
+    display: flex;
+}
+
+.ItemPage .Tabs input[type="radio"]:checked + label {
+    background-image: linear-gradient(to right, black 100%, rgba(255,255,255,0) 0%);
+    background-position: bottom;
+    background-size: 100% 1px;
+    background-repeat: repeat-x;
+    color: black;
+    font-weight: 700;
+}
+
+.ItemPage .Tabs__radio-wrapper {
+    margin: auto;
+    text-align: left;
+    width: 100%;
+    padding-bottom: 2vh;
+    background-color: #f7f8fa;
+}
+
+@media screen and (max-width: 950px) {
+    .ItemPage {
+        padding: 0;
+    }
+    .ItemPage .Tabs__radio-wrapper {
+        display: flex;
+        padding: 0;
+        padding-bottom: 5px;
+        position: sticky;
+        top: 45px;
+        z-index: 99;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .ItemPageGeneral__actions {
+        display: none;
+    }
+}

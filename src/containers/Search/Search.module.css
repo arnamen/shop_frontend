@@ -1,0 +1,84 @@
+.Search {
+    width: 40vw;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    margin: 0 1vw;
+    padding-left: 2vw;
+    position: relative;
+}
+
+.Search__field {
+    height: 5vh;
+    width: 100%;
+    font-size: 1.1vw;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    padding: 0 1vw;
+    transition: 0.5s all;
+}
+
+.Search__field:focus {
+    outline: none;
+    box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.33)
+}
+
+
+.Search__button {
+    transform: translateX(-7vh);
+    width: 5vh;
+    height: 5vh;
+}
+
+.Search:focus-within .Search__button {
+    opacity: 0;
+}
+
+.Search__matched-content {
+    position: absolute;
+    left: 2vw;
+    z-index: 999;
+    background-color: black;
+}
+
+@keyframes slideInFromBottom {
+    from {
+        margin-top: 5vh;
+        opacity: 0;
+    }
+    to {
+        margin-top: 4vh;
+        opacity: 1;
+    }
+}
+
+@keyframes slideAwayToBottom {
+    from {
+        margin-top: 4vh;
+        opacity: 1;
+    }
+    to {
+        margin-top: 5vh;
+        opacity: 0;
+    }
+}
+
+.Search .Popup {
+    animation: 0.5s slideAwayToBottom;
+    z-index: -999;
+    left: 0;
+    min-width: 33vw;
+    margin-top: 4vh;
+    pointer-events: none;
+}
+
+.Search:focus-within .Popup {
+    opacity: 1;
+    display: block;
+    animation: 0.5s slideInFromBottom;
+    pointer-events: all;
+}
+
+.Search__matched-content .Popup::before {
+    right: auto;
+}

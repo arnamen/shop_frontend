@@ -1,54 +1,56 @@
 import React from 'react'
 
-import '../../UI/Popup/PopupSimple/PopupSimple';
-import PopupSimple from '../../UI/Popup/PopupSimple/PopupSimple';
+import classesPopup from './../../UI/Popup/PopupSimple/PopupSimple.module.css';
+import PopupSimple from './../../UI/Popup/PopupSimple/PopupSimple';
 
-import './Contacts.css';
-import {ReactComponent as ReactEnvelope} from '../../../assets/footer/envelope.svg';
-import {ReactComponent as ReactPlaceLocalizer} from '../../../assets/footer/place-localizer.svg';
-import {ReactComponent as ReactClock} from '../../../assets/footer/clock.svg';
-import {ReactComponent as ReactVK} from '../../../assets/social/009-vk.svg';
-import {ReactComponent as ReactMessenger} from '../../../assets/social/044-messenger.svg';
-import {ReactComponent as ReactGooglePlus} from '../../../assets/social/035-google-plus.svg';
-import {ReactComponent as ReactTwitter} from '../../../assets/social/013-twitter-1.svg';
-import {ReactComponent as ReactWhatsApp} from '../../../assets/social/007-whatsapp.svg';
-import {ReactComponent as ReactSkype} from '../../../assets/social/022-skype.svg';
+import classesContacts from './Contacts.module.css';
+import ReactEnvelope from '../../../../public/assets/footer/envelope.svg';
+import ReactPlaceLocalizer from '../../../../public/assets/footer/place-localizer.svg';
+import ReactClock from '../../../../public/assets/footer/clock.svg';
+import ReactVK from '../../../../public/assets/social/009-vk.svg';
+import ReactMessenger from '../../../../public/assets/social/044-messenger.svg';
+import ReactGooglePlus from '../../../../public/assets/social/035-google-plus.svg';
+import ReactTwitter from '../../../../public/assets/social/013-twitter-1.svg';
+import ReactWhatsApp from '../../../../public/assets/social/007-whatsapp.svg';
+import ReactSkype from '../../../../public/assets/social/022-skype.svg';
+
+const classes = {...classesPopup, ...classesContacts}
 
 export default function Contacts(props) {
     return (
-        <div className={'Contacts__wrapper'}>
-            <div className={'Contacts__phone-number ' + (props.simple && 'Contacts__phone-number-simple')}>
+        <div className={classes['Contacts__wrapper']}>
+            <div className={`${classes['Contacts__phone-number']} ${(props.simple && classes['Contacts__phone-number-simple'])}`}>
                 +38 (093) 055-91-47
             </div>
-            <div className={'Contacts__feedback-wrapper ' + (props.simple && 'Contacts__feedback-wrapper-simple')}>
-                <a className={'Contacts__get-feedback'} href='/'>
+            <div className={`${classes['Contacts__feedback-wrapper']} ${(props.simple && classes['Contacts__feedback-wrapper-simple'])}`}>
+                <button className={classes['Contacts__get-feedback']} href='/' onClick={(e) => e.preventDefault()}>
                     Заказать звонок
-                </a>
-                {!props.simple && <div className='Contacts__dots'>
-                    <div className={'circle'}></div>
-                    <div className={'circle'}></div>
-                    <div className={'circle'}></div>
+                </button>
+                {!props.simple && <div className={classes.Contacts__dots}>
+                    <div className={classes['circle']}></div>
+                    <div className={classes['circle']}></div>
+                    <div className={classes['circle']}></div>
                     <PopupSimple>
                     <ul>
                 <li>
-                    <ReactEnvelope className='Contacts__icon'/>
+                    <ReactEnvelope className={classes.Contacts__icon}/>
                     <a href='mailto:support@drawershop.com'>support@drawershop.com</a>
                 </li>
                 <li>
-                <ReactPlaceLocalizer className='Contacts__icon'/>
+                <ReactPlaceLocalizer className={classes.Contacts__icon}/>
                     <span>02000, Украина, Киев <br/> ул. Тарасовская, 18</span>
                 </li>
                 <li>
-                <ReactClock className='Contacts__icon'/>
+                <ReactClock className={classes.Contacts__icon}/>
                     <span>7 дней в неделю с 10 до 18 часов</span>
                 </li>
-                <li className='Contacts__social-wrapper'>
-                    <a href='http://google.com'><ReactGooglePlus className='Contacts__icon'/></a>
-                    <a href='http://vk.com'><ReactVK className='Contacts__icon'/></a>
-                    <a href='http://messenger.com'><ReactMessenger className='Contacts__icon'/></a>
-                    <a href='http://twitter.com'><ReactTwitter className='Contacts__icon'/></a>
-                    <a href='http://whatsapp.com'><ReactWhatsApp className='Contacts__icon'/></a>
-                    <a href='http://skype.com'><ReactSkype className='Contacts__icon'/></a>
+                <li className={classes['Contacts__social-wrapper']}>
+                    <a href='http://google.com'><ReactGooglePlus className={classes.Contacts__icon}/></a>
+                    <a href='http://vk.com'><ReactVK className={classes.Contacts__icon}/></a>
+                    <a href='http://messenger.com'><ReactMessenger className={classes.Contacts__icon}/></a>
+                    <a href='http://twitter.com'><ReactTwitter className={classes.Contacts__icon}/></a>
+                    <a href='http://whatsapp.com'><ReactWhatsApp className={classes.Contacts__icon}/></a>
+                    <a href='http://skype.com'><ReactSkype className={classes.Contacts__icon}/></a>
                 </li>
             </ul>
                     </PopupSimple>

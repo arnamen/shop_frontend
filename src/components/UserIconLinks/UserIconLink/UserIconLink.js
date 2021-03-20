@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
-import './UserIconLink.css';
+import classes from './UserIconLink.module.css';
 
-import { ReactComponent as ReactAccount } from '../../../assets/account/account.svg';
-import { ReactComponent as ReactCart } from '../../../assets/account/cart.svg';
-import { ReactComponent as ReactCompare } from '../../../assets/account/compare.svg';
-import { ReactComponent as ReactHeart } from '../../../assets/account/heart.svg';
+import ReactAccount from '../../../../public/assets/account/account.svg';
+import ReactCart from '../../../../public/assets/account/cart.svg';
+import ReactCompare from '../../../../public/assets/account/compare.svg';
+import ReactHeart from '../../../../public/assets/account/heart.svg';
 const iconTypes = {
     account: ReactAccount,
     cart: ReactCart,
@@ -17,26 +17,30 @@ const iconTypes = {
 export default function UserIconLink(props) {
     const SVGimage = iconTypes[props.type];
     let ContentMarker = null;
-    let className = 'UserIconLink__icon';
+    let className = [classes['UserIconLink__icon']];
 
     if (props.active && props.activeColor)
-        className += ` UserIconLink__icon-active UserIconLink__icon-active-${props.activeColor}`;
+        className.push(classes[`UserIconLink__icon-active`], classes[`UserIconLink__icon-active-${props.activeColor}`]);
     else if (props.active)
-        className += ` UserIconLink__icon-active`;
+        className.push(classes[`UserIconLink__icon-active`]);
 
-    if (props.markContent && props.active) ContentMarker = <div className='UserIconLink__ContentMarker'>{props.markContent}</div>
+    if (props.markContent && props.active) ContentMarker = <div className={classes.UserIconLink__ContentMarker}>{props.markContent}</div>
+
+    console.log(props.to)
 
     return (
-        <div className='UserIconLink__wrapper'>
+        <div className={classes.UserIconLink__wrapper}>
             {props.active
-                ? <Link to={props.to}>
-                    <SVGimage className={className}
-                        viewBox="0 0 512 512" />
-                    {ContentMarker}
+                ? <Link href={props.to}>
+                    <a>
+                        {SVGimage && <SVGimage className={className.join(' ')}
+                            viewBox="0 0 512 512" />}
+                        {ContentMarker}
+                    </a>
                 </Link>
                 : <span>
-                    <SVGimage className={className}
-                        viewBox="0 0 512 512" />
+                    {SVGimage && <SVGimage className={className.join(' ')}
+                        viewBox="0 0 512 512" />}
                     {ContentMarker}
                 </span>}
             {props.children}

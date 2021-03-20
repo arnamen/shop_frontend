@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 import ModalSelect from '../../Modal/ModalSelect/ModalSelect';
 
 import { cities as CitiesList } from '../../../../utils/cities';
-import { ReactComponent as ReactDeliveryTruck } from '../../../../assets/delivery/delivery-truck.svg';
+import  ReactDeliveryTruck  from '../../../../../public/assets/delivery/delivery-truck.svg';
 
-import './DeliveryCard.css';
+import classes from './DeliveryCard.module.css';
 
 export default function DeliveryCard(props) {
 
@@ -37,21 +37,21 @@ export default function DeliveryCard(props) {
 
     const modalData = CitiesList.map(cityData => { return { name: cityData.city, subtitle: cityData.region } })
     return (
-        <div className='DeliveryCard'>
+        <div className={classes.DeliveryCard}>
             <ModalSelect
                 visible={showSelectModal}
                 data={modalData}
                 onSubmit={(selectedData) => { setSelectedCity({ city: selectedData.name, region: selectedData.subtitle }); setShowSelectModal(false) }}
                 onClose={() => setShowSelectModal(false)} />
-            <div className='DeliveryCard__header'>
-                <ReactDeliveryTruck className='DeliveryCard__deliveryIcon' />
+            <div className={classes.DeliveryCard__header}>
+                <ReactDeliveryTruck className={classes.DeliveryCard__deliveryIcon} />
                 <span>Доставка в &nbsp;
-                    <span className='DeliveryCard__selectedCity' onClick={() => setShowSelectModal(true)}>
+                    <span className={classes.DeliveryCard__selectedCity} onClick={() => setShowSelectModal(true)}>
                         {selectedCity.city}
                     </span>
                 </span>
             </div>
-            <div className='DeliveryCard__content'>
+            <div className={classes.DeliveryCard__content}>
                 <span>Доставка:</span>
                 <ul>
     <li>Самовывоз из Укрпочты: {ukrpostDeliveryPrice}₴, отправим {currentHour < 18 ? ' сегодня' : ' завтра'}</li>

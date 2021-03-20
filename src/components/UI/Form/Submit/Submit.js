@@ -1,10 +1,10 @@
 import React from 'react'
 
-import './Submit.css';
+import classes from './Submit.module.css';
 
 export default function Submit( props ) {
     return (
-        <button className='Submit'>
+        <button className={classes.Submit}>
 
         </button>
     )

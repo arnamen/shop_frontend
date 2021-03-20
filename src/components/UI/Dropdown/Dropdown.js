@@ -1,17 +1,13 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { v4 } from 'uuid';
-import {Link} from 'react-router-dom';
+import Link from 'next/link';
 
-import './Dropdown.css';
+import classes from './Dropdown.module.css';
 
-import {ReactComponent as ReactChevronRight} from '../../../assets/misc/right-chevron.svg';
+import ReactChevronRight from '../../../../public/assets/misc/right-chevron.svg';
 
 export default function Dropdown(props) {
   const itemsData = props.items || [];
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
 
   //превратить вложенный список в ul>li>ul...
   const getListItems = (itemsData = []) => {
@@ -23,28 +19,31 @@ export default function Dropdown(props) {
         let verticalAlignment = 100;
 
         if (index !== 0)
-        //пересчитать вертикальную позицию нового списка относительно родитльского элемента 
-        //чтобы прижать его к верху
+          //пересчитать вертикальную позицию нового списка относительно родитльского элемента 
+          //чтобы прижать его к верху
           verticalAlignment = -index * 100;
         //
 
-        return <li key={v4()} className='nav-item'>
+        return <li key={v4()} className={classes['nav-item']}>
 
-          {index === 0 && <span className='dots'></span>}
+          {index === 0 && <span className={classes.dots}></span>}
 
-          <Link to={itemData.to || '/'}>
-            <span>{itemData.text}</span>
+          <Link href={itemData.to || '/'}>
+            <a>
+              <span>{itemData.text}</span>
+            </a>
           </Link>
 
-          {index !== 0 && <ReactChevronRight className='chevron'/>}
+          {index !== 0 && <ReactChevronRight className={classes.chevron} />}
 
           {/* при создании нового списка учитывать границу при наведении 3 пикселя */}
 
-          <ul className='nested-navigation'
+          <ul className={classes['nested-navigation']}
             style={{
               height: 5 * (itemData.children.length) + 'vh',
               top: `calc(${verticalAlignment}% - ${3 * index}px)`,
-              zIndex: index}}>
+              zIndex: index
+            }}>
             {/* создать дочерние элементы */}
             {getListItems(itemData.children)}
           </ul>
@@ -52,8 +51,12 @@ export default function Dropdown(props) {
         </li>
       }
       // иначе вернуть обычный элемент
-      return <li key={v4()} className='nav-item'>
-        <Link to={itemData.to}><span>{itemData.text}</span></Link>
+      return <li key={v4()} className={classes['nav-item']}>
+        <Link href={itemData.to}>
+          <a>
+            <span>{itemData.text}</span>
+          </a>
+        </Link>
       </li>
 
     })
@@ -63,7 +66,7 @@ export default function Dropdown(props) {
   const listItems = getListItems(itemsData);
 
   return (
-    <ul className="main-navigation">
+    <ul className={classes["main-navigation"]}>
       {listItems}
     </ul>
   )

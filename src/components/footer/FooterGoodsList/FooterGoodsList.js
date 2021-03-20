@@ -1,15 +1,15 @@
 import React from 'react'
 
-import './FooterGoodsList.css';
+import classes from './FooterGoodsList.module.css';
 
-let contentHref = '/page/collection';
+let contentHref = '/collection';
 
 export default function FooterGoodsList() {
     return (
-        <div className='FooterGoodsList__wrapper'>
+        <div className={classes.FooterGoodsList__wrapper}>
             <ul>
                 <li>
-                    <span className='FooterGoodsList__title'>Каталог товаров</span>
+                    <span className={classes.FooterGoodsList__title}>Каталог товаров</span>
                 </li>
                 <li>
                     <a href={contentHref + '?categories=phones'}>Телефоны</a>

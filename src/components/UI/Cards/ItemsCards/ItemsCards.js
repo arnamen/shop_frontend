@@ -2,7 +2,7 @@ import React from 'react';
 
 import ItemsCard from './ItemsCard/ItemsCard';
 
-import './ItemsCards.css';
+import classes from './ItemsCards.module.css';
 
 export default function ItemsCards( props ) {
     let cards;

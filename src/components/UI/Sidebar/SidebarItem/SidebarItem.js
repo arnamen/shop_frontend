@@ -1,10 +1,10 @@
 import React from 'react';
 
-import './SidebarItem.css';
+import classes from './SidebarItem.module.css';
 
 export default function SidebarItem ( props ) {
     return (
-        <li className='SidebarItem' onClick={e => e.stopPropagation()}>
+        <li className={classes.SidebarItem} onClick={e => e.stopPropagation()}>
             {props.children}
         </li>
     )

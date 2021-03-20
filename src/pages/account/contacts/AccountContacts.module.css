@@ -1,0 +1,70 @@
+
+.AccountContacts__input-title {
+    cursor: text;
+    margin-bottom: 0;
+    padding: 0 0.5rem;
+    position: absolute;
+    z-index: 1;
+    top: 0.3rem;
+    left: 0;
+    right: 0;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    color: #666666;
+    font-size: 0.9em;
+    pointer-events: none;
+}
+
+.AccountContacts__input-title-required::after {
+    content: '*';
+    color: red;
+    margin-left: 3px;
+}
+
+.AccountContacts__formRow {
+    position: relative;
+    max-height: 55px;
+    transition: 0.5s max-height, 0.5s margin-top;
+}
+
+.AccountContacts__TextField {
+    transition: 0.3s all;
+}
+
+.AccountContacts__formRow-empty:focus-within > .AccountContacts__TextField,
+.AccountContacts__formRow-full > .AccountContacts__TextField {
+    height: 50px;
+    padding: 28px 12px 12px 12px;
+}
+
+.AccountContacts__formRow-empty:not(:focus-within) > .AccountContacts__input-title {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.AccountContacts__formRow-hide {
+    max-height: 0px;
+    margin-top: 0px;
+    overflow: hidden;
+}
+
+.AccountContacts__calendar-hide {
+    display: none;
+}
+
+.AccountContacts__calendar {
+    position: absolute;
+    z-index: 9999;
+}
+
+.AccountContacts__submit {
+    border-radius: 0px;
+    background-color: #0bb648;
+    color: #fff;
+    font-size: 14px;
+    line-height: 22px;
+    height: auto;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    margin-top: 20px;
+}

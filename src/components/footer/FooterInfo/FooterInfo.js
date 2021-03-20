@@ -1,42 +1,44 @@
 import React from 'react'
 
-import './FooterInfo.css';
+import Link from 'next/link';
 
-let contentHref = '/page/';
+import classes from './FooterInfo.module.css';
+
+let contentHref = '/';
 
 export default function FooterInfo() {
     return (
-        <div className='FooterInfo__wrapper'>
+        <div className={classes.FooterInfo__wrapper}>
             <ul>
                 <li>
-                    <span className='FooterGoodsList__title'>Информация</span>
+                    <span className={classes.FooterGoodsList__title}>Информация</span>
                 </li>
                 <li>
-                    <a href={'/'}>Часто задаваемые вопросы</a>
+                    <Link href={'/'}><a>Часто задаваемые вопросы</a></Link>
                 </li>
                 <li>
-                    <a href={contentHref + 'offer'}>Политика конфиденциальности и оферта</a>
+                    <Link href={contentHref + 'offer'}><a>Политика конфиденциальности и оферта</a></Link>
                 </li>
                 <li>
-                    <a href='/'>Пользовательское соглашение</a>
+                    <Link href='/'><a>Пользовательское соглашение</a></Link>
                 </li>
                 <li>
-                    <a href='/'>Условия обмена и возврата</a>
+                    <Link href='/'><a>Условия обмена и возврата</a></Link>
                 </li>                
                 <li>
-                    <a href='/'>Статьи</a>
+                    <Link href='/'><a>Статьи</a></Link>
                 </li>
                 <li>
-                    <a href={contentHref + 'feedback'}>Обратная связь</a>
+                    <Link href={contentHref + 'feedback'}><a>Обратная связь</a></Link>
                 </li>
                 <li>
-                    <a href={contentHref + 'delivery'}>Доставка</a>
+                    <Link href={contentHref + 'delivery'}><a>Доставка</a></Link>
                 </li>
                 <li>
-                    <a href={contentHref + 'payment'}>Оплата</a>
+                    <Link href={contentHref + 'payment'}><a>Оплата</a></Link>
                 </li>
                 <li>
-                    <a href={contentHref + 'contacts'}>Контакты</a>
+                    <Link href={contentHref + 'contacts'}><a>Контакты</a></Link>
                 </li>
             </ul>
         </div>

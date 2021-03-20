@@ -2,7 +2,7 @@ import React from 'react'
 import { v4 } from 'uuid';
 import CategoriesCard from './CategoriesCard/CategoriesCard';
 
-import './CategoriesCards.css';
+import classes from './CategoriesCards.module.css';
 
 export default function CategoriesCards( props ) {
     let categories;
@@ -14,7 +14,7 @@ export default function CategoriesCards( props ) {
     }
 
     return (
-        <div className='CategoriesCards-wrapper'>
+        <div className={classes['CategoriesCards-wrapper']}>
             {categories}
         </div>
     )

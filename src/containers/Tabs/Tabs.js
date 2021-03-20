@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { v4 } from 'uuid';
 
-import './Tabs.css'
+import classes from './Tabs.module.css';
 
 export default function Tabs(props) {
 
@@ -9,8 +9,7 @@ export default function Tabs(props) {
 
     if (!props.tabsNames) return <React.Fragment>{props.children}</React.Fragment>
     const tabs = React.Children.map(props.children, (_, index) => {
-        const id = v4();
-
+        const id = 'input_' + index + '_' + selectedTab;
         return <React.Fragment>
             <input id={id} 
             name='Tabs' 
@@ -19,20 +18,20 @@ export default function Tabs(props) {
             onClick={() => setSelectedTab(index)}
             />
 
-            <label htmlFor={id}>{props.tabsNames[index]}</label>
+            <label htmlFor={id} className={index === selectedTab ? classes.CheckedLabel : ''}>{props.tabsNames[index]}</label>
         </React.Fragment>
     })
     //каждого потомка завернуть в отдельный таб
     const children = React.Children.map(props.children, (child, index) => {
         return React.cloneElement(child, {
-            key: v4(),
-            className: `Tabs__tab ${child.props.className ? child.props.className : ''} ${index === selectedTab ? '' :'inactive'}`
+            key: index,
+            className: `${classes.Tabs__tab} ${child.props.className ? classes[child.props.className] : ''} ${index === selectedTab ? '' : classes['inactive']}`
         })
     })
 
     return (
-        <div className={`Tabs ${props.className ?' ' + props.className : ''}`}>
-            <div className='Tabs__radio-wrapper'>
+        <div className={`${classes.Tabs} ${props.className ?' ' + classes[props.className] : ''}`}>
+            <div className={classes['Tabs__radio-wrapper']}>
                 {tabs}
             </div>
             {children}

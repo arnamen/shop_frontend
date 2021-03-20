@@ -1,0 +1,38 @@
+.Tabs {
+    width: 100%;
+}
+.Tabs label {
+    display: inline-block;
+    padding: 10px 0;
+    margin: 0 10px;
+    width: 180px;
+    color: rgba(0,0,0,0.5);
+    cursor: pointer;
+    text-align: center;
+}
+
+.Tabs__radio-wrapper {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.Tabs input[type="radio"] {
+    display: none;
+}
+
+.Tabs .CheckedLabel {
+    background-image: linear-gradient(to right, black 69%, rgba(255,255,255,0) 0%);
+    background-position: bottom;
+    background-size: 17px 1px;
+    background-repeat: repeat-x;
+    color: black;
+    font-weight: 700;
+}
+
+.active {
+    display: block;
+}
+
+.inactive {
+    display: none;
+}

@@ -42,15 +42,15 @@ export const popupMessages = {
     redirectButton: {
         cart: {
             title: 'Открыть корзину',
-            to: '/page/cart'
+            to: '/cart'
         },
         favourites: {
             title: 'Перейти к избранному',
-            to: '/page/favourites'
+            to: '/favourites'
         },
         compare: {
             title: 'Перейти к сравению',
-            to: '/page/compares'
+            to: '/compares'
         },
         account: {
             title: 'Регистрация',
@@ -64,7 +64,7 @@ export const popupMessages = {
     actionButton: {
         cart: {
             title: 'Перейти к оплате',
-            action: '/page/cart'
+            action: '/cart'
         },
         account: {
             title: 'Авторизация',

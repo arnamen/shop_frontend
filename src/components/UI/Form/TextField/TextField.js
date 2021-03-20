@@ -4,7 +4,7 @@ import InputMask from 'react-input-mask';
 
 import {validate} from '../../../../utils/validator';
 
-import './TextField.css';
+import classes from './TextField.module.css';
 
 const inputReducer = (state, action) => {
 
@@ -36,9 +36,11 @@ export default function TextField( props ) {
     
       const { id, onInput } = props;
       const { value, isValid } = inputState;
-      const className = ['TextField'];
-      if(!isValid && inputState.isTouched) className.push('TextField-invalid');
+      const className = [classes['TextField']];
+      if(!isValid && inputState.isTouched) className.push(classes['TextField-invalid']);
+      props.className && className.push(props.className);
       useEffect(() => {
+        if(!onInput) return;
         onInput(id, value, isValid)
       }, [id, value, isValid, onInput]);
     
@@ -59,7 +61,12 @@ export default function TextField( props ) {
 
     return (
         props.mask 
-        ? <InputMask mask={props.mask} value={props.value} onChange={changeHandler} alwaysShowMask onFocus={touchHandler}>
+        ? <InputMask mask={props.mask} 
+        value={props.value} 
+        onChange={changeHandler} 
+        alwaysShowMask 
+        onFocus={touchHandler}
+        readOnly={!!props.value}>
           {(inputProps => <input type={props.type || 'text'} 
           className={className.join(' ')} 
           id={props.id || ''}
@@ -67,7 +74,6 @@ export default function TextField( props ) {
           defaultValue={props.defaultValue}
           required={props.required || false}
           key={props.autoupdate ? v4(): undefined}
-          readOnly={props.value}
           {...inputProps}/>)}
         </InputMask>
         : <input type={props.type || 'text'} 
@@ -76,9 +82,11 @@ export default function TextField( props ) {
         id={props.id || ''}
         placeholder={props.placeholder || ''}
         defaultValue={props.defaultValue}
+        value={props.value}
         required={props.required || false}
         key={props.autoupdate ? v4(): undefined}
-        readOnly={props.value}
+        readOnly={!!props.value}
+        onClick={props.onClick}
         onFocus={touchHandler}/>
     )
 }

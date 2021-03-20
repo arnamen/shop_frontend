@@ -1,23 +1,23 @@
 import React from 'react'
 
-import {ReactComponent as ReactCheckmark} from '../../../assets/misc/checkmark.svg';
+import ReactCheckmark from '../../../../public/assets/misc/checkmark.svg';
 
-import './Checkbox.css';
+import classes from './Checkbox.module.css';
 
 export default function Checkbox( props ) {
 
-    const classes = ['Checkbox'];
-    props.className && classes.push(props.className);
+    const className = [classes['Checkbox']];
+    props.className && className.push(classes[props.className]);
 
     return (
-            <label htmlFor={props.id} className={classes.join(' ')}>
+            <label htmlFor={props.id} className={className.join(' ')}>
                 {props.children}
                     <input id={props.id} 
                     type='checkbox'
                     defaultChecked={props.checked || false}
                     onChange={props.onChange || ((e) => 0)}
                     />
-                    <ReactCheckmark className='checkmark'></ReactCheckmark>
+                    <ReactCheckmark className={classes.checkmark}></ReactCheckmark>
                 </label>
     )
 }

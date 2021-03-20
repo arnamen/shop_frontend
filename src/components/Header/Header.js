@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import VisibilitySensor from 'react-visibility-sensor';
 import { v4 } from 'uuid';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../Logo/Logo';
 import Search from '../../containers/Search/Search';
@@ -15,10 +15,10 @@ import Burger from '../../containers/Burger/Burger';
 import AuthModal from '../AuthModal/AuthModal';
 import * as actionTypes from '../../store/actions/actionTypes';
 
-import './Header.css';
+import classes from './Header.module.css';
 import { authSetIp, logOut } from '../../store/actions/auth';
 
-let contentHref = '/page/collection';
+let contentHref = '/collection';
 
 const dropdownsData = [
     {
@@ -157,12 +157,13 @@ const AdminAccountListData = [
 
 const burgerData = [
     { to: '/', name: 'Главная' },
-    { to: '/page/collection', name: 'Каталог товаров' },
-    { to: '/page/about-us', name: 'О компании' },
-    { to: '/page/contacts', name: 'Контакты' },
-    { to: '/page/delivery', name: 'Доставка' },
-    { to: '/page/payment', name: 'Оплата' },
-    { to: '/page/feedback', name: 'Обратная связь' },
+    { to: '/collection', name: 'Каталог товаров' },
+    { to: '/account', name: 'Аккаунт' },
+    { to: '/about-us', name: 'О компании' },
+    { to: '/contacts', name: 'Контакты' },
+    { to: '/delivery', name: 'Доставка' },
+    { to: '/payment', name: 'Оплата' },
+    { to: '/feedback', name: 'Обратная связь' },
 ]
 
 function Header(props) {
@@ -171,30 +172,57 @@ function Header(props) {
     const [visible, setVisible] = useState(true)
     const [showAuthForm, setShowAuthForm] = useState(false);
 
-    const compareActive = props.compare.length > 0;
-    const favouritesActive = props.favourites.length > 0;
-    const cartActive = props.cart.length > 0;
+    const dispatch = useDispatch();
+
+    const compare = useSelector(state => state.compare.compare);
+    const favourites = useSelector(state => state.favourites.favourites);
+    const cart = useSelector(state => state.cart.cart);
+    const loggedIn = useSelector(state => !!state.auth.token);
+    const ip = useSelector(state => state.auth.ip);
+
+    const compareActive = compare.length > 0;
+    const favouritesActive = favourites.length > 0;
+    const cartActive = cart.length > 0;
 
     const currentAccountRoutes = [...AccountListData];
 
+    const onRemoveFromCompare = (item) => dispatch({
+        type: actionTypes.REMOVE_COMPARE,
+        item,
+    });
+    const onRemoveFromFavourites = (item) => dispatch({
+        type: actionTypes.REMOVE_FAVOURITES,
+        item,
+    });
+    const onRemoveFromCart = (item) => dispatch({
+        type: actionTypes.REMOVE_FROM_CART,
+        item,
+    });
+    const onLogout = () => {
+        dispatch(logOut())
+    };
+
+    const changeVisibility = (isVisible) => {
+        if(window) setVisible(isVisible);
+    }
 
     return (
         <React.Fragment>
             {/* Этот заголовок видно когда пользователь скролит вниз с телефона */}
-            <div className={`Header__wrapper-top-mobile`}>
+            <div className={classes[`Header__wrapper-top-mobile`]}>
                 <Burger data={burgerData} />
                 <UserIconLinks>
-                    <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
-                        <Popup items={props.compare} type='compare' redirectButtonNotEmpty onDelete={props.onRemoveFromCompare} />
+                    <UserIconLink type='compare' to='/compare' active={compareActive} markContent={compare.length} key={v4()}>
+                        <Popup items={compare} type='compare' redirectButtonNotEmpty onDelete={onRemoveFromCompare} />
                     </UserIconLink>
-                    <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} activeColor='red' key={v4()}>
-                        <Popup items={props.favourites} type='favourites' redirectButtonNotEmpty onDelete={props.onRemoveFromFavourites} />
+                    <UserIconLink type='heart' to='/favourites' active={favouritesActive && 'red'} markContent={favourites.length} activeColor='red' key={v4()}>
+                        <Popup items={favourites} type='favourites' redirectButtonNotEmpty onDelete={onRemoveFromFavourites} />
                     </UserIconLink>
-                    <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
-                        <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart} />
+                    <UserIconLink type='cart' to='/cart' active={cartActive} markContent={cart.length} key={v4()}>
+                        <Popup items={cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={onRemoveFromCart} />
                     </UserIconLink>
-                    <UserIconLink type='account' to='/' key={v4()} active={props.loggedIn} activeColor='orange'>
-                        {props.loggedIn
+                    <UserIconLink type='account' to='/account' key={v4()} active={loggedIn} activeColor='orange'>
+                        {loggedIn
                             ? <Popup type='authenticated' actionButton listData={[...AccountListData]} />
                             : <Popup type='account'>
                                 <Popup.Button green
@@ -210,33 +238,33 @@ function Header(props) {
                 </UserIconLinks>
             </div>
             {/* этот заголовок виден когда пользователь наверху старницы */}
-            <VisibilitySensor partialVisibility onChange={(isVisible) => setVisible(isVisible)}>
-                <div className={'Header'}>
-                    <div className={`Header__wrapper-top ${!visible && `Header__wrapper-top-hidden`}`}>
-                        <Burger data={burgerData} />
+            <VisibilitySensor partialVisibility onChange={(isVisible) => {changeVisibility(isVisible)}}>
+                <div className={classes['Header']}>
+                    <div className={`${classes['Header__wrapper-top']} ${!visible && `${classes['Header__wrapper-top-hidden']}`}`}>
+                        {/* <Burger data={burgerData} /> ?????*/}
                         <Logo />
                         <Search />
                         <Contacts />
                         <UserIconLinks>
-                            <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
-                                <Popup items={props.compare} type='compare' onDelete={props.onRemoveFromCompare}>
-                                    {compareActive && <Popup.Button green to='/page/compare'>Перейти к сравнению</Popup.Button>}
+                            <UserIconLink type='compare' to='compare' active={compareActive} markContent={compare.length} key={v4()}>
+                                <Popup items={compare} type='compare' onDelete={onRemoveFromCompare}>
+                                    {compareActive && <Popup.Button green to='/compare'>Перейти к сравнению</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} activeColor='red' key={v4()}>
-                                <Popup items={props.favourites} type='favourites' onDelete={props.onRemoveFromFavourites}>
-                                    {favouritesActive && <Popup.Button green to='/page/favourites'>Избранное</Popup.Button>}
+                            <UserIconLink type='heart' to='favourites' active={favouritesActive && 'red'} markContent={favourites.length} activeColor='red' key={v4()}>
+                                <Popup items={favourites} type='favourites' onDelete={onRemoveFromFavourites}>
+                                    {favouritesActive && <Popup.Button green to='/favourites'>Избранное</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
-                                <Popup items={props.cart} type='cart' onDelete={props.onRemoveFromCart}>
-                                    {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
+                            <UserIconLink type='cart' to='cart' active={cartActive} markContent={cart.length} key={v4()}>
+                                <Popup items={cart} type='cart' onDelete={onRemoveFromCart}>
+                                    {cartActive && <Popup.Button green to='/cart'>В корзину</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='account' to='/account' key={v4()} active={props.loggedIn} activeColor='orange'>
-                                {props.loggedIn
+                            <UserIconLink type='account' to='/account' key={v4()} active={loggedIn} activeColor='orange'>
+                                {loggedIn
                                     ? <Popup type='authenticated' listData={AccountListData}>
-                                        <Popup.Button blue onClick={() => props.onLogout()}>Выход</Popup.Button>
+                                        <Popup.Button blue onClick={() => onLogout()}>Выход</Popup.Button>
                                     </Popup>
                                     : <Popup type='account'>
                                         <Popup.Button green
@@ -251,34 +279,34 @@ function Header(props) {
                             </UserIconLink>
                         </UserIconLinks>
                     </div>
-                    <div className={`Header__wrapper-bottom ${!visible && `Header__fixed`}`}>
+                    <div className={`${classes['Header__wrapper-bottom']} ${!visible && `${classes['Header__fixed']}`}`}>
                         <Dropdown items={dropdownsData} />
-                        <LinkButton to='/page/about-us'>О компании</LinkButton>
-                        <LinkButton to='/page/contacts'>Контакты</LinkButton>
-                        <LinkButton to='/page/delivery'>Доставка</LinkButton>
-                        <LinkButton to='/page/payment'>Оплата</LinkButton>
-                        <LinkButton to='/page/feedback'>Обратная связь</LinkButton>
-                        {visible && <LinkButton to='/page/offer'>Оферта</LinkButton>}
+                        <LinkButton to='/about-us'>О компании</LinkButton>
+                        <LinkButton to='/contacts'>Контакты</LinkButton>
+                        <LinkButton to='/delivery'>Доставка</LinkButton>
+                        <LinkButton to='/payment'>Оплата</LinkButton>
+                        <LinkButton to='/feedback'>Обратная связь</LinkButton>
+                        {visible && <LinkButton to='/offer'>Оферта</LinkButton>}
                         {!visible && <UserIconLinks>
-                            <UserIconLink type='compare' to='/page/compares' active={compareActive} markContent={props.compare.length} key={v4()}>
-                                <Popup items={props.compare} type='compare' redirectButtonNotEmpty onDelete={props.onRemoveFromCompare} >
-                                    {cartActive && <Popup.Button green to='/page/compares'>Перейти к сравнению</Popup.Button>}
+                            <UserIconLink type='compare' to='/compare' active={compareActive} markContent={compare.length} key={v4()}>
+                                <Popup items={compare} type='compare' redirectButtonNotEmpty onDelete={onRemoveFromCompare} >
+                                    {cartActive && <Popup.Button green to='/compare'>Перейти к сравнению</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='heart' to='/page/favourites' active={favouritesActive && 'red'} markContent={props.favourites.length} activeColor='red' key={v4()}>
-                                <Popup items={props.favourites} type='favourites' redirectButtonNotEmpty onDelete={props.onRemoveFromFavourites} >
-                                    {favouritesActive && <Popup.Button green to='/page/favourites'>Избранное</Popup.Button>}
+                            <UserIconLink type='heart' to='/favourites' active={favouritesActive && 'red'} markContent={favourites.length} activeColor='red' key={v4()}>
+                                <Popup items={favourites} type='favourites' redirectButtonNotEmpty onDelete={onRemoveFromFavourites} >
+                                    {favouritesActive && <Popup.Button green to='/favourites'>Избранное</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='cart' to='/page/cart' active={cartActive} markContent={props.cart.length} key={v4()}>
-                                <Popup items={props.cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={props.onRemoveFromCart}>
-                                    {cartActive && <Popup.Button green to='/page/cart'>В корзину</Popup.Button>}
+                            <UserIconLink type='cart' to='/cart' active={cartActive} markContent={cart.length} key={v4()}>
+                                <Popup items={cart} type='cart' redirectButtonNotEmpty actionButtonNotEmpty onDelete={onRemoveFromCart}>
+                                    {cartActive && <Popup.Button green to='/cart'>В корзину</Popup.Button>}
                                 </Popup>
                             </UserIconLink>
-                            <UserIconLink type='account' to='/account' key={v4()} active={props.loggedIn} activeColor='orange'>
-                                {props.loggedIn
+                            <UserIconLink type='account' to='/account' key={v4()} active={loggedIn} activeColor='orange'>
+                                {loggedIn
                                     ? <Popup type='authenticated' listData={AccountListData}>
-                                        <Popup.Button blue onClick={() => props.onLogout()}>Выход</Popup.Button>
+                                        <Popup.Button blue onClick={() => onLogout()}>Выход</Popup.Button>
                                     </Popup>
                                     : <Popup type='account'>
                                     <Popup.Button green
@@ -293,7 +321,7 @@ function Header(props) {
                             </UserIconLink>
                         </UserIconLinks>}
                     </div>
-                    <div className='Header__bottom-simple'>
+                    <div className={classes['Header__bottom-simple']}>
                         <Logo />
                     </div>
                 </div>
@@ -305,34 +333,4 @@ function Header(props) {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        compare: state.compare.compare,
-        favourites: state.favourites.favourites,
-        cart: state.cart.cart,
-        loggedIn: !!state.auth.token,
-        ip: state.auth.ip
-    };
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onRemoveFromCompare: (item) => dispatch({
-            type: actionTypes.REMOVE_COMPARE,
-            item,
-        }),
-        onRemoveFromFavourites: (item) => dispatch({
-            type: actionTypes.REMOVE_FAVOURITES,
-            item,
-        }),
-        onRemoveFromCart: (item) => dispatch({
-            type: actionTypes.REMOVE_FROM_CART,
-            item,
-        }),
-        onLogout: () => {
-            dispatch(logOut())
-        },
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default Header
