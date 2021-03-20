@@ -4,8 +4,8 @@ import { useRouter } from 'next/router'
 
 import Tabs from '../../containers/Tabs/Tabs';
 
-import ItemPageGeneral from './ItemPageGeneral/ItemPageGeneral';
-import ItemPageCharacteristics from './ItemPageCharacteristics/ItemPageCharacteristics';
+import ItemPageGeneral from '../../components/ItemPage/ItemPageGeneral';
+import ItemPageCharacteristics from '../../components/ItemPage/ItemPageCharacteristics';
 
 import classes from './ItemPage.module.css';
 import * as actionTypes from '../../store/actions/actionTypes';
@@ -23,6 +23,10 @@ function ItemPage(props) {
     if(props.content.length === 0) return (<div>Loading...</div>)
     //get find item in fetched items
     const itemData = props.content.filter(item => item.id.toLowerCase() === itemid)[0];
+    if(!itemData) {
+        alert("unable to get item");
+        return <div></div>
+    };
     //check if item added to compare
     const compared = !!props.compare.find(item => item.name === itemData.name);
     //check if item added to favourites

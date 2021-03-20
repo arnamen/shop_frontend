@@ -104,7 +104,8 @@
         justify-content: center;
     }
     .ContentPage__mobile-filters-hide {
-        animation: removeElem 0.5s;
+        animation-name: removeElem;
+        animation-duration: 0.5s;
         animation-fill-mode: forwards;
     }
 
@@ -152,7 +153,8 @@
         background-color: white;
         padding: 20px 20px 0px;
         overflow: auto;
-        animation: slidein 0.5s;
+        animation-name: slidein;
+        animation-duration: 0.5s;
         animation-fill-mode: forwards;
         transition: 0.5s transform;
     }
