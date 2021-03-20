@@ -1,0 +1,43 @@
+.Footer__wrapper {
+    display: flex;
+    padding: 0 5vw;
+    background-color: #eee;
+    justify-content: space-between;
+}
+
+.Footer__wrapper ul > li {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.Footer__wrapper ul > li > a, .Footer__wrapper ul > li {
+    color: #111;
+    font-weight: 300;
+    transition: 0.4s color;
+}
+
+.Footer__wrapper ul > li > a:hover {
+    color: #e78905;
+}
+
+.Footer__wrapper ul > li:nth-child(1) > span {
+    font-weight: 700;
+    font-size: 22px;
+    margin-top: 3vh;
+    color: black;
+}
+
+@media screen and (max-width: 960px) {
+    .Footer__wrapper ul {
+        padding: 0;
+
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .Footer__wrapper {
+        display: flex;
+        justify-content: space-around;
+    }
+}

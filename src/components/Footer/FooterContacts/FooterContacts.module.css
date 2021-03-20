@@ -1,0 +1,29 @@
+.FooterContacts__wrapper {
+    width: 25%;
+    display: inline-block;
+}
+.FooterContacts__wrapper > ul {
+    list-style-type: none;
+}
+
+.FooterContacts__icon {
+    width: 22px;
+    height: 22px;
+    fill: #ed8d12;
+    margin-right: 15px;
+}
+
+.FooterContacts__social-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+@media screen and (max-width: 500px) {
+    .FooterContacts__wrapper {
+        width: 100%;
+    }
+    .FooterContacts__wrapper .Contacts__wrapper {
+        width: auto;
+    }
+}

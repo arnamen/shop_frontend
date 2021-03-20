@@ -26,8 +26,6 @@ export default function UserIconLink(props) {
 
     if (props.markContent && props.active) ContentMarker = <div className={classes.UserIconLink__ContentMarker}>{props.markContent}</div>
 
-    console.log(props.to)
-
     return (
         <div className={classes.UserIconLink__wrapper}>
             {props.active
