@@ -1,0 +1,278 @@
+.ItemPageGeneral {
+    display: flex;
+}
+
+.ItemPageGeneral__information {
+    display: inline-block;
+    width: 40%;
+}
+
+.ItemPageGeneral__description {
+    margin-top: 15px;
+}
+
+.ItemPageGeneral__description ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.ItemPageGeneral__description ul li {
+    margin-top: 10px;
+}
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+    max-height: 400px;
+}
+
+.image-gallery-thumbnail {
+    width: 60px;
+    margin: 0 2vw;
+}
+
+.image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg {
+    height: 120px;
+    width: 40px;
+}
+
+.image-gallery-thumbnails .image-gallery-thumbnails-container {
+    text-align: left;
+}
+
+.ItemPageGeneral__content {
+    width: 55%;
+    margin-left: 5%;
+}
+
+.ItemPageGeneral__labels {
+    display: flex;
+    padding: 1vh 0;
+}
+
+.ItemPageGeneral__label {
+    width: 80px;
+    font-size: 9px;
+    padding: 2px 9px;
+    margin-right: 8px;
+}
+
+.ItemPageGeneral__itemName {
+    margin-top: 15px;
+}
+
+.ItemPageGeneral__itemName h2 {
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 34px;
+    margin: 0;
+}
+
+.ItemPageGeneral__price-wrapper {
+    margin-top: 15px;
+}
+
+.ItemPageGeneral__price, .ItemPageGeneral__price__before, .ItemPageGeneral__price__discount {
+    display: inline-block;
+    display: inline-block;
+    font-weight: 500;
+    margin-right: 15px;
+    font-size: 26px;
+}
+
+.ItemPageGeneral__price__before {
+    color: black;
+    text-decoration: line-through;
+}
+
+.ItemPageGeneral__price__discount {
+    color: red;
+}
+
+.ItemPageGeneral__rating {
+    margin-top: 15px;
+}
+
+.ItemPageGeneral__star {
+    width: 15px;
+    height: 15px;
+}
+
+.ItemPageGeneral__reviews-link {
+    display: inline-flex;
+    align-items: center;
+    color: #0bb648;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 15px;
+    margin-left: 20px;
+    transition: 0.5s color;
+}
+
+.ItemPageGeneral__reviews-link > span {
+    margin-left: 5px;
+}
+
+.ItemPageGeneral__reviews-link:hover {
+    color: #000;
+}
+
+.ItemPageGeneral__reviews-link__icon {
+    width: 16px;
+    height: 16px;
+    fill: #0bb648;
+    transition: 0.5s fill;
+}
+
+.ItemPageGeneral__reviews-link:hover > .ItemPageGeneral__reviews-link__icon {
+    fill: #000;
+}
+
+.ItemPageGeneral__inStock, .ItemPageGeneral__notInStock {
+    display: inline-block;
+    vertical-align: middle;
+    color: #000;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 10px;
+    margin-top: 15px;
+}
+
+.ItemPageGeneral__inStock::before, .ItemPageGeneral__notInStock::before {
+    content: '';
+    border-radius: 50px;
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    background-color: #0bb648;
+    margin-right: 5px;
+}
+
+.ItemPageGeneral__notInStock::before {
+    background-color: red;
+}
+
+.ItemPageGeneral__addToCart {
+    display: flex;
+    margin-top: 15px;
+}
+
+.ItemPageGeneral__cartButton {
+    background-color: #0bb648;
+    flex-grow: 1;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: 0.5s background-color;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ItemPageGeneral__cartButton-blue {
+    margin-top: 15px;
+    background-color: #3095dd;
+    display: block;
+    width: 100%;
+    height: 52px;
+    cursor: pointer;
+    transition: 0.5s background-color;
+    font-size: 14px;
+}
+
+.ItemPageGeneral__cartButton:hover, .ItemPageGeneral__cartButton-blue:hover {
+    background-color: black;
+}
+
+.ItemPageGeneral__cartIcon {
+    height: 20px;
+    width: 20px;
+    margin-right: 9px;
+    fill: white;
+}
+
+.ItemPageGeneral__actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ItemPageGeneral__action-icon {
+    fill: black;
+    height: 20px;
+    width: 20px;
+    transition: 0.5s all;
+    margin: 0 5px;
+}
+
+.ItemPageGeneral__action-wrapper {
+    min-width: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    transition: 0.5s all;
+}
+
+.ItemPageGeneral__action-wrapper__piggy{
+    border-bottom: 1px dotted;
+    margin-right: 10vw;
+}
+
+.ItemPageGeneral__action-active {
+    color: green;
+}
+
+.ItemPageGeneral__action-active-red {
+    color: red;
+}
+
+.ItemPageGeneral__action-icon_cart, .ItemPageGeneral__action-icon-active {
+    fill: green;
+}
+
+.ItemPageGeneral__action-icon-active-red {
+    fill: red;
+}
+
+.ItemPageGeneral__action-wrapper:hover {
+    color: green;
+}
+
+.ItemPageGeneral__action-wrapper:hover > .ItemPageGeneral__action-icon_compare, .ItemPageGeneral__action-wrapper:hover > .ItemPageGeneral__action-icon {
+    fill: green;
+
+}
+
+.ItemPageGeneral__action-wrapper:hover > .ItemPageGeneral__action-icon_heart {
+    fill: red;
+}
+
+@media screen and (max-width: 950px) {
+
+    .ItemPageGeneral {
+        padding: 3vh 5vw 5vh 5vw;
+    }
+
+    .ItemPageGeneral__information-mobile {
+        display: block!important;
+    }
+    .ItemPageGeneral__content .ItemPageGeneral__labels,
+    .ItemPageGeneral__content .ItemPageGeneral__itemName,
+    .ItemPageGeneral__content .ItemPageGeneral__rating {
+        display: none!important;
+    }
+    .ItemPageGeneral__information {
+        display: block!important;
+        width: 100%!important;
+    }
+    .ItemPageGeneral {
+        display: flex;
+        flex-direction: column;
+    }
+    .ItemPageGeneral__content {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.ItemPageGeneral__information-mobile {
+    display: none;
+};
