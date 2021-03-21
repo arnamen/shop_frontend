@@ -4,6 +4,7 @@ import publicIp from 'public-ip';
 import { useRouter } from 'next/router';
 import { Provider } from 'react-redux'
 import {createWrapper} from 'next-redux-wrapper';
+import Head from 'next/head';
 
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
@@ -37,6 +38,9 @@ function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <React.Fragment>
+        <Head>
+          <title>DrawerShop</title>
+        </Head>
         <Header />
         <Component {...pageProps} />
         <Footer />
